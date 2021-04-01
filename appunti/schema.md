@@ -3,8 +3,8 @@
 - Una funzione convertita in un circuito booleano
 - 2 partecipanti A e B
 - Una funzione f(a,b) dove:
-	- a: input di A
-	- b: input di B
+  - a: input di A
+  - b: input di B
 
 Un circuito booleano è composto da più operatori logici collegati tra loro generando un reticolo.
 
@@ -15,7 +15,7 @@ Per ogni operatore logico dovremmo andare a scegliere:
 
 ## Funzionamento
 
-![](/home/andrea/Documenti/Tesi/appunti/media/05.png)
+![''](./media/05.png)
 
 A critta ogni riga della tabella della verità crittando utilizzando le chiavi degli ingressi corrispndenti ai valori booleani scelti.
 
@@ -28,13 +28,13 @@ A critta ogni riga della tabella della verità crittando utilizzando le chiavi d
 
 Dopo la crittatura la tabella viene permutata randomicamente e successivamente inviata a B
 
-![](/home/andrea/Documenti/Tesi/appunti/media/01.png)
+![''](./media/01.png)
 
 In questo modo B non riesce a capire quale elemento corrisponde al valore originale
 
 A questo punto A invia a B la chiave corrispondente al suo bit di input
 
-![](/home/andrea/Documenti/Tesi/appunti/media/02.png)
+![''](./media/02.png)
 
 Le chiavi sono stringhe casuali, in questo modo B non riesce a capire di che bit si tratta (0 o 1).
 
@@ -43,11 +43,11 @@ A e B utilizzano la tecnica di **Oblivious Transfer Protocol**, così facendo:
 - A invia le de 2 chiavi corrispondenti ai 2 valori delle chiavi inserite inizialmente da B
 - In questo protocollo B invia in input solo il suo bit di input per quell'ingresso
 
-![](/home/andrea/Documenti/Tesi/appunti/media/03.png)
+![''](./media/03.png)
 
 Da chi che A ha inviato a B nelle ultime 2 trasmissioni B è in grado di ricostruire (decrittare) uno degli output
 
-![](/home/andrea/Documenti/Tesi/appunti/media/04.png)
+![''](./media/04.png)
 
 Facendo questo passando per tutti i gate B riesce a valutare l'intero circuito ma non saprà mai per tutto il tragitto se i bit che ha scoperto sono 0 o 1. Alla fine della computazione di tutti i gate B chiede ad A il valore dell'ultimo output e A le risponde se è 0 o 1
 
@@ -84,3 +84,13 @@ Invece che fare come nel classico GC in questa nuova versione vengono scelti un 
 - Le porte NOT possono essere implementate "gratuitamente" semplicemente eliminandole e invertendo la corrispondenza dei valori dei fili e dei garbugli. Non consideriamo quindi ulteriormente le porte NOT.
 - Prendiamo tutti gli XOR-gate con n > 2 ingressi e li sostituiamo con con n - 1 XOR-gate a due ingressi.
 - Gli altri gate vengono trattati normalmente utilizzando un tabelle con $2^n$ entrate permutate casualmente.
+
+#### Algoritmo 1
+
+1. Scegliere casualmente l'offset della chiave globale $R \in_R \{ 0,1 \}^N$
+2. Per ogni input $W_i$ del circuito $C$
+   1. sceglie casualmente un valore confuso $w^0_i = \langle k^0_i, p^0_i \rangle \in_R \{0,1\}^{N+1}$
+   2. Imposta gli altri valori di output confusi $w^1_i = \langle k^1_i, p^1_i \rangle = \langle k^0_i \oplus R, p^0_i \oplus 1 \rangle$
+3. Per gli altri gate $G_i$ di $C$
+   1. Etichetta i gate con il loro indice
+   2. Se $G_i$ è uno **XOR-gate** allora $W_c = XOR(W_a, W_b)$ con valori confusi 

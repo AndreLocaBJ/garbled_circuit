@@ -1,0 +1,890 @@
+.model matmul
+.spec mtui2.blfmv
+.inputs a b c d e f g h
+.outputs i j k l
+.default_input_arrival 0 0
+.mv a 3
+.mv b 3
+.mv c 3
+.mv d 3
+.mv e 3
+.mv f 3
+.mv g 3
+.mv h 3
+.mv i 3
+.mv j 3
+.mv k 3
+.mv l 3
+.table n_73 n_82 n_140 n_149 i
+0 0 0 0  0
+- 1 - -  1
+1 - - -  1
+- - - 1  2
+- - 1 -  2
+.table n_207 n_216 n_274 n_283 j
+0 0 0 0  0
+- 1 - -  1
+1 - - -  1
+- - - 1  2
+- - 1 -  2
+.table n_341 n_350 n_408 n_417 k
+0 0 0 0  0
+- 1 - -  1
+1 - - -  1
+- - - 1  2
+- - 1 -  2
+.table n_475 n_484 n_542 n_551 l
+0 0 0 0  0
+- 1 - -  1
+1 - - -  1
+- - - 1  2
+- - 1 -  2
+.table a e n_22
+.default 0
+(0,2) 2  1
+.table a e n_25
+.default 0
+(0,1) 1  1
+.table n_22 n_25 n_26
+.default 0
+- 1  1
+1 -  1
+.table g n_26 n_27
+.default 0
+0 1  1
+.table a e n_32
+.default 0
+(0,1) 2  1
+.table a e n_35
+.default 0
+(0,2) 1  1
+.table n_32 n_35 n_36
+.default 0
+- 1  1
+1 -  1
+.table g n_36 n_37
+.default 0
+1 1  1
+.table b n_37 n_38
+.default 0
+(0,2) 1  1
+.table n_27 n_38 n_39
+.default 0
+- 1  1
+1 -  1
+.table a e n_44
+.default 0
+(0,1) 2  1
+.table a e n_47
+.default 0
+(0,2) 1  1
+.table n_44 n_47 n_48
+.default 0
+- 1  1
+1 -  1
+.table g n_48 n_49
+.default 0
+2 1  1
+.table b n_49 n_50
+.default 0
+(0,1) 1  1
+.table n_39 n_50 n_51
+.default 0
+- 1  1
+1 -  1
+.table b g n_55
+.default 0
+(0,2) 2  1
+.table b g n_58
+.default 0
+(0,1) 1  1
+.table n_55 n_58 n_59
+.default 0
+- 1  1
+1 -  1
+.table e n_59 n_60
+.default 0
+0 1  1
+.table n_51 n_60 n_61
+.default 0
+- 1  1
+1 -  1
+.table a n_61 n_62
+.default 0
+(1,2) 1  1
+.table b g n_66
+.default 0
+(0,2) 2  1
+.table b g n_69
+.default 0
+(0,1) 1  1
+.table n_66 n_69 n_70
+.default 0
+- 1  1
+1 -  1
+.table a n_70 n_71
+.default 0
+0 1  1
+.table n_62 n_71 n_72
+.default 0
+- 1  1
+1 -  1
+.table b n_72 n_73
+.default 0
+(1,2) 1  1
+.table a e n_77
+.default 0
+2 2  1
+.table a e n_80
+.default 0
+1 1  1
+.table n_77 n_80 n_81
+.default 0
+- 1  1
+1 -  1
+.table b n_81 n_82
+.default 0
+0 1  1
+.table a e n_89
+.default 0
+(0,1) 2  1
+.table a e n_92
+.default 0
+(0,2) 1  1
+.table n_89 n_92 n_93
+.default 0
+- 1  1
+1 -  1
+.table g n_93 n_94
+.default 0
+0 1  1
+.table a e n_99
+.default 0
+(0,2) 2  1
+.table a e n_102
+.default 0
+(0,1) 1  1
+.table n_99 n_102 n_103
+.default 0
+- 1  1
+1 -  1
+.table g n_103 n_104
+.default 0
+2 1  1
+.table b n_104 n_105
+.default 0
+(0,2) 1  1
+.table n_94 n_105 n_106
+.default 0
+- 1  1
+1 -  1
+.table a e n_111
+.default 0
+(0,2) 2  1
+.table a e n_114
+.default 0
+(0,1) 1  1
+.table n_111 n_114 n_115
+.default 0
+- 1  1
+1 -  1
+.table g n_115 n_116
+.default 0
+1 1  1
+.table b n_116 n_117
+.default 0
+(0,1) 1  1
+.table n_106 n_117 n_118
+.default 0
+- 1  1
+1 -  1
+.table b g n_122
+.default 0
+(0,1) 2  1
+.table b g n_125
+.default 0
+(0,2) 1  1
+.table n_122 n_125 n_126
+.default 0
+- 1  1
+1 -  1
+.table e n_126 n_127
+.default 0
+0 1  1
+.table n_118 n_127 n_128
+.default 0
+- 1  1
+1 -  1
+.table a n_128 n_129
+.default 0
+(1,2) 1  1
+.table b g n_133
+.default 0
+(0,1) 2  1
+.table b g n_136
+.default 0
+(0,2) 1  1
+.table n_133 n_136 n_137
+.default 0
+- 1  1
+1 -  1
+.table a n_137 n_138
+.default 0
+0 1  1
+.table n_129 n_138 n_139
+.default 0
+- 1  1
+1 -  1
+.table b n_139 n_140
+.default 0
+(1,2) 1  1
+.table a e n_144
+.default 0
+1 2  1
+.table a e n_147
+.default 0
+2 1  1
+.table n_144 n_147 n_148
+.default 0
+- 1  1
+1 -  1
+.table b n_148 n_149
+.default 0
+0 1  1
+.table a f n_156
+.default 0
+(0,2) 2  1
+.table a f n_159
+.default 0
+(0,1) 1  1
+.table n_156 n_159 n_160
+.default 0
+- 1  1
+1 -  1
+.table h n_160 n_161
+.default 0
+0 1  1
+.table a f n_166
+.default 0
+(0,1) 2  1
+.table a f n_169
+.default 0
+(0,2) 1  1
+.table n_166 n_169 n_170
+.default 0
+- 1  1
+1 -  1
+.table h n_170 n_171
+.default 0
+1 1  1
+.table b n_171 n_172
+.default 0
+(0,2) 1  1
+.table n_161 n_172 n_173
+.default 0
+- 1  1
+1 -  1
+.table a f n_178
+.default 0
+(0,1) 2  1
+.table a f n_181
+.default 0
+(0,2) 1  1
+.table n_178 n_181 n_182
+.default 0
+- 1  1
+1 -  1
+.table h n_182 n_183
+.default 0
+2 1  1
+.table b n_183 n_184
+.default 0
+(0,1) 1  1
+.table n_173 n_184 n_185
+.default 0
+- 1  1
+1 -  1
+.table b h n_189
+.default 0
+(0,2) 2  1
+.table b h n_192
+.default 0
+(0,1) 1  1
+.table n_189 n_192 n_193
+.default 0
+- 1  1
+1 -  1
+.table f n_193 n_194
+.default 0
+0 1  1
+.table n_185 n_194 n_195
+.default 0
+- 1  1
+1 -  1
+.table a n_195 n_196
+.default 0
+(1,2) 1  1
+.table b h n_200
+.default 0
+(0,2) 2  1
+.table b h n_203
+.default 0
+(0,1) 1  1
+.table n_200 n_203 n_204
+.default 0
+- 1  1
+1 -  1
+.table a n_204 n_205
+.default 0
+0 1  1
+.table n_196 n_205 n_206
+.default 0
+- 1  1
+1 -  1
+.table b n_206 n_207
+.default 0
+(1,2) 1  1
+.table a f n_211
+.default 0
+2 2  1
+.table a f n_214
+.default 0
+1 1  1
+.table n_211 n_214 n_215
+.default 0
+- 1  1
+1 -  1
+.table b n_215 n_216
+.default 0
+0 1  1
+.table a f n_223
+.default 0
+(0,1) 2  1
+.table a f n_226
+.default 0
+(0,2) 1  1
+.table n_223 n_226 n_227
+.default 0
+- 1  1
+1 -  1
+.table h n_227 n_228
+.default 0
+0 1  1
+.table a f n_233
+.default 0
+(0,2) 2  1
+.table a f n_236
+.default 0
+(0,1) 1  1
+.table n_233 n_236 n_237
+.default 0
+- 1  1
+1 -  1
+.table h n_237 n_238
+.default 0
+2 1  1
+.table b n_238 n_239
+.default 0
+(0,2) 1  1
+.table n_228 n_239 n_240
+.default 0
+- 1  1
+1 -  1
+.table a f n_245
+.default 0
+(0,2) 2  1
+.table a f n_248
+.default 0
+(0,1) 1  1
+.table n_245 n_248 n_249
+.default 0
+- 1  1
+1 -  1
+.table h n_249 n_250
+.default 0
+1 1  1
+.table b n_250 n_251
+.default 0
+(0,1) 1  1
+.table n_240 n_251 n_252
+.default 0
+- 1  1
+1 -  1
+.table b h n_256
+.default 0
+(0,1) 2  1
+.table b h n_259
+.default 0
+(0,2) 1  1
+.table n_256 n_259 n_260
+.default 0
+- 1  1
+1 -  1
+.table f n_260 n_261
+.default 0
+0 1  1
+.table n_252 n_261 n_262
+.default 0
+- 1  1
+1 -  1
+.table a n_262 n_263
+.default 0
+(1,2) 1  1
+.table b h n_267
+.default 0
+(0,1) 2  1
+.table b h n_270
+.default 0
+(0,2) 1  1
+.table n_267 n_270 n_271
+.default 0
+- 1  1
+1 -  1
+.table a n_271 n_272
+.default 0
+0 1  1
+.table n_263 n_272 n_273
+.default 0
+- 1  1
+1 -  1
+.table b n_273 n_274
+.default 0
+(1,2) 1  1
+.table a f n_278
+.default 0
+1 2  1
+.table a f n_281
+.default 0
+2 1  1
+.table n_278 n_281 n_282
+.default 0
+- 1  1
+1 -  1
+.table b n_282 n_283
+.default 0
+0 1  1
+.table c e n_290
+.default 0
+(0,2) 2  1
+.table c e n_293
+.default 0
+(0,1) 1  1
+.table n_290 n_293 n_294
+.default 0
+- 1  1
+1 -  1
+.table g n_294 n_295
+.default 0
+0 1  1
+.table c e n_300
+.default 0
+(0,1) 2  1
+.table c e n_303
+.default 0
+(0,2) 1  1
+.table n_300 n_303 n_304
+.default 0
+- 1  1
+1 -  1
+.table g n_304 n_305
+.default 0
+1 1  1
+.table d n_305 n_306
+.default 0
+(0,2) 1  1
+.table n_295 n_306 n_307
+.default 0
+- 1  1
+1 -  1
+.table c e n_312
+.default 0
+(0,1) 2  1
+.table c e n_315
+.default 0
+(0,2) 1  1
+.table n_312 n_315 n_316
+.default 0
+- 1  1
+1 -  1
+.table g n_316 n_317
+.default 0
+2 1  1
+.table d n_317 n_318
+.default 0
+(0,1) 1  1
+.table n_307 n_318 n_319
+.default 0
+- 1  1
+1 -  1
+.table d g n_323
+.default 0
+(0,2) 2  1
+.table d g n_326
+.default 0
+(0,1) 1  1
+.table n_323 n_326 n_327
+.default 0
+- 1  1
+1 -  1
+.table e n_327 n_328
+.default 0
+0 1  1
+.table n_319 n_328 n_329
+.default 0
+- 1  1
+1 -  1
+.table c n_329 n_330
+.default 0
+(1,2) 1  1
+.table d g n_334
+.default 0
+(0,2) 2  1
+.table d g n_337
+.default 0
+(0,1) 1  1
+.table n_334 n_337 n_338
+.default 0
+- 1  1
+1 -  1
+.table c n_338 n_339
+.default 0
+0 1  1
+.table n_330 n_339 n_340
+.default 0
+- 1  1
+1 -  1
+.table d n_340 n_341
+.default 0
+(1,2) 1  1
+.table c e n_345
+.default 0
+2 2  1
+.table c e n_348
+.default 0
+1 1  1
+.table n_345 n_348 n_349
+.default 0
+- 1  1
+1 -  1
+.table d n_349 n_350
+.default 0
+0 1  1
+.table c e n_357
+.default 0
+(0,1) 2  1
+.table c e n_360
+.default 0
+(0,2) 1  1
+.table n_357 n_360 n_361
+.default 0
+- 1  1
+1 -  1
+.table g n_361 n_362
+.default 0
+0 1  1
+.table c e n_367
+.default 0
+(0,2) 2  1
+.table c e n_370
+.default 0
+(0,1) 1  1
+.table n_367 n_370 n_371
+.default 0
+- 1  1
+1 -  1
+.table g n_371 n_372
+.default 0
+2 1  1
+.table d n_372 n_373
+.default 0
+(0,2) 1  1
+.table n_362 n_373 n_374
+.default 0
+- 1  1
+1 -  1
+.table c e n_379
+.default 0
+(0,2) 2  1
+.table c e n_382
+.default 0
+(0,1) 1  1
+.table n_379 n_382 n_383
+.default 0
+- 1  1
+1 -  1
+.table g n_383 n_384
+.default 0
+1 1  1
+.table d n_384 n_385
+.default 0
+(0,1) 1  1
+.table n_374 n_385 n_386
+.default 0
+- 1  1
+1 -  1
+.table d g n_390
+.default 0
+(0,1) 2  1
+.table d g n_393
+.default 0
+(0,2) 1  1
+.table n_390 n_393 n_394
+.default 0
+- 1  1
+1 -  1
+.table e n_394 n_395
+.default 0
+0 1  1
+.table n_386 n_395 n_396
+.default 0
+- 1  1
+1 -  1
+.table c n_396 n_397
+.default 0
+(1,2) 1  1
+.table d g n_401
+.default 0
+(0,1) 2  1
+.table d g n_404
+.default 0
+(0,2) 1  1
+.table n_401 n_404 n_405
+.default 0
+- 1  1
+1 -  1
+.table c n_405 n_406
+.default 0
+0 1  1
+.table n_397 n_406 n_407
+.default 0
+- 1  1
+1 -  1
+.table d n_407 n_408
+.default 0
+(1,2) 1  1
+.table c e n_412
+.default 0
+1 2  1
+.table c e n_415
+.default 0
+2 1  1
+.table n_412 n_415 n_416
+.default 0
+- 1  1
+1 -  1
+.table d n_416 n_417
+.default 0
+0 1  1
+.table c f n_424
+.default 0
+(0,2) 2  1
+.table c f n_427
+.default 0
+(0,1) 1  1
+.table n_424 n_427 n_428
+.default 0
+- 1  1
+1 -  1
+.table h n_428 n_429
+.default 0
+0 1  1
+.table c f n_434
+.default 0
+(0,1) 2  1
+.table c f n_437
+.default 0
+(0,2) 1  1
+.table n_434 n_437 n_438
+.default 0
+- 1  1
+1 -  1
+.table h n_438 n_439
+.default 0
+1 1  1
+.table d n_439 n_440
+.default 0
+(0,2) 1  1
+.table n_429 n_440 n_441
+.default 0
+- 1  1
+1 -  1
+.table c f n_446
+.default 0
+(0,1) 2  1
+.table c f n_449
+.default 0
+(0,2) 1  1
+.table n_446 n_449 n_450
+.default 0
+- 1  1
+1 -  1
+.table h n_450 n_451
+.default 0
+2 1  1
+.table d n_451 n_452
+.default 0
+(0,1) 1  1
+.table n_441 n_452 n_453
+.default 0
+- 1  1
+1 -  1
+.table d h n_457
+.default 0
+(0,2) 2  1
+.table d h n_460
+.default 0
+(0,1) 1  1
+.table n_457 n_460 n_461
+.default 0
+- 1  1
+1 -  1
+.table f n_461 n_462
+.default 0
+0 1  1
+.table n_453 n_462 n_463
+.default 0
+- 1  1
+1 -  1
+.table c n_463 n_464
+.default 0
+(1,2) 1  1
+.table d h n_468
+.default 0
+(0,2) 2  1
+.table d h n_471
+.default 0
+(0,1) 1  1
+.table n_468 n_471 n_472
+.default 0
+- 1  1
+1 -  1
+.table c n_472 n_473
+.default 0
+0 1  1
+.table n_464 n_473 n_474
+.default 0
+- 1  1
+1 -  1
+.table d n_474 n_475
+.default 0
+(1,2) 1  1
+.table c f n_479
+.default 0
+2 2  1
+.table c f n_482
+.default 0
+1 1  1
+.table n_479 n_482 n_483
+.default 0
+- 1  1
+1 -  1
+.table d n_483 n_484
+.default 0
+0 1  1
+.table c f n_491
+.default 0
+(0,1) 2  1
+.table c f n_494
+.default 0
+(0,2) 1  1
+.table n_491 n_494 n_495
+.default 0
+- 1  1
+1 -  1
+.table h n_495 n_496
+.default 0
+0 1  1
+.table c f n_501
+.default 0
+(0,2) 2  1
+.table c f n_504
+.default 0
+(0,1) 1  1
+.table n_501 n_504 n_505
+.default 0
+- 1  1
+1 -  1
+.table h n_505 n_506
+.default 0
+2 1  1
+.table d n_506 n_507
+.default 0
+(0,2) 1  1
+.table n_496 n_507 n_508
+.default 0
+- 1  1
+1 -  1
+.table c f n_513
+.default 0
+(0,2) 2  1
+.table c f n_516
+.default 0
+(0,1) 1  1
+.table n_513 n_516 n_517
+.default 0
+- 1  1
+1 -  1
+.table h n_517 n_518
+.default 0
+1 1  1
+.table d n_518 n_519
+.default 0
+(0,1) 1  1
+.table n_508 n_519 n_520
+.default 0
+- 1  1
+1 -  1
+.table d h n_524
+.default 0
+(0,1) 2  1
+.table d h n_527
+.default 0
+(0,2) 1  1
+.table n_524 n_527 n_528
+.default 0
+- 1  1
+1 -  1
+.table f n_528 n_529
+.default 0
+0 1  1
+.table n_520 n_529 n_530
+.default 0
+- 1  1
+1 -  1
+.table c n_530 n_531
+.default 0
+(1,2) 1  1
+.table d h n_535
+.default 0
+(0,1) 2  1
+.table d h n_538
+.default 0
+(0,2) 1  1
+.table n_535 n_538 n_539
+.default 0
+- 1  1
+1 -  1
+.table c n_539 n_540
+.default 0
+0 1  1
+.table n_531 n_540 n_541
+.default 0
+- 1  1
+1 -  1
+.table d n_541 n_542
+.default 0
+(1,2) 1  1
+.table c f n_546
+.default 0
+1 2  1
+.table c f n_549
+.default 0
+2 1  1
+.table n_546 n_549 n_550
+.default 0
+- 1  1
+1 -  1
+.table d n_550 n_551
+.default 0
+0 1  1
+.end

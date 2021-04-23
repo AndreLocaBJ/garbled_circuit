@@ -1,0 +1,11 @@
+.model IN_gate
+.spec in_conv.blfmv
+.inputs x1 x2
+.outputs out
+.default_input_arrival 0 0
+.mv out 3
+.table x1 x2 out
+.default 0
+1 -  1
+- 1  2
+.end

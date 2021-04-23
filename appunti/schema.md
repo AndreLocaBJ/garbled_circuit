@@ -72,7 +72,7 @@ Per questo studio sono stati utilizzati circuiti booleani aciclici con $k$ gate 
 ### Nomenclatura operazioni
 
 - **RO**, Random Oracle: funzione di hash che trasforma $\{0,1\}^* \mapsto \{0,1\}^N$
-- **OT**, Oblivius Transfer:  è un protocollo a due parti. Il mittente $P_1$ ha due segreti $m_0 , m _1$ e il destinatario $P_2$ ha un bit di selezione $i \in \{0, 1\}$. Alla fine del protocollo, $P_2$ apprende $m_i$  ma nulla su $m_{1-i}$ e $P_1$ non apprende nulla su $i$.
+- **OT**, Oblivius Transfer:  è un protocollo a due parti. Il mittente $P_1$ ha due segreti $m_0, m_1$ e il destinatario $P_2$ ha un bit di selezione $i \in \{0, 1\}$. Alla fine del protocollo, $P_2$ apprende $m_i$  ma nulla su $m_{1-i}$ e $P_1$ non apprende nulla su $i$.
 - **GC**, Yao’s Garbled Circuit: visto sopra
 
 ## Il protocollo
@@ -93,4 +93,4 @@ Invece che fare come nel classico GC in questa nuova versione vengono scelti un 
    2. Imposta gli altri valori di output confusi $w^1_i = \langle k^1_i, p^1_i \rangle = \langle k^0_i \oplus R, p^0_i \oplus 1 \rangle$
 3. Per gli altri gate $G_i$ di $C$
    1. Etichetta i gate con il loro indice
-   2. Se $G_i$ è uno **XOR-gate** allora $W_c = XOR(W_a, W_b)$ con valori confusi 
+   2. Se $G_i$ è uno **XOR-gate** allora $W_c = XOR(W_a, W_b)$ con valori confusi

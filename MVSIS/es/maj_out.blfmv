@@ -1,0 +1,18 @@
+.model MAJ
+.spec maj.blfmv
+.inputs x1 x2 x3
+.outputs maj
+.default_input_arrival 0 0
+.mv x1 3
+.mv x2 3
+.mv x3 3
+.mv maj 3
+.table x1 x2 x3 maj
+.default 2
+- 0 0  0
+0 0 -  0
+0 - 0  0
+- 1 1  1
+1 1 -  1
+1 - 1  1
+.end

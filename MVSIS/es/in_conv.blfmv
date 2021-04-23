@@ -1,0 +1,14 @@
+.model IN_gate
+.inputs x1 x2 
+.outputs  out
+ 
+ x1 3 0 1 ?
+ x2 3 0 1 ?
+.mv out 3 0 1 ?
+.table x1 x2 -> out
+
+0 0 0 
+1 0 1
+0 1 ?
+1 1 -
+.end

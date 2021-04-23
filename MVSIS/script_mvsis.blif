@@ -1,0 +1,10 @@
+set autoexec print_stats
+set rf read_blif
+set sf simplify
+set cl collapse2
+set ec encode
+set fs fullsimp
+set sw show_network
+set pd pair_decode
+set pio print_io
+set pnd print_nd 

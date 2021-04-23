@@ -1,0 +1,18 @@
+.model NAND
+.inputs x1 x2
+.outputs  z
+
+.mv x1 3 0 1 ?
+.mv x2 3 0 1 ?
+.mv z 3 0 1 ?
+.table x1 x2 -> z
+0 0 1
+0 1 1
+0 ? ?
+1 0 1
+1 1 0
+1 ? ?
+? 0 ?
+? 1 ?
+? ? ?
+.end

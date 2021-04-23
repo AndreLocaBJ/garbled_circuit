@@ -1,0 +1,14 @@
+.model AP
+.spec try.blf.txt
+.inputs x1 x2
+.outputs z
+.default_input_arrival 0 0
+.mv x1 3
+.mv x2 3
+.mv z 3
+.table x1 x2 z
+.default 1
+1 1  0
+- 2  2
+2 -  2
+.end

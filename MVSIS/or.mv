@@ -1,0 +1,15 @@
+.model or
+.inputs a b c
+.outputs out1 
+.mv a, b 3
+.mv out1 3
+.table a b -> out1
+0 0 0
+0 1 1
+0 2 2
+1 0 1
+1 1 2
+1 2 0
+2 0 2
+2 1 0
+2 2 1

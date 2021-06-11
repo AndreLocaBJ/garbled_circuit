@@ -1,0 +1,24 @@
+alias gml write_gml
+alias opn read_blif_mv base.blfmv
+alias wrt write_blif_mv
+
+opn
+simplify
+wrt simplify.blfmv
+gml ./gml/simplify.gml
+
+opn
+decomp
+wrt dec.blfmv
+gml ./gml/dec.gml
+
+opn
+pair_decode
+wrt pd.blfmv
+gml ./gml/pd.gml
+
+opn
+decomp
+pair_decode
+wrt dc_pd.blfmv
+gml ./gml/dc_pd.gml

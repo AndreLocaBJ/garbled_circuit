@@ -1,5 +1,5 @@
-.model or
-.inputs a b c
+.model sum_mod3
+.inputs a b
 .outputs out1 
 .mv a, b 3
 .mv out1 3
@@ -13,3 +13,4 @@
 2 0 2
 2 1 0
 2 2 1
+.end

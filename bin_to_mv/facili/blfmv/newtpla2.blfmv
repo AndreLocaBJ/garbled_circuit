@@ -1,0 +1,18 @@
+.model newtpla2
+.inputs a b c d e
+.outputs o0 o1
+.mv a, b, c, d, e 4
+.mv o0, o1 4
+.table a b c d e -> o0 o1
+- 2 0 0 - 1 1
+1 0 0 0 - 1 2
+3 0 0 0 - 1 2
+0 0 0 0 1 2 1
+- - - 2 - 0 1
+- - 1 0 - 0 2
+- - 3 0 - 0 2
+0 0 0 0 2 2 0
+0 0 0 0 3 2 0
+- 1 0 0 - 1 0
+- 3 0 0 - 1 0
+.end

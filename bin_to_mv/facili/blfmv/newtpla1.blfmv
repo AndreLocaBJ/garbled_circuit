@@ -3,7 +3,8 @@
 .outputs o0
 .mv a, b, c, d, e 4
 .mv o0 4
-.table a b c d e -> o0
+.table a b c d e o0
+.default 0 0
 0 2 0 3 2 2
 0 2 0 3 3 2
 2 2 0 3 2 2

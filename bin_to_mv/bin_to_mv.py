@@ -139,11 +139,13 @@ def crete_blif_mv(mv_table, mv, nomefile):
         blif.write('.outputs {}\n'.format(' '.join(map(str, mv_output))))
         blif.write('.mv {} {}\n'.format(', '.join(map(str, mv_input)), mv))
         blif.write('.mv {} {}\n'.format(', '.join(map(str, mv_output)), mv))
-        blif.write('.table {} -> {}\n'.format(' '.join(map(str,
-                   mv_input)), ' '.join(map(str, mv_output))))
-        for line in mv_table:
-            blif.write('{} {}\n'.format(
-                ' '.join(map(str, line['inp'])), ' '.join(map(str, line['out']))))
+        for count,out in enumerate(mv_output):
+            blif.write('.table {} {}\n'.format(' '.join(map(str,
+                   mv_input)), out))
+            blif.write('.default 0 0\n')
+            for line in mv_table:
+                blif.write('{} {}\n'.format(
+                    ' '.join(map(str, line['inp'])), line['out'][count]))
         blif.write('.end\n')
 
 def read_pla(path_file):
@@ -197,7 +199,7 @@ if __name__ == "__main__":
             mv_table = create_mv_truth_table(truth_table, dv)
             print('Ok. Tabella converita')
             print('Creo il file blif_mv e il pla con i valori espansi')
-            create_pla_expanded(inp, out,inp_array, out_array, truth_table, bn(pla).split('.')[0])
+            #create_pla_expanded(inp, out,inp_array, out_array, truth_table, bn(pla).split('.')[0])
             crete_blif_mv(mv_table, mv, bn(pla).split('.')[0])
     finally:
         print('Terminato')

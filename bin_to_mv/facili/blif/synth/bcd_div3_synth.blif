@@ -1,0 +1,45 @@
+.model ./facili/starter/bcd_div3.pla
+.spec ./facili/starter/bcd_div3.pla
+.inputs x0 x1 x2 x3
+.outputs z0 z1 z2 z3
+.default_input_arrival 0 0
+.table x0 x1 x2 z0
+- 1 0  0
+0 - 0  0
+- 0 1  0
+1 - 1  0
+1 - -  1
+- 1 1  1
+.table x0 x1 x2 x3 z1
+- 0 - 0  0
+- 1 1 -  0
+1 - 1 -  0
+1 1 - -  0
+0 0 0 -  0
+1 - - 1  1
+- 1 0 -  1
+1 - 1 -  1
+- 0 1 1  1
+.table x0 x1 x2 x3 z2
+- 1 - 0  0
+- - 1 1  0
+- 0 - 1  0
+1 - - 1  0
+1 - 1 -  0
+0 - 0 0  0
+1 - - 0  1
+1 - 1 -  1
+- 0 1 0  1
+- 1 0 1  1
+.table x0 x1 x2 x3 z3
+1 - - -  0
+- - 1 0  0
+- 0 - 0  0
+- 0 1 -  0
+- 1 0 1  0
+1 - 1 -  1
+1 1 - -  1
+- 1 0 0  1
+- 1 1 1  1
+0 0 0 1  1
+.end

@@ -1,126 +1,81 @@
-from glob import glob
-from os.path import basename as bn
+from genericpath import exists
+from os import listdir
+from os import remove
+from os.path import exists
+from posixpath import basename
 
-def definizione_variabile(varList):
-    var_array = []
-    for index in range(1, len(varList) - 1):
-        var = {
-            'name': varList[index],
-            'dom': int(varList[len(varList) - 1])
-        }
-        var_array.append(var)
-    return var_array
-
-
-def definizione_tabella(table_line):
-    table = None
-    if '->' in table_line:
-        for i in range(1, len(table_line)):
-            if table_line[i] == '->':
-                table = {
-                    'input':    table_line[1:i],
-                    'output':   table_line[i + 1:len(table_line)]
-                }
-                break
-    else:
-        table = {
-            'input':    table_line[1:len(table_line) - 1],
-            'output':   [table_line[len(table_line) - 1]]
-        }
-    return table
-
-def clacolo_costo_blfmv(blfmv):
-    circuit_array = []
-    name_circuit = None
-
-    var_array = []
-    table_array = None
-    input_array = []
-    output_array = []
-    line_array = []
-
-    with open(blfmv, 'r') as f:
+def get_circuit_info(file):
+    input_var = []
+    domain = None
+    tables_array = []
+    with open(file, 'r') as f:
         for line in f.readlines():
-            if ".inputs" in line:
-                input_array = line.strip().split(" ")[1:]
-            elif ".outputs" in line:
-                output_array = line.strip().split(" ")[1:]
-            elif ".table" in line:
-                if line_array != []:
-                    circuito = {
-                        'input':        table_array['input'],
-                        'output':       table_array['output'],
-                        'truth_table':  line_array
-                    }
-                    circuit_array.append(circuito)
-                    line_array = []
-                    table_array = None
-                table_line = line.strip().split(" ")
-                table_array = definizione_tabella(table_line)
-            elif ".mv" in line:
-                mvline = line.replace(",", "").strip().split(" ")
-                var_array += definizione_variabile(mvline)
-            elif '.model' in line:
-                name_circuit = line.strip().replace(".model ", "")
-            elif '.end' in line:
-                circuito = {
-                        'input':        table_array['input'],
-                        'output':       table_array['output'],
-                        'truth_table':  line_array
-                    }
-                circuit_array.append(circuito)
-            elif '.default_input_arrival' in line:
-                continue
-            elif '.spec' in line:
-                continue
-            else:
-                line_array.append(line.strip().split())
+            if '.inputs' in line:
+                input_var = line.strip().split(' ')[1:]
+            elif '.mv' in line:
+                domain = line.strip().split(' ')[-1]
+            if '.table' in line:
+                tables_array.append({
+                    'input':    line.strip().split(' ')[1:-1],
+                    'output':   line.strip().split(' ')[-1]
+                })
+    if domain == None: domain = 2
+    return {
+        'input_var':    input_var,
+        'domain':       int(domain),
+        'tables':       tables_array
+    }
 
-    if var_array == []:
-        for inp in input_array:
-            var = {
-                'name': inp,
-                'dom': 2
-            }
-            var_array.append(var)
-        for out in output_array:
-            var = {
-                'name': out,
-                'dom': 2
-            }
-            var_array.append(var)
-    
-    costo = 0
-    n_inp = 0
+def circuit_cost(circ):
+    cost = 0
+    for table in circ['tables']:
+        intersection = len(set(circ['input_var']).intersection(table['input']))
+        cost += pow(circ['domain'], intersection)
+    return cost
 
-    #print('Riassunto del circuito')
-    #print('Il circuito ha {} input: {}'.format(len(input_array), ' '.join(map(str, input_array))))
-    for circ in circuit_array:
-        dom_var = 0
-        for inp in circ['input']:
-            for var in var_array:
-                if inp == var['name']:
-                    if dom_var < var['dom']:
-                        n_inp +=1
-                        dom_var = var['dom']
-        costo += pow(dom_var, len(circ['input']))
-    #print('Questi valori sono presenti in {} circuiti'.format(n_inp))
-    #print('Il costo totale dei circuiti inviati è {}'.format(costo))
-    return costo, len(circ['input']), dom_var
-
-def calcolo_costo_pla(pla):
-    with open(pla) as pla_circ:
-        for line in pla_circ.readlines():
-            if '.i' in line and line[2] == ' ':
-                inp = line.split(' ')[1]    
-    return pow(2, int(inp)), int(inp)
 
 if __name__ == "__main__":
-    for blfmv in glob('./facili/blfmv/*.blfmv'):
-        c_blfmv, n_inp_blfmv, dom = clacolo_costo_blfmv(blfmv)
-        c_pla, n_inp_pla= calcolo_costo_pla('./facili/starter/{}.pla'.format(bn(blfmv).split('.')[0]))
-        with open('./calcolo_costi', 'a') as file:
-            file.write('## {} ##\n'.format(bn(blfmv).split('.')[0]))
-            file.write('- booleano:\n\t-Dimensione del circuito: {}\n\t-Costo variabili Alice: {}\n\t-Costo variabili Bob: {}\n\n'.format(c_pla, int(n_inp_pla)//2, int(n_inp_pla)//2))
-            file.write('- multivalore:\n\t-Dimensione del circuito: {}\n\t-Costo variabili Alice: {}\n\t-Costo variabili Bob: {}\n'.format(c_blfmv, int(n_inp_blfmv)//2, int(n_inp_blfmv)//2))
-            file.write('\n')
+
+    wd = 'facili/blfmv/synth/'
+
+    if exists('./calcolo_costi.csv'):
+        remove('./calcolo_costi.csv')
+
+    with open('calcolo_costi.csv', 'a') as final_file:
+        final_file.write('NOME CIRC;COSTO BOOLEANO;INPUT ALICE;INPUT BOB;DOMINIO MULTIVALORE;COSTO MULTIVALORE;INPUT ALICE;INPUT BOB\n')
+        for ele in listdir(wd):
+            cir_mv = get_circuit_info(wd+'/'+ele)
+            cost_mv = circuit_cost(cir_mv)
+            alice_var_mv = None
+            bob_var_mv = None
+            if len(cir_mv['input_var']) % 2 != 0:
+                alice_var_mv = int(len(cir_mv['input_var']) / 2)
+                bob_var_mv = int(len(cir_mv['input_var']) / 2) + 1
+            else:
+                alice_var_mv = int(len(cir_mv['input_var']) / 2)
+                bob_var_mv = int(len(cir_mv['input_var']) / 2)
+
+            cir_bool = get_circuit_info('./facili/blif/synth/'+ele.split('.')[0]+'.blif')
+            cost_bool = circuit_cost(cir_bool)
+            alice_var_bool = None
+            bob_var_bool = None
+            if len(cir_bool['input_var']) % 2 != 0:
+                alice_var_bool = int(len(cir_mv['input_var']) / 2)
+                bob_var_bool = int(len(cir_mv['input_var']) / 2) + 1
+            else:
+                alice_var_bool = int(len(cir_mv['input_var']) / 2)
+                bob_var_bool = int(len(cir_mv['input_var']) / 2)
+
+            final_file.write('{};{};{};{};{};{};{};{}\n'.format(ele.split('.')[0], cost_bool, alice_var_bool, bob_var_bool, cir_mv['domain'], cost_mv, alice_var_mv, bob_var_mv))
+                ### multi-valore
+                #final_file.write('## {}\n'.format(ele.split('.')[0]))
+                #final_file.write('- Multi-valore, dominio {}:\n'.format(cir_mv['domain']))
+                #final_file.write('\tInput Alice: {}\n'.format(alice_var_mv))
+                #final_file.write('\tInput Bob: {}\n'.format(bob_var_mv))
+                #final_file.write('\tCosto circuito: {}\n'.format(cost_mv))
+                ## booleano
+                #final_file.write('- Boleano, dominio {}:\n'.format(cir_bool['domain']))
+                #final_file.write('\tInput Alice: {}\n'.format(alice_var_bool))
+                #final_file.write('\tInput Bob: {}\n'.format(bob_var_bool))
+                #final_file.write('\tCosto circuito: {}\n\n'.format(cost_bool))
+

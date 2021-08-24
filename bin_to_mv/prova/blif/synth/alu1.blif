@@ -1,0 +1,65 @@
+# Benchmark "./prova/pla/alu1" written by ABC on Fri Jul 30 16:38:03 2021
+.model ./prova/pla/alu1
+.inputs pi00 pi01 pi02 pi03 pi04 pi05 pi06 pi07 pi08 pi09 pi10 pi11
+.outputs po0 po1 po2 po3 po4 po5 po6 po7
+.names pi04 pi11 new_n21_
+10 1
+.names pi04 pi10 new_n22_
+00 1
+.names pi00 new_n22_ new_n23_
+10 1
+.names new_n21_ new_n23_ po0
+01 0
+.names pi05 pi11 new_n25_
+10 1
+.names pi05 pi10 new_n26_
+00 1
+.names pi01 new_n26_ new_n27_
+10 1
+.names new_n25_ new_n27_ po1
+01 0
+.names pi06 pi11 new_n29_
+10 1
+.names pi06 pi10 new_n30_
+00 1
+.names pi02 new_n30_ new_n31_
+10 1
+.names new_n29_ new_n31_ po2
+01 0
+.names pi07 pi11 new_n33_
+10 1
+.names pi07 pi10 new_n34_
+00 1
+.names pi03 new_n34_ new_n35_
+10 1
+.names new_n33_ new_n35_ po3
+01 0
+.names pi04 pi08 new_n37_
+11 1
+.names pi04 pi09 new_n38_
+01 1
+.names pi00 new_n38_ new_n39_
+00 1
+.names new_n37_ new_n39_ po4
+01 1
+.names pi05 pi08 new_n41_
+11 1
+.names pi05 pi09 new_n42_
+01 1
+.names pi01 new_n42_ new_n43_
+00 1
+.names new_n41_ new_n43_ po5
+01 1
+.names pi06 pi08 new_n45_
+11 1
+.names pi06 pi09 new_n46_
+01 1
+.names pi02 new_n46_ new_n47_
+00 1
+.names new_n45_ new_n47_ po6
+01 1
+.names pi03 pi07 new_n49_
+01 1
+.names pi08 new_n49_ po7
+01 1
+.end

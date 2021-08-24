@@ -1,0 +1,181 @@
+source abc_alias.abc
+read_blif ./prova/blif/alu3.blif
+cl
+resyn2
+cl
+write_blif ./prova/blif/synth/alu3.blif
+
+read_blif ./prova/blif/newtpla2.blif
+cl
+resyn2
+cl
+write_blif ./prova/blif/synth/newtpla2.blif
+
+read_blif ./prova/blif/sqr6.blif
+cl
+resyn2
+cl
+write_blif ./prova/blif/synth/sqr6.blif
+
+read_blif ./prova/blif/f51m.blif
+cl
+resyn2
+cl
+write_blif ./prova/blif/synth/f51m.blif
+
+read_blif ./prova/blif/bench.blif
+cl
+resyn2
+cl
+write_blif ./prova/blif/synth/bench.blif
+
+read_blif ./prova/blif/amd.blif
+cl
+resyn2
+cl
+write_blif ./prova/blif/synth/amd.blif
+
+read_blif ./prova/blif/test1.blif
+cl
+resyn2
+cl
+write_blif ./prova/blif/synth/test1.blif
+
+read_blif ./prova/blif/alu1.blif
+cl
+resyn2
+cl
+write_blif ./prova/blif/synth/alu1.blif
+
+read_blif ./prova/blif/br1.blif
+cl
+resyn2
+cl
+write_blif ./prova/blif/synth/br1.blif
+
+read_blif ./prova/blif/fout.blif
+cl
+resyn2
+cl
+write_blif ./prova/blif/synth/fout.blif
+
+read_blif ./prova/blif/m4.blif
+cl
+resyn2
+cl
+write_blif ./prova/blif/synth/m4.blif
+
+read_blif ./prova/blif/tms.blif
+cl
+resyn2
+cl
+write_blif ./prova/blif/synth/tms.blif
+
+read_blif ./prova/blif/br2.blif
+cl
+resyn2
+cl
+write_blif ./prova/blif/synth/br2.blif
+
+read_blif ./prova/blif/apla.blif
+cl
+resyn2
+cl
+write_blif ./prova/blif/synth/apla.blif
+
+read_blif ./prova/blif/newtpla1.blif
+cl
+resyn2
+cl
+write_blif ./prova/blif/synth/newtpla1.blif
+
+read_blif ./prova/blif/p3.blif
+cl
+resyn2
+cl
+write_blif ./prova/blif/synth/p3.blif
+
+read_blif ./prova/blif/mlp4.blif
+cl
+resyn2
+cl
+write_blif ./prova/blif/synth/mlp4.blif
+
+read_blif ./prova/blif/m1.blif
+cl
+resyn2
+cl
+write_blif ./prova/blif/synth/m1.blif
+
+read_blif ./prova/blif/m3.blif
+cl
+resyn2
+cl
+write_blif ./prova/blif/synth/m3.blif
+
+read_blif ./prova/blif/bcd_div3.blif
+cl
+resyn2
+cl
+write_blif ./prova/blif/synth/bcd_div3.blif
+
+read_blif ./prova/blif/t3.blif
+cl
+resyn2
+cl
+write_blif ./prova/blif/synth/t3.blif
+
+read_blif ./prova/blif/l8err.blif
+cl
+resyn2
+cl
+write_blif ./prova/blif/synth/l8err.blif
+
+read_blif ./prova/blif/m2.blif
+cl
+resyn2
+cl
+write_blif ./prova/blif/synth/m2.blif
+
+read_blif ./prova/blif/newapla.blif
+cl
+resyn2
+cl
+write_blif ./prova/blif/synth/newapla.blif
+
+read_blif ./prova/blif/mp2d.blif
+cl
+resyn2
+cl
+write_blif ./prova/blif/synth/mp2d.blif
+
+read_blif ./prova/blif/t4.blif
+cl
+resyn2
+cl
+write_blif ./prova/blif/synth/t4.blif
+
+read_blif ./prova/blif/in5.blif
+cl
+resyn2
+cl
+write_blif ./prova/blif/synth/in5.blif
+
+read_blif ./prova/blif/pdc.blif
+cl
+resyn2
+cl
+write_blif ./prova/blif/synth/pdc.blif
+
+read_blif ./prova/blif/alu2.blif
+cl
+resyn2
+cl
+write_blif ./prova/blif/synth/alu2.blif
+
+read_blif ./prova/blif/in7.blif
+cl
+resyn2
+cl
+write_blif ./prova/blif/synth/in7.blif
+

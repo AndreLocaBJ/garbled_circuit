@@ -1,0 +1,858 @@
+# Benchmark "./prova" written by ABC on Fri Jul 30 16:38:07 2021
+.model ./prova
+.inputs pi0 pi1 pi2 pi3 pi4 pi5
+.outputs po00 po01 po02 po03 po04 po05 po06 po07 po08 po09 po10
+
+
+.table pi3 pi4 new_n18_
+0 - 0
+- 0 0
+1 1 1
+
+.table pi5 new_n18_ new_n19_
+1 - 0
+- 1 0
+0 0 1
+
+.table pi0 pi1 new_n20_
+0 - 0
+- 0 0
+1 1 1
+
+.table pi2 new_n20_ new_n21_
+1 - 0
+- 0 0
+0 1 1
+
+.table pi0 pi1 new_n22_
+1 - 0
+- 0 0
+0 1 1
+
+.table pi2 new_n22_ new_n23_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n21_ new_n23_ new_n24_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n19_ new_n24_ new_n25_
+1 - 0
+- 1 0
+0 0 1
+
+.table pi5 new_n18_ new_n26_
+0 - 0
+- 0 0
+1 1 1
+
+.table pi2 new_n22_ new_n27_
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n26_ new_n27_ new_n28_
+0 - 0
+- 0 0
+1 1 1
+
+.table pi0 pi1 new_n29_
+0 - 0
+- 1 0
+1 0 1
+
+.table pi2 new_n29_ new_n30_
+0 - 0
+- 0 0
+1 1 1
+
+.table pi4 pi5 new_n31_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n30_ new_n31_ new_n32_
+0 - 0
+- 1 0
+1 0 1
+
+.table new_n28_ new_n32_ new_n33_
+1 - 0
+- 1 0
+0 0 1
+
+.table pi2 new_n20_ new_n34_
+0 - 0
+- 0 0
+1 1 1
+
+.table pi5 new_n34_ new_n35_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n18_ new_n21_ new_n36_
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n35_ new_n36_ new_n37_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n33_ new_n37_ new_n38_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n25_ new_n38_ po00
+0 1 0
+1 - 1
+- 0 1
+
+.table pi0 pi1 new_n40_
+1 - 0
+- 1 0
+0 0 1
+
+.table pi2 new_n40_ new_n41_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n34_ new_n41_ new_n42_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n32_ new_n42_ po01
+0 1 0
+1 - 1
+- 0 1
+
+.table new_n30_ new_n31_ new_n44_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n23_ new_n34_ new_n45_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n44_ new_n45_ po02
+0 1 0
+1 - 1
+- 0 1
+
+.table new_n24_ new_n41_ new_n47_
+0 - 0
+- 1 0
+1 0 1
+
+.table new_n26_ new_n47_ new_n48_
+0 - 0
+- 1 0
+1 0 1
+
+.table pi3 pi4 new_n49_
+0 - 0
+- 1 0
+1 0 1
+
+.table pi5 new_n49_ new_n50_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n30_ new_n50_ new_n51_
+0 - 0
+- 0 0
+1 1 1
+
+.table pi3 pi4 po10
+1 - 0
+- 0 0
+0 1 1
+
+.table pi5 po10 new_n53_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n27_ new_n53_ new_n54_
+0 - 0
+- 0 0
+1 1 1
+
+.table pi5 po10 new_n55_
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n23_ new_n55_ new_n56_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n54_ new_n56_ new_n57_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n51_ new_n57_ new_n58_
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n48_ new_n58_ new_n59_
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n21_ new_n41_ new_n60_
+1 - 0
+- 1 0
+0 0 1
+
+.table pi5 new_n18_ new_n61_
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n60_ new_n61_ new_n62_
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n23_ new_n50_ new_n63_
+0 - 0
+- 0 0
+1 1 1
+
+.table pi2 new_n29_ new_n64_
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n31_ new_n64_ new_n65_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n30_ new_n55_ new_n66_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n65_ new_n66_ new_n67_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n63_ new_n67_ new_n68_
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n62_ new_n68_ new_n69_
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n59_ new_n69_ new_n70_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n41_ new_n50_ new_n71_
+0 - 0
+- 0 0
+1 1 1
+
+.table pi5 new_n49_ new_n72_
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n23_ new_n72_ new_n73_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n71_ new_n73_ new_n74_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n21_ new_n50_ new_n75_
+0 - 0
+- 0 0
+1 1 1
+
+.table pi4 pi5 new_n76_
+0 - 0
+- 1 0
+1 0 1
+
+.table new_n27_ new_n76_ new_n77_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n23_ new_n53_ new_n78_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n77_ new_n78_ new_n79_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n75_ new_n79_ new_n80_
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n74_ new_n80_ new_n81_
+0 - 0
+- 0 0
+1 1 1
+
+.table pi4 new_n21_ new_n82_
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n64_ new_n82_ new_n83_
+1 - 0
+- 1 0
+0 0 1
+
+.table pi5 new_n83_ new_n84_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n30_ new_n53_ new_n85_
+0 - 0
+- 0 0
+1 1 1
+
+.table pi3 pi4 new_n86_
+1 - 0
+- 1 0
+0 0 1
+
+.table pi5 new_n86_ new_n87_
+1 - 0
+- 0 0
+0 1 1
+
+.table pi0 pi2 new_n88_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n87_ new_n88_ new_n89_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n41_ new_n72_ new_n90_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n89_ new_n90_ new_n91_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n85_ new_n91_ new_n92_
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n84_ new_n92_ new_n93_
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n81_ new_n93_ new_n94_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n70_ new_n94_ po03
+1 1 0
+0 - 1
+- 0 1
+
+.table pi5 new_n86_ new_n96_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n50_ new_n96_ new_n97_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n27_ new_n97_ new_n98_
+0 - 0
+- 1 0
+1 0 1
+
+.table new_n53_ new_n60_ new_n99_
+0 - 0
+- 1 0
+1 0 1
+
+.table new_n18_ new_n34_ new_n100_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n30_ new_n96_ new_n101_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n100_ new_n101_ new_n102_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n99_ new_n102_ new_n103_
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n98_ new_n103_ new_n104_
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n41_ new_n55_ new_n105_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n72_ new_n88_ new_n106_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n105_ new_n106_ new_n107_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n23_ new_n96_ new_n108_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n21_ new_n55_ new_n109_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n108_ new_n109_ new_n110_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n107_ new_n110_ new_n111_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n64_ new_n97_ new_n112_
+0 - 0
+- 1 0
+1 0 1
+
+.table new_n34_ new_n50_ new_n113_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n26_ new_n30_ new_n114_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n113_ new_n114_ new_n115_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n112_ new_n115_ new_n116_
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n111_ new_n116_ new_n117_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n104_ new_n117_ new_n118_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n70_ new_n118_ po04
+1 1 0
+0 - 1
+- 0 1
+
+.table new_n60_ new_n96_ new_n120_
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n30_ new_n61_ new_n121_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n22_ new_n87_ new_n122_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n121_ new_n122_ new_n123_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n34_ po10 new_n124_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n27_ new_n72_ new_n125_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n124_ new_n125_ new_n126_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n123_ new_n126_ new_n127_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n120_ new_n127_ new_n128_
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n59_ new_n128_ new_n129_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n81_ new_n104_ new_n130_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n129_ new_n130_ po05
+1 1 0
+0 - 1
+- 0 1
+
+.table new_n50_ new_n61_ po06
+0 0 0
+1 - 1
+- 1 1
+
+.table pi0 pi3 new_n133_
+0 - 0
+- 0 0
+1 1 1
+
+.table pi5 new_n133_ new_n134_
+0 - 0
+- 0 0
+1 1 1
+
+.table pi5 new_n133_ new_n135_
+1 - 0
+- 1 0
+0 0 1
+
+.table po10 new_n135_ new_n136_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n134_ new_n136_ po07
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n29_ new_n61_ new_n138_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n22_ new_n50_ new_n139_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n138_ new_n139_ new_n140_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n54_ new_n73_ new_n141_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n140_ new_n141_ new_n142_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n20_ new_n30_ new_n143_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n55_ new_n143_ new_n144_
+0 - 0
+- 1 0
+1 0 1
+
+.table new_n26_ new_n55_ new_n145_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n64_ new_n145_ new_n146_
+0 - 0
+- 1 0
+1 0 1
+
+.table new_n144_ new_n146_ new_n147_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n142_ new_n147_ new_n148_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n29_ new_n50_ new_n149_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n22_ new_n61_ new_n150_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n149_ new_n150_ new_n151_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n26_ new_n40_ new_n152_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n20_ new_n72_ new_n153_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n152_ new_n153_ new_n154_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n151_ new_n154_ new_n155_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n78_ new_n114_ new_n156_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n40_ new_n53_ new_n157_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n125_ new_n157_ new_n158_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n156_ new_n158_ new_n159_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n155_ new_n159_ new_n160_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n148_ new_n160_ po08
+1 1 0
+0 - 1
+- 0 1
+
+.table new_n74_ new_n140_ new_n162_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n21_ new_n30_ new_n163_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n26_ new_n163_ new_n164_
+0 - 0
+- 1 0
+1 0 1
+
+.table new_n22_ new_n29_ new_n165_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n88_ new_n165_ new_n166_
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n61_ new_n166_ new_n167_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n164_ new_n167_ new_n168_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n162_ new_n168_ new_n169_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n26_ new_n64_ new_n170_
+0 - 0
+- 0 0
+1 1 1
+
+.table pi2 new_n40_ new_n171_
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n50_ new_n171_ new_n172_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n170_ new_n172_ new_n173_
+1 - 0
+- 1 0
+0 0 1
+
+.table pi1 pi2 new_n174_
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n72_ new_n174_ new_n175_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n22_ new_n26_ new_n176_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n175_ new_n176_ new_n177_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n173_ new_n177_ new_n178_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n100_ new_n125_ new_n179_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n20_ new_n50_ new_n180_
+0 - 0
+- 0 0
+1 1 1
+
+.table pi1 pi2 new_n181_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n72_ new_n181_ new_n182_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n180_ new_n182_ new_n183_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n179_ new_n183_ new_n184_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n178_ new_n184_ new_n185_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n155_ new_n185_ new_n186_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n169_ new_n186_ po09
+1 1 0
+0 - 1
+- 0 1
+.end
+
+

@@ -1,0 +1,218 @@
+# Benchmark "./prova" written by ABC on Tue Jul 27 10:26:10 2021
+.model ./prova
+.inputs a[0] a[1] b[0] b[1] c[0] c[1] d[0] d[1] e[0] e[1]
+.outputs o0[0] o0[1]
+
+
+.table a[0] a[1] new_n13_
+1 - 0
+- 1 0
+0 0 1
+
+.table a[0] a[1] new_n14_
+1 - 0
+- 0 0
+0 1 1
+
+.table b[0] b[1] new_n15_
+1 - 0
+- 1 0
+0 0 1
+
+.table b[0] b[1] new_n16_
+1 - 0
+- 0 0
+0 1 1
+
+.table c[0] c[1] new_n17_
+1 - 0
+- 1 0
+0 0 1
+
+.table d[0] d[1] new_n18_
+0 - 0
+- 0 0
+1 1 1
+
+.table e[0] e[1] new_n19_
+0 - 0
+- 1 0
+1 0 1
+
+.table e[0] e[1] new_n20_
+1 - 0
+- 0 0
+0 1 1
+
+.table e[0] e[1] new_n21_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n13_ new_n16_ new_n22_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n17_ new_n22_ new_n23_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n18_ new_n23_ new_n24_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n20_ new_n24_ new_n25_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n21_ new_n24_ new_n26_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n25_ new_n26_ new_n27_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n14_ new_n16_ new_n28_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n17_ new_n28_ new_n29_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n18_ new_n29_ new_n30_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n20_ new_n30_ new_n31_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n27_ new_n31_ new_n32_
+0 - 0
+- 1 0
+1 0 1
+
+.table new_n21_ new_n30_ new_n33_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n32_ new_n33_ new_n34_
+0 - 0
+- 1 0
+1 0 1
+
+.table new_n13_ new_n15_ new_n35_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n17_ new_n35_ new_n36_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n18_ new_n36_ new_n37_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n20_ new_n37_ new_n38_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n21_ new_n37_ new_n39_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n38_ new_n39_ new_n40_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n25_ new_n40_ new_n41_
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n26_ new_n41_ new_n42_
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n19_ new_n30_ new_n43_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n42_ new_n43_ new_n44_
+0 - 0
+- 1 0
+1 0 1
+
+.table new_n33_ new_n44_ o0[0]
+0 1 0
+1 - 1
+- 0 1
+
+.table new_n14_ new_n15_ new_n46_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n17_ new_n46_ new_n47_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n18_ new_n47_ new_n48_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n20_ new_n48_ new_n49_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n34_ new_n49_ new_n50_
+0 - 0
+- 1 0
+1 0 1
+
+.table new_n21_ new_n48_ new_n51_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n50_ new_n51_ new_n52_
+0 - 0
+- 1 0
+1 0 1
+
+.table new_n31_ new_n52_ new_n53_
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n33_ new_n53_ o0[1]
+0 1 0
+1 - 1
+- 0 1
+.end
+
+

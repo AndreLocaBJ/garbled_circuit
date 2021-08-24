@@ -1,0 +1,241 @@
+source abc_alias.abc
+read_blif_mv ./prova/blfmv/amd.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/amd.mv
+
+read_blif_mv ./prova/blfmv/tms.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/tms.mv
+
+read_blif_mv ./prova/blfmv/pdc.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/pdc.mv
+
+read_blif_mv ./prova/blfmv/mlp4.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/mlp4.mv
+
+read_blif_mv ./prova/blfmv/apla.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/apla.mv
+
+read_blif_mv ./prova/blfmv/f51m.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/f51m.mv
+
+read_blif_mv ./prova/blfmv/m4.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/m4.mv
+
+read_blif_mv ./prova/blfmv/newtpla2.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/newtpla2.mv
+
+read_blif_mv ./prova/blfmv/test1.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/test1.mv
+
+read_blif_mv ./prova/blfmv/m2.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/m2.mv
+
+read_blif_mv ./prova/blfmv/br2.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/br2.mv
+
+read_blif_mv ./prova/blfmv/alu1.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/alu1.mv
+
+read_blif_mv ./prova/blfmv/sqr6.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/sqr6.mv
+
+read_blif_mv ./prova/blfmv/bench.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/bench.mv
+
+read_blif_mv ./prova/blfmv/in5.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/in5.mv
+
+read_blif_mv ./prova/blfmv/newtpla1.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/newtpla1.mv
+
+read_blif_mv ./prova/blfmv/m3.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/m3.mv
+
+read_blif_mv ./prova/blfmv/newapla.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/newapla.mv
+
+read_blif_mv ./prova/blfmv/l8err.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/l8err.mv
+
+read_blif_mv ./prova/blfmv/t4.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/t4.mv
+
+read_blif_mv ./prova/blfmv/br1.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/br1.mv
+
+read_blif_mv ./prova/blfmv/fout.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/fout.mv
+
+read_blif_mv ./prova/blfmv/mp2d.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/mp2d.mv
+
+read_blif_mv ./prova/blfmv/alu2.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/alu2.mv
+
+read_blif_mv ./prova/blfmv/t3.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/t3.mv
+
+read_blif_mv ./prova/blfmv/p3.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/p3.mv
+
+read_blif_mv ./prova/blfmv/m1.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/m1.mv
+
+read_blif_mv ./prova/blfmv/bcd_div3.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/bcd_div3.mv
+
+read_blif_mv ./prova/blfmv/alu3.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/alu3.mv
+
+read_blif_mv ./prova/blfmv/in7.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/in7.mv
+

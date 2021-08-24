@@ -44,3 +44,26 @@ Vengono utilizzate le funzioni algebriche per ottenere nuovi nodi che rappresent
    2. inizia dalle uscite e in ordine topologico inverso lavora a ritroso fino agli ingressi primari. Ad ogni nodo, le sue uscite sono codificate utilizzando le informazioni su come sono utilizzati i suoi fanout
 4. **Pair decoding**: Simile al merging ma utilizza un altro modo per scegliere quali modi unire.
 5. **Bi-decomposition**: crea dei nodi multi-valore intermedi. Prende una rete MV appiattita o parzialmente appiattita e ne genera un'altra composta da porte MAX e MIN multi-valutate a due ingressi e da iterali multi-valutati. Vengono sfruttate sia l'incompletezza della specifica iniziale che le flessibilità generate nel processo di ecomposizione.
+
+## comandi di sintesi all'interno di MVSIS
+
+- **sweep**: semplifica il circuito rimuovendo i nodi inutili
+- **strash**: sostituisce il circuito corrente con un circuito equivalente di AND/INV
+- simplify
+- **mfsn**: semplifica il circuito utililzzando i dont't care
+- **merge** <lista noodi>: unisce tutti i nodi della lista
+- **lxu**: performs layout-aware unate fast extract on the current network
+- **fxu**: performs unate fast extract on the current network
+- **fullsimp**: sintesi utilizzata per la sintesi finale del circuito, ha 6 tipi diversi di algoritmi di sintesi che si possono scegliere
+- **fraig_sweep**: analizza i nodi funzionalmente equivalenti utilizzando i FRAIG
+- **fraig**: trasforma la rete corrente in una rete di AND
+- **fd**: esplora la dipendenza dei nodi della rete attuale usando SAT
+- **espresso**: minimizza ogni nodo utlizzando espresso
+- **encode**: nessuna descrizione nella documentazione
+- **eliminate**: fa collassare selettivamente i nodi nei loro fanout
+- **dsd**: solo con biari, inutile per noi
+- **decomp**: decomprime la rete utilizzando le forme fattorizzate
+- **collapse2/collapse**: crea una rete a un solo livello
+- **club**: raggruppa i nodi in cluster e li fa collassare in un unico livello (i cluster credo)
+- **balance**: sostituisce la rete attuale con una rete di AND2s ben formata
+- **add_buffer**: aggiunge un buffer dopo ogni CI e prima di ogni CO

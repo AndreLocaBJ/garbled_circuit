@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="it" xml:lang="it">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Tesi</title>
+  <meta name="description" content="Tesi" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Tesi" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Tesi" />
+  
+  
+  
+
+<meta name="author" content="Andrea Locatelli" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="risultati-sperimentali.html"/>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="analisi.html"><a href="analisi.html"><i class="fa fa-check"></i><b>1</b> Analisi</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="analisi.html"><a href="analisi.html#studio-del-circuito-binario"><i class="fa fa-check"></i><b>1.1</b> Studio del circuito binario</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="analisi.html"><a href="analisi.html#analisi-della-struttura-pla"><i class="fa fa-check"></i><b>1.1.1</b> Analisi della struttura PLA</a></li>
+<li class="chapter" data-level="1.1.2" data-path="analisi.html"><a href="analisi.html#la-gestione-dei-dont-care-durante-la-conversione"><i class="fa fa-check"></i><b>1.1.2</b> La gestione dei don’t care durante la conversione</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="analisi.html"><a href="analisi.html#implementazione-della-conversione"><i class="fa fa-check"></i><b>1.2</b> Implementazione della conversione</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="analisi.html"><a href="analisi.html#analisi-del-circuito"><i class="fa fa-check"></i><b>1.2.1</b> Analisi del circuito</a></li>
+<li class="chapter" data-level="1.2.2" data-path="analisi.html"><a href="analisi.html#espansione-dei-dont-care"><i class="fa fa-check"></i><b>1.2.2</b> Espansione dei don’t care</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="analisi.html"><a href="analisi.html#la-conversione-in-multi-valore"><i class="fa fa-check"></i><b>1.3</b> La conversione in multi valore</a></li>
+<li class="chapter" data-level="1.4" data-path="analisi.html"><a href="analisi.html#la-creazione-del-file-blfmv"><i class="fa fa-check"></i><b>1.4</b> La creazione del file blfmv</a></li>
+<li class="chapter" data-level="1.5" data-path="analisi.html"><a href="analisi.html#la-sintesi"><i class="fa fa-check"></i><b>1.5</b> La sintesi</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="analisi.html"><a href="analisi.html#mvsis"><i class="fa fa-check"></i><b>1.5.1</b> MVSIS</a></li>
+<li class="chapter" data-level="1.5.2" data-path="analisi.html"><a href="analisi.html#abc"><i class="fa fa-check"></i><b>1.5.2</b> ABC</a></li>
+<li class="chapter" data-level="1.5.3" data-path="analisi.html"><a href="analisi.html#la-sintesi-tramite-i-software"><i class="fa fa-check"></i><b>1.5.3</b> La sintesi tramite i software</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="analisi.html"><a href="analisi.html#il-calcolo-dei-costi-del-circuito"><i class="fa fa-check"></i><b>1.6</b> Il calcolo dei costi del circuito</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="analisi.html"><a href="analisi.html#blfmv-vs-pla"><i class="fa fa-check"></i><b>1.6.1</b> blfmv vs pla</a></li>
+<li class="chapter" data-level="1.6.2" data-path="analisi.html"><a href="analisi.html#implementazione"><i class="fa fa-check"></i><b>1.6.2</b> Implementazione</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="risultati-sperimentali.html"><a href="risultati-sperimentali.html"><i class="fa fa-check"></i><b>2</b> Risultati sperimentali</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Tesi</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Tesi</h1>
+<p class="author"><em>Andrea Locatelli</em></p>
+</div>
+<div id="analisi" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Analisi</h1>
+<p>Il protocollo di Yao prevede, durante i suoi scambi, che le due parti concordino anche sulla trasmissione di un circuito a cui entrambi gli attori debbano inserire dei valori di input. Uno degli scopi della nostra tesi consiste nel testare l’efficacia dell’utilizzo di un multi valore rispetto all’utilizzo “classico” di un circuito booleano.</p>
+<p>Per poter iniziare questa fase di analisi siamo partiti da dei circuiti binari per poi convertirli nella loro alternativa
+multivalore implementando un metodo di conversione efficace che non cambi il funzionamento di tali circuiti</p>
+<div id="studio-del-circuito-binario" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Studio del circuito binario</h2>
+<p>La tecnica che abbiamo deciso di utilizzare è molto semplice ma efficace e si basa sul raggruppamento di <em>n</em> bit di ogni
+riga di ogni tabella di verità binaria che possano rappresentare il massimo numero possibile del dominio multivalore
+scelto.</p>
+<p><span class="math display">\[\begin{matrix}
+    \underbrace{10} &amp; \underbrace{11} &amp; \underbrace{00} \\
+    \downarrow &amp; \downarrow &amp; \downarrow  &amp;mod_3 \\
+    2 &amp; 3 &amp; 0
+\end{matrix}\]</span></p>
+<p>Con questo approccio non andiamo a snaturare quella che è la logica della tabella originale e otteniamo una
+conversione efficace. I vincoli dettati da questo stanno nel fatto che il numero di ingressi e uscite del circuito
+devono essere pari.</p>
+<p>Per la scelta del dominio multivalore si sono voluti sperimentare 3 approcci:</p>
+<ul>
+<li>Per tutti i circuiti utilizzare un dominio multivalore standard di valore 3</li>
+<li>Per ogni circuito viene calcolato M.C.D tra input e output e:
+<ul>
+<li>Se il valore di M.C.D consente di avere almeno 2 input viene tenuto quello</li>
+<li>Se non consente al minimo 2 input viene dimezzato</li>
+</ul></li>
+<li>L’ultimo approccio è un ibrido tra i 2, ovvero: Viene calcolato M.C.D tra input e output</li>
+</ul>
+<p>Per potere effettuare queste operazioni si è dovuto cercare un formato standard di descrizione dei circuiti che
+rappresentasse per ogni riga della tabella delle verità del circuito tutti gli input e tutti gli output.</p>
+<p>Tra i vari formati a disposizione la scelta è ricaduta sul formato <code>PLA</code> già ampiamente utilizzato per la
+rappresentazione di circuiti.</p>
+<div id="analisi-della-struttura-pla" class="section level3" number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> Analisi della struttura PLA</h3>
+<p>Un file PLA ha la seguente struttura</p>
+<pre class="pla"><code>.i 4
+.o 2
+.ilb x1 x2 y1 y2
+.ob f1 f2
+0--0 00    
+0001 01
+0-11 --
+1-11 01
+0101 10
+10-- 01
+11-- 00
+.end</code></pre>
+<p>Come possiamo vedere questo circuito presenta:</p>
+<ul>
+<li>4 input</li>
+<li>2 output</li>
+</ul>
+<p>Notiamo che nella tabella di verità non sono presenti solamente valori booleani ma anche un simbolo <code>-</code> esso si
+prende il nome di <strong>don’t care</strong> e rappresenta:</p>
+<ul>
+<li>Negli output implica che quella specifica combinazione non mi interessa</li>
+<li>Negli input che può essere qualsiasi valore del dominio.</li>
+</ul>
+</div>
+<div id="la-gestione-dei-dont-care-durante-la-conversione" class="section level3" number="1.1.2">
+<h3><span class="header-section-number">1.1.2</span> La gestione dei don’t care durante la conversione</h3>
+<p>Nelle successive fasi di conversione dobbiamo gestire i don’t care in maniera funzionale al dominio multi valore che
+utilizzeremo, per spiegare meglio come tratteremo questa caratteristica dei PLA utilizzerò un esempio utilizzando un
+circuito semplice e come valore di dominio di conversione il valore 3. Il circuito avrà la seguente struttura.</p>
+<pre><code>.i 4
+.o 2
+.ilb x1 x2 y1 y2
+.ob f1 f2
+0--0 00    
+0001 01
+0-11 --
+1-11 01
+0101 10
+10-- 01
+11-- 00
+.end</code></pre>
+<p>Per passare al nuovo dominio analizziamo quanti bit sono necessari per poter rappresentare il massimo numero possibile, nel nostro caso il 3, e notiamo che abbiamo bisogno di 2 bit poiché la rappresentazione binaria del numero 3 è 11. Andiamo quindi a raggruppare in blocchi di 2 bit gli ingressi e le uscite del circuito andando a convertire i valori binari dati dal raggruppamento in valore del dominio scelto.</p>
+<p>Procedendo con la conversione ci accorgiamo che ci sono alcuni casi in cui dobbiamo andare a sviluppare i dont’t care perché se non lo facessimo perderemmo dei valori significativi per il nostro sviluppo. Andiamo quindi a distinguere 2 casi:</p>
+<ul>
+<li>Quando il numero di ‘-’ è uguale al numero di bit del raggruppamento multivalore
+<ul>
+<li><em>es.</em>. 10 – 01: in questo caso viene messo semplicemente il simbolo <code>-</code> non causa nessuna perdita di valori nel circuito. Quindi
+<span class="math display">\[ \begin{array}{ccc}
+  10 &amp; -- &amp; 01 \\ &amp; \downarrow &amp; \\ 2 &amp; - &amp; 1 
+  \end{array}\]</span></li>
+</ul></li>
+<li>Quando nel gruppo di bit raggruppati il numero di <code>-</code> è minore del numero di bit richiesti
+<ul>
+<li><em>es.</em> 1-11 01: in questo caso non posso subito convertire nel nostro nuovo dominio ma devo prima sviluppare tutte le possibili combinazioni e poi procedere alla conversione. Quindi
+<ul>
+<li>Sviluppo il dont’care
+<span class="math display">\[ \begin{array}{ccc}
+  10 &amp; 11 &amp; 01 \\11 &amp; 11 &amp; 01
+  \end{array}\]</span></li>
+<li>Procedo a convertire nel dominio scelto
+<span class="math display">\[ \begin{array}{ccc}
+  2 &amp; 3 &amp; 1\\
+  3 &amp; 3 &amp; 1
+  \end{array}\]</span></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>Così facendo riusciamo a sviluppare tutto il circuito binario e ottenere una conversione esatta. Il circuito convertito
+sarà quindi.</p>
+<pre><code>00 0
+02 0
+10 0
+12 0
+01 1
+03 -
+13 -
+23 1
+11 2
+2- 1
+3- 0</code></pre>
+<p>Con questa struttura posso proseguire con l’analisi dei circuiti proseguendo con l’attività di sintesi logica.</p>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div id="implementazione-della-conversione" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Implementazione della conversione</h2>
+<p>La conversione dei circuiti in analisi viene implementata utilizzando il linguaggio di programmazione Python nella versione 3.8 senza l’ausilio di nessun package esterno, vengono utilizzate solamente librerie comprese nel linguaggio, questo fa si che il sistema sia “ready to use” una volta installato il linguaggio di programmazione se non già presente all’interno del SO.</p>
+<div id="analisi-del-circuito" class="section level3" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> Analisi del circuito</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="analisi.html#cb4-1" aria-hidden="true"></a><span class="kw">def</span> read_pla(path_file):</span>
+<span id="cb4-2"><a href="analisi.html#cb4-2" aria-hidden="true"></a>    inp <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb4-3"><a href="analisi.html#cb4-3" aria-hidden="true"></a>    out <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb4-4"><a href="analisi.html#cb4-4" aria-hidden="true"></a>    inp_array <span class="op">=</span> []</span>
+<span id="cb4-5"><a href="analisi.html#cb4-5" aria-hidden="true"></a>    out_array <span class="op">=</span> []</span>
+<span id="cb4-6"><a href="analisi.html#cb4-6" aria-hidden="true"></a>    truth_table <span class="op">=</span> []</span>
+<span id="cb4-7"><a href="analisi.html#cb4-7" aria-hidden="true"></a>    <span class="cf">with</span> <span class="bu">open</span>(path_file, <span class="st">&#39;r&#39;</span>) <span class="im">as</span> input_file:</span>
+<span id="cb4-8"><a href="analisi.html#cb4-8" aria-hidden="true"></a>        <span class="cf">for</span> line <span class="kw">in</span> input_file.readlines():</span>
+<span id="cb4-9"><a href="analisi.html#cb4-9" aria-hidden="true"></a>            <span class="cf">if</span> <span class="st">&#39;.i&#39;</span> <span class="kw">in</span> line <span class="kw">and</span> line[<span class="dv">2</span>] <span class="op">==</span> <span class="st">&#39; &#39;</span>:</span>
+<span id="cb4-10"><a href="analisi.html#cb4-10" aria-hidden="true"></a>                inp <span class="op">=</span> line.split(<span class="st">&#39; &#39;</span>)[<span class="dv">1</span>]</span>
+<span id="cb4-11"><a href="analisi.html#cb4-11" aria-hidden="true"></a>            <span class="cf">elif</span> <span class="st">&#39;.o&#39;</span> <span class="kw">in</span> line <span class="kw">and</span> line[<span class="dv">2</span>] <span class="op">==</span> <span class="st">&#39; &#39;</span>:</span>
+<span id="cb4-12"><a href="analisi.html#cb4-12" aria-hidden="true"></a>                out <span class="op">=</span> line.split(<span class="st">&#39; &#39;</span>)[<span class="dv">1</span>]</span>
+<span id="cb4-13"><a href="analisi.html#cb4-13" aria-hidden="true"></a>            <span class="cf">elif</span> <span class="st">&#39;.ilb&#39;</span> <span class="kw">in</span> line:</span>
+<span id="cb4-14"><a href="analisi.html#cb4-14" aria-hidden="true"></a>                inp_array <span class="op">=</span> line.strip().split(<span class="st">&#39; &#39;</span>)[<span class="dv">1</span>:]</span>
+<span id="cb4-15"><a href="analisi.html#cb4-15" aria-hidden="true"></a>            <span class="cf">elif</span> <span class="st">&#39;.ob&#39;</span> <span class="kw">in</span> line:</span>
+<span id="cb4-16"><a href="analisi.html#cb4-16" aria-hidden="true"></a>                out_array <span class="op">=</span> line.strip().split(<span class="st">&#39; &#39;</span>)[<span class="dv">1</span>:]</span>
+<span id="cb4-17"><a href="analisi.html#cb4-17" aria-hidden="true"></a>            <span class="cf">elif</span> <span class="st">&#39;.end&#39;</span> <span class="kw">in</span> line:</span>
+<span id="cb4-18"><a href="analisi.html#cb4-18" aria-hidden="true"></a>                <span class="cf">continue</span></span>
+<span id="cb4-19"><a href="analisi.html#cb4-19" aria-hidden="true"></a>            <span class="cf">else</span>:</span>
+<span id="cb4-20"><a href="analisi.html#cb4-20" aria-hidden="true"></a>                line <span class="op">=</span> {</span>
+<span id="cb4-21"><a href="analisi.html#cb4-21" aria-hidden="true"></a>                    <span class="st">&#39;inp&#39;</span>:  line.strip().split(<span class="st">&#39; &#39;</span>)[<span class="dv">0</span>],</span>
+<span id="cb4-22"><a href="analisi.html#cb4-22" aria-hidden="true"></a>                    <span class="st">&#39;out&#39;</span>:  line.strip().split(<span class="st">&#39; &#39;</span>)[<span class="dv">1</span>]</span>
+<span id="cb4-23"><a href="analisi.html#cb4-23" aria-hidden="true"></a>                }</span>
+<span id="cb4-24"><a href="analisi.html#cb4-24" aria-hidden="true"></a>                truth_table.append(line)</span>
+<span id="cb4-25"><a href="analisi.html#cb4-25" aria-hidden="true"></a>    <span class="cf">return</span> inp, out, inp_array, out_array, truth_table</span></code></pre></div>
+<p>La funzione prende in ingresso il percorso di un circuito e memorizza all’interno di un dizionario informazioni tipo:</p>
+<ul>
+<li>Tabella delle verità</li>
+<li>Numero di input</li>
+<li>Numero di output</li>
+</ul>
+<p>Queste informazioni serviranno successivamente per convertire il circuito e calcolare costi.</p>
+</div>
+<div id="espansione-dei-dont-care" class="section level3" number="1.2.2">
+<h3><span class="header-section-number">1.2.2</span> Espansione dei don’t care</h3>
+<p>Una volta ottenuto tutte le informazioni disponibili dal circuito dato bisogna andare ad identificare all’interno delle
+tabelle di verità quali sono i <em>don’t care</em> a cui bisogna espandere i valori e quelli che si possono ignorare. Questa
+parte è stata la parte più impegnativa di questa parte di funzionalità del programma.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="analisi.html#cb5-1" aria-hidden="true"></a>n_dont_care <span class="op">=</span> <span class="st">&#39;&#39;</span></span>
+<span id="cb5-2"><a href="analisi.html#cb5-2" aria-hidden="true"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(dv):</span>
+<span id="cb5-3"><a href="analisi.html#cb5-3" aria-hidden="true"></a>        n_dont_care <span class="op">+=</span> <span class="st">&#39;-&#39;</span></span></code></pre></div>
+<p>Questo semplice ciclo va a replicare il numero di <code>-</code> consecutivi che rispecchiano i gruppi di don’t care da ignorare in base al dominio di conversione dato al circuito.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="analisi.html#cb6-1" aria-hidden="true"></a>len_truth_table <span class="op">=</span> <span class="bu">len</span>(truth_table)</span>
+<span id="cb6-2"><a href="analisi.html#cb6-2" aria-hidden="true"></a>i <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb6-3"><a href="analisi.html#cb6-3" aria-hidden="true"></a><span class="cf">while</span> i <span class="op">&lt;</span> len_truth_table:</span>
+<span id="cb6-4"><a href="analisi.html#cb6-4" aria-hidden="true"></a>    <span class="cf">if</span> <span class="st">&#39;-&#39;</span> <span class="kw">in</span> truth_table[i][<span class="st">&#39;inp&#39;</span>]:</span>
+<span id="cb6-5"><a href="analisi.html#cb6-5" aria-hidden="true"></a>        truth_table[i][<span class="st">&#39;inp&#39;</span>] <span class="op">=</span> <span class="st">&#39;&#39;</span>.join(truth_table[i[<span class="st">&#39;inp&#39;</span>])</span>
+<span id="cb6-6"><a href="analisi.html#cb6-6" aria-hidden="true"></a>        truth_table[i][<span class="st">&#39;inp&#39;</span>] <span class="op">=</span> [truth_table[i][<span class="st">&#39;inp&#39;</span>[a:a<span class="op">+</span>dv]</span>
+<span id="cb6-7"><a href="analisi.html#cb6-7" aria-hidden="true"></a>                                 <span class="cf">for</span> a <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, le(truth_table[i][<span class="st">&#39;inp&#39;</span>], dv)]</span>
+<span id="cb6-8"><a href="analisi.html#cb6-8" aria-hidden="true"></a>        <span class="cf">for</span> a <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(truth_table[i][<span class="st">&#39;inp&#39;</span>])):</span>
+<span id="cb6-9"><a href="analisi.html#cb6-9" aria-hidden="true"></a>            <span class="cf">if</span> truth_table[i][<span class="st">&#39;inp&#39;</span>][a] <span class="op">==</span> n_dont_care:</span>
+<span id="cb6-10"><a href="analisi.html#cb6-10" aria-hidden="true"></a>                truth_table[i][<span class="st">&#39;inp&#39;</span>][a] <span class="op">=</span> <span class="st">&#39;k&#39;</span><span class="op">*</span>le(n_dont_care)</span>
+<span id="cb6-11"><a href="analisi.html#cb6-11" aria-hidden="true"></a>        truth_table[i][<span class="st">&#39;inp&#39;</span>] <span class="op">=</span> <span class="st">&#39;&#39;</span>.join(truth_table[i[<span class="st">&#39;inp&#39;</span>])</span>
+<span id="cb6-12"><a href="analisi.html#cb6-12" aria-hidden="true"></a>        new_lines <span class="op">=</span> resolve_dont_care(truth_table[i],<span class="st">&#39;inp&#39;</span>)</span>
+<span id="cb6-13"><a href="analisi.html#cb6-13" aria-hidden="true"></a>        truth_table <span class="op">=</span> truth_table[:i] <span class="op">+</span> new_lines <span class="op">+</span>truth_table[i<span class="op">+</span><span class="dv">1</span>:]</span>
+<span id="cb6-14"><a href="analisi.html#cb6-14" aria-hidden="true"></a>        len_truth_table <span class="op">=</span> <span class="bu">len</span>(truth_table)</span>
+<span id="cb6-15"><a href="analisi.html#cb6-15" aria-hidden="true"></a>    i <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div>
+<p>Per andare a differenziare quali siano i <em>don’t care</em> da espandere e quali no a quest ultimi viene sostituito il simbolo <em>-</em> con un valore <em>k</em> in modo da poterli gestire meglio nelle funzioni successive. Alla fine delle operazioni verranno ripristinati con il simbolo corretto.</p>
+<div style="page-break-after: always;"></div>
+<div id="resolve-dont-care" class="section level4" number="1.2.2.1">
+<h4><span class="header-section-number">1.2.2.1</span> Resolve don’t care</h4>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="analisi.html#cb7-1" aria-hidden="true"></a><span class="kw">def</span> resolve_dont_care(line, in_out):</span>
+<span id="cb7-2"><a href="analisi.html#cb7-2" aria-hidden="true"></a>    <span class="co"># Conto qunati - e creo 2^n nuove linee</span></span>
+<span id="cb7-3"><a href="analisi.html#cb7-3" aria-hidden="true"></a>    n_dc <span class="op">=</span> <span class="bu">pow</span>(<span class="dv">2</span>, line[in_out].count(<span class="st">&#39;-&#39;</span>))</span>
+<span id="cb7-4"><a href="analisi.html#cb7-4" aria-hidden="true"></a></span>
+<span id="cb7-5"><a href="analisi.html#cb7-5" aria-hidden="true"></a>    input_entry <span class="op">=</span> line[in_out]</span>
+<span id="cb7-6"><a href="analisi.html#cb7-6" aria-hidden="true"></a>    new_array <span class="op">=</span> []</span>
+<span id="cb7-7"><a href="analisi.html#cb7-7" aria-hidden="true"></a></span>
+<span id="cb7-8"><a href="analisi.html#cb7-8" aria-hidden="true"></a>    <span class="cf">for</span> h <span class="kw">in</span> <span class="bu">range</span>(line[in_out].count(<span class="st">&#39;-&#39;</span>)):</span>
+<span id="cb7-9"><a href="analisi.html#cb7-9" aria-hidden="true"></a>        val_array <span class="op">=</span> create_0_1_array(n_dc, <span class="bu">pow</span>(<span class="dv">2</span>, h))</span>
+<span id="cb7-10"><a href="analisi.html#cb7-10" aria-hidden="true"></a>        <span class="cf">if</span> h <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb7-11"><a href="analisi.html#cb7-11" aria-hidden="true"></a>            <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_dc):</span>
+<span id="cb7-12"><a href="analisi.html#cb7-12" aria-hidden="true"></a>                it <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb7-13"><a href="analisi.html#cb7-13" aria-hidden="true"></a>                new_line <span class="op">=</span> []</span>
+<span id="cb7-14"><a href="analisi.html#cb7-14" aria-hidden="true"></a>                <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(input_entry)<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb7-15"><a href="analisi.html#cb7-15" aria-hidden="true"></a>                    <span class="cf">if</span> input_entry[j] <span class="op">==</span> <span class="st">&#39;-&#39;</span> <span class="kw">and</span> it <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb7-16"><a href="analisi.html#cb7-16" aria-hidden="true"></a>                        new_line.append(val_array[(<span class="bu">len</span>(val_array)<span class="op">-</span><span class="dv">1</span>) <span class="op">-</span> i])</span>
+<span id="cb7-17"><a href="analisi.html#cb7-17" aria-hidden="true"></a>                        it <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb7-18"><a href="analisi.html#cb7-18" aria-hidden="true"></a>                    <span class="cf">else</span>:</span>
+<span id="cb7-19"><a href="analisi.html#cb7-19" aria-hidden="true"></a>                        new_line.append(line[in_out][j])</span>
+<span id="cb7-20"><a href="analisi.html#cb7-20" aria-hidden="true"></a>                new_array.append(new_line[::<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb7-21"><a href="analisi.html#cb7-21" aria-hidden="true"></a>        <span class="cf">else</span>:</span>
+<span id="cb7-22"><a href="analisi.html#cb7-22" aria-hidden="true"></a>            it <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb7-23"><a href="analisi.html#cb7-23" aria-hidden="true"></a>            <span class="cf">for</span> c, l <span class="kw">in</span> <span class="bu">enumerate</span>(new_array):</span>
+<span id="cb7-24"><a href="analisi.html#cb7-24" aria-hidden="true"></a>                <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(l)<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb7-25"><a href="analisi.html#cb7-25" aria-hidden="true"></a>                    <span class="cf">if</span> l[j] <span class="op">==</span> <span class="st">&#39;-&#39;</span> <span class="kw">and</span> it <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb7-26"><a href="analisi.html#cb7-26" aria-hidden="true"></a>                        l[j] <span class="op">=</span> val_array[(<span class="bu">len</span>(val_array)<span class="op">-</span><span class="dv">1</span>) <span class="op">-</span> c]</span>
+<span id="cb7-27"><a href="analisi.html#cb7-27" aria-hidden="true"></a>                        it <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb7-28"><a href="analisi.html#cb7-28" aria-hidden="true"></a>                it <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb7-29"><a href="analisi.html#cb7-29" aria-hidden="true"></a></span>
+<span id="cb7-30"><a href="analisi.html#cb7-30" aria-hidden="true"></a>    <span class="cf">if</span> in_out <span class="op">==</span> <span class="st">&#39;inp&#39;</span>:</span>
+<span id="cb7-31"><a href="analisi.html#cb7-31" aria-hidden="true"></a>        <span class="cf">return</span> [{<span class="st">&#39;inp&#39;</span>:  l, <span class="st">&#39;out&#39;</span>:  line[<span class="st">&#39;out&#39;</span>]} <span class="cf">for</span> l <span class="kw">in</span> new_array]</span>
+<span id="cb7-32"><a href="analisi.html#cb7-32" aria-hidden="true"></a>    <span class="cf">else</span>:</span>
+<span id="cb7-33"><a href="analisi.html#cb7-33" aria-hidden="true"></a>        <span class="cf">return</span> [{<span class="st">&#39;inp&#39;</span>:  line[<span class="st">&#39;inp&#39;</span>], <span class="st">&#39;out&#39;</span>:  l} <span class="cf">for</span> l <span class="kw">in</span> new_array]</span></code></pre></div>
+<p>Questa funzione prende in ingresso la linea da espandere e per ogni sua iterazione <em>(it)</em> va a sostituire ogni simbolo <code>-</code> con un valore di verità. La funzione restituirà la l’espansione della linea.</p>
+<p>Come possiamo notare dal <code>return</code> della funzione questa operazione di espansione è possibile farla sia sugli input che su gli output.</p>
+</div>
+<div id="create_0_1_array" class="section level4" number="1.2.2.2">
+<h4><span class="header-section-number">1.2.2.2</span> create_0_1_array</h4>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="analisi.html#cb8-1" aria-hidden="true"></a><span class="kw">def</span> create_0_1_array(le, pad):</span>
+<span id="cb8-2"><a href="analisi.html#cb8-2" aria-hidden="true"></a>    count_1 <span class="op">=</span> pad</span>
+<span id="cb8-3"><a href="analisi.html#cb8-3" aria-hidden="true"></a>    count_0 <span class="op">=</span> pad</span>
+<span id="cb8-4"><a href="analisi.html#cb8-4" aria-hidden="true"></a>    <span class="cf">return</span> [<span class="bu">str</span>(<span class="dv">1</span>) <span class="cf">if</span> i <span class="op">%</span> (count_1 <span class="op">+</span> count_0) <span class="op">&lt;</span> count_1 </span>
+<span id="cb8-5"><a href="analisi.html#cb8-5" aria-hidden="true"></a>        <span class="cf">else</span> <span class="bu">str</span>(<span class="dv">0</span>) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(le)]</span></code></pre></div>
+<p>Questa funzione restituisce una tabella di verità data una line con all’interno un numero di <em>don’t care</em> che necessitano di espansione.</p>
+<p>Questo tabella creata verrà inserita al posto della linea con i <em>don’t care</em> del circuito in così da avere la tabella corretta per la conversione.</p>
+</div>
+</div>
+</div>
+<div id="la-conversione-in-multi-valore" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> La conversione in multi valore</h2>
+<p>Le funzioni viste nelle sezioni precedenti restituiscono come valore di output una matrice corrispondente alla tabella della verità sviluppata. Questa tabella verrà utilizzata dalla funzione di conversione seguendo lo schema spiegato all’inizio del capitolo.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="analisi.html#cb9-1" aria-hidden="true"></a><span class="kw">def</span> create_mv_truth_table(truth_array, dv):</span>
+<span id="cb9-2"><a href="analisi.html#cb9-2" aria-hidden="true"></a>    conv_truth <span class="op">=</span> []</span>
+<span id="cb9-3"><a href="analisi.html#cb9-3" aria-hidden="true"></a>    <span class="cf">for</span> line <span class="kw">in</span> truth_array:</span>
+<span id="cb9-4"><a href="analisi.html#cb9-4" aria-hidden="true"></a>        line[<span class="st">&#39;inp&#39;</span>] <span class="op">=</span> <span class="st">&#39;&#39;</span>.join(line[<span class="st">&#39;inp&#39;</span>])</span>
+<span id="cb9-5"><a href="analisi.html#cb9-5" aria-hidden="true"></a>        line[<span class="st">&#39;inp&#39;</span>] <span class="op">=</span> [line[<span class="st">&#39;inp&#39;</span>][i <span class="op">*</span> dv:(i <span class="op">+</span> <span class="dv">1</span>) <span class="op">*</span> dv]</span>
+<span id="cb9-6"><a href="analisi.html#cb9-6" aria-hidden="true"></a>            <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>((<span class="bu">len</span>(line[<span class="st">&#39;inp&#39;</span>]) <span class="op">+</span> dv <span class="op">-</span> <span class="dv">1</span>) <span class="op">//</span> dv)]</span>
+<span id="cb9-7"><a href="analisi.html#cb9-7" aria-hidden="true"></a>        <span class="cf">if</span> <span class="st">&#39;-&#39;</span> <span class="kw">not</span> <span class="kw">in</span> line[<span class="st">&#39;out&#39;</span>]:</span>
+<span id="cb9-8"><a href="analisi.html#cb9-8" aria-hidden="true"></a>            line[<span class="st">&#39;out&#39;</span>] <span class="op">=</span> <span class="st">&#39;&#39;</span>.join(line[<span class="st">&#39;out&#39;</span>])</span>
+<span id="cb9-9"><a href="analisi.html#cb9-9" aria-hidden="true"></a>            line[<span class="st">&#39;out&#39;</span>] <span class="op">=</span> [line[<span class="st">&#39;out&#39;</span>][i <span class="op">*</span> dv:(i <span class="op">+</span> <span class="dv">1</span>) <span class="op">*</span> dv]</span>
+<span id="cb9-10"><a href="analisi.html#cb9-10" aria-hidden="true"></a>                <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>((<span class="bu">len</span>(line[<span class="st">&#39;out&#39;</span>]) <span class="op">+</span> dv <span class="op">-</span> <span class="dv">1</span>) <span class="op">//</span> dv)]</span>
+<span id="cb9-11"><a href="analisi.html#cb9-11" aria-hidden="true"></a>            l_supp_inp <span class="op">=</span> []</span>
+<span id="cb9-12"><a href="analisi.html#cb9-12" aria-hidden="true"></a>            l_supp_out <span class="op">=</span> []</span>
+<span id="cb9-13"><a href="analisi.html#cb9-13" aria-hidden="true"></a>            <span class="cf">for</span> val <span class="kw">in</span> line[<span class="st">&#39;inp&#39;</span>]:</span>
+<span id="cb9-14"><a href="analisi.html#cb9-14" aria-hidden="true"></a>                <span class="cf">if</span> <span class="st">&#39;-&#39;</span> <span class="kw">not</span> <span class="kw">in</span> val:</span>
+<span id="cb9-15"><a href="analisi.html#cb9-15" aria-hidden="true"></a>                    l_supp_inp.append(<span class="bu">int</span>(val, <span class="dv">2</span>))</span>
+<span id="cb9-16"><a href="analisi.html#cb9-16" aria-hidden="true"></a>                <span class="cf">else</span>:</span>
+<span id="cb9-17"><a href="analisi.html#cb9-17" aria-hidden="true"></a>                    l_supp_inp.append(<span class="st">&#39;-&#39;</span>)</span>
+<span id="cb9-18"><a href="analisi.html#cb9-18" aria-hidden="true"></a>            <span class="cf">for</span> val <span class="kw">in</span> line[<span class="st">&#39;out&#39;</span>]:</span>
+<span id="cb9-19"><a href="analisi.html#cb9-19" aria-hidden="true"></a>                l_supp_out.append(<span class="bu">int</span>(val, <span class="dv">2</span>))</span>
+<span id="cb9-20"><a href="analisi.html#cb9-20" aria-hidden="true"></a>            conv_truth.append({</span>
+<span id="cb9-21"><a href="analisi.html#cb9-21" aria-hidden="true"></a>                <span class="st">&#39;inp&#39;</span>:  l_supp_inp,</span>
+<span id="cb9-22"><a href="analisi.html#cb9-22" aria-hidden="true"></a>                <span class="st">&#39;out&#39;</span>:  l_supp_out</span>
+<span id="cb9-23"><a href="analisi.html#cb9-23" aria-hidden="true"></a>            })</span>
+<span id="cb9-24"><a href="analisi.html#cb9-24" aria-hidden="true"></a>    <span class="cf">return</span> conv_truth</span></code></pre></div>
+<p>La funzione prende in ingresso la matrice espansa creata precedentemente e il numero di bit da utilizzare per rappresentare il massimo numero del nuovo dominio multivalore.</p>
+<p>La funzione inizialmente ‘spezza’ la stringa dei valori di input in gruppi di tanti elementi quanti i bit per rappresentare il massimo numero, successivamente viene controllato se il gruppo è composto da:</p>
+<ul>
+<li><strong>dont’t care</strong>: si procede sostituendo con un singolo simbolo ‘-’</li>
+<li><strong>numeri binari</strong>: si procede con la conversione tramite il metodo int(), ad esso servono 2 parametri:
+<ul>
+<li>un numero o una stringa di numeri da convertire</li>
+<li>la base a cui si vuole fare la conversione</li>
+</ul></li>
+</ul>
+<p>Una volta scandito tutta la tabella di verità abbiamo il circuito convertito, l’utlimo passo ora consiste nell’andare a creare un file compatibile per la sintesi dei circuiti.</p>
+</div>
+<div id="la-creazione-del-file-blfmv" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> La creazione del file blfmv</h2>
+<p>Per i circuiti multi valore non viene usato il formato PLA in quanto viene utilizzato solamente per i circuiti binari. Utilizziamo un altro formato standard appositamente creato per la logica multi valore, il formato <em>blfmv</em>.</p>
+<p>Questo formato deriva dal formato <em>blif</em> utilizzato per la logica binaria.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="analisi.html#cb10-1" aria-hidden="true"></a><span class="im">import</span> string</span>
+<span id="cb10-2"><a href="analisi.html#cb10-2" aria-hidden="true"></a>mv_input <span class="op">=</span> [i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">list</span>(string.ascii_lowercase)[</span>
+<span id="cb10-3"><a href="analisi.html#cb10-3" aria-hidden="true"></a>    :<span class="bu">len</span>(mv_table[<span class="dv">0</span>][<span class="st">&#39;inp&#39;</span>])]]</span>
+<span id="cb10-4"><a href="analisi.html#cb10-4" aria-hidden="true"></a>mv_output <span class="op">=</span> [<span class="st">&#39;o</span><span class="sc">{}</span><span class="st">&#39;</span>.<span class="bu">format</span>(i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(mv_table[<span class="dv">0</span>][<span class="st">&#39;out&#39;</span>]))]</span>
+<span id="cb10-5"><a href="analisi.html#cb10-5" aria-hidden="true"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&#39;</span><span class="sc">{}</span><span class="st">/blfmv/</span><span class="sc">{}</span><span class="st">.mv&#39;</span>.<span class="bu">format</span>(working_dir, nomefile), <span class="st">&#39;w&#39;</span>) <span class="im">as</span> blif:</span>
+<span id="cb10-6"><a href="analisi.html#cb10-6" aria-hidden="true"></a>    blif.write(<span class="st">&#39;.model </span><span class="sc">{}</span><span class="ch">\n</span><span class="st">&#39;</span>.<span class="bu">format</span>(working_dir, nomefile))</span>
+<span id="cb10-7"><a href="analisi.html#cb10-7" aria-hidden="true"></a>    blif.write(<span class="st">&#39;.inputs </span><span class="sc">{}</span><span class="ch">\n</span><span class="st">&#39;</span>.<span class="bu">format</span>(</span>
+<span id="cb10-8"><a href="analisi.html#cb10-8" aria-hidden="true"></a>        <span class="st">&#39; &#39;</span>.join(<span class="bu">map</span>(<span class="bu">str</span>, mv_input))))</span>
+<span id="cb10-9"><a href="analisi.html#cb10-9" aria-hidden="true"></a>    blif.write(<span class="st">&#39;.outputs </span><span class="sc">{}</span><span class="ch">\n</span><span class="st">&#39;</span>.<span class="bu">format</span>(</span>
+<span id="cb10-10"><a href="analisi.html#cb10-10" aria-hidden="true"></a>        <span class="st">&#39; &#39;</span>.join(<span class="bu">map</span>(<span class="bu">str</span>, mv_output))))</span>
+<span id="cb10-11"><a href="analisi.html#cb10-11" aria-hidden="true"></a>    blif.write(<span class="st">&#39;.mv </span><span class="sc">{}</span><span class="st"> </span><span class="sc">{}</span><span class="ch">\n</span><span class="st">&#39;</span>.<span class="bu">format</span>(</span>
+<span id="cb10-12"><a href="analisi.html#cb10-12" aria-hidden="true"></a>        <span class="st">&#39;, &#39;</span>.join(<span class="bu">map</span>(<span class="bu">str</span>, mv_input)), mv))</span>
+<span id="cb10-13"><a href="analisi.html#cb10-13" aria-hidden="true"></a>    blif.write(<span class="st">&#39;.mv </span><span class="sc">{}</span><span class="st"> </span><span class="sc">{}</span><span class="ch">\n</span><span class="st">&#39;</span>.<span class="bu">format</span>(</span>
+<span id="cb10-14"><a href="analisi.html#cb10-14" aria-hidden="true"></a>        <span class="st">&#39;, &#39;</span>.join(<span class="bu">map</span>(<span class="bu">str</span>, mv_output)), mv))</span>
+<span id="cb10-15"><a href="analisi.html#cb10-15" aria-hidden="true"></a>    <span class="cf">for</span> count, out <span class="kw">in</span> <span class="bu">enumerate</span>(mv_output):</span>
+<span id="cb10-16"><a href="analisi.html#cb10-16" aria-hidden="true"></a>        blif.write(<span class="st">&#39;.table </span><span class="sc">{}</span><span class="st"> </span><span class="sc">{}</span><span class="ch">\n</span><span class="st">&#39;</span>.<span class="bu">format</span>(<span class="st">&#39; &#39;</span>.join(<span class="bu">map</span>(<span class="bu">str</span>,mv_input)), out))</span>
+<span id="cb10-17"><a href="analisi.html#cb10-17" aria-hidden="true"></a>        <span class="cf">for</span> line <span class="kw">in</span> mv_table:</span>
+<span id="cb10-18"><a href="analisi.html#cb10-18" aria-hidden="true"></a>            blif.write(<span class="st">&#39;</span><span class="sc">{}</span><span class="st"> </span><span class="sc">{}</span><span class="ch">\n</span><span class="st">&#39;</span>.<span class="bu">format</span>(</span>
+<span id="cb10-19"><a href="analisi.html#cb10-19" aria-hidden="true"></a>                <span class="st">&#39; &#39;</span>.join(<span class="bu">map</span>(<span class="bu">str</span>, line[<span class="st">&#39;inp&#39;</span>])), line[<span class="st">&#39;out&#39;</span>][count]))</span>
+<span id="cb10-20"><a href="analisi.html#cb10-20" aria-hidden="true"></a>    blif.write(<span class="st">&#39;.end</span><span class="ch">\n</span><span class="st">&#39;</span>)</span></code></pre></div>
+<p>Questa funzione crea un file <em>.mv</em> relativo al circuito creato. Utilizziamo questa tipo di file e sintassi perché nelle fasi successive utilizzeremo per valutare e sintetizzare i circuiti dei software che accettano questa sintassi.</p>
+</div>
+<div id="la-sintesi" class="section level2" number="1.5">
+<h2><span class="header-section-number">1.5</span> La sintesi</h2>
+<p>Una volta ottenuto sia il circuito booleano che quello multivalore procediamo con la sintesi dei circuiti, la sintesi dei circuiti si pone l’obiettivo di ridurre e ottimizzare la struttura dei circuiti stessi andando a diminuire il numero di ingressi e di tabelle della verità modo da avere dei costi totali minori.</p>
+<p>I programmi utilizzati per la sintesi logica utilizzati sono entrambi sviluppati dall’università di Berkley e sono disponibili con licenza open source.</p>
+<p>Per la sintesi durante l’analisi sperimentale sono state utilizzate 2 alternative:</p>
+<ul>
+<li>MVSIS</li>
+<li>ABC</li>
+</ul>
+<div id="mvsis" class="section level3" number="1.5.1">
+<h3><span class="header-section-number">1.5.1</span> MVSIS</h3>
+<p>Primo programma utilizzato per la sintesi, contiene diversi metodi da poter utilizzare in che utilizzano tecniche differenti con scopi differenti.
+La particolarità di questo tool consiste nel fatto che il programma accetti come input sia circuiti binari che multivalore e tratta quest ultimi come multivalore, non leggendoli e convertendoli in circuiti binari per poi sintetizzare. Il lato negativo dell’utilizzo di questo porgramma è che l’ultima versione di questo software risale al 2005 e quindi non è più mantenuto.</p>
+</div>
+<div id="abc" class="section level3" number="1.5.2">
+<h3><span class="header-section-number">1.5.2</span> ABC</h3>
+<p>ABC, come la sua alternativa descritta sopra, mette a disposizione delle tecniche di sintesi con io vantaggio di avere degli script pronti che uniscono più metodi in modo da avere la certezza di non commettere errori o di utilizzare una concatenazione di metodi inefficace.</p>
+<p>ABC è un’evoluzione di MVSIS e del più vecchio SIS, viene tuttora mantenuto ma, a differenza di MVSIS, se gli viene dato in ingresso un valore di input viene successivamente convertito in binario e poi si possono utilizzare i metodi di sintesi.</p>
+<p>Una caratteristica molto utile di questi programmi sta nel fatto che essi accettino come parametri di ingresso degli
+script contenenti tutte le istruzioni da eseguire, successivamente mostrerò come tutto il processo di analisi viene
+automatizzato sfruttando questa caratteristica.</p>
+</div>
+<div id="la-sintesi-tramite-i-software" class="section level3" number="1.5.3">
+<h3><span class="header-section-number">1.5.3</span> La sintesi tramite i software</h3>
+<p>La letteratura mette già a disposizione delle sequenze di metodi di sintesi e pulizia dei circuiti efficace ed efficiente, questi comandi si possono chiamare semplicemente dando in input ai due programmi un file contenente un alias per questa sequenza di istruzioni.</p>
+<pre><code>source abc_alias.abc
+read_blif_mv ./prova/blfmv/amd.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/amd.mv</code></pre>
+<p>Il programma, in questo caso <em>abc</em>, non fa altro che prendere prendere in input uno dei circuiti creati precedentemente e applicare i metodi di sintesi per poi creare un altro file contenente il circuito sintetizzato in modo da poter fare dei successivi confronti.</p>
+</div>
+</div>
+<div id="il-calcolo-dei-costi-del-circuito" class="section level2" number="1.6">
+<h2><span class="header-section-number">1.6</span> Il calcolo dei costi del circuito</h2>
+<p>Il costo del circuito viene calcolato sulla base 2 fattori fondamentali:</p>
+<ul>
+<li>Quanti input devono inviare entrambe le parti</li>
+<li>In base al dominio quanti valori devono inviare per ciascun valore di input</li>
+</ul>
+<p>Per calcolare questo tipo di informazioni si devono effettuare delle operazioni di lettura sui file precedentemente creati andando a guardare:</p>
+<ul>
+<li>ingressi di ogni tabella di verità del circuito, andando a controllare quali dei valori di input devono essere inseriti da una delle parti e quali sono ingressi di valori di output delle altre tabelle.</li>
+<li>Dominio dei valori di input che devono inserire le parti.</li>
+</ul>
+<div id="blfmv-vs-pla" class="section level3" number="1.6.1">
+<h3><span class="header-section-number">1.6.1</span> blfmv vs pla</h3>
+<p>Per fare il confronto sopra citato si è preferito utilizzare file che abbiano la stessa sintassi di rappresentazione del circuito, sia nel caso multi valore che in quello booleano.</p>
+<p>Il formato <em>pla</em> non dispone di un’alternativa per i file multivalore ma non è ancora supportata dai tool che abbiamo in utilizzo, si è deciso di utilizzare quindi il formato <em>blif</em> per rappresentare i circuiti binari. <em>Blif</em> è l’altranativa binaria a <em>blfmv</em>, la sintassi è la stessa con la differenza che non viene specificato il dominio dei valori di input in quanto sempre booleano.</p>
+<p>La differenza con <em>pla</em> invece sta nel fatto che gli output non possono essere più di 1 per tabella nella rappresentazione, avrò quindi, per ogni nodo del circuito, tante tabelle quanti gli output di quel nodo. Questa tipologia di rappresentazione è utilizzata anche nei file <em>blfmv</em> quindi avrò uno comparazione 1:1 tra binario e multivalore.</p>
+<p>Per effettuare questa conversione vengono in aiuto i tool <em>ABC</em> e <em>MVSIS</em>, entrambi contengono metodi di conversione automatica da <em>pla</em> a <em>blif</em>. Questa operazione viene effettuata tramite uno script contenente le istruzioni da eseguire e dato come parametro di ingresso al programma.</p>
+<pre><code>read_pla ./prova/pla/alu2.pla
+write_blif ./prova/blif/alu2.blif</code></pre>
+<p>Ora abbiamo a disposizione tutti i file per poter fare il confronto dei costi</p>
+</div>
+<div id="implementazione" class="section level3" number="1.6.2">
+<h3><span class="header-section-number">1.6.2</span> Implementazione</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="analisi.html#cb13-1" aria-hidden="true"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&#39;</span><span class="sc">{}</span><span class="st">/</span><span class="sc">{}</span><span class="st">&#39;</span>.<span class="bu">format</span>(working_dir, circuito)) <span class="im">as</span> circ:</span>
+<span id="cb13-2"><a href="analisi.html#cb13-2" aria-hidden="true"></a>    <span class="bu">input</span> <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb13-3"><a href="analisi.html#cb13-3" aria-hidden="true"></a>    output <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb13-4"><a href="analisi.html#cb13-4" aria-hidden="true"></a>    mv <span class="op">=</span> <span class="bu">int</span>(<span class="dv">0</span>)</span>
+<span id="cb13-5"><a href="analisi.html#cb13-5" aria-hidden="true"></a>    table_array <span class="op">=</span> []</span>
+<span id="cb13-6"><a href="analisi.html#cb13-6" aria-hidden="true"></a>    <span class="cf">for</span> line <span class="kw">in</span> circ.readlines():</span>
+<span id="cb13-7"><a href="analisi.html#cb13-7" aria-hidden="true"></a>        <span class="cf">if</span> <span class="st">&#39;.inputs&#39;</span> <span class="kw">in</span> line.strip():</span>
+<span id="cb13-8"><a href="analisi.html#cb13-8" aria-hidden="true"></a>            <span class="bu">input</span> <span class="op">=</span> line.strip().split(<span class="st">&#39; &#39;</span>)[<span class="dv">1</span>:]</span>
+<span id="cb13-9"><a href="analisi.html#cb13-9" aria-hidden="true"></a>        <span class="cf">if</span> <span class="st">&#39;.outputs&#39;</span> <span class="kw">in</span> line.strip():</span>
+<span id="cb13-10"><a href="analisi.html#cb13-10" aria-hidden="true"></a>            output <span class="op">=</span> line.strip().split(<span class="st">&#39; &#39;</span>)[<span class="dv">1</span>:]</span>
+<span id="cb13-11"><a href="analisi.html#cb13-11" aria-hidden="true"></a>        <span class="cf">if</span> <span class="st">&#39;.mv&#39;</span> <span class="kw">in</span> line.strip():</span>
+<span id="cb13-12"><a href="analisi.html#cb13-12" aria-hidden="true"></a>            <span class="cf">if</span> mv <span class="op">&lt;</span> <span class="bu">int</span>(line.strip().split(<span class="st">&#39; &#39;</span>)[<span class="op">-</span><span class="dv">1</span>]):</span>
+<span id="cb13-13"><a href="analisi.html#cb13-13" aria-hidden="true"></a>                mv <span class="op">=</span> <span class="bu">int</span>(line.strip().split(<span class="st">&#39; &#39;</span>)[<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb13-14"><a href="analisi.html#cb13-14" aria-hidden="true"></a>        <span class="cf">if</span> <span class="st">&#39;.table&#39;</span> <span class="kw">in</span> line.strip():</span>
+<span id="cb13-15"><a href="analisi.html#cb13-15" aria-hidden="true"></a>            l <span class="op">=</span> line.strip().split(<span class="st">&#39; &#39;</span>)</span>
+<span id="cb13-16"><a href="analisi.html#cb13-16" aria-hidden="true"></a>            table_array.append(</span>
+<span id="cb13-17"><a href="analisi.html#cb13-17" aria-hidden="true"></a>                {</span>
+<span id="cb13-18"><a href="analisi.html#cb13-18" aria-hidden="true"></a>                    <span class="st">&#39;input&#39;</span>:    l[<span class="dv">1</span>:<span class="bu">len</span>(l)<span class="op">-</span><span class="dv">1</span>],</span>
+<span id="cb13-19"><a href="analisi.html#cb13-19" aria-hidden="true"></a>                    <span class="st">&#39;output&#39;</span>:   l[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb13-20"><a href="analisi.html#cb13-20" aria-hidden="true"></a>                }</span>
+<span id="cb13-21"><a href="analisi.html#cb13-21" aria-hidden="true"></a>            )</span>
+<span id="cb13-22"><a href="analisi.html#cb13-22" aria-hidden="true"></a>        <span class="cf">if</span> <span class="st">&#39;.names&#39;</span> <span class="kw">in</span> line.strip():</span>
+<span id="cb13-23"><a href="analisi.html#cb13-23" aria-hidden="true"></a>            l <span class="op">=</span> line.strip().split(<span class="st">&#39; &#39;</span>)</span>
+<span id="cb13-24"><a href="analisi.html#cb13-24" aria-hidden="true"></a>            table_array.append(</span>
+<span id="cb13-25"><a href="analisi.html#cb13-25" aria-hidden="true"></a>                {</span>
+<span id="cb13-26"><a href="analisi.html#cb13-26" aria-hidden="true"></a>                    <span class="st">&#39;input&#39;</span>:    l[<span class="dv">1</span>:<span class="bu">len</span>(l)<span class="op">-</span><span class="dv">1</span>],</span>
+<span id="cb13-27"><a href="analisi.html#cb13-27" aria-hidden="true"></a>                    <span class="st">&#39;output&#39;</span>:   l[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb13-28"><a href="analisi.html#cb13-28" aria-hidden="true"></a>                }</span>
+<span id="cb13-29"><a href="analisi.html#cb13-29" aria-hidden="true"></a>            )</span>
+<span id="cb13-30"><a href="analisi.html#cb13-30" aria-hidden="true"></a>    <span class="co"># i blif non hanno .mv, quindi gli do il valore di dominio</span></span>
+<span id="cb13-31"><a href="analisi.html#cb13-31" aria-hidden="true"></a>    <span class="cf">if</span> mv <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb13-32"><a href="analisi.html#cb13-32" aria-hidden="true"></a>        mv <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb13-33"><a href="analisi.html#cb13-33" aria-hidden="true"></a>    <span class="cf">return</span> {</span>
+<span id="cb13-34"><a href="analisi.html#cb13-34" aria-hidden="true"></a>        <span class="st">&#39;dominio&#39;</span>:   mv,</span>
+<span id="cb13-35"><a href="analisi.html#cb13-35" aria-hidden="true"></a>        <span class="st">&#39;input&#39;</span>:    <span class="bu">input</span>,</span>
+<span id="cb13-36"><a href="analisi.html#cb13-36" aria-hidden="true"></a>        <span class="st">&#39;output&#39;</span>:   output,</span>
+<span id="cb13-37"><a href="analisi.html#cb13-37" aria-hidden="true"></a>        <span class="st">&#39;tabelle&#39;</span>:  table_array</span>
+<span id="cb13-38"><a href="analisi.html#cb13-38" aria-hidden="true"></a>    }</span></code></pre></div>
+<p>In questa funzione, dato un cricuito sia binario che mutlivalore, esso prende tutte le informazioni utili per poter effettuare il calcolo</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="analisi.html#cb14-1" aria-hidden="true"></a>costo <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb14-2"><a href="analisi.html#cb14-2" aria-hidden="true"></a><span class="cf">for</span> t <span class="kw">in</span> circuito[<span class="st">&#39;tabelle&#39;</span>]:</span>
+<span id="cb14-3"><a href="analisi.html#cb14-3" aria-hidden="true"></a>    intersection <span class="op">=</span> <span class="bu">len</span>(<span class="bu">set</span>(circuito[<span class="st">&#39;input&#39;</span>]).intersectio(t[<span class="st">&#39;input&#39;</span>]))</span>
+<span id="cb14-4"><a href="analisi.html#cb14-4" aria-hidden="true"></a>    costo <span class="op">=</span> costo <span class="op">+</span> <span class="bu">pow</span>(circuito[<span class="st">&#39;dominio&#39;</span>], intersection)</span>
+<span id="cb14-5"><a href="analisi.html#cb14-5" aria-hidden="true"></a><span class="cf">return</span> costo</span></code></pre></div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="risultati-sperimentali.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

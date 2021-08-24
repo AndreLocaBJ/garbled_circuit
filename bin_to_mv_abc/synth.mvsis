@@ -1,0 +1,192 @@
+read_blif ./prova/blif/alu3.blif
+write_blif ./prova/blif/synth/alu3.blif
+
+read_blif_mv ./prova/blfmv/alu3.mv
+write_blif_mv ./prova/blfmv/synth/alu3.mv
+
+read_blif ./prova/blif/newtpla2.blif
+write_blif ./prova/blif/synth/newtpla2.blif
+
+read_blif_mv ./prova/blfmv/newtpla2.mv
+write_blif_mv ./prova/blfmv/synth/newtpla2.mv
+
+read_blif ./prova/blif/sqr6.blif
+write_blif ./prova/blif/synth/sqr6.blif
+
+read_blif_mv ./prova/blfmv/sqr6.mv
+write_blif_mv ./prova/blfmv/synth/sqr6.mv
+
+read_blif ./prova/blif/f51m.blif
+write_blif ./prova/blif/synth/f51m.blif
+
+read_blif_mv ./prova/blfmv/f51m.mv
+write_blif_mv ./prova/blfmv/synth/f51m.mv
+
+read_blif ./prova/blif/bench.blif
+write_blif ./prova/blif/synth/bench.blif
+
+read_blif_mv ./prova/blfmv/bench.mv
+write_blif_mv ./prova/blfmv/synth/bench.mv
+
+read_blif ./prova/blif/amd.blif
+write_blif ./prova/blif/synth/amd.blif
+
+read_blif_mv ./prova/blfmv/amd.mv
+write_blif_mv ./prova/blfmv/synth/amd.mv
+
+read_blif ./prova/blif/test1.blif
+write_blif ./prova/blif/synth/test1.blif
+
+read_blif_mv ./prova/blfmv/test1.mv
+write_blif_mv ./prova/blfmv/synth/test1.mv
+
+read_blif ./prova/blif/alu1.blif
+write_blif ./prova/blif/synth/alu1.blif
+
+read_blif_mv ./prova/blfmv/alu1.mv
+write_blif_mv ./prova/blfmv/synth/alu1.mv
+
+read_blif ./prova/blif/br1.blif
+write_blif ./prova/blif/synth/br1.blif
+
+read_blif_mv ./prova/blfmv/br1.mv
+write_blif_mv ./prova/blfmv/synth/br1.mv
+
+read_blif ./prova/blif/fout.blif
+write_blif ./prova/blif/synth/fout.blif
+
+read_blif_mv ./prova/blfmv/fout.mv
+write_blif_mv ./prova/blfmv/synth/fout.mv
+
+read_blif ./prova/blif/m4.blif
+write_blif ./prova/blif/synth/m4.blif
+
+read_blif_mv ./prova/blfmv/m4.mv
+write_blif_mv ./prova/blfmv/synth/m4.mv
+
+read_blif ./prova/blif/tms.blif
+write_blif ./prova/blif/synth/tms.blif
+
+read_blif_mv ./prova/blfmv/tms.mv
+write_blif_mv ./prova/blfmv/synth/tms.mv
+
+read_blif ./prova/blif/br2.blif
+write_blif ./prova/blif/synth/br2.blif
+
+read_blif_mv ./prova/blfmv/br2.mv
+write_blif_mv ./prova/blfmv/synth/br2.mv
+
+read_blif ./prova/blif/apla.blif
+write_blif ./prova/blif/synth/apla.blif
+
+read_blif_mv ./prova/blfmv/apla.mv
+write_blif_mv ./prova/blfmv/synth/apla.mv
+
+read_blif ./prova/blif/newtpla1.blif
+write_blif ./prova/blif/synth/newtpla1.blif
+
+read_blif_mv ./prova/blfmv/newtpla1.mv
+write_blif_mv ./prova/blfmv/synth/newtpla1.mv
+
+read_blif ./prova/blif/p3.blif
+write_blif ./prova/blif/synth/p3.blif
+
+read_blif_mv ./prova/blfmv/p3.mv
+write_blif_mv ./prova/blfmv/synth/p3.mv
+
+read_blif ./prova/blif/mlp4.blif
+write_blif ./prova/blif/synth/mlp4.blif
+
+read_blif_mv ./prova/blfmv/mlp4.mv
+write_blif_mv ./prova/blfmv/synth/mlp4.mv
+
+read_blif ./prova/blif/m1.blif
+write_blif ./prova/blif/synth/m1.blif
+
+read_blif_mv ./prova/blfmv/m1.mv
+write_blif_mv ./prova/blfmv/synth/m1.mv
+
+read_blif ./prova/blif/m3.blif
+write_blif ./prova/blif/synth/m3.blif
+
+read_blif_mv ./prova/blfmv/m3.mv
+write_blif_mv ./prova/blfmv/synth/m3.mv
+
+read_blif ./prova/blif/bcd_div3.blif
+write_blif ./prova/blif/synth/bcd_div3.blif
+
+read_blif_mv ./prova/blfmv/bcd_div3.mv
+write_blif_mv ./prova/blfmv/synth/bcd_div3.mv
+
+read_blif ./prova/blif/tial.blif
+write_blif ./prova/blif/synth/tial.blif
+
+read_blif_mv ./prova/blfmv/tial.mv
+write_blif_mv ./prova/blfmv/synth/tial.mv
+
+read_blif ./prova/blif/t3.blif
+write_blif ./prova/blif/synth/t3.blif
+
+read_blif_mv ./prova/blfmv/t3.mv
+write_blif_mv ./prova/blfmv/synth/t3.mv
+
+read_blif ./prova/blif/l8err.blif
+write_blif ./prova/blif/synth/l8err.blif
+
+read_blif_mv ./prova/blfmv/l8err.mv
+write_blif_mv ./prova/blfmv/synth/l8err.mv
+
+read_blif ./prova/blif/m2.blif
+write_blif ./prova/blif/synth/m2.blif
+
+read_blif_mv ./prova/blfmv/m2.mv
+write_blif_mv ./prova/blfmv/synth/m2.mv
+
+read_blif ./prova/blif/newapla.blif
+write_blif ./prova/blif/synth/newapla.blif
+
+read_blif_mv ./prova/blfmv/newapla.mv
+write_blif_mv ./prova/blfmv/synth/newapla.mv
+
+read_blif ./prova/blif/mp2d.blif
+write_blif ./prova/blif/synth/mp2d.blif
+
+read_blif_mv ./prova/blfmv/mp2d.mv
+write_blif_mv ./prova/blfmv/synth/mp2d.mv
+
+read_blif ./prova/blif/ex1010.blif
+write_blif ./prova/blif/synth/ex1010.blif
+
+read_blif_mv ./prova/blfmv/ex1010.mv
+write_blif_mv ./prova/blfmv/synth/ex1010.mv
+
+read_blif ./prova/blif/t4.blif
+write_blif ./prova/blif/synth/t4.blif
+
+read_blif_mv ./prova/blfmv/t4.mv
+write_blif_mv ./prova/blfmv/synth/t4.mv
+
+read_blif ./prova/blif/in5.blif
+write_blif ./prova/blif/synth/in5.blif
+
+read_blif_mv ./prova/blfmv/in5.mv
+write_blif_mv ./prova/blfmv/synth/in5.mv
+
+read_blif ./prova/blif/pdc.blif
+write_blif ./prova/blif/synth/pdc.blif
+
+read_blif_mv ./prova/blfmv/pdc.mv
+write_blif_mv ./prova/blfmv/synth/pdc.mv
+
+read_blif ./prova/blif/alu2.blif
+write_blif ./prova/blif/synth/alu2.blif
+
+read_blif_mv ./prova/blfmv/alu2.mv
+write_blif_mv ./prova/blfmv/synth/alu2.mv
+
+read_blif ./prova/blif/in7.blif
+write_blif ./prova/blif/synth/in7.blif
+
+read_blif_mv ./prova/blfmv/in7.mv
+write_blif_mv ./prova/blfmv/synth/in7.mv
+

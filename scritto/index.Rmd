@@ -1,0 +1,11 @@
+---
+title: "Tesi"
+author: "Andrea Locatelli"
+documentclass: book
+output:
+  bookdown::pdf_book: default
+bibliography: ["book.bib", "packages.bib"]
+biblio-style: apalike
+link-citations: yes
+lang: it
+---

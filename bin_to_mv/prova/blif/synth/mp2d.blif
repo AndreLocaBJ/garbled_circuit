@@ -1,0 +1,141 @@
+# Benchmark "./prova/pla/mp2d" written by ABC on Fri Jul 30 16:38:03 2021
+.model ./prova/pla/mp2d
+.inputs pi00 pi01 pi02 pi03 pi04 pi05 pi06 pi07 pi08 pi09 pi10 pi11 pi12 \
+ pi13
+.outputs po00 po01 po02 po03 po04 po05 po06 po07 po08 po09 po10 po11 po12 \
+ po13
+.names pi06 pi07 new_n29_
+01 1
+.names pi08 new_n29_ new_n30_
+01 1
+.names pi10 new_n30_ new_n31_
+01 1
+.names pi02 pi04 new_n32_
+11 1
+.names pi09 new_n32_ new_n33_
+01 1
+.names pi03 pi05 new_n34_
+01 1
+.names pi00 pi01 new_n35_
+10 1
+.names new_n34_ new_n35_ new_n36_
+11 1
+.names new_n33_ new_n36_ new_n37_
+11 1
+.names new_n31_ new_n37_ po00
+11 0
+.names pi09 pi10 new_n39_
+01 1
+.names pi02 pi03 new_n40_
+00 1
+.names pi04 new_n40_ new_n41_
+01 1
+.names pi02 pi03 new_n42_
+11 1
+.names new_n41_ new_n42_ new_n43_
+00 1
+.names pi01 new_n43_ new_n44_
+00 1
+.names pi03 pi04 new_n45_
+01 1
+.names pi01 pi02 new_n46_
+10 1
+.names new_n45_ new_n46_ new_n47_
+11 1
+.names new_n44_ new_n47_ new_n48_
+00 1
+.names pi00 new_n48_ new_n49_
+10 1
+.names new_n30_ new_n49_ new_n50_
+10 1
+.names new_n39_ new_n50_ po01
+11 0
+.names pi02 pi04 new_n52_
+01 1
+.names pi01 new_n52_ new_n53_
+00 1
+.names pi01 new_n52_ new_n54_
+11 1
+.names new_n53_ new_n54_ new_n55_
+00 1
+.names pi02 pi04 new_n56_
+10 1
+.names pi00 new_n56_ new_n57_
+10 1
+.names new_n55_ new_n57_ new_n58_
+01 1
+.names pi09 new_n34_ new_n59_
+11 1
+.names new_n31_ new_n59_ new_n60_
+11 1
+.names new_n58_ new_n60_ po02
+01 0
+.names pi09 pi10 new_n62_
+11 1
+.names new_n50_ new_n62_ po03
+11 0
+.names pi08 pi09 new_n64_
+10 1
+.names pi10 new_n64_ new_n65_
+01 1
+.names new_n29_ new_n65_ new_n66_
+01 1
+.names new_n47_ new_n65_ new_n67_
+11 1
+.names new_n42_ new_n65_ new_n68_
+00 1
+.names new_n44_ new_n68_ new_n69_
+10 1
+.names new_n67_ new_n69_ new_n70_
+00 1
+.names pi00 new_n70_ new_n71_
+10 1
+.names new_n66_ new_n71_ po04
+00 0
+.names pi08 new_n29_ new_n73_
+11 1
+.names new_n39_ new_n73_ new_n74_
+11 1
+.names new_n49_ new_n74_ po05
+01 0
+.names pi08 new_n62_ new_n76_
+11 1
+.names pi06 new_n76_ new_n77_
+10 1
+.names pi07 new_n77_ new_n78_
+10 1
+.names new_n49_ new_n78_ po06
+11 1
+.names new_n35_ new_n41_ po07
+11 1
+.names pi00 new_n47_ po08
+11 1
+.names pi06 pi07 new_n82_
+11 1
+.names new_n76_ new_n82_ new_n83_
+11 1
+.names new_n49_ new_n83_ po09
+01 0
+.names pi04 new_n42_ new_n85_
+01 1
+.names new_n45_ new_n85_ new_n86_
+00 1
+.names pi00 pi01 new_n87_
+00 1
+.names new_n86_ new_n87_ new_n88_
+01 1
+.names po08 new_n88_ po10
+00 0
+.names pi11 pi12 new_n90_
+01 1
+.names pi13 new_n90_ new_n91_
+01 1
+.names new_n83_ new_n91_ po11
+11 1
+.names pi00 pi01 new_n93_
+01 1
+.names new_n85_ new_n93_ po13
+11 0
+.names po11 po12
+1 1
+.end

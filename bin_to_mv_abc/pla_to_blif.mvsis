@@ -1,0 +1,96 @@
+read_pla ./prova/pla/alu2.pla
+write_blif ./prova/blif/alu2.blif
+
+read_pla ./prova/pla/ex1010.pla
+write_blif ./prova/blif/ex1010.blif
+
+read_pla ./prova/pla/br2.pla
+write_blif ./prova/blif/br2.blif
+
+read_pla ./prova/pla/amd.pla
+write_blif ./prova/blif/amd.blif
+
+read_pla ./prova/pla/p3.pla
+write_blif ./prova/blif/p3.blif
+
+read_pla ./prova/pla/bcd_div3.pla
+write_blif ./prova/blif/bcd_div3.blif
+
+read_pla ./prova/pla/newtpla1.pla
+write_blif ./prova/blif/newtpla1.blif
+
+read_pla ./prova/pla/mp2d.pla
+write_blif ./prova/blif/mp2d.blif
+
+read_pla ./prova/pla/bench.pla
+write_blif ./prova/blif/bench.blif
+
+read_pla ./prova/pla/newtpla2.pla
+write_blif ./prova/blif/newtpla2.blif
+
+read_pla ./prova/pla/test1.pla
+write_blif ./prova/blif/test1.blif
+
+read_pla ./prova/pla/m2.pla
+write_blif ./prova/blif/m2.blif
+
+read_pla ./prova/pla/m1.pla
+write_blif ./prova/blif/m1.blif
+
+read_pla ./prova/pla/tial.pla
+write_blif ./prova/blif/tial.blif
+
+read_pla ./prova/pla/tms.pla
+write_blif ./prova/blif/tms.blif
+
+read_pla ./prova/pla/apla.pla
+write_blif ./prova/blif/apla.blif
+
+read_pla ./prova/pla/br1.pla
+write_blif ./prova/blif/br1.blif
+
+read_pla ./prova/pla/in5.pla
+write_blif ./prova/blif/in5.blif
+
+read_pla ./prova/pla/f51m.pla
+write_blif ./prova/blif/f51m.blif
+
+read_pla ./prova/pla/in7.pla
+write_blif ./prova/blif/in7.blif
+
+read_pla ./prova/pla/mlp4.pla
+write_blif ./prova/blif/mlp4.blif
+
+read_pla ./prova/pla/l8err.pla
+write_blif ./prova/blif/l8err.blif
+
+read_pla ./prova/pla/t4.pla
+write_blif ./prova/blif/t4.blif
+
+read_pla ./prova/pla/newapla.pla
+write_blif ./prova/blif/newapla.blif
+
+read_pla ./prova/pla/fout.pla
+write_blif ./prova/blif/fout.blif
+
+read_pla ./prova/pla/pdc.pla
+write_blif ./prova/blif/pdc.blif
+
+read_pla ./prova/pla/m3.pla
+write_blif ./prova/blif/m3.blif
+
+read_pla ./prova/pla/alu1.pla
+write_blif ./prova/blif/alu1.blif
+
+read_pla ./prova/pla/sqr6.pla
+write_blif ./prova/blif/sqr6.blif
+
+read_pla ./prova/pla/alu3.pla
+write_blif ./prova/blif/alu3.blif
+
+read_pla ./prova/pla/m4.pla
+write_blif ./prova/blif/m4.blif
+
+read_pla ./prova/pla/t3.pla
+write_blif ./prova/blif/t3.blif
+

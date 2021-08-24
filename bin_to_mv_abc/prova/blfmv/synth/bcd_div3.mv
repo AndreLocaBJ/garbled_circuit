@@ -1,0 +1,138 @@
+# Benchmark "./prova" written by ABC on Tue Jul 27 10:26:10 2021
+.model ./prova
+.inputs a[0] a[1] b[0] b[1]
+.outputs o0[0] o0[1] o1[0] o1[1]
+
+
+.table a[0] a[1] new_n9_
+1 - 0
+- 1 0
+0 0 1
+
+.table a[0] a[1] new_n10_
+0 - 0
+- 1 0
+1 0 1
+
+.table a[0] a[1] new_n11_
+1 - 0
+- 0 0
+0 1 1
+
+.table b[0] b[1] new_n12_
+1 - 0
+- 1 0
+0 0 1
+
+.table b[0] b[1] new_n13_
+0 - 0
+- 1 0
+1 0 1
+
+.table b[0] b[1] new_n14_
+1 - 0
+- 0 0
+0 1 1
+
+.table b[0] b[1] new_n15_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n9_ new_n13_ new_n16_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n9_ new_n14_ new_n17_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n9_ new_n15_ new_n18_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n10_ new_n12_ new_n19_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n18_ new_n19_ new_n20_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n10_ new_n13_ new_n21_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n20_ new_n21_ new_n22_
+0 - 0
+- 1 0
+1 0 1
+
+.table new_n10_ new_n14_ new_n23_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n10_ new_n15_ new_n24_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n23_ new_n24_ new_n25_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n11_ new_n12_ new_n26_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n25_ new_n26_ new_n27_
+0 - 0
+- 1 0
+1 0 1
+
+.table new_n11_ new_n13_ new_n28_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n16_ new_n19_ new_n29_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n17_ new_n21_ new_n30_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n24_ new_n29_ o1[0]
+0 1 0
+1 - 1
+- 0 1
+
+.table new_n26_ new_n30_ o1[1]
+0 1 0
+1 - 1
+- 0 1
+
+.table new_n22_ new_n28_ o0[0]
+1 0 0
+0 - 1
+- 1 1
+
+.table new_n27_ new_n28_ o0[1]
+1 0 0
+0 - 1
+- 1 1
+.end
+
+

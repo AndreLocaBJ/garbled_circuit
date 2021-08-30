@@ -1,0 +1,348 @@
+# Benchmark "./prova" written by ABC on Mon Aug 30 13:53:58 2021
+.model ./prova
+.inputs pi00 pi01 pi02 pi03 pi04 pi05 pi06 pi07 pi08 pi09 pi10 pi11
+.outputs po0 po1 po2 po3 po4 po5 po6 po7
+
+
+.table pi04 pi05 new_n21_
+0 - 0
+- 0 0
+1 1 1
+
+.table pi00 pi01 new_n22_
+1 - 0
+- 0 0
+0 1 1
+
+.table pi03 new_n22_ new_n23_
+0 - 0
+- 0 0
+1 1 1
+
+.table pi02 new_n23_ new_n24_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n21_ new_n24_ new_n25_
+0 - 0
+- 0 0
+1 1 1
+
+.table pi08 pi09 new_n26_
+0 - 0
+- 0 0
+1 1 1
+
+.table pi06 pi07 new_n27_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n26_ new_n27_ new_n28_
+0 - 0
+- 0 0
+1 1 1
+
+.table pi10 new_n28_ new_n29_
+1 - 0
+- 0 0
+0 1 1
+
+.table pi11 new_n29_ new_n30_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n25_ new_n30_ new_n31_
+0 - 0
+- 0 0
+1 1 1
+
+.table pi07 new_n26_ new_n32_
+1 - 0
+- 0 0
+0 1 1
+
+.table pi10 new_n32_ new_n33_
+1 - 0
+- 0 0
+0 1 1
+
+.table pi06 new_n22_ new_n34_
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n33_ new_n34_ new_n35_
+0 - 0
+- 0 0
+1 1 1
+
+.table pi03 new_n21_ new_n36_
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n35_ new_n36_ new_n37_
+0 - 0
+- 0 0
+1 1 1
+
+.table pi06 new_n33_ new_n38_
+1 - 0
+- 0 0
+0 1 1
+
+.table pi02 new_n23_ new_n39_
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n21_ new_n39_ new_n40_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n38_ new_n40_ new_n41_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n37_ new_n41_ new_n42_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n31_ new_n42_ new_n43_
+1 - 0
+- 0 0
+0 1 1
+
+.table pi04 pi05 new_n44_
+0 - 0
+- 1 0
+1 0 1
+
+.table new_n35_ new_n44_ new_n45_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n43_ new_n45_ po6
+1 0 0
+0 - 1
+- 1 1
+
+.table new_n25_ new_n33_ new_n47_
+0 - 0
+- 0 0
+1 1 1
+
+.table po6 new_n47_ po0
+0 0 0
+1 - 1
+- 1 1
+
+.table pi11 new_n21_ new_n49_
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n24_ new_n49_ new_n50_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n29_ new_n50_ new_n51_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n28_ new_n44_ new_n52_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n23_ new_n52_ new_n53_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n51_ new_n53_ new_n54_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n24_ new_n27_ new_n55_
+0 - 0
+- 0 0
+1 1 1
+
+.table pi04 pi05 new_n56_
+1 - 0
+- 0 0
+0 1 1
+
+.table pi08 pi09 new_n57_
+0 - 0
+- 1 0
+1 0 1
+
+.table new_n56_ new_n57_ new_n58_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n55_ new_n58_ new_n59_
+0 - 0
+- 0 0
+1 1 1
+
+.table pi06 pi10 new_n60_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n32_ new_n60_ new_n61_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n50_ new_n61_ po2
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n59_ po2 new_n63_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n54_ new_n63_ new_n64_
+0 - 0
+- 0 0
+1 1 1
+
+.table po0 new_n64_ po1
+0 1 0
+1 - 1
+- 0 1
+
+.table pi08 pi09 new_n66_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n49_ new_n66_ new_n67_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n55_ new_n67_ new_n68_
+0 - 0
+- 0 0
+1 1 1
+
+.table po2 new_n68_ po3
+0 0 0
+1 - 1
+- 1 1
+
+.table pi02 new_n37_ new_n70_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n39_ new_n44_ new_n71_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n38_ new_n71_ new_n72_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n59_ new_n72_ new_n73_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n70_ new_n73_ new_n74_
+1 - 0
+- 0 0
+0 1 1
+
+.table pi02 pi03 new_n75_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n45_ new_n75_ new_n76_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n31_ new_n76_ new_n77_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n74_ new_n77_ po4
+1 1 0
+0 - 1
+- 0 1
+
+.table new_n24_ new_n44_ new_n79_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n38_ new_n79_ new_n80_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n41_ new_n47_ new_n81_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n80_ new_n81_ new_n82_
+1 - 0
+- 0 0
+0 1 1
+
+.table new_n54_ po3 new_n83_
+0 - 0
+- 1 0
+1 0 1
+
+.table new_n82_ new_n83_ new_n84_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n74_ new_n84_ po5
+1 1 0
+0 - 1
+- 0 1
+
+.table new_n39_ new_n52_ new_n86_
+0 - 0
+- 0 0
+1 1 1
+
+.table new_n59_ new_n86_ new_n87_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n43_ new_n87_ po7
+1 1 0
+0 - 1
+- 0 1
+.end
+
+

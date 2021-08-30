@@ -1,4 +1,4 @@
-# Benchmark "./prova/pla/in5" written by ABC on Fri Jul 30 16:38:03 2021
+# Benchmark "./prova/pla/in5" written by ABC on Mon Aug 30 13:53:52 2021
 .model ./prova/pla/in5
 .inputs x00 x01 x02 x03 x04 x05 x06 x07 x08 x09 x10 x11 x12 x13 x14 x15 x16 \
  x17 x18 x19 x20 x21 x22 x23

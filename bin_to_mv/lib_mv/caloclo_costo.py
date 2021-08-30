@@ -5,14 +5,14 @@ def info_circuito(working_dir, circuito):
     with open('{}/{}'.format(working_dir, circuito)) as circ:
         input = None
         output = None
-        mv = int(0)
+        mv = 0
         table_array = []
         for line in circ.readlines():
             if '.inputs' in line.strip():
                 input = line.strip().split(' ')[1:]
             if '.outputs' in line.strip():
                 output = line.strip().split(' ')[1:]
-            if '.mv' in line.strip():
+            if '.mv' in line.strip() and '.spec' not in line.strip():
                 if mv < int(line.strip().split(' ')[-1]):
                     mv = int(line.strip().split(' ')[-1])
             if '.table' in line.strip():
@@ -52,15 +52,16 @@ def calcolo_costo_circuito(circuito):
     return costo
 
 
-def calcolo_costi_synth(working_dir):
-    with open('calcolo_costi.csv', 'a') as file:
+def calcolo_costi_synth(working_dir, synth_tool):
+    with open('calcolo_costi_{}.csv'.format(synth_tool), 'a') as file:
         file.write(
             'NOME CIRC;COSTO BOOLEANO;INPUT ALICE;INPUT BOB;DOMINIO MULTIVALORE;COSTO MULTIVALORE;INPUT ALICE;INPUT BOB\n')
-        for blfmv in listdir('{}/blfmv'.format(working_dir)):
+        for blfmv in listdir('{}/blfmv/synth/{}'.format(working_dir, synth_tool)):
             if blfmv.endswith('.mv'):
                 print(blfmv)
+                # Circuito multi valore
                 circ_mv = info_circuito(
-                    '{}/blfmv/synth'.format(working_dir), blfmv)
+                    '{}/blfmv/synth/{}'.format(working_dir, synth_tool), blfmv)
                 costo_mv = calcolo_costo_circuito(circ_mv)
                 if len(circ_mv['input']) % 2 != 0:
                     alice_var_mv = int(len(circ_mv['input']) / 2)
@@ -69,8 +70,9 @@ def calcolo_costi_synth(working_dir):
                     alice_var_mv = int(len(circ_mv['input']) / 2)
                     bob_var_mv = int(len(circ_mv['input']) / 2)
 
+                # Circuito binario
                 circ_bool = info_circuito(
-                    '{}/blif/synth'.format(working_dir), '{}.blif'.format(blfmv.split('.')[0]))
+                    '{}/blif/synth/'.format(working_dir), '{}.blif'.format(blfmv.split('.')[0]))
                 costo_bool = calcolo_costo_circuito(circ_bool)
                 if len(circ_bool['input']) % 2 != 0:
                     alice_var_bool = int(len(circ_bool['input']) / 2)
@@ -81,8 +83,8 @@ def calcolo_costi_synth(working_dir):
                 file.write('{};{};{};{};{};{};{};{}\n'.format(blfmv.split('.')[
                     0], costo_bool, alice_var_bool, bob_var_bool, circ_mv['dominio'], costo_mv, alice_var_mv, bob_var_mv))
 
-def calcolo_costi_no_synth(working_dir):
-    with open('calcolo_costi_no_synth.csv', 'a') as file:
+def calcolo_costi_no_synth(working_dir, synth_tool):
+    with open('calcolo_costi_no_synth_{}.csv'.format(synth_tool), 'a') as file:
         file.write(
             'NOME CIRC;COSTO BOOLEANO;INPUT ALICE;INPUT BOB;DOMINIO MULTIVALORE;COSTO MULTIVALORE;INPUT ALICE;INPUT BOB\n')
         for blfmv in listdir('{}/blfmv'.format(working_dir)):

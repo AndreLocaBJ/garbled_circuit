@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021) (preloaded format=pdflatex 2021.8.19)  24 AUG 2021 11:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021) (preloaded format=pdflatex 2021.8.19)  30 AUG 2021 14:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -340,12 +340,160 @@ Package graphics Info: Driver file: pdftex.def on input line 107.
 )
 \Gin@req@height=\dimen171
 \Gin@req@width=\dimen172
+) (/home/andrea/.TinyTeX/texmf-dist/tex/latex/pmboxdraw/pmboxdraw.sty
+Package: pmboxdraw 2019/12/05 v1.4 Poor man's box drawing characters (HO)
+Now handling font encoding pmboxdraw ...
+... processing UTF-8 mapping file for font encoding pmboxdraw
+(/home/andrea/.TinyTeX/texmf-dist/tex/latex/pmboxdraw/pmboxdrawenc.dfu
+File: pmboxdrawenc.dfu 2019/12/05 v1.4 UTF-8 support for box drawing characters
+
+   defining Unicode char U+2500 (decimal 9472)
+   defining Unicode char U+2501 (decimal 9473)
+   defining Unicode char U+2502 (decimal 9474)
+   defining Unicode char U+2503 (decimal 9475)
+   defining Unicode char U+250C (decimal 9484)
+   defining Unicode char U+250D (decimal 9485)
+   defining Unicode char U+250E (decimal 9486)
+   defining Unicode char U+250F (decimal 9487)
+   defining Unicode char U+2510 (decimal 9488)
+   defining Unicode char U+2511 (decimal 9489)
+   defining Unicode char U+2512 (decimal 9490)
+   defining Unicode char U+2513 (decimal 9491)
+   defining Unicode char U+2514 (decimal 9492)
+   defining Unicode char U+2515 (decimal 9493)
+   defining Unicode char U+2516 (decimal 9494)
+   defining Unicode char U+2517 (decimal 9495)
+   defining Unicode char U+2518 (decimal 9496)
+   defining Unicode char U+2519 (decimal 9497)
+   defining Unicode char U+251A (decimal 9498)
+   defining Unicode char U+251B (decimal 9499)
+   defining Unicode char U+251C (decimal 9500)
+   defining Unicode char U+251D (decimal 9501)
+   defining Unicode char U+251E (decimal 9502)
+   defining Unicode char U+251F (decimal 9503)
+   defining Unicode char U+2520 (decimal 9504)
+   defining Unicode char U+2521 (decimal 9505)
+   defining Unicode char U+2522 (decimal 9506)
+   defining Unicode char U+2523 (decimal 9507)
+   defining Unicode char U+2524 (decimal 9508)
+   defining Unicode char U+252C (decimal 9516)
+   defining Unicode char U+252D (decimal 9517)
+   defining Unicode char U+252E (decimal 9518)
+   defining Unicode char U+252F (decimal 9519)
+   defining Unicode char U+2530 (decimal 9520)
+   defining Unicode char U+2531 (decimal 9521)
+   defining Unicode char U+2532 (decimal 9522)
+   defining Unicode char U+2533 (decimal 9523)
+   defining Unicode char U+2534 (decimal 9524)
+   defining Unicode char U+2535 (decimal 9525)
+   defining Unicode char U+2536 (decimal 9526)
+   defining Unicode char U+2537 (decimal 9527)
+   defining Unicode char U+2538 (decimal 9528)
+   defining Unicode char U+2539 (decimal 9529)
+   defining Unicode char U+253A (decimal 9530)
+   defining Unicode char U+253B (decimal 9531)
+   defining Unicode char U+253C (decimal 9532)
+   defining Unicode char U+253D (decimal 9533)
+   defining Unicode char U+253E (decimal 9534)
+   defining Unicode char U+253F (decimal 9535)
+   defining Unicode char U+2540 (decimal 9536)
+   defining Unicode char U+2541 (decimal 9537)
+   defining Unicode char U+2542 (decimal 9538)
+   defining Unicode char U+2543 (decimal 9539)
+   defining Unicode char U+2544 (decimal 9540)
+   defining Unicode char U+2545 (decimal 9541)
+   defining Unicode char U+2546 (decimal 9542)
+   defining Unicode char U+2547 (decimal 9543)
+   defining Unicode char U+2548 (decimal 9544)
+   defining Unicode char U+2549 (decimal 9545)
+   defining Unicode char U+254A (decimal 9546)
+   defining Unicode char U+254B (decimal 9547)
+   defining Unicode char U+2550 (decimal 9552)
+   defining Unicode char U+2551 (decimal 9553)
+   defining Unicode char U+2552 (decimal 9554)
+   defining Unicode char U+2553 (decimal 9555)
+   defining Unicode char U+2554 (decimal 9556)
+   defining Unicode char U+2555 (decimal 9557)
+   defining Unicode char U+2556 (decimal 9558)
+   defining Unicode char U+2557 (decimal 9559)
+   defining Unicode char U+2558 (decimal 9560)
+   defining Unicode char U+2559 (decimal 9561)
+   defining Unicode char U+255A (decimal 9562)
+   defining Unicode char U+255B (decimal 9563)
+   defining Unicode char U+255C (decimal 9564)
+   defining Unicode char U+255D (decimal 9565)
+   defining Unicode char U+255E (decimal 9566)
+   defining Unicode char U+255F (decimal 9567)
+   defining Unicode char U+2560 (decimal 9568)
+   defining Unicode char U+2561 (decimal 9569)
+   defining Unicode char U+2562 (decimal 9570)
+   defining Unicode char U+2563 (decimal 9571)
+   defining Unicode char U+2564 (decimal 9572)
+   defining Unicode char U+2565 (decimal 9573)
+   defining Unicode char U+2566 (decimal 9574)
+   defining Unicode char U+2567 (decimal 9575)
+   defining Unicode char U+2568 (decimal 9576)
+   defining Unicode char U+2569 (decimal 9577)
+   defining Unicode char U+256A (decimal 9578)
+   defining Unicode char U+256B (decimal 9579)
+   defining Unicode char U+256C (decimal 9580)
+   defining Unicode char U+2574 (decimal 9588)
+   defining Unicode char U+2575 (decimal 9589)
+   defining Unicode char U+2576 (decimal 9590)
+   defining Unicode char U+2577 (decimal 9591)
+   defining Unicode char U+2578 (decimal 9592)
+   defining Unicode char U+2579 (decimal 9593)
+   defining Unicode char U+257A (decimal 9594)
+   defining Unicode char U+257B (decimal 9595)
+   defining Unicode char U+257C (decimal 9596)
+   defining Unicode char U+257D (decimal 9597)
+   defining Unicode char U+257E (decimal 9598)
+   defining Unicode char U+257F (decimal 9599)
+   defining Unicode char U+2580 (decimal 9600)
+   defining Unicode char U+2581 (decimal 9601)
+   defining Unicode char U+2582 (decimal 9602)
+   defining Unicode char U+2583 (decimal 9603)
+   defining Unicode char U+2584 (decimal 9604)
+   defining Unicode char U+2585 (decimal 9605)
+   defining Unicode char U+2586 (decimal 9606)
+   defining Unicode char U+2587 (decimal 9607)
+   defining Unicode char U+2588 (decimal 9608)
+   defining Unicode char U+2589 (decimal 9609)
+   defining Unicode char U+258A (decimal 9610)
+   defining Unicode char U+258B (decimal 9611)
+   defining Unicode char U+258C (decimal 9612)
+   defining Unicode char U+258D (decimal 9613)
+   defining Unicode char U+258E (decimal 9614)
+   defining Unicode char U+258F (decimal 9615)
+   defining Unicode char U+2590 (decimal 9616)
+   defining Unicode char U+2591 (decimal 9617)
+   defining Unicode char U+2592 (decimal 9618)
+   defining Unicode char U+2593 (decimal 9619)
+   defining Unicode char U+2594 (decimal 9620)
+   defining Unicode char U+2595 (decimal 9621)
+   defining Unicode char U+2596 (decimal 9622)
+   defining Unicode char U+2597 (decimal 9623)
+   defining Unicode char U+2598 (decimal 9624)
+   defining Unicode char U+2599 (decimal 9625)
+   defining Unicode char U+259A (decimal 9626)
+   defining Unicode char U+259B (decimal 9627)
+   defining Unicode char U+259C (decimal 9628)
+   defining Unicode char U+259D (decimal 9629)
+   defining Unicode char U+259E (decimal 9630)
+   defining Unicode char U+259F (decimal 9631)
+)
+\pmbd@W=\dimen173
+\pmbd@H=\dimen174
+\pmbd@L=\dimen175
+\pmbd@Thin=\dimen176
+\pmbd@Thick=\dimen177
+\pmbd@Sep=\dimen178
 ) (/home/andrea/.TinyTeX/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2021/07/22 3.63 The Babel package
 (/home/andrea/.TinyTeX/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2021/07/22 3.63 Babel common definitions
 \babel@savecnt=\count292
-\U@D=\dimen173
+\U@D=\dimen179
 \l@unhyphenated=\language3
 (/home/andrea/.TinyTeX/texmf-dist/tex/generic/babel/txtbabel.def)
 \bbl@readstream=\read3
@@ -374,24 +522,27 @@ File: l3backend-pdftex.def 2021-08-04 L3 backend support: PDF output (pdfTeX)
 ) (./_main.aux)
 \openout1 = `_main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for pmboxdraw/pmboxdraw/m/n on input line
+ 125.
+LaTeX Font Info:    ... okay on input line 125.
 (/home/andrea/.TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 (/home/andrea/.TinyTeX/texmf-dist/tex/latex/grfext/grfext.sty
@@ -407,7 +558,7 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 124.
+Package hyperref Info: Link coloring OFF on input line 125.
 (/home/andrea/.TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 (/home/andrea/.TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty
@@ -418,47 +569,47 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count298
 )
-LaTeX Info: Redefining \ref on input line 124.
-LaTeX Info: Redefining \pageref on input line 124.
-LaTeX Info: Redefining \nameref on input line 124.
+LaTeX Info: Redefining \ref on input line 125.
+LaTeX Info: Redefining \pageref on input line 125.
+LaTeX Info: Redefining \nameref on input line 125.
 (./_main.out) (./_main.out)
 \@outlinefile=\write4
 \openout4 = `_main.out'.
 
-LaTeX Info: Redefining \it@ocap on input line 124.
-LaTeX Info: Redefining \it@ccap on input line 124.
+LaTeX Info: Redefining \it@ocap on input line 125.
+LaTeX Info: Redefining \it@ccap on input line 125.
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
-26.
+27.
 (/home/andrea/.TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-26.
+27.
 (/home/andrea/.TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-126.
+127.
 (/home/andrea/.TinyTeX/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-126.
+127.
 (/home/andrea/.TinyTeX/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 126.
+(Font)              <12> on input line 127.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 126.
+(Font)              <8> on input line 127.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 126.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 126
+(Font)              <6> on input line 127.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 127
 .
 (/home/andrea/.TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 126
+LaTeX Font Info:    Trying to load font information for U+msb on input line 127
 .
 (/home/andrea/.TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -483,40 +634,353 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 ]
 Capitolo 1.
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
-61.
+62.
 (/home/andrea/.TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [5]
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
-79.
+80.
 (/home/andrea/.TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [6] [7] [8]
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 318.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 319.
 LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
-324.
+325.
 (/home/andrea/.TinyTeX/texmf-dist/tex/latex/lm/ts1lmtt.fd
 File: ts1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [9] [10]
 Underfull \vbox (badness 5832) has occurred while \output is active []
 
-[11] [12] [13] [14] [15] [16] [17] [18
+[11] [12] [13] [14] [15] [16] [17] [18] [19] [20]
+Capitolo 2.
+[21
 
 ]
-Capitolo 2.
-[19] (./_main.aux)
+Overfull \hbox (3.64984pt too wide) in paragraph at lines 894--895
+ []\T1/lmr/m/n/10 NOME 
+ []
+
+
+Overfull \hbox (4.50673pt too wide) in paragraph at lines 896--897
+ []\T1/lmr/m/n/10 COSTO 
+ []
+
+
+Overfull \hbox (5.03786pt too wide) in paragraph at lines 900--901
+ []\T1/lmr/m/n/10 INPUT 
+ []
+
+
+Overfull \hbox (5.68564pt too wide) in paragraph at lines 902--903
+ []\T1/lmr/m/n/10 DOMINIO 
+ []
+
+
+Overfull \hbox (1.05336pt too wide) in paragraph at lines 904--905
+ []\T1/lmr/m/n/10 COSTO 
+ []
+
+
+Overfull \hbox (5.03786pt too wide) in paragraph at lines 908--909
+ []\T1/lmr/m/n/10 INPUT 
+ []
+
+
+Overfull \hbox (11.84363pt too wide) in paragraph at lines 1032--1033
+ []\T1/lmr/m/n/10 newtpla2| 
+ []
+
+
+Overfull \hbox (10.4979pt too wide) in paragraph at lines 1161--1162
+ []\T1/lmr/m/n/10 117440512| 
+ []
+
+
+Overfull \hbox (11.84363pt too wide) in paragraph at lines 1168--1169
+ []\T1/lmr/m/n/10 newtpla1| 
+ []
+
+
+Overfull \hbox (7.67683pt too wide) in paragraph at lines 1202--1203
+ []\T1/lmr/m/n/10 newapla| 
+ []
+
+
+Overfull \hbox (14.34389pt too wide) in paragraph at lines 1372--1373
+ []\T1/lmr/m/n/10 bcd_div3| 
+ []
+
+
+Overfull \hbox (5.4979pt too wide) in paragraph at lines 1416--1417
+ []\T1/lmr/m/n/10 23085056| 
+ []
+
+[22]
+Overfull \hbox (3.64984pt too wide) in paragraph at lines 1435--1436
+ []\T1/lmr/m/n/10 NOME 
+ []
+
+
+Overfull \hbox (4.50673pt too wide) in paragraph at lines 1437--1438
+ []\T1/lmr/m/n/10 COSTO 
+ []
+
+
+Overfull \hbox (5.03786pt too wide) in paragraph at lines 1441--1442
+ []\T1/lmr/m/n/10 INPUT 
+ []
+
+
+Overfull \hbox (9.13374pt too wide) in paragraph at lines 1443--1444
+ []\T1/lmr/m/n/10 DOMINIO 
+ []
+
+
+Overfull \hbox (23.25209pt too wide) in paragraph at lines 1445--1446
+ \T1/lmr/m/n/10 MULTIVALORE| 
+ []
+
+
+Overfull \hbox (5.03786pt too wide) in paragraph at lines 1449--1450
+ []\T1/lmr/m/n/10 INPUT 
+ []
+
+
+Overfull \hbox (11.55307pt too wide) in alignment at lines 1432--1452
+ [] [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (3.95126pt too wide) in paragraph at lines 1490--1491
+ []\T1/lmr/m/n/10 2621440| 
+ []
+
+
+Overfull \hbox (11.84363pt too wide) in paragraph at lines 1573--1574
+ []\T1/lmr/m/n/10 newtpla2| 
+ []
+
+
+Overfull \hbox (3.95126pt too wide) in paragraph at lines 1694--1695
+ []\T1/lmr/m/n/10 1835008| 
+ []
+
+
+Overfull \hbox (11.84363pt too wide) in paragraph at lines 1709--1710
+ []\T1/lmr/m/n/10 newtpla1| 
+ []
+
+
+Overfull \hbox (7.67683pt too wide) in paragraph at lines 1743--1744
+ []\T1/lmr/m/n/10 newapla| 
+ []
+
+
+Overfull \hbox (14.34389pt too wide) in paragraph at lines 1913--1914
+ []\T1/lmr/m/n/10 bcd_div3| 
+ []
+
+
+Overfull \hbox (3.95126pt too wide) in paragraph at lines 1949--1950
+ []\T1/lmr/m/n/10 1310720| 
+ []
+
+
+Overfull \hbox (11.55307pt too wide) in alignment at lines 1452--1964
+ [] [] [] [] [] [] [] [] 
+ []
+
+[23]
+Overfull \hbox (3.64984pt too wide) in paragraph at lines 1971--1972
+ []\T1/lmr/m/n/10 NOME 
+ []
+
+
+Overfull \hbox (4.50673pt too wide) in paragraph at lines 1973--1974
+ []\T1/lmr/m/n/10 COSTO 
+ []
+
+
+Overfull \hbox (5.03786pt too wide) in paragraph at lines 1977--1978
+ []\T1/lmr/m/n/10 INPUT 
+ []
+
+
+Overfull \hbox (9.13374pt too wide) in paragraph at lines 1979--1980
+ []\T1/lmr/m/n/10 DOMINIO 
+ []
+
+
+Overfull \hbox (23.25209pt too wide) in paragraph at lines 1981--1982
+ \T1/lmr/m/n/10 MULTIVALORE| 
+ []
+
+
+Overfull \hbox (5.03786pt too wide) in paragraph at lines 1985--1986
+ []\T1/lmr/m/n/10 INPUT 
+ []
+
+
+Overfull \hbox (11.55307pt too wide) in alignment at lines 1968--1988
+ [] [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (11.84363pt too wide) in paragraph at lines 2109--2110
+ []\T1/lmr/m/n/10 newtpla2| 
+ []
+
+
+Overfull \hbox (11.84363pt too wide) in paragraph at lines 2245--2246
+ []\T1/lmr/m/n/10 newtpla1| 
+ []
+
+
+Overfull \hbox (7.67683pt too wide) in paragraph at lines 2279--2280
+ []\T1/lmr/m/n/10 newapla| 
+ []
+
+
+Overfull \hbox (11.55307pt too wide) in alignment at lines 1988--2364
+ [] [] [] [] [] [] [] [] 
+ []
+
+[24]
+Overfull \hbox (3.64984pt too wide) in paragraph at lines 2397--2398
+ []\T1/lmr/m/n/10 NOME 
+ []
+
+
+Overfull \hbox (4.50673pt too wide) in paragraph at lines 2399--2400
+ []\T1/lmr/m/n/10 COSTO 
+ []
+
+
+Overfull \hbox (5.03786pt too wide) in paragraph at lines 2403--2404
+ []\T1/lmr/m/n/10 INPUT 
+ []
+
+
+Overfull \hbox (9.13374pt too wide) in paragraph at lines 2405--2406
+ []\T1/lmr/m/n/10 DOMINIO 
+ []
+
+
+Overfull \hbox (23.25209pt too wide) in paragraph at lines 2407--2408
+ \T1/lmr/m/n/10 MULTIVALORE| 
+ []
+
+
+Overfull \hbox (5.03786pt too wide) in paragraph at lines 2411--2412
+ []\T1/lmr/m/n/10 INPUT 
+ []
+
+
+Overfull \hbox (11.55307pt too wide) in alignment at lines 2394--2414
+ [] [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (11.84363pt too wide) in paragraph at lines 2535--2536
+ []\T1/lmr/m/n/10 newtpla2| 
+ []
+
+
+Overfull \hbox (11.84363pt too wide) in paragraph at lines 2671--2672
+ []\T1/lmr/m/n/10 newtpla1| 
+ []
+
+
+Overfull \hbox (7.67683pt too wide) in paragraph at lines 2705--2706
+ []\T1/lmr/m/n/10 newapla| 
+ []
+
+
+Overfull \hbox (14.34389pt too wide) in paragraph at lines 2875--2876
+ []\T1/lmr/m/n/10 bcd_div3| 
+ []
+
+
+Overfull \hbox (11.55307pt too wide) in alignment at lines 2414--2926
+ [] [] [] [] [] [] [] [] 
+ []
+
+[25]
+Overfull \hbox (3.64984pt too wide) in paragraph at lines 2938--2939
+ []\T1/lmr/m/n/10 NOME 
+ []
+
+
+Overfull \hbox (4.50673pt too wide) in paragraph at lines 2940--2941
+ []\T1/lmr/m/n/10 COSTO 
+ []
+
+
+Overfull \hbox (5.03786pt too wide) in paragraph at lines 2944--2945
+ []\T1/lmr/m/n/10 INPUT 
+ []
+
+
+Overfull \hbox (9.13374pt too wide) in paragraph at lines 2946--2947
+ []\T1/lmr/m/n/10 DOMINIO 
+ []
+
+
+Overfull \hbox (23.25209pt too wide) in paragraph at lines 2948--2949
+ \T1/lmr/m/n/10 MULTIVALORE| 
+ []
+
+
+Overfull \hbox (5.03786pt too wide) in paragraph at lines 2952--2953
+ []\T1/lmr/m/n/10 INPUT 
+ []
+
+
+Overfull \hbox (11.55307pt too wide) in alignment at lines 2935--2955
+ [] [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (11.84363pt too wide) in paragraph at lines 3076--3077
+ []\T1/lmr/m/n/10 newtpla2| 
+ []
+
+
+Overfull \hbox (11.84363pt too wide) in paragraph at lines 3212--3213
+ []\T1/lmr/m/n/10 newtpla1| 
+ []
+
+
+Overfull \hbox (7.67683pt too wide) in paragraph at lines 3246--3247
+ []\T1/lmr/m/n/10 newapla| 
+ []
+
+
+Overfull \hbox (14.34389pt too wide) in paragraph at lines 3416--3417
+ []\T1/lmr/m/n/10 bcd_div3| 
+ []
+
+
+Overfull \hbox (11.55307pt too wide) in alignment at lines 2955--3467
+ [] [] [] [] [] [] [] [] 
+ []
+
+
+Underfull \vbox (badness 6047) has occurred while \output is active []
+
+[26] [27] (./_main.aux)
 Package rerunfilecheck Info: File `_main.out' has not changed.
-(rerunfilecheck)             Checksum: 0BE5612EDAE525E69DDB8EFC3EFCBD28;1415.
+(rerunfilecheck)             Checksum: 43A364E6CBBD3992369C19E9C8B66573;2108.
  ) 
 Here is how much of TeX's memory you used:
- 11738 strings out of 480502
- 172136 string characters out of 5899348
- 494804 words of memory out of 5000000
- 29139 multiletter control sequences out of 15000+600000
+ 12239 strings out of 480502
+ 178122 string characters out of 5899348
+ 575135 words of memory out of 5000000
+ 29604 multiletter control sequences out of 15000+600000
  469655 words of font info for 76 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 60i,13n,66p,445b,528s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,13n,66p,520b,528s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/home/andrea/.TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/home/andrea/
 .TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/home/andrea/.TinyTeX/texmf-
 dist/fonts/enc/dvips/lm/lm-rm.enc}{/home/andrea/.TinyTeX/texmf-dist/fonts/enc/d
@@ -534,10 +998,10 @@ nts/type1/public/lm/lmro10.pfb></home/andrea/.TinyTeX/texmf-dist/fonts/type1/pu
 blic/lm/lmsy10.pfb></home/andrea/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmtk
 10.pfb></home/andrea/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></hom
 e/andrea/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmtti10.pfb>
-Output written on _main.pdf (19 pages, 308323 bytes).
+Output written on _main.pdf (27 pages, 333037 bytes).
 PDF statistics:
- 260 PDF objects out of 1000 (max. 8388607)
- 205 compressed objects within 3 object streams
- 59 named destinations out of 1000 (max. 500000)
- 65 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 342 PDF objects out of 1000 (max. 8388607)
+ 279 compressed objects within 3 object streams
+ 88 named destinations out of 1000 (max. 500000)
+ 105 words of extra memory for PDF output out of 10000 (max. 10000000)
 

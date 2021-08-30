@@ -261,6 +261,8 @@ def bin_to_mv_mcd(working_dir):
             if int(inp.strip()) == int(out.strip()) or dv == int(inp):
                 dv = dv/2
                 # mv indica il massimo numeor che posso rappresentare con quei bit, ovvero il dominio del multivalore
+            if dv >= 8:
+                dv = 2 
             mv = pow(2, dv)
             print('{}\ninp: {}\nout:{}\nmulti-valore:{}\ndivide ogni:{}\n'.format(pla,
                   inp.strip(), out.strip(), int(mv), int(dv)))

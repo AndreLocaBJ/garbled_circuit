@@ -1,4 +1,4 @@
-# Benchmark "./prova/pla/fout" written by ABC on Fri Jul 30 16:38:03 2021
+# Benchmark "./prova/pla/fout" written by ABC on Mon Aug 30 13:53:53 2021
 .model ./prova/pla/fout
 .inputs pi0 pi1 pi2 pi3 pi4 pi5
 .outputs po0 po1 po2 po3 po4 po5 po6 po7 po8 po9

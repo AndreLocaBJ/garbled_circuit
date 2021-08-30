@@ -1,0 +1,420 @@
+read_blif_mv ./prova/blfmv/amd.mv
+sweep
+eliminate -l 1
+simplify -m nocomp
+eliminate -l 1
+sweep
+eliminate -l 5
+simplify
+sweep
+eliminate -l 1
+sweep
+fullsimp -m nocomp
+write_blif_mv ./prova/blfmv/synth/mvsis/amd.mv
+
+read_blif_mv ./prova/blfmv/tms.mv
+sweep
+eliminate -l 1
+simplify -m nocomp
+eliminate -l 1
+sweep
+eliminate -l 5
+simplify
+sweep
+eliminate -l 1
+sweep
+fullsimp -m nocomp
+write_blif_mv ./prova/blfmv/synth/mvsis/tms.mv
+
+read_blif_mv ./prova/blfmv/pdc.mv
+sweep
+eliminate -l 1
+simplify -m nocomp
+eliminate -l 1
+sweep
+eliminate -l 5
+simplify
+sweep
+eliminate -l 1
+sweep
+fullsimp -m nocomp
+write_blif_mv ./prova/blfmv/synth/mvsis/pdc.mv
+
+read_blif_mv ./prova/blfmv/mlp4.mv
+sweep
+eliminate -l 1
+simplify -m nocomp
+eliminate -l 1
+sweep
+eliminate -l 5
+simplify
+sweep
+eliminate -l 1
+sweep
+fullsimp -m nocomp
+write_blif_mv ./prova/blfmv/synth/mvsis/mlp4.mv
+
+read_blif_mv ./prova/blfmv/apla.mv
+sweep
+eliminate -l 1
+simplify -m nocomp
+eliminate -l 1
+sweep
+eliminate -l 5
+simplify
+sweep
+eliminate -l 1
+sweep
+fullsimp -m nocomp
+write_blif_mv ./prova/blfmv/synth/mvsis/apla.mv
+
+read_blif_mv ./prova/blfmv/f51m.mv
+sweep
+eliminate -l 1
+simplify -m nocomp
+eliminate -l 1
+sweep
+eliminate -l 5
+simplify
+sweep
+eliminate -l 1
+sweep
+fullsimp -m nocomp
+write_blif_mv ./prova/blfmv/synth/mvsis/f51m.mv
+
+read_blif_mv ./prova/blfmv/m4.mv
+sweep
+eliminate -l 1
+simplify -m nocomp
+eliminate -l 1
+sweep
+eliminate -l 5
+simplify
+sweep
+eliminate -l 1
+sweep
+fullsimp -m nocomp
+write_blif_mv ./prova/blfmv/synth/mvsis/m4.mv
+
+read_blif_mv ./prova/blfmv/newtpla2.mv
+sweep
+eliminate -l 1
+simplify -m nocomp
+eliminate -l 1
+sweep
+eliminate -l 5
+simplify
+sweep
+eliminate -l 1
+sweep
+fullsimp -m nocomp
+write_blif_mv ./prova/blfmv/synth/mvsis/newtpla2.mv
+
+read_blif_mv ./prova/blfmv/test1.mv
+sweep
+eliminate -l 1
+simplify -m nocomp
+eliminate -l 1
+sweep
+eliminate -l 5
+simplify
+sweep
+eliminate -l 1
+sweep
+fullsimp -m nocomp
+write_blif_mv ./prova/blfmv/synth/mvsis/test1.mv
+
+read_blif_mv ./prova/blfmv/m2.mv
+sweep
+eliminate -l 1
+simplify -m nocomp
+eliminate -l 1
+sweep
+eliminate -l 5
+simplify
+sweep
+eliminate -l 1
+sweep
+fullsimp -m nocomp
+write_blif_mv ./prova/blfmv/synth/mvsis/m2.mv
+
+read_blif_mv ./prova/blfmv/br2.mv
+sweep
+eliminate -l 1
+simplify -m nocomp
+eliminate -l 1
+sweep
+eliminate -l 5
+simplify
+sweep
+eliminate -l 1
+sweep
+fullsimp -m nocomp
+write_blif_mv ./prova/blfmv/synth/mvsis/br2.mv
+
+read_blif_mv ./prova/blfmv/alu1.mv
+sweep
+eliminate -l 1
+simplify -m nocomp
+eliminate -l 1
+sweep
+eliminate -l 5
+simplify
+sweep
+eliminate -l 1
+sweep
+fullsimp -m nocomp
+write_blif_mv ./prova/blfmv/synth/mvsis/alu1.mv
+
+read_blif_mv ./prova/blfmv/sqr6.mv
+sweep
+eliminate -l 1
+simplify -m nocomp
+eliminate -l 1
+sweep
+eliminate -l 5
+simplify
+sweep
+eliminate -l 1
+sweep
+fullsimp -m nocomp
+write_blif_mv ./prova/blfmv/synth/mvsis/sqr6.mv
+
+read_blif_mv ./prova/blfmv/bench.mv
+sweep
+eliminate -l 1
+simplify -m nocomp
+eliminate -l 1
+sweep
+eliminate -l 5
+simplify
+sweep
+eliminate -l 1
+sweep
+fullsimp -m nocomp
+write_blif_mv ./prova/blfmv/synth/mvsis/bench.mv
+
+read_blif_mv ./prova/blfmv/in5.mv
+sweep
+eliminate -l 1
+simplify -m nocomp
+eliminate -l 1
+sweep
+eliminate -l 5
+simplify
+sweep
+eliminate -l 1
+sweep
+fullsimp -m nocomp
+write_blif_mv ./prova/blfmv/synth/mvsis/in5.mv
+
+read_blif_mv ./prova/blfmv/newtpla1.mv
+sweep
+eliminate -l 1
+simplify -m nocomp
+eliminate -l 1
+sweep
+eliminate -l 5
+simplify
+sweep
+eliminate -l 1
+sweep
+fullsimp -m nocomp
+write_blif_mv ./prova/blfmv/synth/mvsis/newtpla1.mv
+
+read_blif_mv ./prova/blfmv/m3.mv
+sweep
+eliminate -l 1
+simplify -m nocomp
+eliminate -l 1
+sweep
+eliminate -l 5
+simplify
+sweep
+eliminate -l 1
+sweep
+fullsimp -m nocomp
+write_blif_mv ./prova/blfmv/synth/mvsis/m3.mv
+
+read_blif_mv ./prova/blfmv/newapla.mv
+sweep
+eliminate -l 1
+simplify -m nocomp
+eliminate -l 1
+sweep
+eliminate -l 5
+simplify
+sweep
+eliminate -l 1
+sweep
+fullsimp -m nocomp
+write_blif_mv ./prova/blfmv/synth/mvsis/newapla.mv
+
+read_blif_mv ./prova/blfmv/l8err.mv
+sweep
+eliminate -l 1
+simplify -m nocomp
+eliminate -l 1
+sweep
+eliminate -l 5
+simplify
+sweep
+eliminate -l 1
+sweep
+fullsimp -m nocomp
+write_blif_mv ./prova/blfmv/synth/mvsis/l8err.mv
+
+read_blif_mv ./prova/blfmv/t4.mv
+sweep
+eliminate -l 1
+simplify -m nocomp
+eliminate -l 1
+sweep
+eliminate -l 5
+simplify
+sweep
+eliminate -l 1
+sweep
+fullsimp -m nocomp
+write_blif_mv ./prova/blfmv/synth/mvsis/t4.mv
+
+read_blif_mv ./prova/blfmv/br1.mv
+sweep
+eliminate -l 1
+simplify -m nocomp
+eliminate -l 1
+sweep
+eliminate -l 5
+simplify
+sweep
+eliminate -l 1
+sweep
+fullsimp -m nocomp
+write_blif_mv ./prova/blfmv/synth/mvsis/br1.mv
+
+read_blif_mv ./prova/blfmv/fout.mv
+sweep
+eliminate -l 1
+simplify -m nocomp
+eliminate -l 1
+sweep
+eliminate -l 5
+simplify
+sweep
+eliminate -l 1
+sweep
+fullsimp -m nocomp
+write_blif_mv ./prova/blfmv/synth/mvsis/fout.mv
+
+read_blif_mv ./prova/blfmv/mp2d.mv
+sweep
+eliminate -l 1
+simplify -m nocomp
+eliminate -l 1
+sweep
+eliminate -l 5
+simplify
+sweep
+eliminate -l 1
+sweep
+fullsimp -m nocomp
+write_blif_mv ./prova/blfmv/synth/mvsis/mp2d.mv
+
+read_blif_mv ./prova/blfmv/alu2.mv
+sweep
+eliminate -l 1
+simplify -m nocomp
+eliminate -l 1
+sweep
+eliminate -l 5
+simplify
+sweep
+eliminate -l 1
+sweep
+fullsimp -m nocomp
+write_blif_mv ./prova/blfmv/synth/mvsis/alu2.mv
+
+read_blif_mv ./prova/blfmv/t3.mv
+sweep
+eliminate -l 1
+simplify -m nocomp
+eliminate -l 1
+sweep
+eliminate -l 5
+simplify
+sweep
+eliminate -l 1
+sweep
+fullsimp -m nocomp
+write_blif_mv ./prova/blfmv/synth/mvsis/t3.mv
+
+read_blif_mv ./prova/blfmv/p3.mv
+sweep
+eliminate -l 1
+simplify -m nocomp
+eliminate -l 1
+sweep
+eliminate -l 5
+simplify
+sweep
+eliminate -l 1
+sweep
+fullsimp -m nocomp
+write_blif_mv ./prova/blfmv/synth/mvsis/p3.mv
+
+read_blif_mv ./prova/blfmv/m1.mv
+sweep
+eliminate -l 1
+simplify -m nocomp
+eliminate -l 1
+sweep
+eliminate -l 5
+simplify
+sweep
+eliminate -l 1
+sweep
+fullsimp -m nocomp
+write_blif_mv ./prova/blfmv/synth/mvsis/m1.mv
+
+read_blif_mv ./prova/blfmv/bcd_div3.mv
+sweep
+eliminate -l 1
+simplify -m nocomp
+eliminate -l 1
+sweep
+eliminate -l 5
+simplify
+sweep
+eliminate -l 1
+sweep
+fullsimp -m nocomp
+write_blif_mv ./prova/blfmv/synth/mvsis/bcd_div3.mv
+
+read_blif_mv ./prova/blfmv/alu3.mv
+sweep
+eliminate -l 1
+simplify -m nocomp
+eliminate -l 1
+sweep
+eliminate -l 5
+simplify
+sweep
+eliminate -l 1
+sweep
+fullsimp -m nocomp
+write_blif_mv ./prova/blfmv/synth/mvsis/alu3.mv
+
+read_blif_mv ./prova/blfmv/in7.mv
+sweep
+eliminate -l 1
+simplify -m nocomp
+eliminate -l 1
+sweep
+eliminate -l 5
+simplify
+sweep
+eliminate -l 1
+sweep
+fullsimp -m nocomp
+write_blif_mv ./prova/blfmv/synth/mvsis/in7.mv
+

@@ -1,4 +1,4 @@
-# Benchmark "./prova/pla/bcd_div3" written by ABC on Fri Jul 30 16:38:03 2021
+# Benchmark "./prova/pla/bcd_div3" written by ABC on Mon Aug 30 13:53:52 2021
 .model ./prova/pla/bcd_div3
 .inputs x0 x1 x2 x3
 .outputs z0 z1 z2 z3

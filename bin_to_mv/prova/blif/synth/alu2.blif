@@ -1,4 +1,4 @@
-# Benchmark "./prova/pla/alu2" written by ABC on Fri Jul 30 16:38:04 2021
+# Benchmark "./prova/pla/alu2" written by ABC on Mon Aug 30 13:53:54 2021
 .model ./prova/pla/alu2
 .inputs pi0 pi1 pi2 pi3 pi4 pi5 pi6 pi7 pi8 pi9
 .outputs po0 po1 po2 po3 po4 po5 po6 po7

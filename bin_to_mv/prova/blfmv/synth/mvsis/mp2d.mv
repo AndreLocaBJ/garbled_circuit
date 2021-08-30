@@ -1,0 +1,35 @@
+.model ./prova
+.spec ./prova/blfmv/mp2d.mv
+.inputs a b c d e f g
+.outputs o0 o1 o2 o3 o4 o5 o6
+.default_input_arrival 0 0
+.mv a 4
+.mv b 4
+.mv c 4
+.mv d 4
+.mv e 4
+.mv f 4
+.mv g 4
+.mv o0 4
+.mv o1 4
+.mv o2 4
+.mv o3 4
+.mv o4 4
+.mv o5 4
+.mv o6 4
+.table o0
+0
+.table o1
+0
+.table o2
+0
+.table o3
+0
+.table o4
+0
+.table o5
+0
+.table o6
+.default 0
+1
+.end

@@ -1,1 +1,244 @@
 # Risultati sperimentali
+
+Una volta che il il processo di conversione dei circuiti e che tutto il sistema di automazione dei processi si è proceduto con l'analisi sperimentale per studiare come se questo nuovo approccio possa risultare migliore a livello di costi prestazionali.
+
+Per ottimizzare i costi sono stati utilizzati diversi approcci sfruttando entrambi i tool di sintesi disponibili e diversi parametri per la selezione del dominio.
+
+Le operazioni computazionali sono state effettuate su un DELL-XPS 13 9350, la macchina he le seguenti specifiche:
+
+- Processore: Intel i5-6200U@2.30GHz con 2 core e 4 thread
+- Memoria: 8Gb LPDDR3@1866MHz
+- Sistema Operativo: Ubuntu 21.04
+
+## MVSIS
+
+Nelle prime fasi di sperimentazione si e' decido di utilizzare *MVSIS* come motore di sintesi si per i circuiti binari che per quelli multivalore. Questo primo approccio nasce dal voler replicare le operazioni che si fanno solitamente sulla logica binaria e applicarle a quella multivalore.
+
+Per le operazioni di sintesi si sono utilizzati i seguenti comandi
+
+```
+read_blif_mv ./prova/blfmv/amd.mv
+sweep
+eliminate -l 1
+simplify -m nocomp
+eliminate -l 1
+sweep
+eliminate -l 5
+simplify
+sweep
+eliminate -l 1
+sweep
+fullsimp -m nocomp
+write_blif_mv ./prova/blfmv/synth/mvsis/amd.mv
+```
+Con questi comandi si prende il circuito iniziale, appena preso in ingresso, vengono fatte delle operazioni di pulizia e di rimozione di nodi inutili con i comandi *eliminatre* e *sweep*. successivamente tramite *simplify* e *fullsimp* il circuito viene semplificato sia a livello di nodi del circuito che nella sua interezza.
+
+Questi comandi sono la conversione della variante *MVSIS* di *script.rugged* usato con il tool per la logica binaria *SIS*. Non si e' riusciti a fare una conversione 1:1 dello script in quanto non tutti i comandi sono replicabili.
+
+In rete e in altri paper viene citato uno script chiamato *mvsis.rugged* che dovrebbe rappresentare la vera conversione adattata per il multivalore ma non si è riusciti a reperire questo file in nessun repository.
+
+### Conversione multivalore fissa
+
+Come primo approccio alla conversione da binaria a multivalore abbiamo optato per lo stesso valore di dominio per tutti i circuiti. La scelta è stata quella di andare ad aggiungere altri 2 valori rispetto a ad un circuito binario utilizzando il modulo 3.
+
+|NOME CIRC|COSTO BOOL|INPUT ALICE|INPUT BOB|DOMINIO MULTI|COSTO MULTI|INPUT ALICE|INPUT BOB|
+|:-------:|:--------:|:---------:|:-------:|:-----------:|:---------:|:---------:|:-------:|
+|   amd   |   469    |     7     |    7    |      3      |   47568   |     3     |    4    |
+|   tms   |   322    |     4     |    4    |      3      |   2048    |     2     |    2    |
+|   pdc   |   2818   |     7     |    7    |      3      |  1310720  |     4     |    4    |
+|  mlp4   |   594    |     4     |    4    |      3      |    784    |     2     |    2    |
+|  apla   |   343    |     5     |    5    |      3      |   1029    |     2     |    3    |
+|  f51m   |   261    |     4     |    4    |      3      |    340    |     2     |    2    |
+|   m4    |   974    |     4     |    4    |      3      |   1601    |     2     |    2    |
+|newtpla2 |    48    |     5     |    5    |      3      |   2048    |     2     |    3    |
+|  test1  |   1095   |     4     |    4    |      3      |   1280    |     2     |    2    |
+|   m2    |   339    |     4     |    4    |      3      |   1121    |     2     |    2    |
+|   br2   |   179    |     6     |    6    |      3      |   16384   |     3     |    3    |
+|  alu1   |    83    |     6     |    6    |      3      |   5122    |     3     |    3    |
+|  sqr6   |   197    |     3     |    3    |      3      |    276    |     1     |    2    |
+|  bench  |   198    |     3     |    3    |      3      |    256    |     1     |    2    |
+|   in5   |   446    |     7     |    7    |      3      | 117440512 |     6     |    6    |
+|newtpla1 |    33    |     5     |    5    |      3      |   1024    |     2     |    3    |
+|   m3    |   571    |     4     |    4    |      3      |   1169    |     2     |    2    |
+| newapla |    83    |     6     |    6    |      3      |   9728    |     3     |    3    |
+|  l8err  |   454    |     4     |    4    |      3      |    337    |     2     |    2    |
+|   t4    |   238    |     6     |    6    |      3      |   10240   |     3     |    3    |
+|   br1   |   252    |     6     |    6    |      3      |   16384   |     3     |    3    |
+|  fout   |   442    |     3     |    3    |      3      |    320    |     1     |    2    |
+|  mp2d   |   136    |     7     |    7    |      3      |     7     |     3     |    4    |
+|  alu2   |   225    |     5     |    5    |      3      |   1282    |     2     |    3    |
+|   t3    |   131    |     6     |    6    |      3      |     4     |     3     |    3    |
+|   p3    |   385    |     4     |    4    |      3      |   1408    |     2     |    2    |
+|   m1    |   125    |     3     |    3    |      3      |    225    |     1     |    2    |
+|bcd_div3 |    54    |     2     |    2    |      3      |    32     |     1     |    1    |
+|  alu3   |   139    |     5     |    5    |      3      |     4     |     2     |    3    |
+|   in7   |   182    |     7     |    7    |      3      | 23085056  |     6     |    7    |
+
+Questa tabella racchiude i risultati ottenuti dalla sintesi dei circuiti multivalore e dei circuiti binari. Possiamo notare che nella maggior parte dei casi il circuito binario mantiene ancora una grande efficienza rispetto a quello multivalore.
+
+### MVSIS e dominio variabile
+
+Nella sperimentazione successiva si è voluto testare un dominio variabile in base al MCD, come descritto nel capitolo precedente. Nella seguente tabella viene mostrati i costi dei circuiti senza sintesi. Vediamo che nella maggiorn parte dei casi il dominio multivalore senza sintesi ha un costo minore, questo è figlio del minor numero di input che le parti durante la computazione dovranno inserire all'interno del protocollo.
+
+|NOME CIRC|COSTO BOOL|INPUT ALICE|INPUT BOB|DOMINIO MULTI|COSTO MULTIVALORE|INPUT ALICE|INPUT BOB|
+|:-------:|:--------:|:---------:|:-------:|:-----------:|:---------------:|:---------:|:-------:|
+|   amd   |  393216  |     7     |    7    |      4      |     196608      |     3     |    4    |
+|   tms   |   4096   |     4     |    4    |     16      |      1024       |     1     |    1    |
+|   pdc   | 2621440  |     8     |    8    |      4      |     1310720     |     4     |    4    |
+|  mlp4   |   2048   |     4     |    4    |     16      |       512       |     1     |    1    |
+|  apla   |  12288   |     5     |    5    |      4      |      6144       |     2     |    3    |
+|  f51m   |   2048   |     4     |    4    |     16      |       512       |     1     |    1    |
+|   m4    |   4096   |     4     |    4    |     16      |      1024       |     1     |    1    |
+|newtpla2 |   4096   |     5     |    5    |      4      |      2048       |     2     |    3    |
+|  test1  |   2560   |     4     |    4    |      4      |      1280       |     2     |    2    |
+|   m2    |   4096   |     4     |    4    |     16      |      1024       |     1     |    1    |
+|   br2   |  32768   |     6     |    6    |     16      |      8192       |     1     |    2    |
+|  alu1   |  32768   |     6     |    6    |     16      |      8192       |     1     |    2    |
+|  sqr6   |   705    |     3     |    3    |      8      |       256       |     1     |    1    |
+|  bench  |   512    |     3     |    3    |      4      |       256       |     1     |    2    |
+|   in5   | 1835008  |     9     |    9    |      4      |    117440512    |     6     |    6    |
+|newtpla1 |   2048   |     5     |    5    |      4      |      1024       |     2     |    3    |
+|   m3    |   4096   |     4     |    4    |     16      |      1024       |     1     |    1    |
+| newapla |  40960   |     6     |    6    |      4      |      20480      |     3     |    3    |
+|  l8err  |   1283   |     4     |    4    |     16      |       512       |     1     |    1    |
+|   t4    |  32768   |     6     |    6    |     16      |      8192       |     1     |    2    |
+|   br1   |  32768   |     6     |    6    |     16      |      8192       |     1     |    2    |
+|  fout   |   640    |     3     |    3    |      4      |       320       |     1     |    2    |
+|  mp2d   |  229376  |     7     |    7    |     128     |      32768      |     1     |    1    |
+|  alu2   |   8192   |     5     |    5    |      4      |      4096       |     2     |    3    |
+|   t3    |  32768   |     6     |    6    |     16      |      8192       |     1     |    2    |
+|   p3    |   3074   |     4     |    4    |      4      |      1792       |     2     |    2    |
+|   m1    |   768    |     3     |    3    |      8      |       256       |     1     |    1    |
+|bcd_div3 |    64    |     2     |    2    |      4      |       32        |     1     |    1    |
+|  alu3   |   8192   |     5     |    5    |      4      |      4096       |     2     |    3    |
+|   in7   | 1310720  |     9     |    9    |      4      |    335544320    |     6     |    7    |
+
+Una vota applicato la sintesi dei circuiti i risultati sono i seguenti.
+
+|NOME CIRC|COSTO BOOL|INPUT ALICE|INPUT BOB|DOMINIO MULTI|COSTO MULTIVALORE|INPUT ALICE|INPUT BOB|
+|:-------:|:--------:|:---------:|:-------:|:-----------:|:---------------:|:---------:|:-------:|
+|   amd   |   469    |     7     |    7    |      4      |      47568      |     3     |    4    |
+|   tms   |   322    |     4     |    4    |     16      |      1024       |     1     |    1    |
+|   pdc   |   2818   |     7     |    7    |      4      |     1310720     |     4     |    4    |
+|  mlp4   |   594    |     4     |    4    |     16      |       512       |     1     |    1    |
+|  apla   |   343    |     5     |    5    |      4      |      1029       |     2     |    3    |
+|  f51m   |   261    |     4     |    4    |     16      |       272       |     1     |    1    |
+|   m4    |   974    |     4     |    4    |     16      |      1024       |     1     |    1    |
+|newtpla2 |    48    |     5     |    5    |      4      |      2048       |     2     |    3    |
+|  test1  |   1095   |     4     |    4    |      4      |      1280       |     2     |    2    |
+|   m2    |   339    |     4     |    4    |     16      |      1024       |     1     |    1    |
+|   br2   |   179    |     6     |    6    |     16      |      8192       |     1     |    2    |
+|  alu1   |    83    |     6     |    6    |     16      |      4097       |     1     |    2    |
+|  sqr6   |   197    |     3     |    3    |      8      |       200       |     1     |    1    |
+|  bench  |   198    |     3     |    3    |      4      |       256       |     1     |    2    |
+|   in5   |   446    |     7     |    7    |      4      |    117440512    |     6     |    6    |
+|newtpla1 |    33    |     5     |    5    |      4      |      1024       |     2     |    3    |
+|   m3    |   571    |     4     |    4    |     16      |      1024       |     1     |    1    |
+| newapla |    83    |     6     |    6    |      4      |      9728       |     3     |    3    |
+|  l8err  |   454    |     4     |    4    |     16      |       512       |     1     |    1    |
+|   t4    |   238    |     6     |    6    |     16      |      8192       |     1     |    2    |
+|   br1   |   252    |     6     |    6    |     16      |      8192       |     1     |    2    |
+|  fout   |   442    |     3     |    3    |      4      |       320       |     1     |    2    |
+
+I costi vengono notevolmente abbassati nel caso del booleano mentre in quello multivalore rimangono più elevati. Questo fenomeno potrebbe avere spiegazione nel fatto che la sintesi sui circuiti binari è più sviluppata e sono stati trovati metodi di sintesi più efficaci rispetto ad una logica multivalore.
+
+Il tool *MVSIS* infatti, come detto prima, non è più sviluppato e mantenuto, si presenta infatti più lento nella sintesi ed ha una gestione della memoria che porta a dump di memoria durante l'analisi di circuiti di grandi dimensioni.
+
+## ABC
+
+Notando che inizialmente il costo del circuito multivalore possiede dei costi più bassi per via del minor numero di input e che gli strumenti di sintesi siano però più ottimizzati per la logica binaria si è provato ad utilizzare un approccio ibrido.
+
+Sfruttando come input un circuito multivalore ad ABC, questo tool converte automaticamente il circuito in binario per poi utilizzare i suoi algoritmi di sintesi ottimizzati. 
+
+```
+read_blif_mv ./prova/blfmv/amd.mv
+strash
+compress2
+cl
+resyn2
+cl
+write_blif_mv ./prova/blfmv/synth/abc/amd.mv
+```
+
+Rispetto a prima però l'output post sintesi non sarà più un circuito multivalore ma uno binario.
+
+## ABC e dominio fisso
+
+Come con *MVSIS* abbiamo inizialmente utilizzato un dominio fisso per fare una prima analisi.
+
+|NOME CIRC|COSTO BOOL|INPUT ALICE|INPUT BOB|DOMINIO MULTI|COSTO MULTIVALORE|INPUT ALICE|INPUT BOB|
+|:-------:|:--------:|:---------:|:-------:|:-----------:|:---------------:|:---------:|:-------:|
+|   amd   |   469    |     7     |    7    |      2      |      1860       |     7     |    7    |
+|   tms   |   322    |     4     |    4    |      2      |       198       |     4     |    4    |
+|   pdc   |   2818   |     7     |    7    |      2      |      6032       |     7     |    7    |
+|  mlp4   |   594    |     4     |    4    |      2      |       764       |     4     |    4    |
+|  apla   |   343    |     5     |    5    |      2      |       213       |     5     |    5    |
+|  f51m   |   261    |     4     |    4    |      2      |       808       |     4     |    4    |
+|   m4    |   974    |     4     |    4    |      2      |       643       |     4     |    4    |
+|newtpla2 |    48    |     5     |    5    |      2      |       48        |     5     |    5    |
+|  test1  |   1095   |     4     |    4    |      2      |       354       |     4     |    4    |
+|   m2    |   339    |     4     |    4    |      2      |       320       |     4     |    4    |
+|   br2   |   179    |     6     |    6    |      2      |       110       |     6     |    6    |
+|  alu1   |    83    |     6     |    6    |      2      |       83        |     6     |    6    |
+|  sqr6   |   197    |     3     |    3    |      2      |       263       |     3     |    3    |
+|  bench  |   198    |     3     |    3    |      2      |       47        |     3     |    3    |
+|   in5   |   446    |     7     |    7    |      2      |      1336       |     7     |    7    |
+|newtpla1 |    33    |     5     |    5    |      2      |       33        |     5     |    5    |
+|   m3    |   571    |     4     |    4    |      2      |       381       |     4     |    4    |
+| newapla |    83    |     6     |    6    |      2      |       81        |     6     |    6    |
+|  l8err  |   454    |     4     |    4    |      2      |       434       |     4     |    4    |
+|   t4    |   238    |     6     |    6    |      2      |       197       |     6     |    6    |
+|   br1   |   252    |     6     |    6    |      2      |       153       |     6     |    6    |
+|  fout   |   442    |     3     |    3    |      2      |       214       |     3     |    3    |
+|  mp2d   |   136    |     7     |    7    |      2      |       315       |     5     |    6    |
+|  alu2   |   225    |     5     |    5    |      2      |       554       |     5     |    5    |
+|   t3    |   131    |     6     |    6    |      2      |       160       |     6     |    6    |
+|   p3    |   385    |     4     |    4    |      2      |       139       |     4     |    4    |
+|   m1    |   125    |     3     |    3    |      2      |       116       |     3     |    3    |
+|bcd_div3 |    54    |     2     |    2    |      2      |       46        |     2     |    2    |
+|  alu3   |   139    |     5     |    5    |      2      |       406       |     5     |    5    |
+|   in7   |   182    |     7     |    7    |      2      |      1676       |     7     |    7    |
+
+Possiamo notare come i risultati siano già migliorati e in molti casi la sintesi del circuito multivalore sia migliore di quella binaria tranne in sporadici casi.
+
+## ABC e dominio variabile
+
+Come ultimo test, come in *MVSIS*, si utilizzato anche l'approccio MCD.
+
+|NOME CIRC|COSTO BOOL|INPUT ALICE|INPUT BOB|DOMINIO MULTI|COSTO MULTIVALORE|INPUT ALICE|INPUT BOB|
+|:-------:|:--------:|:---------:|:-------:|:-----------:|:---------------:|:---------:|:-------:|
+|   amd   |   469    |     7     |    7    |      2      |      1860       |     7     |    7    |
+|   tms   |   322    |     4     |    4    |      2      |       184       |     4     |    4    |
+|   pdc   |   2818   |     7     |    7    |      2      |      6032       |     7     |    7    |
+|  mlp4   |   594    |     4     |    4    |      2      |       669       |     4     |    4    |
+|  apla   |   343    |     5     |    5    |      2      |       213       |     5     |    5    |
+|  f51m   |   261    |     4     |    4    |      2      |       344       |     4     |    4    |
+|   m4    |   974    |     4     |    4    |      2      |       658       |     4     |    4    |
+|newtpla2 |    48    |     5     |    5    |      2      |       48        |     5     |    5    |
+|  test1  |   1095   |     4     |    4    |      2      |       354       |     4     |    4    |
+|   m2    |   339    |     4     |    4    |      2      |       350       |     4     |    4    |
+|   br2   |   179    |     6     |    6    |      2      |       130       |     6     |    6    |
+|  alu1   |    83    |     6     |    6    |      2      |       774       |     6     |    6    |
+|  sqr6   |   197    |     3     |    3    |      2      |       234       |     3     |    3    |
+|  bench  |   198    |     3     |    3    |      2      |       47        |     3     |    3    |
+|   in5   |   446    |     7     |    7    |      2      |      1336       |     7     |    7    |
+|newtpla1 |    33    |     5     |    5    |      2      |       33        |     5     |    5    |
+|   m3    |   571    |     4     |    4    |      2      |       388       |     4     |    4    |
+| newapla |    83    |     6     |    6    |      2      |       81        |     6     |    6    |
+|  l8err  |   454    |     4     |    4    |      2      |       338       |     4     |    4    |
+|   t4    |   238    |     6     |    6    |      2      |       248       |     6     |    6    |
+|   br1   |   252    |     6     |    6    |      2      |       136       |     6     |    6    |
+|  fout   |   442    |     3     |    3    |      2      |       214       |     3     |    3    |
+|  mp2d   |   136    |     7     |    7    |      2      |      1677       |     7     |    7    |
+|  alu2   |   225    |     5     |    5    |      2      |       554       |     5     |    5    |
+|   t3    |   131    |     6     |    6    |      2      |       354       |     6     |    6    |
+|   p3    |   385    |     4     |    4    |      2      |       139       |     4     |    4    |
+|   m1    |   125    |     3     |    3    |      2      |       112       |     3     |    3    |
+|bcd_div3 |    54    |     2     |    2    |      2      |       46        |     2     |    2    |
+|  alu3   |   139    |     5     |    5    |      2      |       406       |     5     |    5    |
+|   in7   |   182    |     7     |    7    |      2      |      1676       |     7     |    7    |
+
+In questo caso possiamo notare che tra i due approcci non ci siano differenze stanziali, questo potrebbe essere dato da come *abc* legge i circuiti multivalore in input.
+
+Questi ultimi 2 approcci restano molo interessanti in quanto vanno a ridurre notevolmente i costi di ingresso degli input nel circuito.
+

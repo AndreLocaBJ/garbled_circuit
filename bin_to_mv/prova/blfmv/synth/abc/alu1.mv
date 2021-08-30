@@ -1,0 +1,158 @@
+# Benchmark "./prova" written by ABC on Mon Aug 30 13:53:58 2021
+.model ./prova
+.inputs pi00 pi01 pi02 pi03 pi04 pi05 pi06 pi07 pi08 pi09 pi10 pi11
+.outputs po0 po1 po2 po3 po4 po5 po6 po7
+
+
+.table pi04 pi10 new_n21_
+0 - 0
+- 1 0
+1 0 1
+
+.table pi04 pi11 new_n22_
+1 - 0
+- 1 0
+0 0 1
+
+.table pi00 new_n22_ new_n23_
+0 - 0
+- 1 0
+1 0 1
+
+.table new_n21_ new_n23_ po0
+0 1 0
+1 - 1
+- 0 1
+
+.table pi05 pi10 new_n25_
+0 - 0
+- 1 0
+1 0 1
+
+.table pi05 pi11 new_n26_
+1 - 0
+- 1 0
+0 0 1
+
+.table pi01 new_n26_ new_n27_
+0 - 0
+- 1 0
+1 0 1
+
+.table new_n25_ new_n27_ po1
+0 1 0
+1 - 1
+- 0 1
+
+.table pi06 pi10 new_n29_
+0 - 0
+- 1 0
+1 0 1
+
+.table pi06 pi11 new_n30_
+1 - 0
+- 1 0
+0 0 1
+
+.table pi02 new_n30_ new_n31_
+0 - 0
+- 1 0
+1 0 1
+
+.table new_n29_ new_n31_ po2
+0 1 0
+1 - 1
+- 0 1
+
+.table pi07 pi10 new_n33_
+0 - 0
+- 1 0
+1 0 1
+
+.table pi07 pi11 new_n34_
+1 - 0
+- 1 0
+0 0 1
+
+.table pi03 new_n34_ new_n35_
+0 - 0
+- 1 0
+1 0 1
+
+.table new_n33_ new_n35_ po3
+0 1 0
+1 - 1
+- 0 1
+
+.table pi04 pi09 new_n37_
+0 - 0
+- 0 0
+1 1 1
+
+.table pi04 pi08 new_n38_
+1 - 0
+- 0 0
+0 1 1
+
+.table pi00 new_n38_ new_n39_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n37_ new_n39_ po4
+1 - 0
+- 0 0
+0 1 1
+
+.table pi05 pi09 new_n41_
+0 - 0
+- 0 0
+1 1 1
+
+.table pi05 pi08 new_n42_
+1 - 0
+- 0 0
+0 1 1
+
+.table pi01 new_n42_ new_n43_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n41_ new_n43_ po5
+1 - 0
+- 0 0
+0 1 1
+
+.table pi02 pi06 new_n45_
+1 - 0
+- 0 0
+0 1 1
+
+.table pi09 new_n45_ po6
+1 - 0
+- 0 0
+0 1 1
+
+.table pi07 pi09 new_n47_
+0 - 0
+- 0 0
+1 1 1
+
+.table pi07 pi08 new_n48_
+1 - 0
+- 0 0
+0 1 1
+
+.table pi03 new_n48_ new_n49_
+1 - 0
+- 1 0
+0 0 1
+
+.table new_n47_ new_n49_ po7
+1 - 0
+- 0 0
+0 1 1
+.end
+
+

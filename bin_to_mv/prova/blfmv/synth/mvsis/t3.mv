@@ -1,0 +1,25 @@
+.model ./prova
+.spec ./prova/blfmv/t3.mv
+.inputs a b c d e f
+.outputs o0 o1 o2 o3
+.default_input_arrival 0 0
+.mv a 4
+.mv b 4
+.mv c 4
+.mv d 4
+.mv e 4
+.mv f 4
+.mv o0 4
+.mv o1 4
+.mv o2 4
+.mv o3 4
+.table o0
+0
+.table o1
+1
+.table o2
+0
+.table o3
+.default 1
+0
+.end

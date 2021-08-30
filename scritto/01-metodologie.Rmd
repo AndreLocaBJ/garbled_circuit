@@ -464,7 +464,7 @@ Fatto questo ho ottenuto tutti i valori di costo sia dei circuiti booleani che b
 ```python
 with open('calcolo_costi.csv', 'a') as file:
     file.write(
-        'NOME CIRC;COSTO BOOLEANO;INPUT ALICE;INPUT BOBDOMINIO MULTIVALORE;COSTO MULTIVALORE;INPUT ALICEINPUT BOB\n')
+        'NOME CIRC;COSTO BOOLEANO;INPUT ALICE;INPUT BOB;DOMINIO MULTIVALORE;COSTO MULTIVALORE;INPUT ALICEINPUT BOB\n')
     for blfmv in listdir('{}/blfmv'.format(working_dir)):
         if blfmv.endswith('.mv'):
             print(blfmv)
@@ -495,3 +495,83 @@ Una volta ottenute tutte le informazioni, per avere una migliore visione per l'a
 ## Automatizzazione dei processi
 
 Tutte le fasi mostrate sopra, più altre secondarie, sono state automatizzate in modo che non si debbano effettuare operazioni ridondati per ogni circuito e generare perdite di dati causate da errori umani.
+
+### Struttura
+
+```
+.
+├── abc_alias.abc           #alias con metodi sintesi ABC
+├── automate.py             #automatizzatore dei processi
+├── calcolo_costi.csv
+├── calcolo_costi_no_synth.csv
+├── facili  #directory contenente i file d'analisi
+│   ├── blfmv
+│   │   └── synth # circuiti sintetizzati
+│   ├── blif
+│   │   └── synth
+│   └── pla_extended #pla espansi per debugging
+├── lib_mv  # libreria con tutti le funzioni create
+│   ├── automate_mvsis.py
+│   ├── bin_to_mv.py
+│   └── caloclo_costo.py
+├── pla_to_blif.mvsis   #file con sintesi per MVSIS
+├── synth_bool.abc      #file di sintesi  binaria per ABC
+└── synth_mv.abc        #file di sintesi multivalore per ABC
+```
+
+
+```python
+working_dir = './prova'
+if path.exists('{}/blif'.format(working_dir)) and pathexists('{}/blfmv'.format(working_dir)):
+    rmtree('{}/blif'.format(working_dir))
+    rmtree('{}/blfmv'.format(working_dir))
+  
+makedirs('{}/blif/synth'.format(working_dir))
+makedirs('{}/blfmv/synth'.format(working_dir))
+if path.exists('{}/synth_out.mvsis'.format(working_dir)):
+    remove('{}/synth_out.mvsis'.format(working_dir))
+
+if not path.exists('{}/pla'.format(working_dir)):
+    print('CARTELLA PLA NON PRESENTE')
+    exit
+```
+
+In questa fase viene creata la struttura delle directory che conterranno i file con i circuiti sintetizzati, se questa struttura è già presente vengono cancellate tutte le cartelle e i file all'interno e successivamente ricreate le cartelle vuote. 
+
+```python
+bin_to_mv_mcd(working_dir)
+if exists('./pla_to_blif.mvsis'):
+    remove('./pla_to_blif.mvsis')
+pla_to_blif(working_dir)
+```
+
+in questa sezione vengono chiamate 2 utility create con lo scopo di generare dei file utilizzabili da *ABC* e *MVSIS*.
+
+- **bin_to_mv_mcd**: ha lo scopo di creare i file *blfmv* di ogni circuito all'interno della directory di lavoro
+**pla_to_blif**: prende dalla directory di lavoro i file *pla* contenenti i circuiti e li converte in *blif*, come visto nei paragrafi precedenti.
+
+
+```python
+call(['abc', '-F', './pla_to_blif.mvsis'])
+synth(working_dir)
+call(['abc', '-F', './synth_bool.abc'])
+call(['abc', '-F', './synth_mv.abc'])
+```
+
+Una volta creati questi file compatibili con i nostri tool di sintesi essi vengono passati come parametro ad *ABC* o *MVSIS* s seconda delle esigenze di analisi.
+
+```python
+if exists('./calcolo_costi.csv'):
+    remove('./calcolo_costi.csv')
+if exists('./calcolo_costi_no_synth.csv'):
+    remove('./calcolo_costi_no_synth.csv')
+```
+
+Viene poi controllato se è presente già un file contenente dei costi e, se c'è, lo elimina
+
+```python
+calcolo_costi_synth(working_dir)
+calcolo_costi_no_synth(working_dir)
+```
+
+Le operazioni di calcolo dei costo vengono effettuate e infine viene generato il file *CSV* contenente i risultati.

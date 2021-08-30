@@ -1,4 +1,4 @@
-# Benchmark "./prova/pla/m1" written by ABC on Fri Jul 30 16:38:03 2021
+# Benchmark "./prova/pla/m1" written by ABC on Mon Aug 30 13:53:53 2021
 .model ./prova/pla/m1
 .inputs pi0 pi1 pi2 pi3 pi4 pi5
 .outputs po00 po01 po02 po03 po04 po05 po06 po07 po08 po09 po10 po11

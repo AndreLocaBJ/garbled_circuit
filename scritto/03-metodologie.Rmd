@@ -3,7 +3,9 @@
 Il protocollo di Yao prevede, durante i suoi scambi, che le due parti concordino anche sulla trasmissione di un circuito a cui entrambi gli attori debbano inserire dei valori di input. Uno degli scopi della nostra tesi consiste nel testare l'efficacia dell'utilizzo di un multi valore rispetto all'utilizzo "classico" di un circuito booleano.
 
 Per poter iniziare questa fase di analisi siamo partiti da dei circuiti binari per poi convertirli nella loro alternativa
-multivalore implementando un metodo di conversione efficace che non cambi il funzionamento di tali circuiti
+multivalore implementando un metodo di conversione efficace che non cambi il funzionamento di tali circuiti. Nel seguente capitolo descriverò come abbiamo concepito e applicato questa conversione.
+
+\newpage
 
 ## Studio del circuito binario
 
@@ -18,22 +20,26 @@ $$\begin{matrix}
 \end{matrix}$$
 
 Con questo approccio non andiamo a snaturare quella che è la logica della tabella originale e otteniamo una
-conversione efficace. I vincoli dettati da questo stanno nel fatto che il numero di ingressi e uscite del circuito
+conversione efficace. 
+
+I vincoli dettati da questo stanno nel fatto che il numero di ingressi e uscite del circuito`
 devono essere pari.
 
-Per la scelta del dominio multivalore si sono voluti sperimentare 3 approcci:
+Per la scelta del dominio multivalore si sono voluti sperimentare 2 diversi approcci:
 
 - Per tutti i circuiti utilizzare un dominio multivalore standard di valore 3
 - Per ogni circuito viene calcolato M.C.D tra input e output e:
     - Se il valore di M.C.D consente di avere almeno 2 input viene tenuto quello
     - Se non consente al minimo 2 input viene dimezzato
-- L'ultimo approccio è un ibrido tra i 2, ovvero: Viene calcolato M.C.D tra input e output
+
 
 Per potere effettuare queste operazioni si è dovuto cercare un formato standard di descrizione dei circuiti che
 rappresentasse per ogni riga della tabella delle verità del circuito tutti gli input e tutti gli output.
 
 Tra i vari formati a disposizione la scelta è ricaduta sul formato ```PLA``` già ampiamente utilizzato per la
 rappresentazione di circuiti.
+
+\newpage
 
 ### Analisi della struttura PLA
 
@@ -65,6 +71,8 @@ prende il nome di **don't care** e rappresenta:
 - Negli output implica che quella specifica combinazione non mi interessa
 - Negli input che può essere qualsiasi valore del dominio.
 
+\newpage
+
 ### La gestione dei don't care durante la conversione
 
 Nelle successive fasi di conversione dobbiamo gestire i don't care in maniera funzionale al dominio multi valore che
@@ -88,6 +96,8 @@ circuito semplice e come valore di dominio di conversione il valore 3. Il circui
 
 Per passare al nuovo dominio analizziamo quanti bit sono necessari per poter rappresentare il massimo numero possibile, nel nostro caso il 3, e notiamo che abbiamo bisogno di 2 bit poiché la rappresentazione binaria del numero 3 è 11. Andiamo quindi a raggruppare in blocchi di 2 bit gli ingressi e le uscite del circuito andando a convertire i valori binari dati dal raggruppamento in valore del dominio scelto.
 
+\newpage
+
 Procedendo con la conversione ci accorgiamo che ci sono alcuni casi in cui dobbiamo andare a sviluppare i dont't care perché se non lo facessimo perderemmo dei valori significativi per il nostro sviluppo. Andiamo quindi a distinguere 2 casi:
 
 - Quando il numero di '-' è uguale al numero di bit del raggruppamento multivalore
@@ -107,6 +117,8 @@ Procedendo con la conversione ci accorgiamo che ci sono alcuni casi in cui dobbi
             3 & 3 & 1
         \end{array}$$
 
+\newpage
+
 Così facendo riusciamo a sviluppare tutto il circuito binario e ottenere una conversione esatta. Il circuito convertito
 sarà quindi.
 
@@ -125,8 +137,6 @@ sarà quindi.
 ```
 
 Con questa struttura posso proseguire con l'analisi dei circuiti proseguendo con l'attività di sintesi logica.
-
-\newpage
 
 ## Implementazione della conversione
 
@@ -180,6 +190,8 @@ n_dont_care = ''
     for i in range(dv):
         n_dont_care += '-'
 ```
+
+\newpage
 
 Questo semplice ciclo va a replicare il numero di ```-``` consecutivi che rispecchiano i gruppi di don't care da ignorare in base al dominio di conversione dato al circuito.
 
@@ -245,6 +257,8 @@ def resolve_dont_care(line, in_out):
 
 Questa funzione prende in ingresso la linea da espandere e per ogni sua iterazione *(it)* va a sostituire ogni simbolo ```-``` con un valore di verità. La funzione restituirà la l'espansione della linea.
 
+\newpage
+
 Come possiamo notare dal ```return``` della funzione questa operazione di espansione è possibile farla sia sugli input che su gli output.
 
 #### create_0_1_array
@@ -260,6 +274,8 @@ def create_0_1_array(le, pad):
 Questa funzione restituisce una tabella di verità data una line con all'interno un numero di *don't care* che necessitano di espansione.
 
 Questo tabella creata verrà inserita al posto della linea con i *don't care* del circuito in così da avere la tabella corretta per la conversione.
+
+\newpage
 
 ## La conversione in multi valore
 
@@ -334,6 +350,8 @@ with open('{}/blfmv/{}.mv'.format(working_dir, nomefile), 'w') as blif:
 
 Questa funzione crea un file *.mv* relativo al circuito creato. Utilizziamo questa tipo di file e sintassi perché nelle fasi successive utilizzeremo per valutare e sintetizzare i circuiti dei software che accettano questa sintassi.
 
+\newpage
+
 ## La sintesi
 
 Una volta ottenuto sia il circuito booleano che quello multivalore procediamo con la sintesi dei circuiti, la sintesi dei circuiti si pone l'obiettivo di ridurre e ottimizzare la struttura dei circuiti stessi andando a diminuire il numero di ingressi e di tabelle della verità modo da avere dei costi totali minori.
@@ -359,6 +377,8 @@ ABC è un'evoluzione di MVSIS e del più vecchio SIS, viene tuttora mantenuto ma
 Una caratteristica molto utile di questi programmi sta nel fatto che essi accettino come parametri di ingresso degli
 script contenenti tutte le istruzioni da eseguire, successivamente mostrerò come tutto il processo di analisi viene
 automatizzato sfruttando questa caratteristica.
+
+\newpage
 
 ### La sintesi tramite i software
 
@@ -388,6 +408,8 @@ Per calcolare questo tipo di informazioni si devono effettuare delle operazioni 
 
 - ingressi di ogni tabella di verità del circuito, andando a controllare quali dei valori di input devono essere inseriti da una delle parti e quali sono ingressi di valori di output delle altre tabelle.
 - Dominio dei valori di input che devono inserire le parti.
+
+\newpage
 
 ### blfmv vs pla
 
@@ -492,6 +514,8 @@ with open('calcolo_costi.csv', 'a') as file:
 
 Una volta ottenute tutte le informazioni, per avere una migliore visione per l'analisi, vengono salvate all'interno di una file *CVS* con la funzione sopra mostrata.
 
+\newpage
+
 ## Automatizzazione dei processi
 
 Tutte le fasi mostrate sopra, più altre secondarie, sono state automatizzate in modo che non si debbano effettuare operazioni ridondati per ogni circuito e generare perdite di dati causate da errori umani.
@@ -535,6 +559,8 @@ if not path.exists('{}/pla'.format(working_dir)):
     print('CARTELLA PLA NON PRESENTE')
     exit
 ```
+
+\newpage 
 
 In questa fase viene creata la struttura delle directory che conterranno i file con i circuiti sintetizzati, se questa struttura è già presente vengono cancellate tutte le cartelle e i file all'interno e successivamente ricreate le cartelle vuote. 
 

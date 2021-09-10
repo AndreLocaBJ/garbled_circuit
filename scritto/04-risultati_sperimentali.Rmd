@@ -10,6 +10,8 @@ Le operazioni computazionali sono state effettuate su un DELL-XPS 13 9350, la ma
 - Memoria: 8Gb LPDDR3@1866MHz
 - Sistema Operativo: Ubuntu 21.04
 
+\newpage
+
 ## MVSIS
 
 Nelle prime fasi di sperimentazione si e' decido di utilizzare *MVSIS* come motore di sintesi si per i circuiti binari che per quelli multivalore. Questo primo approccio nasce dal voler replicare le operazioni che si fanno solitamente sulla logica binaria e applicarle a quella multivalore.
@@ -36,6 +38,8 @@ Con questi comandi si prende il circuito iniziale, appena preso in ingresso, ven
 Questi comandi sono la conversione della variante *MVSIS* di *script.rugged* usato con il tool per la logica binaria *SIS*. Non si e' riusciti a fare una conversione 1:1 dello script in quanto non tutti i comandi sono replicabili.
 
 In rete e in altri paper viene citato uno script chiamato *mvsis.rugged* che dovrebbe rappresentare la vera conversione adattata per il multivalore ma non si è riusciti a reperire questo file in nessun repository.
+
+\newpage
 
 ### Conversione multivalore fissa
 
@@ -144,6 +148,8 @@ I costi vengono notevolmente abbassati nel caso del booleano mentre in quello mu
 
 Il tool *MVSIS* infatti, come detto prima, non è più sviluppato e mantenuto, si presenta infatti più lento nella sintesi ed ha una gestione della memoria che porta a dump di memoria durante l'analisi di circuiti di grandi dimensioni.
 
+\newpage
+
 ## ABC
 
 Notando che inizialmente il costo del circuito multivalore possiede dei costi più bassi per via del minor numero di input e che gli strumenti di sintesi siano però più ottimizzati per la logica binaria si è provato ad utilizzare un approccio ibrido.
@@ -239,6 +245,3 @@ Come ultimo test, come in *MVSIS*, si utilizzato anche l'approccio MCD.
 |   in7   |   182    |     7     |    7    |      2      |      1676       |     7     |    7    |
 
 In questo caso possiamo notare che tra i due approcci non ci siano differenze stanziali, questo potrebbe essere dato da come *abc* legge i circuiti multivalore in input.
-
-Questi ultimi 2 approcci restano molo interessanti in quanto vanno a ridurre notevolmente i costi di ingresso degli input nel circuito.
-

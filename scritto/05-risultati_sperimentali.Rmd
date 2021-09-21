@@ -1,8 +1,6 @@
 # Risultati sperimentali
 
-Una volta che il il processo di conversione dei circuiti e che tutto il sistema di automazione dei processi si è proceduto con l'analisi sperimentale per studiare come se questo nuovo approccio possa risultare migliore a livello di costi prestazionali.
-
-Per ottimizzare i costi sono stati utilizzati diversi approcci sfruttando entrambi i tool di sintesi disponibili e diversi parametri per la selezione del dominio.
+Una volta che il processo di conversione dei circuiti e che tutto il sistema di automazione dei processi è terminato si è proceduto con l'analisi sperimentale per valutare se questo nuovo approccio sviluppato possa essere considerato una possibile alternativa alle proposte già presenti in letteratura.
 
 Le operazioni computazionali sono state effettuate su un DELL-XPS 13 9350, la macchina he le seguenti specifiche:
 
@@ -14,7 +12,7 @@ Le operazioni computazionali sono state effettuate su un DELL-XPS 13 9350, la ma
 
 ## MVSIS
 
-Nelle prime fasi di sperimentazione si e' decido di utilizzare *MVSIS* come motore di sintesi si per i circuiti binari che per quelli multivalore. Questo primo approccio nasce dal voler replicare le operazioni che si fanno solitamente sulla logica binaria e applicarle a quella multivalore.
+Nelle prime fasi di sperimentazione si e' decido di utilizzare *MVSIS* come motore di sintesi sia per i circuiti binari che per quelli multivalore. Questo primo approccio nasce dal voler replicare le operazioni che si svolgono solitamente sulla logica binaria e applicarle a quella multivalore.
 
 Per le operazioni di sintesi si sono utilizzati i seguenti comandi
 
@@ -33,9 +31,9 @@ sweep
 fullsimp -m nocomp
 write_blif_mv ./prova/blfmv/synth/mvsis/amd.mv
 ```
-Con questi comandi si prende il circuito iniziale, appena preso in ingresso, vengono fatte delle operazioni di pulizia e di rimozione di nodi inutili con i comandi *eliminatre* e *sweep*. successivamente tramite *simplify* e *fullsimp* il circuito viene semplificato sia a livello di nodi del circuito che nella sua interezza.
+Con questi comandi andiamo a sintetizzare il circuito preso in ingresso ingresso, vengono fatte delle operazioni di pulizia e di rimozione di nodi inutili con i comandi *eliminatre* e *sweep*. Successivamente, tramite *simplify* e *fullsimp*, il circuito viene semplificato sia a livello di nodi del circuito che nella sua interezza.
 
-Questi comandi sono la conversione della variante *MVSIS* di *script.rugged* usato con il tool per la logica binaria *SIS*. Non si e' riusciti a fare una conversione 1:1 dello script in quanto non tutti i comandi sono replicabili.
+Questi comandi sono la conversione della variante *MVSIS* di *script.rugged* usato con il tool per la logica binaria *SIS*. Non è stato possibile fare una conversione 1:1 dello script in quanto non tutti i comandi sono replicabili.
 
 In rete e in altri paper viene citato uno script chiamato *mvsis.rugged* che dovrebbe rappresentare la vera conversione adattata per il multivalore ma non si è riusciti a reperire questo file in nessun repository.
 
@@ -82,7 +80,7 @@ Questa tabella racchiude i risultati ottenuti dalla sintesi dei circuiti multiva
 
 ### MVSIS e dominio variabile
 
-Nella sperimentazione successiva si è voluto testare un dominio variabile in base al MCD, come descritto nel capitolo precedente. Nella seguente tabella viene mostrati i costi dei circuiti senza sintesi. Vediamo che nella maggiorn parte dei casi il dominio multivalore senza sintesi ha un costo minore, questo è figlio del minor numero di input che le parti durante la computazione dovranno inserire all'interno del protocollo.
+Nella sperimentazione successiva si è voluto testare un dominio variabile in base al MCD, come descritto nel capitolo precedente. Nella seguente tabella vengono mostrati i costi dei circuiti senza sintesi. Osserviamo che nella maggior parte dei casi il dominio multivalore senza sintesi ha un costo minore, questo è figlio del minor numero di input che le parti dovranno inserire all'interno del protocollo durante la computazione.
 
 |NOME CIRC|COSTO BOOL|INPUT ALICE|INPUT BOB|DOMINIO MULTI|COSTO MULTIVALORE|INPUT ALICE|INPUT BOB|
 |:-------:|:--------:|:---------:|:-------:|:-----------:|:---------------:|:---------:|:-------:|
@@ -117,7 +115,7 @@ Nella sperimentazione successiva si è voluto testare un dominio variabile in ba
 |  alu3   |   8192   |     5     |    5    |      4      |      4096       |     2     |    3    |
 |   in7   | 1310720  |     9     |    9    |      4      |    335544320    |     6     |    7    |
 
-Una vota applicato la sintesi dei circuiti i risultati sono i seguenti.
+Una vota applicato la sintesi dei circuiti i risultati sono i seguenti:
 
 |NOME CIRC|COSTO BOOL|INPUT ALICE|INPUT BOB|DOMINIO MULTI|COSTO MULTIVALORE|INPUT ALICE|INPUT BOB|
 |:-------:|:--------:|:---------:|:-------:|:-----------:|:---------------:|:---------:|:-------:|
@@ -144,7 +142,7 @@ Una vota applicato la sintesi dei circuiti i risultati sono i seguenti.
 |   br1   |   252    |     6     |    6    |     16      |      8192       |     1     |    2    |
 |  fout   |   442    |     3     |    3    |      4      |       320       |     1     |    2    |
 
-I costi vengono notevolmente abbassati nel caso del booleano mentre in quello multivalore rimangono più elevati. Questo fenomeno potrebbe avere spiegazione nel fatto che la sintesi sui circuiti binari è più sviluppata e sono stati trovati metodi di sintesi più efficaci rispetto ad una logica multivalore.
+I costi vengono notevolmente abbassati nel caso del booleano mentre in quello multivalore rimangono più elevati. Questo fenomeno potrebbe trovare spiegazione nel fatto che la sintesi sui circuiti binari è più sviluppata e sono stati trovati metodi di sintesi più efficaci rispetto ad una logica multivalore.
 
 Il tool *MVSIS* infatti, come detto prima, non è più sviluppato e mantenuto, si presenta infatti più lento nella sintesi ed ha una gestione della memoria che porta a dump di memoria durante l'analisi di circuiti di grandi dimensioni.
 
@@ -152,7 +150,7 @@ Il tool *MVSIS* infatti, come detto prima, non è più sviluppato e mantenuto, s
 
 ## ABC
 
-Notando che inizialmente il costo del circuito multivalore possiede dei costi più bassi per via del minor numero di input e che gli strumenti di sintesi siano però più ottimizzati per la logica binaria si è provato ad utilizzare un approccio ibrido.
+Notando che inizialmente il costo del circuito multivalore possiede dei costi più bassi per via del minor numero di input e ma la logica binaria presenta degli strumenti di sintesi più ottimizzati, si è provato ad utilizzare un approccio ibrido.
 
 Sfruttando come input un circuito multivalore ad ABC, questo tool converte automaticamente il circuito in binario per poi utilizzare i suoi algoritmi di sintesi ottimizzati. 
 
@@ -170,7 +168,7 @@ Rispetto a prima però l'output post sintesi non sarà più un circuito multival
 
 ## ABC e dominio fisso
 
-Come con *MVSIS* abbiamo inizialmente utilizzato un dominio fisso per fare una prima analisi.
+Come con *MVSIS* abbiamo inizialmente utilizzato un dominio fisso per svolgere una prima analisi.
 
 |NOME CIRC|COSTO BOOL|INPUT ALICE|INPUT BOB|DOMINIO MULTI|COSTO MULTIVALORE|INPUT ALICE|INPUT BOB|
 |:-------:|:--------:|:---------:|:-------:|:-----------:|:---------------:|:---------:|:-------:|
@@ -244,4 +242,6 @@ Come ultimo test, come in *MVSIS*, si utilizzato anche l'approccio MCD.
 |  alu3   |   139    |     5     |    5    |      2      |       406       |     5     |    5    |
 |   in7   |   182    |     7     |    7    |      2      |      1676       |     7     |    7    |
 
-In questo caso possiamo notare che tra i due approcci non ci siano differenze stanziali, questo potrebbe essere dato da come *abc* legge i circuiti multivalore in input.
+In questo caso possiamo notare che tra i due approcci non ci sono differenze stanziali, questo potrebbe essere dato da come *abc* legge i circuiti multivalore in input.
+
+\newpage

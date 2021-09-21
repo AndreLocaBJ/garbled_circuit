@@ -1,16 +1,17 @@
 # Secure multi-party computation
-Secure multi-party computation (SMPC) è una sotto categoria della crittografia con l'obiettivo di creare metodi di calcolo congiunto di una funzione sugli input privati di 2 o più parti coinvolte.
+La Secure multi-party computation (SMPC) è una sottocategoria della crittografia che ha come obiettivo quello di creare metodi di calcolo congiunto di una funzione sugli input privati di 2 o più parti coinvolte.
 
-A differenza dei compiti crittografici tradizionali, dove la crittografia assicura la sicurezza e l'integrità della comunicazione o dell'archiviazione e l'avversario è esterno al sistema dei partecipanti, la crittografia in questo modello protegge la privacy dei partecipanti l'uno dall'altro.
+A differenza dei compiti crittografici tradizionali, dove la crittografia garantisce la sicurezza e l'integrità della comunicazione o dell'archiviazione e l'avversario è esterno al sistema dei partecipanti, la crittografia in questo modello protegge la privacy dei partecipanti l'uno dall'altro.
 
-Siamo in un periodo in cui i dati sono sempre più centrali e oggetto di interesse per le aziende diventando un nuovo metodo di guadagno. La monetizzazione dei dati è oggi il modello di business primario comune a molte delle più grandi aziende, e la priorità di tante altre.
+Ci troviamo in un periodo in cui i dati diventano via via sempre più centrali e, ad oggi, infatti, oggetto di interesse per le aziende essi non saranno più semplici informazioni, bensì si trasformano in potenziali nuovi metodi di guadagno. La monetizzazione dei dati è  il modello di business primario comune a molte delle più grandi aziende, nonché la priorità di tante altre.
 
-L’applicazione di un simile modello di business richiede tuttavia la raccolta di grandi quantità di dati, e il successo è tanto più significativo quante più correlazioni e rapporti di casualità sia possibile trovare combinando diverse fonti dati, si devono però considerare le problematiche.
+L’applicazione di un simile modello di business richiede tuttavia la raccolta di grandi quantità di dati, e il successo è tanto più significativo quante più correlazioni e rapporti di casualità è possibile trovare combinando diverse fonti dati. E' necessario però considerare tutte le problematiche derivanti da questa dinamica
 
-Il sottoprodotto di questo processo è infatti una possibile violazione della privacy individuale, avendo le aziende molte nostre informazioni personali il loro possesso.
+Il sottoprodotto di questo processo è, ad esempio, una possibile violazione della privacy individuale, in quanto le aziende posseggono molte informazioni personali dei loro utenti.
 
-Si sono pensate allora soluzioni in cui sia possibile utilizzare fonti dati diverse senza la necessità di centralizzare l'informazione, garantendo che nessuna informazione sia rivelata dall'operazione. Queste sono le premesse della Secure multiparty computation (SMPC). In altri termini, saremmo così in grado di consentire ai Data Scientist e Data Analyst di operare sui dati senza il bisogno di esporli o spostarli dalla loro sede di storage. 
-\newpage
+Sono state pensate dunque, per far fronte a questo precedente, soluzioni in cui sia possibile utilizzare fonti dati diverse senza la necessità di centralizzare l'informazione. In questo modo è possibile garantire che nessuna informazione venga rivelata nel corso delle operazioni. 
+
+Queste sono le premesse della Secure multiparty computation (SMPC). In altri termini, saremmo così in grado di consentire ai Data Scientist e Data Analyst di operare sui dati senza il bisogno di esporli o spostarli dalla loro sede di storage. 
 
 ## Panoramica
 
@@ -34,18 +35,36 @@ Un protocollo di calcolo sicuro multipartitico deve offrire alcune garanzie di s
 
 ## Garanzie di sicurezza
 
-Grazie alle SMPC le parti coinvolte nelle computazioni non hanno bisogno di fidarsi reciprocamente, anche qualora alcune di queste intendano collaborare ai danni delle altre o quando reti e macchine siano state compromesse a loro insaputa in quanto nessuna informazione viene rivelata alle altre parti. Abbiamo quindi i seguenti aspetti positivi:
+Un protocollo di calcolo a più parti deve essere sicuro per essere efficace. Nella crittografia moderna, la sicurezza di un protocollo è legata a una dimostrazione di sicurezza. La dimostrazione di sicurezza è una dimostrazione matematica in cui la sicurezza di un protocollo è ridotta a quella della sicurezza delle sue primitive sottostanti. Tuttavia, non è sempre possibile formalizzare la verifica di sicurezza del protocollo crittografico basata sulla conoscenza delle parti e sulla correttezza del protocollo. Per i protocolli MPC, l'ambiente in cui il protocollo opera è associato al paradigma del mondo reale/mondo ideale. Non si può dire che le parti non imparino nulla, poiché devono imparare l'output dell'operazione, e l'output dipende dagli input. Inoltre, la correttezza dell'output non è garantita, poiché la correttezza dell'output dipende dagli input delle parti, e si deve supporre che gli input siano corrotti.
 
-- Assenza di una necessaria terza parte fidata per mantenere i dati sicuri.
-- Nessun compromesso di Privacy-vs-Utility, poiché non dobbiamo perturbare alcun dato per tutelarne la privacy.
-- GDPR compliance persino per interazioni tra aziende europee, americane e asiatiche, perché i dati non lasciano mai i confini.
-- Protezione di un segreto, che può essere utilizzato per svolgere operazioni senza mai crearlo effettivamente
+Il paradigma del mondo reale/mondo ideale afferma due mondi: 
 
-Ovviamente non mancano gli aspetti negativi:
+- Nel **modello del mondo ideale**, esiste una parte incorruttibile fidata a cui ogni partecipante al protocollo invia il suo input. Questa parte fidata calcola la funzione da sola e rimanda l'output appropriato ad ogni parte. 
+- Al contrario, nel **modello del mondo reale**, non esiste una parte fidata e tutto ciò che le parti possono fare è scambiare messaggi tra loro. Un protocollo è detto sicuro se non si può imparare di più sugli input privati di ogni parte nel mondo reale di quanto si potrebbe imparare nel mondo ideale. Nel mondo ideale, nessun messaggio viene scambiato tra le parti, quindi i messaggi scambiati nel mondo reale non possono rivelare alcuna informazione segreta.
 
-- Costo computazionale elevato, richiesto per la generazione dei numeri casuali che garantiscono la sicurezza nei calcoli.
-- Costo comunicativo elevato, richiesto dal network per la condivisone con i partecipanti.
-- Network bound
+\newpage
+
+Il paradigma mondo reale/mondo ideale fornisce una semplice astrazione delle complessità di MPC per consentire la costruzione di un'applicazione sotto la premessa che il protocollo MPC nel suo nucleo sia in realtà un'esecuzione ideale. Se l'applicazione è sicura nel caso ideale, allora è sicura anche quando viene eseguito un protocollo reale.
+
+A differenza delle applicazioni crittografiche tradizionali, come la crittografia o la firma, si deve assumere che l'avversario in un protocollo MPC sia uno dei giocatori impegnati nel sistema (o che controlla le parti interne). Quella/e parti corrotte possono colludere per violare la sicurezza del protocollo. 
+
+Sia $n$ il numero di parti nel protocollo e $t$ il numero di parti che possono essere avversarie. I protocolli e le soluzioni per il caso di $t<n/2$ (cioè quando si assume una maggioranza onesta) sono diversi da quelli in cui non viene fatta tale assunzione. Quest'ultimo caso include l'importante caso di calcolo a due parti in cui uno dei partecipanti può essere corrotto, e il caso generale in cui un numero illimitato di partecipanti è corrotto e collude per attaccare i partecipanti onesti.
+
+Gli avversari affrontati dai diversi protocolli possono essere classificati in base a quanto sono disposti a deviare dal protocollo. Ci sono essenzialmente due tipi di avversari, ognuno dei quali dà luogo a diverse forme di sicurezza (e ognuno si adatta a diversi scenari del mondo reale):
+
+- **Sicurezza semi-onesta (passiva)**: In questo caso, si assume che le parti corrotte cooperino semplicemente per raccogliere informazioni dal protocollo, ma non si discostino dalle specifiche del protocollo. Questo è un tipo di avversario semplice e ingenuo, che produce una sicurezza debole in situazioni reali. Tuttavia, i protocolli che raggiungono questo livello di sicurezza impediscono la perdita involontaria di informazioni tra le parti (altrimenti collaboranti), e sono quindi utili se questa è l'unica preoccupazione. Inoltre, i protocolli nel modello semi-onesto sono abbastanza efficienti, e sono spesso un primo passo importante per raggiungere livelli più alti di sicurezza.
+- **Sicurezza malevola (attiva)**: In questo caso, l'avversario può arbitrariamente discostarsi dall'esecuzione del protocollo nel suo tentativo di ingannare. I protocolli che raggiungono la sicurezza in questo modello forniscono una garanzia di sicurezza molto alta. Nel caso di maggioranza delle parti che si comportano scorrettamente: L'unica cosa che un avversario può fare nel caso di maggioranza disonesta è far sì che le parti oneste interrompano avendo rilevato l'imbroglio. Se le parti oneste ottengono l'output, allora hanno la garanzia che sia corretto. La loro privacy è sempre preservata.
+
+\newpage
+
+La sicurezza contro gli avversari attivi porta tipicamente ad una riduzione dell'efficienza che porta alla sicurezza nascosta, una forma ridotta di sicurezza attiva. La sicurezza nascosta cattura situazioni più realistiche, in cui gli avversari attivi sono disposti a barare ma solo se non vengono scoperti. Per esempio, la loro reputazione potrebbe essere danneggiata, impedendo la futura collaborazione con altre parti oneste. 
+
+Quindi, i protocolli che sono segretamente sicuri forniscono meccanismi per garantire che, se alcune delle parti non seguono le istruzioni, allora sarà notato con alta probabilità. In un certo senso, gli avversari segreti sono quelli attivi costretti ad agire passivamente a causa di preoccupazioni esterne non crittografiche (ad esempio il business). Questo meccanismo stabilisce un ponte tra i due modelli nella speranza di trovare protocolli che siano efficienti e abbastanza sicuri nella pratica.
+
+Come molti protocolli crittografici, la sicurezza di un protocollo MPC può basarsi su diversi presupposti:
+
+- **Computazionale** (cioè basata su qualche problema matematico, come la fattorizzazione) o **incondizionata**, cioè basata sull'indisponibilità fisica dei messaggi sui canali (di solito con qualche probabilità di errore che può essere resa arbitrariamente ridotta).
+- Il modello potrebbe assumere che i partecipanti utilizzino una rete sincronizzata, dove un messaggio inviato a un "tick" arriva sempre al "tick" successivo, o che esista un canale di trasmissione sicuro e affidabile, o che esista un canale di comunicazione sicuro tra ogni coppia di partecipanti dove un avversario non può leggere, modificare o generare messaggi nel canale, ecc.
 
 \newpage
 

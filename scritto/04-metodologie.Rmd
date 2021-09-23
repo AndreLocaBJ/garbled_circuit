@@ -8,8 +8,7 @@ Siamo partiti quindi selezionando un set di circuiti binari con differente numer
 
 ## Studio del circuito binario
 
-La tecnica che abbiamo deciso di utilizzare è molto semplice ma efficace e si basa sul raggruppamento di *n* bit di ogni riga di ogni tabella di verità binaria che possano rappresentare il massimo numero possibile del dominio multivalore
-scelto. 
+Analizzando i circuiti per testare la nostra tesi abbiamo dovuto sviluppare una tecnica di conversione dei circuiti binari di partenza. Le caratteristiche di una naturale rappresentazione di un circuito consiste nella sua divisione in nodi, ognuno di essi rappresentato da una tabella di verità i cui input e output vanno a collegarsi tra di loro tramite dei collegamenti. Soffermandoci sulle tabelle di verità abbiamo notato come andando ad applicare un raggruppamento di $n$ bit per ogni riga della tabella si riuscirebbe a rappresentare un valore di dominio più grande di quello binario del circuito in analisi riducendo il numero di input richiesti dal gate.
 
 $$\begin{matrix}
     \underbrace{10} & \underbrace{11} & \underbrace{00} \\
@@ -17,20 +16,23 @@ $$\begin{matrix}
     2 & 3 & 0
 \end{matrix}$$
 
-Con questo approccio non andiamo a snaturare quella che è la logica della tabella originale e otteniamo una
-conversione efficace. 
+Con questo approccio non andiamo a snaturare quella che è la logica della tabella originale poiché, sapendo il qual è il nuovo dominio applicato, riusciamo ad invertire il processo di conversione ritornando al circuito originale. 
 
-I vincoli dettati da questo approccio stanno nel fatto che il numero di ingressi e uscite del circuito devono essere necessariamente pari.
+I vincoli di questo approccio di conversione dei circuiti booleani risiede nel fatto che, per ora, la conversione possa essere fatta solamente con un numero pari di input e che il numero di output sia un divisore del numero di bit utilizzati per il raggruppamento.
 
-Per la scelta del dominio multivalore si sono voluti sperimentare 2 diversi approcci:
+\newpage
 
-- Per tutti i circuiti utilizzare un dominio multivalore standard di valore 3
-- Per ogni circuito viene calcolato M.C.D tra input e output e:
-    - Se il valore di M.C.D consente di avere almeno 2 input viene mantenuto il valore di M.C.D. calcolato
-    - Se non consente al minimo 2 input viene dimezzato
+Una volta definito il metodo di conversione si è passati alla scelta del nuovo dominio da applicare ai circuiti con l'obiettivo di trovare il giusto compromesso per ottenere:
 
+- Una riduzione degli input che faccia diminuire il costo del circuito di ingresso per il circuito di ingresso
+- Utilizzare un dominio che risulti controproducente: avere un dominio superiore a quello booleano ma troppo elevato significherebbe che, per ogni input, ogni parte dovrebbe portare inserire tanti valori di input quanti quelli del dominio richiesto e, se si sceglie un dominio troppo grande, nonostante la riduzione degli input ci si troverebbe comunque con un costo totale del circuito elevato. Si è deciso quindi di sperimentare 2 approcci alla scelta di questo valore, uno statico e uno dinamico.
 
-Per potere effettuare queste operazioni si è dovuto cercare un formato standard di descrizione dei circuiti che rappresentasse per ogni riga della tabella delle verità del circuito tutti gli input e tutti gli output.
+    - **Statico**: per ognuno dei circuiti andremo ad applicare lo stesso valore di dominio, il valore scelto è 3, andremo quindi a raggruppare ogni 2 valori per riga della tabella di verità;
+    - **Dinamico**: ogni circuito viene analizzato andando a trovare il numero di input e output, successivamente viene calcolato il valore di M.C.D. e:
+        - Se il valore trovato consente alla tabella di verità convertita di avere almeno 2 valori di input si utilizza quel valore per raggruppare i bit delle righe, altrimenti il valore viene dimezzato
+        - Se il valore risultante è un numero che creerebbe un dominio troppo grande viene utilizzato il dominio 3, come nel caso statico.
+
+Definite tutte le logiche di conversione si è dovuto cercare un formato di file che rappresentasse i circuiti che rispettasse le esigenze per applicare tutte le elaborazioni sopra descritte e che sia utilizzato come uno standard di rappresentazione in modo che i risultati ottenuti possano essere utilizzati dai software di sintesi che andremo ad utilizzare successivamente durante l'elaborazione della sperimentazione. Si necessita dunque di una rappresentazione che abbia la possibilità che i circuiti con output multipli siano rappresentati sulla stessa linea all'interno della tabella della verità.
 
 Tra i vari formati a disposizione la scelta è ricaduta sul formato ```PLA``` già ampiamente utilizzato per la rappresentazione di circuiti.
 
@@ -55,21 +57,23 @@ Un file PLA ha la seguente struttura
 .end
 ```
 
-Come possiamo vedere questo circuito presenta:
+Questo `PLA` di esempio rappresenta un circuito composto da una sola tabella di verità, la sintassi va a descrivere:
 
-- 4 input
-- 2 output
+- `.i`: numero di valori di input;
+- `.o`: numero di valori di output;
+- `.ilb`: nomi e ordine delle variabili di input;
+- `.ob`: nomi e ordine delle variabili di output.
 
-Notiamo che nella tabella di verità non sono presenti solamente valori booleani ma anche un simbolo ```-``` esso prende il nome di **don't care**, esso può avere 2 significati:
+Il resto del file rappresenta la tabella di verità con i possibile valori che si ottengono combinando i valori di input_file per ottenere gli output.Il circuito sopra descritto presenta 4 variabili di input e 2 valori di output. Come possiamo notare all'interno della tabella di verità non tutti i valori sono booleani ma è presente anche il valore `-`, esso prende il nome di **don't care** e può assumere 2 significati:
 
-- Negli output implica che quella specifica combinazione non mi interessa
-- Negli input che può essere qualsiasi valore del dominio.
+- Quando `-` è presente negli output di una riga significa che l'output per quella determinata riga non mi interessa;
+- Quando `-` è presente negli input significa che in quella posizione la variabile a cui fa riferimento può assumere un qualsiasi valore non andando ad influire sul valore di output che si andrà ad ottenere.
 
 \newpage
 
 ### La gestione dei don't care durante la conversione
 
-Nelle successive fasi di conversione dobbiamo gestire i don't care in maniera funzionale al dominio multi valore che utilizzeremo, per spiegare meglio come tratteremo questa caratteristica dei **PLA** presenterò l'esempio di un esempio utilizzando un circuito semplice che come valore di dominio di conversione il valore 3. Il circuito avrà la seguente struttura.
+I dont't care sono una caratteristica dei file pla che deve essere gestita in modo funzionale ai cambi di dominio che andremo a fare all'interno delle tabelle di verità dei nostri circuiti in quanto, se affrontato nel modo sbagliato, modificherebbe la logica dell'intero circuito rendendo la conversione errata. Per spiegare meglio come tratteremo questa caratteristica dei **PLA** presenterò l'esempio di un esempio utilizzando un circuito semplice che come valore di dominio di conversione il valore 3. Il circuito avrà la seguente struttura.
 
 ```
 .i 4
@@ -86,25 +90,35 @@ Nelle successive fasi di conversione dobbiamo gestire i don't care in maniera fu
 .end
 ```
 
-Per passare al nuovo dominio analizziamo quanti bit sono necessari per poter rappresentare il massimo numero possibile, nel nostro caso il 3, e notiamo che abbiamo bisogno di 2 bit poiché la rappresentazione binaria del numero 3 è 11. Andiamo quindi a raggruppare in blocchi di 2 bit gli ingressi e le uscite del circuito andando a convertire i valori binari dati dal raggruppamento in valore del dominio scelto.
+Una volta deciso il nostro nuovo dominio di conversione sappiamo di quanti bit dobbiamo raggruppare per rappresentare il nostro nuovo dominio, nel nostro caso essendo il domino 3, il numero di bit per rappresentare il valore più grande di questo dominio abbiamo bisogno di un raggruppamento a 2 bit. Procediamo quindi a scandire riga per riga il circuito raggruppando i bit a blocchi di 2 tutti i valori di input e di output.
+
+```
+0- -0 00    
+00 01 01
+0- 11 --
+1- 11 01
+01 01 10
+10 -- 01
+11 -- 00
+```
+
+Una volta creati questi cluster di bit ci accorgiamo come i dont't care in alcuni casi ci rendano impossibile la conversione al nuovo dominio, per risolvere questo problema dovremo andare a sviluppare questi valori di don't care in 'normali' valori booleani.
 
 \newpage
 
-Procedendo con la conversione ci accorgiamo che ci sono alcuni casi in cui è necessario andare a sviluppare i dont't care poiché se non lo facessimo perderemmo dei valori significativi per il nostro sviluppo. Andiamo quindi a distinguere 2 casi:
+Non è sempre necessario andare a sviluppare i don't care, andiamo a differenziare 2 possibili casistiche di intervento:
 
-- Quando il numero di '-' è uguale al numero di bit del raggruppamento multivalore
-    - *es.*. 10 -- 01: in questo caso viene messo semplicemente il simbolo ```-``` non causa nessuna perdita di valori nel circuito. Quindi 
+- Quando il numero di '-' è uguale al numero di bit del raggruppamento multivalore, in questo caso non c'è la necessità di sviluppare i valori, sarà sufficiente inserire al posto della coppia un unovo `-` rappresentante il don't care. 
     $$ \begin{array}{ccc}
         10 & -- & 01 \\ & \downarrow & \\ 2 & - & 1 
     \end{array}$$
-- Quando nel gruppo di bit raggruppati il numero di ```-``` è minore del numero di bit richiesti
-    - *es.* 1-11 01: in questo caso non posso subito convertire nel nostro nuovo dominio ma devo prima sviluppare tutte le possibili combinazioni e poi procedere alla conversione. Quindi
-        - Sviluppo il dont'care
-        $$ \begin{array}{ccc}
-            10 & 11 & 01 \\11 & 11 & 01
-        \end{array}$$
-        - Procedo a convertire nel dominio scelto
-        $$ \begin{array}{ccc}
+- Quando nel gruppo di bit raggruppati il numero di `-` è minore del numero di bit richiesti. In questo caso dobbiamo procedere con l'espansione del dont't care a valori di verità in modo da poter affrontare correttamente la conversione nel nuovo dominio.
+        $$ \begin{array}{cccc}
+            1- & 11 & 01\\
+            & \downarrow &\\
+            10 & 11 & 01\\
+            11 & 11 & 01\\
+            & \downarrow &\\
             2 & 3 & 1\\
             3 & 3 & 1
         \end{array}$$

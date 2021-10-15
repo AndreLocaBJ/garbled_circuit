@@ -199,7 +199,6 @@ def bin_to_mv(working_dir, dv, mv):
                 '{}/pla/{}'.format(working_dir, pla))
             truth_table = expand_dont_care(truth_table, dv)
             mv_table = create_mv_truth_table(truth_table, dv)
-            #create_pla_expanded(inp, out,inp_array, out_array, truth_table, bn(pla).split('.')[0])
             crete_blif_mv(working_dir, mv_table, mv,
                           basename(pla).split('.')[0])
 

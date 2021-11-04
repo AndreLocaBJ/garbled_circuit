@@ -1,8 +1,78 @@
 # Analisi
 
-Il protocollo di Yao prevede, durante i suoi scambi, che le due parti coinvolte concordino anche sulla trasmissione di un circuito a cui entrambi gli attori debbano inserire dei valori di input. Uno degli scopi della nostra tesi consiste nel testare l’efficacia dell’utilizzo di un multi valore rispetto all’utilizzo “classico” di un circuito booleano, concentrandoci specificatamente sull’importante valore costituito dal fattore di costo computazionale delle operazioni che vengono svolte.
+Il protocollo di Yao prevede, durante i suoi scambi, che le due parti coinvolte concordino anche sulla trasmissione di un circuito a cui entrambi gli attori debbano inserire dei valori di input. Uno degli scopi della nostra tesi consiste nel testare l’efficacia dell’utilizzo di un multi valore rispetto all’utilizzo “classico” di un circuito booleano, concentrandoci specificatamente sull'importante valore costituito dal fattore di costo computazionale delle operazioni che vengono svolte.
 
-Per avviare la nostra analisi Siamo partiti quindi selezionando un set di circuiti binari con caratteristiche diverse, tra cui differente numero di ingressi, uscite e livelli. Partendo da questa base ci siamo successivamente concentrati sulla ricerca di una metodologia di conversione dei circuiti  atta a traslarli  da un ‘classico’ dominio booleano ad uno multi-valore, dove quindi i valori non sono più rappresentati da 0 e 1 ma da  un set più ampio di valori. Tutto ciò sempre  mantenendo le funzionalità del circuito. Una volta ottenuta una controparte per ogni circuito abbiamo proceduto con un confronto dei circuiti al fine di riuscire ad individuare quali di questi set fossero più efficaci.
+Per avviare la nostra analisi siamo partiti quindi selezionando un set di circuiti binari con caratteristiche diverse, tra cui differente numero di ingressi, uscite e livelli. Partendo da questa base ci siamo successivamente concentrati sulla ricerca di una metodologia di conversione dei circuiti  atta a traslarli  da un ‘classico’ dominio booleano ad uno multi-valore, dove quindi i valori non sono più rappresentati da 0 e 1 ma da  un set più ampio di valori. Tutto ciò sempre  mantenendo le funzionalità del circuito. Una volta ottenuta una controparte per ogni circuito abbiamo proceduto con un confronto dei circuiti al fine di riuscire ad individuare quali di questi set fossero più efficaci.
+
+\newpage
+
+## La logica multi-valore
+
+La logica multi-valore è una generalizzazione della classica logica booleana. Una delle ragioni per la quale consideriamo questa generalizzazione è che essa può portare ad una comprensione più profonda di problemi specifici. Per generalizzare la struttura alcune proprietà, rispetto a quelle della logica booleana, vanno mantenuta mentre altre dovranno essere scartate. Un altro motivo per cui consideriamo la logica multi-valore è dato dalla sua capacità di poter risolvere alcuni problemi in modo più efficace rispetto alla logica booleana.
+
+- Utilizzo per rappresentazione di funzioni booleane con più output;
+- Design di PLA con input decoder;
+- Ottimizzazione di macchine a stato finite;
+- Testing e verifica.
+
+La logica multi-valore può avere un numero di vantaggi teorici risolvere a quelle booleana:
+
+- Il numero di chip all'interno di un circuito con più on/off può essere ridotto se il segnale nel circuito assume più livelli al posto che i classici 2 messi a disposizione dalla logica booleana;
+- Memory design: Memorizzare informazioni a blocchi di 2bit invece che uno raddoppia la densità delle informazioni che si possono racchiudere nello stesso spazio.
+- ecc.
+
+Le potenzialità pratiche di questi vantaggi dipendono pesantemente dalla disponibilità della realizzazione di questi circuiti che devono comunque rimanere compatibili con gli standard tecnologici odierni.
+
+\newpage
+
+### Le funzioni multi-valore
+
+Una funzione multi-valore è una funzione discreta che ha come input e output variabili che assumono più di 2 valori. Solitamente le funzioni multi-valore sono definite come: $f: P_1 \times P_2 \times ... P_n \rightarrow Q$ dove le variabili $x_i$ della funzione prendono valore dal gruppo $P_i = \{ 0,1,2,...,p_i-1 \}, p_i > 1 
+, i \in \{ 1,2,...,n\}$ e la funzione prende valori dal set $Q = \{0,1,2,...,q\}, q>1$
+
+### Rappresentazione di funzioni multi-valore
+
+Il modo più semplice per rappresentare un funzione con $m$ valori e $n$ variabili consiste nel creare una tabella di verità con $m^n$ righe, ognuna delle quali specifica il valore della funzione corrispondente alla combinazione delle variabili in ingresso. Una tabella di verità può essere ridisegnata come un rettangolo n-dimensionale con m-valore in una mappa di Karneaugh. Il problema di queste due rappresentazioni consiste nella difficoltà nella rappresentazione in caso di tabelle complesse. Nei prossimi capitoli mostrerò metodi di rappresentazione più efficaci per la logica multi-valore.
+
+#### Positional cube notation
+
+Utilizzata nella logica booleana questa tecnica di visualizzazione può essere utilizzata anche per funzioni con input multi-valore e output booleano. Qunado un letterale binario, $x$ o $x'$, viene rappresentato da un campo a 2 bit una funzione letterali multivalore $m$ viene rappresenta con un campo a $m$ bit. Il valore $i \in M$ corrisponde al bit $i$ dell campo. Un letterale $x^S$ ha 1 in tutte le posizioni $i \in S$. Per esempio:
+
+$$\begin{tabular}{ c|c c c} 
+ \hline
+ x1/x2 & 0 & 1 & 2 \\ 
+ 0 & 1 & 0 & 0 \\ 
+ 1 & 1 & 1 & 1 \\
+ 2 & 0 & 1 & 1 \\
+ \hline
+\end{tabular}$$
+
+\newpage
+
+Applicando la Positional Cube Notation diventa:
+
+$$\begin{array}{ccc}
+110 & - & 100 \\
+101 & - & 010 \\
+011 & - & 001 
+\end{array}$$
+
+Per il caso booleano una condizione don't care di un valore in una riga corrisponde al fatto che quell'elemento può assumere valori 0 o 1. Per una funzione multi-valore essa può essere rappresentata nel seguente modo:
+
+- Si spezza la funzione $f: M^n \rightarrow M$ rispettando tutti i valori $i \in M$ in $m$ funzione multivalore in input e output multi-valore con la seguente logica $f^i: M^n \rightarrow \{0,1\}$
+- Infine si rappresenta ognuna delle funzioni spezzate nella notazione.
+
+#### Multiple Valued Network
+
+UN Multiple Valued network è un grafo multi-livello simile a quello booleano con la differenza che, ogni nodo, rappresenta una funzione multi-valore. Per sistemi con alto livello di astrazione l'utilizzo di questi grafi può rendere il design della progettazione più intuitivo. Prendiamo, per esempio, il controller di un semaforo, esso può prendere valore _rosso_, _giallo_ o _verde_ piuttosto che considerare l'encoding in modo binario. Questo tipo di progettazione è possibile solamente semplificando il sistema fino a che non è possibile renderlo ancora più ottimale nella manipolazione del dominio dei valori. Il lato negativo di questa tecnica è che la rappresentazione di un sistema non è canonica, poichè una funzione può assumere più rappresentazioni. Questo lato negativo rende il testing più difficoltoso.
+
+\newpage
+
+#### MDDS
+
+Multiple Valued Decision Diagrams sono semplicemente una generalizzazione degli alberi binari di decisione (BDDs). Le funzioni sono rappresentate creando un diagramma aciclico con nodi non terminali $v$ etichettati da una variabile di indice $index(i), i \in \{1,2,...,n\}$. Ogni vertice $v$ ha $m$ uscite dirette verso i nodi figli, chiamtti $child_j(v), j \in M$. Ogni vertice terminale $v$ ha come attributo un valore $value(v)$ in $M$.
+
+![](./media/04.png){width=70%}
 
 \newpage
 

@@ -1,11 +1,11 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.9.20)  6 OCT 2021 15:39
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.10.20)  1 NOV 2021 17:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **bookdown-demo.tex
 (./bookdown-demo.tex
 LaTeX2e <2021-06-01> patch level 1
-L3 programming layer <2021-08-27> (/home/andrea/.TinyTeX/texmf-dist/tex/latex/b
+L3 programming layer <2021-10-18> (/home/andrea/.TinyTeX/texmf-dist/tex/latex/b
 ase/book.cls
 Document Class: book 2021/02/12 v1.4n Standard LaTeX document class
 (/home/andrea/.TinyTeX/texmf-dist/tex/latex/base/bk10.clo
@@ -128,9 +128,9 @@ Package: iftex 2020/03/06 v1.0d TeX engine tests
 Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
 ) (/home/andrea/.TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math.sty (/h
 ome/andrea/.TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2021-08-27 L3 programming layer (loader) 
+Package: expl3 2021-10-18 L3 programming layer (loader) 
 (/home/andrea/.TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
-File: l3backend-xetex.def 2021-08-04 L3 backend support: XeTeX
+File: l3backend-xetex.def 2021-10-18 L3 backend support: XeTeX
 (|extractbb --version)
 \c__kernel_sys_dvipdfmx_version_int=\count199
 \l__color_backend_stack_int=\count266
@@ -316,7 +316,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip52
 ) (/home/andrea/.TinyTeX/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Package: fancyvrb 2021/08/12 v3.8 verbatim text (tvz,hv)
+Package: fancyvrb 2021/10/15 v3.9 verbatim text (tvz,hv)
 \FV@CodeLineNo=\count298
 \FV@InFile=\read2
 \FV@TabBox=\box54
@@ -988,40 +988,49 @@ Underfull \hbox (badness 5533) in paragraph at lines 509--511
 Capitolo 4.
 [29
 
-] [30]
-Underfull \hbox (badness 1616) in paragraph at lines 589--590
+]
+Underfull \hbox (badness 1824) in paragraph at lines 595--596
+\TU/lmr/m/n/10 disponibilità della realizzazione di questi circuiti che devono 
+comunque
+ []
+
+[30] [31] [32]
+File: ./media/04.png Graphic file (type bmp)
+<./media/04.png>
+[33] [34]
+Underfull \hbox (badness 1616) in paragraph at lines 682--683
 []\TU/lmr/m/n/10 Trovare un dominio multivalore che risulti efficace nella ridu
 zione
  []
 
-[31]
-Underfull \hbox (badness 1215) in paragraph at lines 624--626
+[35]
+Underfull \hbox (badness 1215) in paragraph at lines 717--719
 \TU/lmr/m/n/10 la scelta è ricaduta sul formato \TU/lmtt/m/n/10 PLA\TU/lmr/m/n/
 10 , già ampiamente utilizzato per la
  []
 
-[32] [33] [34] [35] [36]
+[36] [37] [38] [39] [40]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 763.
-[37]
-Underfull \hbox (badness 2205) in paragraph at lines 814--815
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 856.
+[41]
+Underfull \hbox (badness 2205) in paragraph at lines 907--908
 []\TU/lmr/m/n/10 Una volta ottenute tutte le informazioni disponibili dal circu
 ito dato,
  []
 
-[38] [39] [40]
-Underfull \hbox (badness 1590) in paragraph at lines 961--962
+[42] [43] [44]
+Underfull \hbox (badness 1590) in paragraph at lines 1054--1055
 []\TU/lmr/m/n/10 Come possiamo notare dal \TU/lmtt/m/n/10 return \TU/lmr/m/n/10
  della funzione questa operazione di
  []
 
-[41]
-Underfull \hbox (badness 1303) in paragraph at lines 989--990
+[45]
+Underfull \hbox (badness 1303) in paragraph at lines 1082--1083
 \TU/lmr/m/n/10 sviluppata. Questa tabella verrà utilizzata dalla funzione di co
 nversione
  []
 
-[42] [43] [44] [45] [46] [47] [48] [49]
+[46] [47] [48] [49] [50] [51] [52] [53]
 Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
@@ -1083,321 +1092,358 @@ Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-[50] [51] [52] [53] [54] [55] [56] [57] [58
+[54] [55] [56] [57] [58] [59] [60] [61] [62
 
 ]
 Capitolo 5.
-[59] [60]
-Overfull \hbox (3.65936pt too wide) in paragraph at lines 1599--1600
+[63] [64]
+Overfull \hbox (3.65936pt too wide) in paragraph at lines 1692--1693
  []\TU/lmr/m/n/10 NOME 
  []
 
 
-Overfull \hbox (4.51126pt too wide) in paragraph at lines 1601--1602
+Overfull \hbox (4.51126pt too wide) in paragraph at lines 1694--1695
  []\TU/lmr/m/n/10 COSTO 
  []
 
 
-Overfull \hbox (5.03937pt too wide) in paragraph at lines 1605--1606
+Overfull \hbox (5.03937pt too wide) in paragraph at lines 1698--1699
  []\TU/lmr/m/n/10 INPUT 
  []
 
 
-Overfull \hbox (5.69168pt too wide) in paragraph at lines 1607--1608
+Overfull \hbox (5.69168pt too wide) in paragraph at lines 1700--1701
  []\TU/lmr/m/n/10 DOMINIO 
  []
 
 
-Overfull \hbox (1.05789pt too wide) in paragraph at lines 1609--1610
+Overfull \hbox (1.05789pt too wide) in paragraph at lines 1702--1703
  []\TU/lmr/m/n/10 COSTO 
  []
 
 
-Overfull \hbox (5.03937pt too wide) in paragraph at lines 1613--1614
+Overfull \hbox (5.03937pt too wide) in paragraph at lines 1706--1707
  []\TU/lmr/m/n/10 INPUT 
  []
 
 
-Overfull \hbox (11.84937pt too wide) in paragraph at lines 1737--1738
+Overfull \hbox (11.84937pt too wide) in paragraph at lines 1830--1831
  []\TU/lmr/m/n/10 newtpla2| 
  []
 
 
-Overfull \hbox (10.4979pt too wide) in paragraph at lines 1866--1867
+Overfull \hbox (10.4979pt too wide) in paragraph at lines 1959--1960
  []\TU/lmr/m/n/10 117440512| 
  []
 
 
-Overfull \hbox (11.84937pt too wide) in paragraph at lines 1873--1874
+Overfull \hbox (11.84937pt too wide) in paragraph at lines 1966--1967
  []\TU/lmr/m/n/10 newtpla1| 
  []
 
 
-Overfull \hbox (7.67937pt too wide) in paragraph at lines 1907--1908
+Overfull \hbox (7.67937pt too wide) in paragraph at lines 2000--2001
  []\TU/lmr/m/n/10 newapla| 
  []
 
 
-Overfull \hbox (14.35938pt too wide) in paragraph at lines 2077--2078
+Overfull \hbox (14.35938pt too wide) in paragraph at lines 2170--2171
  []\TU/lmr/m/n/10 bcd_div3| 
  []
 
 
-Overfull \hbox (5.4979pt too wide) in paragraph at lines 2121--2122
+Overfull \hbox (5.4979pt too wide) in paragraph at lines 2214--2215
  []\TU/lmr/m/n/10 23085056| 
  []
 
-[61]
-Overfull \hbox (3.65936pt too wide) in paragraph at lines 2140--2141
+[65]
+Overfull \hbox (3.65936pt too wide) in paragraph at lines 2233--2234
  []\TU/lmr/m/n/10 NOME 
  []
 
 
-Overfull \hbox (4.51126pt too wide) in paragraph at lines 2142--2143
+Overfull \hbox (4.51126pt too wide) in paragraph at lines 2235--2236
  []\TU/lmr/m/n/10 COSTO 
  []
 
 
-Overfull \hbox (5.03937pt too wide) in paragraph at lines 2146--2147
+Overfull \hbox (5.03937pt too wide) in paragraph at lines 2239--2240
  []\TU/lmr/m/n/10 INPUT 
  []
 
 
-Overfull \hbox (9.13979pt too wide) in paragraph at lines 2148--2149
+Overfull \hbox (9.13979pt too wide) in paragraph at lines 2241--2242
  []\TU/lmr/m/n/10 DOMINIO 
  []
 
 
-Overfull \hbox (23.26212pt too wide) in paragraph at lines 2150--2151
+Overfull \hbox (23.26212pt too wide) in paragraph at lines 2243--2244
  \TU/lmr/m/n/10 MULTIVALORE| 
  []
 
 
-Overfull \hbox (5.03937pt too wide) in paragraph at lines 2154--2155
+Overfull \hbox (5.03937pt too wide) in paragraph at lines 2247--2248
  []\TU/lmr/m/n/10 INPUT 
  []
 
 
-Overfull \hbox (11.55307pt too wide) in alignment at lines 2137--2157
+Overfull \hbox (11.55307pt too wide) in alignment at lines 2230--2250
  [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (3.95126pt too wide) in paragraph at lines 2195--2196
+Overfull \hbox (3.95126pt too wide) in paragraph at lines 2288--2289
  []\TU/lmr/m/n/10 2621440| 
  []
 
 
-Overfull \hbox (11.84937pt too wide) in paragraph at lines 2278--2279
+Overfull \hbox (11.84937pt too wide) in paragraph at lines 2371--2372
  []\TU/lmr/m/n/10 newtpla2| 
  []
 
 
-Overfull \hbox (3.95126pt too wide) in paragraph at lines 2399--2400
+Overfull \hbox (3.95126pt too wide) in paragraph at lines 2492--2493
  []\TU/lmr/m/n/10 1835008| 
  []
 
 
-Overfull \hbox (11.84937pt too wide) in paragraph at lines 2414--2415
+Overfull \hbox (11.84937pt too wide) in paragraph at lines 2507--2508
  []\TU/lmr/m/n/10 newtpla1| 
  []
 
 
-Overfull \hbox (7.67937pt too wide) in paragraph at lines 2448--2449
+Overfull \hbox (7.67937pt too wide) in paragraph at lines 2541--2542
  []\TU/lmr/m/n/10 newapla| 
  []
 
 
-Overfull \hbox (14.35938pt too wide) in paragraph at lines 2618--2619
+Overfull \hbox (14.35938pt too wide) in paragraph at lines 2711--2712
  []\TU/lmr/m/n/10 bcd_div3| 
  []
 
 
-Overfull \hbox (3.95126pt too wide) in paragraph at lines 2654--2655
+Overfull \hbox (3.95126pt too wide) in paragraph at lines 2747--2748
  []\TU/lmr/m/n/10 1310720| 
  []
 
 
-Overfull \hbox (11.55307pt too wide) in alignment at lines 2157--2669
+Overfull \hbox (11.55307pt too wide) in alignment at lines 2250--2762
  [] [] [] [] [] [] [] [] 
  []
 
-[62]
-Overfull \hbox (3.65936pt too wide) in paragraph at lines 2678--2679
+[66]
+Overfull \hbox (3.65936pt too wide) in paragraph at lines 2771--2772
  []\TU/lmr/m/n/10 NOME 
  []
 
 
-Overfull \hbox (4.51126pt too wide) in paragraph at lines 2680--2681
+Overfull \hbox (4.51126pt too wide) in paragraph at lines 2773--2774
  []\TU/lmr/m/n/10 COSTO 
  []
 
 
-Overfull \hbox (5.03937pt too wide) in paragraph at lines 2684--2685
+Overfull \hbox (5.03937pt too wide) in paragraph at lines 2777--2778
  []\TU/lmr/m/n/10 INPUT 
  []
 
 
-Overfull \hbox (9.13979pt too wide) in paragraph at lines 2686--2687
+Overfull \hbox (9.13979pt too wide) in paragraph at lines 2779--2780
  []\TU/lmr/m/n/10 DOMINIO 
  []
 
 
-Overfull \hbox (23.26212pt too wide) in paragraph at lines 2688--2689
+Overfull \hbox (23.26212pt too wide) in paragraph at lines 2781--2782
  \TU/lmr/m/n/10 MULTIVALORE| 
  []
 
 
-Overfull \hbox (5.03937pt too wide) in paragraph at lines 2692--2693
+Overfull \hbox (5.03937pt too wide) in paragraph at lines 2785--2786
  []\TU/lmr/m/n/10 INPUT 
  []
 
 
-Overfull \hbox (11.55307pt too wide) in alignment at lines 2675--2695
+Overfull \hbox (11.55307pt too wide) in alignment at lines 2768--2788
  [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (11.84937pt too wide) in paragraph at lines 2816--2817
+Overfull \hbox (11.84937pt too wide) in paragraph at lines 2909--2910
  []\TU/lmr/m/n/10 newtpla2| 
  []
 
 
-Overfull \hbox (11.84937pt too wide) in paragraph at lines 2952--2953
+Overfull \hbox (11.84937pt too wide) in paragraph at lines 3045--3046
  []\TU/lmr/m/n/10 newtpla1| 
  []
 
 
-Overfull \hbox (7.67937pt too wide) in paragraph at lines 2986--2987
+Overfull \hbox (7.67937pt too wide) in paragraph at lines 3079--3080
  []\TU/lmr/m/n/10 newapla| 
  []
 
 
-Overfull \hbox (11.55307pt too wide) in alignment at lines 2695--3071
+Overfull \hbox (11.55307pt too wide) in alignment at lines 2788--3164
  [] [] [] [] [] [] [] [] 
  []
 
-[63]
-Overfull \hbox (3.65936pt too wide) in paragraph at lines 3106--3107
+[67] [68]
+Overfull \hbox (3.65936pt too wide) in paragraph at lines 3201--3202
  []\TU/lmr/m/n/10 NOME 
  []
 
 
-Overfull \hbox (4.51126pt too wide) in paragraph at lines 3108--3109
+Overfull \hbox (4.51126pt too wide) in paragraph at lines 3203--3204
  []\TU/lmr/m/n/10 COSTO 
  []
 
 
-Overfull \hbox (5.03937pt too wide) in paragraph at lines 3112--3113
+Overfull \hbox (5.03937pt too wide) in paragraph at lines 3207--3208
  []\TU/lmr/m/n/10 INPUT 
  []
 
 
-Overfull \hbox (9.13979pt too wide) in paragraph at lines 3114--3115
+Overfull \hbox (9.13979pt too wide) in paragraph at lines 3209--3210
  []\TU/lmr/m/n/10 DOMINIO 
  []
 
 
-Overfull \hbox (23.26212pt too wide) in paragraph at lines 3116--3117
+Overfull \hbox (23.26212pt too wide) in paragraph at lines 3211--3212
  \TU/lmr/m/n/10 MULTIVALORE| 
  []
 
 
-Overfull \hbox (5.03937pt too wide) in paragraph at lines 3120--3121
+Overfull \hbox (5.03937pt too wide) in paragraph at lines 3215--3216
  []\TU/lmr/m/n/10 INPUT 
  []
 
 
-Overfull \hbox (11.55307pt too wide) in alignment at lines 3103--3123
+Overfull \hbox (11.55307pt too wide) in alignment at lines 3198--3218
  [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (11.84937pt too wide) in paragraph at lines 3244--3245
+Overfull \hbox (11.84937pt too wide) in paragraph at lines 3339--3340
  []\TU/lmr/m/n/10 newtpla2| 
  []
 
 
-Overfull \hbox (11.84937pt too wide) in paragraph at lines 3380--3381
+Overfull \hbox (11.84937pt too wide) in paragraph at lines 3475--3476
  []\TU/lmr/m/n/10 newtpla1| 
  []
 
 
-Overfull \hbox (7.67937pt too wide) in paragraph at lines 3414--3415
+Overfull \hbox (7.67937pt too wide) in paragraph at lines 3509--3510
  []\TU/lmr/m/n/10 newapla| 
  []
 
 
-Overfull \hbox (14.35938pt too wide) in paragraph at lines 3584--3585
+Overfull \hbox (14.35938pt too wide) in paragraph at lines 3679--3680
  []\TU/lmr/m/n/10 bcd_div3| 
  []
 
 
-Overfull \hbox (11.55307pt too wide) in alignment at lines 3123--3635
+Overfull \hbox (11.55307pt too wide) in alignment at lines 3218--3730
  [] [] [] [] [] [] [] [] 
  []
 
-[64]
-Overfull \hbox (3.65936pt too wide) in paragraph at lines 3647--3648
+
+Overfull \hbox (3.65936pt too wide) in paragraph at lines 3742--3743
  []\TU/lmr/m/n/10 NOME 
  []
 
 
-Overfull \hbox (4.51126pt too wide) in paragraph at lines 3649--3650
+Overfull \hbox (4.51126pt too wide) in paragraph at lines 3744--3745
  []\TU/lmr/m/n/10 COSTO 
  []
 
 
-Overfull \hbox (5.03937pt too wide) in paragraph at lines 3653--3654
+Overfull \hbox (5.03937pt too wide) in paragraph at lines 3748--3749
  []\TU/lmr/m/n/10 INPUT 
  []
 
 
-Overfull \hbox (9.13979pt too wide) in paragraph at lines 3655--3656
+Overfull \hbox (9.13979pt too wide) in paragraph at lines 3750--3751
  []\TU/lmr/m/n/10 DOMINIO 
  []
 
 
-Overfull \hbox (23.26212pt too wide) in paragraph at lines 3657--3658
+Overfull \hbox (23.26212pt too wide) in paragraph at lines 3752--3753
  \TU/lmr/m/n/10 MULTIVALORE| 
  []
 
 
-Overfull \hbox (5.03937pt too wide) in paragraph at lines 3661--3662
+Overfull \hbox (5.03937pt too wide) in paragraph at lines 3756--3757
  []\TU/lmr/m/n/10 INPUT 
  []
 
 
-Overfull \hbox (11.55307pt too wide) in alignment at lines 3644--3664
+Overfull \hbox (11.55307pt too wide) in alignment at lines 3739--3759
  [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (11.84937pt too wide) in paragraph at lines 3785--3786
+Overfull \hbox (11.84937pt too wide) in paragraph at lines 3880--3881
  []\TU/lmr/m/n/10 newtpla2| 
  []
 
 
-Overfull \hbox (11.84937pt too wide) in paragraph at lines 3921--3922
+Overfull \hbox (11.84937pt too wide) in paragraph at lines 4016--4017
  []\TU/lmr/m/n/10 newtpla1| 
  []
 
 
-Overfull \hbox (7.67937pt too wide) in paragraph at lines 3955--3956
+Overfull \hbox (7.67937pt too wide) in paragraph at lines 4050--4051
  []\TU/lmr/m/n/10 newapla| 
  []
 
 
-Overfull \hbox (14.35938pt too wide) in paragraph at lines 4125--4126
+Overfull \hbox (14.35938pt too wide) in paragraph at lines 4220--4221
  []\TU/lmr/m/n/10 bcd_div3| 
  []
 
 
-Overfull \hbox (11.55307pt too wide) in alignment at lines 3664--4176
+Overfull \hbox (11.55307pt too wide) in alignment at lines 3759--4271
  [] [] [] [] [] [] [] [] 
  []
 
-[65] [66] (./bookdown-demo.bbl [67] [68
+
+Underfull \vbox (badness 2626) has occurred while \output is active []
+
+[69] [70] [71]
+Overfull \hbox (38.68011pt too wide) in alignment at lines 4288--4292
+ [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (38.68011pt too wide) in alignment at lines 4292--4324
+ [] [] [] [] [] [] 
+ []
+
+[72]
+Underfull \hbox (badness 2932) in paragraph at lines 4339--4340
+[]\TU/lmr/bx/n/10 ABC \TU/lmr/m/n/10 è un tool recente e sempre più ottimizzato
+, in continuo
+ []
+
+
+Underfull \hbox (badness 2460) in paragraph at lines 4342--4343
+[]\TU/lmr/m/n/10 La tabella riassume anche qual è stata l’evoluzione di questa 
+analisi
+ []
+
+
+Underfull \hbox (badness 3364) in paragraph at lines 4342--4343
+\TU/lmr/m/n/10 sperimentale: inizialmente ci si è concentrati su un metodo otti
+male
+ []
+
+
+Underfull \hbox (badness 4168) in paragraph at lines 4342--4343
+\TU/lmr/m/n/10 di conversione binaria e abbiamo analizzato se effettivamente qu
+esta
+ []
+
+(./bookdown-demo.bbl [73] [74
 
 ]
 Underfull \hbox (badness 3148) in paragraph at lines 22--26
@@ -1440,21 +1486,21 @@ braces):
 >  {italian/babelname}  =>  {italian}
 >  {italian/localnumeral}  =>  {polyglossia@C@localnumeral}
 >  {italian/Localnumeral}  =>  {polyglossia@C@localnumeral}.
-[69] (./bookdown-demo.aux
+[75] (./bookdown-demo.aux
 LaTeX Info: Redefining \rmfamily on input line 21.
 LaTeX Info: Redefining \sffamily on input line 21.
 LaTeX Info: Redefining \ttfamily on input line 21.
 )
 Package rerunfilecheck Info: File `bookdown-demo.out' has not changed.
-(rerunfilecheck)             Checksum: 815DE3D296982F668442C01992DE8CAA;4092.
+(rerunfilecheck)             Checksum: AA4852FAD2DEFCDDAC1FD91E815C993E;4263.
  ) 
 Here is how much of TeX's memory you used:
- 18063 strings out of 478492
- 319317 string characters out of 5861846
- 857153 words of memory out of 5000000
- 38080 multiletter control sequences out of 15000+600000
+ 18081 strings out of 478472
+ 319716 string characters out of 5861202
+ 869294 words of memory out of 5000000
+ 38117 multiletter control sequences out of 15000+600000
  409921 words of font info for 85 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 87i,8n,120p,1918b,518s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 87i,8n,120p,1289b,541s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on bookdown-demo.pdf (69 pages).
+Output written on bookdown-demo.pdf (75 pages).

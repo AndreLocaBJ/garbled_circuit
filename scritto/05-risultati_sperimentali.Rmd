@@ -165,7 +165,9 @@ cl
 write_blif_mv ./prova/blfmv/synth/abc/amd.mv
 ```
 
-Rispetto a prima però vi sarà la differenza che l’output post sintesi non sarà più un circuito multivalore , bensì uno binario.
+Rispetto a prima però vi sarà la differenza che l’output post sintesi non sarà più un circuito multivalore, bensì uno binario.
+
+\newpage
 
 ## ABC e dominio fisso
 
@@ -243,10 +245,62 @@ Come ultimo test, come in MVSIS,  abbiamo deciso di applicare anche l’approcci
 |  alu3   |   139    |     5     |    5    |      2      |       406       |     5     |    5    |
 |   in7   |   182    |     7     |    7    |      2      |      1676       |     7     |    7    |
 
-In questo caso possiamo appurare che tra i due approcci non ci sono differenze sostanziali, questo  risultato potrebbe essere derivato dalle modalità con cui  abc legge i circuiti multivalore in input.  
+In questo caso possiamo appurare che tra i due approcci non ci sono differenze sostanziali, questo  risultato potrebbe essere derivato dalle modalità con cui  abc legge i circuiti multivalore in input.
 
 \newpage
 
 ## Conclusioni sui risultati
 
-Una volta terminate tutte le analisi e le sperimentazioni eseguite sui circuiti binari e multivalore siamo stati in grado di trarre alcune informazioni molto importanti riguardanti essi e i loro funzionamenti. Tutti i dati ottenuti da questa sperimentazione ci hanno portati a notare come l'utilizzo della logica multivalore all'interno dei circuiti potrebbe rivelarsi molto interessante in termini di riduzione dei costi relativi ai valori di input che sono richiesti dai circuiti. La limitazione principale che abbiamo potuto riscontrare è insita nella carenza di strumenti di sintesi a disposizione che possano essere considerati applicabili alla logica multivalore. Come anticipato, solamente **MVSIS** è in grado di gestire e interpretare questo tipo di logica, ma rimane un programma ora mai datato e non più mantenuto, di conseguenza non vi sono al suo interno tool sufficientemente aggiornati o meglio implementati. I nuovi strumenti messi a disposizione, come ad esempio **ABC** accettano in ingresso circuiti multivalore, ma, per poter fare questo, nel loro motore di sintesi essi vengono convertiti in circuiti booleani. L'efficienza e l'efficacia delle nuove funzioni di sintesi attuate da **ABC** hanno reso l'utilizzo di questo software la prima scelta da utilizzare nel caso di circuiti multivalore e binari. Applicando un approccio ibrido siamo stati in grado di prendere il meglio dei sintetizzatori presentati, sfruttando  la riduzione degli input durante la conversione del dominio combinata all'alta efficacia degli strumenti di sintesi messi a disposizione di **ABC**. Questo tipo di metodica, definita ibrida, risulta essere il migliore approccio testato durante questa sperimentazione in quanto i risultati mostrano una riduzione dei costi computazionali nella maggior parte dei circuiti analizzati dalla nostra sperimentazione.
+Una volta terminate tutte le analisi e le sperimentazioni eseguite sui circuiti binari e multivalore siamo stati in grado di trarre alcune informazioni molto importanti riguardanti essi e i loro funzionamenti. Tutti i dati ottenuti da questa sperimentazione ci hanno portati a notare come l'utilizzo della logica multivalore all'interno dei circuiti potrebbe rivelarsi molto interessante in termini di riduzione dei costi relativi ai valori di input che sono richiesti dai circuiti.
+
+La limitazione principale che abbiamo potuto riscontrare è insita nella carenza di strumenti di sintesi a disposizione che possano essere considerati applicabili alla logica multivalore. Come anticipato, solamente **MVSIS** è in grado di gestire e interpretare questo tipo di logica, ma rimane un programma ora mai datato e non più mantenuto, di conseguenza non vi sono al suo interno tool sufficientemente aggiornati o meglio implementati. I nuovi strumenti messi a disposizione, come ad esempio **ABC** accettano in ingresso circuiti multivalore, ma, per poter fare questo, nel loro motore di sintesi essi vengono convertiti in circuiti booleani. L'efficienza e l'efficacia delle nuove funzioni di sintesi attuate da **ABC** hanno reso l'utilizzo di questo software la prima scelta da utilizzare nel caso di circuiti multivalore e binari. 
+
+Applicando un approccio ibrido siamo stati in grado di prendere il meglio dei sintetizzatori presentati. Sfruttando  la riduzione degli input durante la conversione in un dominio maggiore di quello binario combinata all'alta efficacia degli strumenti di sintesi messi a disposizione di **ABC** abbiamo ottenuto i risultati migliori.
+
+\newpage
+
+| Circuito | BINARIO |MULTIVALORE| MVSIS dom var | ABC dom var | Diff. % |
+|:--------:|:-------:|:---------:|:-------------:|:-----------:|:-------:|
+|    amd   | 393216  | 196608    |     196608    |     1860    |   -99%  |
+|    tms   | 4096    | 1024      |      1024     |     184     |   -82%  |
+|    pdc   | 2621440 | 1310720   |    1310720    |     6032    |  -100%  |
+|   mlp4   | 2048    | 512       |      512      |     669     |   31%   |
+|   apla   | 12288   | 6144      |      6144     |     213     |   -97%  |
+|   f51m   | 2048    | 512       |      512      |     344     |   -33%  |
+|    m4    | 4096    | 1024      |      1024     |     658     |   -36%  |
+| newtpla2 | 4096    | 2048      |      2048     |      48     |   -98%  |
+|   test1  | 2560    | 1280      |      1280     |     354     |   -72%  |
+|    m2    | 4096    | 1024      |      1024     |     350     |   -66%  |
+|    br2   | 32768   | 8192      |      8192     |     130     |   -98%  |
+|   alu1   | 32768   | 8192      |      8192     |     774     |   -91%  |
+|   sqr6   | 705     | 256       |      256      |     234     |   -9%   |
+|   bench  | 512     | 256       |      256      |      47     |   -82%  |
+|    in5   | 1835008 | 117440512 |   117440512   |     1336    |  -100%  |
+| newtpla1 | 2048    | 1024      |      1024     |      33     |   -97%  |
+|    m3    | 4096    | 1024      |      1024     |     388     |   -62%  |
+|  newapla | 40960   | 20480     |     20480     |      81     |  -100%  |
+|   l8err  | 1283    | 512       |      512      |     338     |   -34%  |
+|    t4    | 32768   | 8192      |      8192     |     248     |   -97%  |
+|    br1   | 32768   | 8192      |      8192     |     136     |   -98%  |
+|   fout   | 640     | 320       |      320      |     214     |   -33%  |
+|   mp2d   | 229376  | 32768     |     32768     |     1677    |   -95%  |
+|   alu2   | 8192    | 4096      |      4096     |     554     |   -86%  |
+|    t3    | 32768   | 8192      |      8192     |     354     |   -96%  |
+|    p3    | 3074    | 1792      |      1792     |     139     |   -92%  |
+|    m1    | 768     | 256       |      256      |     112     |   -56%  |
+| bcd_div3 | 64      | 32        |       32      |      46     |   44%   |
+|   alu3   | 8192    | 4096      |      4096     |     406     |   -90%  |
+|    in7   | 1310720 | 335544320 |   335544320   |     1676    |  -100%  |
+
+\newpage
+
+Questa tabella rappresenta la differenza di costo percentuale tra i due metodi più efficaci provati per ogni motore di sintesi. 
+
+Come possiamo notare come questo tipo di metodica, definita ibrida, risulta essere il migliore approccio testato durante questa sperimentazione in quanto i risultati mostrano una riduzione dei costi computazionali in tutti i casi ad eccezione di due e i restanti risultati hanno una percentuale di guadagno sempre superiore al 30% e, nei casi di circuiti con grande quantità di nodi, anche superiore al 100% riducendo notevolmente il costo computazionale.
+
+La tecnica di analisi ibrida offre i risultati migliori in quanto:
+
+- La conversione di dominio ibrida al minimo dimezza i valori di input da inserire dalle parti e l'algoritmo fa in modo che non venga selezione un dominio eccessivamente grande limitando le possibilità a casi utili in contesti reali;
+- **ABC** è un tool recente e sempre più ottimizzato, in continuo aggiornamento e dispone di preset ottimizzati per la sintetizzazione dei circuiti.
+
+La tabella riassume anche qual è stata l'evoluzione di questa analisi sperimentale: inizialmente ci si è concentrati su un metodo ottimale di conversione binaria e abbiamo analizzato se effettivamente questa sperimentazione potesse avere dei reali benefici, successivamente si è passati alla sintesi dei circuiti per capire se la sintesi di domini non binari potesse essere efficace come quella binaria. Una volta individuati i tool migliori si è cercato di capire quali tecniche di sintesi potessero essere le migliori fino ad arrivare ai risultati finali con la constatazione che l'approccio ibrido, ad oggi, risulti la tecnica migliore da noi testata.

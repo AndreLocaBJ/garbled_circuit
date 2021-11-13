@@ -64,7 +64,9 @@ In questo modo, per valutare il circuito, per ogni porta$G_i$ del circuito, Bob 
 
 questo punto del processo,  sembrerebbe necessario avere un oracolo come unica strada praticabile per la conferma del  successo della decrittazione delle voci di $T_i$; tuttavia è possibile ricorrere ad un “trucco” che descriverò più dettagliatamente qui di seguito.
  
-Questo particolare espediente viene chiamato permute-and-point e viene usato per la prima volta [@fval] successivamente spiegato più nel dettaglio nella tesi di Phillip Rogoway[@prog].Il permute-and-point permette di decidere quale voce della GTT deve essere decrittata dati gli input confusi, permettendo di eseguire calcoli più veloci e impedendo comunque al valutatore di dedurre qualcosa dall'ordine delle voci della tabella di verità.
+Questo particolare espediente viene chiamato permute-and-point e viene usato per la prima volta [@INPROCEEDINGS] successivamente spiegato più nel dettaglio nella tesi di Phillip Rogoway[@prog].
+
+Il permute-and-point permette di decidere quale voce della GTT deve essere decrittata dati gli input confusi, permettendo di eseguire calcoli più veloci e impedendo comunque al valutatore di dedurre qualcosa dall'ordine delle voci della tabella di verità. [@kolesnikov2008improved]
 
 \newpage
 
@@ -74,7 +76,7 @@ Il meccanismo di Permute-and-point funziona nel seguente modo: per ogni filo di 
 
 ![AND garbled con permute on point](./media/02.png)
 
-Queste modifiche permettono a Bob di decifrare semplicemente la voce il cui indice corrisponde ai colori associati ai suoi fili di ingresso e quindi di ottenere il valore del filo di uscita e il suo colore, permettendogli di valutare ulteriormente il circuito.
+Queste modifiche permettono a Bob di decifrare semplicemente la voce il cui indice corrisponde ai colori associati ai suoi fili di ingresso e quindi di ottenere il valore del filo di uscita e il suo colore, permettendogli di valutare ulteriormente il circuito. [@4568207]
 
 \newpage
 
@@ -92,4 +94,4 @@ Potrà ora decifrare la porta XOR finale usando l'ingresso calcolato $({\color{g
 
 Bob non  è a conoscenza di quale sia stato effettivamente l’input di Alice, ne conosce solo l’output finale “1” e le stringhe generate casualmente $w_1^0,w_2^0,w_3^1,w_4^0,w_5^0,w_6^1$. Egli può ancora, per esempio, dedurre dal circuito che i valori semantici di $w_5^0$ e $w_6^1$ sono opposti, tuttavia questo sistema non gli permette di invertire il circuito confuso fino ai valori di ingresso di Alice. 
 
-Ci sono alcuni circuiti in cui non è assicurata la privacy, come per esempio un circuito che calcola la somma degli ingressi. Tuttavia, in questo caso di esempio Bob, conoscendo i suoi valori semantici di ingresso, può semplicemente limitare gli ingressi di Alice a un sottoinsieme dei possibili ingressi, ma non può determinare in modo univoco i reali valori di ingresso di Alice.
+Ci sono alcuni circuiti in cui non è assicurata la privacy, come per esempio un circuito che calcola la somma degli ingressi. Tuttavia, in questo caso di esempio Bob, conoscendo i suoi valori semantici di ingresso, può semplicemente limitare gli ingressi di Alice a un sottoinsieme dei possibili ingressi, ma non può determinare in modo univoco i reali valori di ingresso di Alice. [@hemenway2014achieving]

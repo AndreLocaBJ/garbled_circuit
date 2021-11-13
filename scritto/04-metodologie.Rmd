@@ -21,7 +21,7 @@ La logica multi-valore può avere un numero di vantaggi teorici risolvere a quel
 - Memory design: Memorizzare informazioni a blocchi di 2bit invece che uno raddoppia la densità delle informazioni che si possono racchiudere nello stesso spazio.
 - ecc.
 
-Le potenzialità pratiche di questi vantaggi dipendono pesantemente dalla disponibilità della realizzazione di questi circuiti che devono comunque rimanere compatibili con gli standard tecnologici odierni.
+Le potenzialità pratiche di questi vantaggi dipendono pesantemente dalla disponibilità della realizzazione di questi circuiti che devono comunque rimanere compatibili con gli standard tecnologici odierni. [@gao2002optimization]
 
 \newpage
 
@@ -60,7 +60,7 @@ $$\begin{array}{ccc}
 Per il caso booleano una condizione don't care di un valore in una riga corrisponde al fatto che quell'elemento può assumere valori 0 o 1. Per una funzione multi-valore essa può essere rappresentata nel seguente modo:
 
 - Si spezza la funzione $f: M^n \rightarrow M$ rispettando tutti i valori $i \in M$ in $m$ funzione multivalore in input e output multi-valore con la seguente logica $f^i: M^n \rightarrow \{0,1\}$
-- Infine si rappresenta ognuna delle funzioni spezzate nella notazione.
+- Infine si rappresenta ognuna delle funzioni spezzate nella notazione. [@Dubrova2002]
 
 #### Multiple Valued Network
 
@@ -547,7 +547,7 @@ Il formato pla attualmente non dispone di un’alternativa per i file multivalor
 
 La differenza con pla, invece, sta nel fatto che gli output non possono essere in numero maggiore di 1 per tabella: nella rappresentazione avrò quindi, per ogni nodo del circuito, tante tabelle quanti sono gli output di quel nodo. Questa tipologia di rappresentazione è utilizzata anche nei file blfmv , quindi sarà possibile una comparazione 1:1 tra il circuito binario e  quello multivalore.
 
-Per effettuare questa conversione vengono in aiuto i tool ABC e MVSIS, poiché entrambi contengono metodi di conversione automatica da pla a blif. Questa operazione viene effettuata tramite uno script contenente le istruzioni da eseguire e dato come parametro di ingresso al programma.
+Per effettuare questa conversione vengono in aiuto i tool ABC e MVSIS, poiché entrambi contengono metodi di conversione automatica da pla a blif. Questa operazione viene effettuata tramite uno script contenente le istruzioni da eseguire e dato come parametro di ingresso al programma. [@kukimoto1996blif]
 
 ```
 read_pla ./prova/pla/alu2.pla

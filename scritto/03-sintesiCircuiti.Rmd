@@ -1,6 +1,6 @@
 # La sintesi dei circuiti
 
-Nel capitolo precedente abbiamo discusso dell’importanza della presenza di un circuito logico all’interno del protocollo creato da Yao. A livello di funzionalità La scelta di un circuito efficiente è da considerarsi un fattore importantissimo in quanto rende la computazione e i tempi di calcolo delle operazioni non elevati. Ciò che effettivamente rende efficace la scelta è trovare il giusto bilanciamento tra numero di input che le 2 parti coinvolte devono immettere nel circuito e, nel caso di un dominio multivalore, scegliere un dominio non troppo elevato poiché quest’ultimo andrebbe ad immettere, per ogni valore di input, troppi valori che di conseguenza porterebbero ad aumentare i costi totali del circuito.
+Nel capitolo precedente abbiamo discusso dell’importanza della presenza di un circuito logico all’interno del protocollo creato da Yao. A livello di funzionalità La scelta di un circuito efficiente è da considerarsi un fattore importantissimo in quanto rende la computazione e i tempi di calcolo delle operazioni non elevati. Ciò che effettivamente rende efficace la scelta è trovare il giusto bilanciamento tra numero di input che le 2 parti coinvolte devono immettere nel circuito e, nel caso di un dominio multivalore, scegliere un dominio non troppo elevato poiché quest’ultimo andrebbe ad immettere, per ogni valore di input, troppi valori che di conseguenza porterebbero ad aumentare i costi totali del circuito. [@brayton1999multi]
 
 La scelta di questi circuiti viene facilitata dall'utilizzo di strumenti chiamati sintetizzatori, questi tool sono stati creati appositamente per andare a ridurre quanto possibile le dimensioni dei circuiti dati loro in ingresso. All’interno di questo lavoro di analisi sono stati utilizzati due tool differenti: **MVSIS** e **ABC**. Entrambi sono stati sviluppati nel tempo dall'università di Berkley. Sia **MVSIS** che **ABC** contengono diversi metodi di sintesi capaci di andare ad eliminare i nodi e le ridondanze superflue all’interno dei circuiti e in grado di sintetizzare il circuito andandone a cambiare radicalmente la struttura interna dei nodi.
 
@@ -25,7 +25,7 @@ L'i-set (uno per ogni valore di output) di un nodo multivalore può essere sempl
 - SIMPLIFY
 - FULLSIMP
 
-FULLSIMP, tra le 2 opzioni, è quella che garantisce una semplificazione più efficace. Poichè Utilizza il CODC (Compatible Observability Don’t Cares) e l’ MV-image computation. Ogni i-set del nodo è  in seguito semplificato dal metodo di sintesi ESPRESSO-MV utilizzando i valori che siamo stati in grado di ricavare ricorrendo alle due tecniche precedenti.
+FULLSIMP, tra le 2 opzioni, è quella che garantisce una semplificazione più efficace. Poichè Utilizza il CODC (Compatible Observability Don’t Cares) e l’ MV-image computation. Ogni i-set del nodo è  in seguito semplificato dal metodo di sintesi ESPRESSO-MV utilizzando i valori che siamo stati in grado di ricavare ricorrendo alle due tecniche precedenti. [@mvsis]
 
 ### Kernel e Cube Extraction
 
@@ -44,7 +44,7 @@ Oltre all’utilizzo dei sintetizzatori vi è però Un altro importante step che
    1. Inizia dagli ingressi e per ogni nodo, determina se uno dei suoi fanin può essere usato per codificare parzialmente il nodo.
    2. nizia dalle uscite e, in ordine topologico inverso, lavora a ritroso fino agli ingressi primari. Ad ogni nodo, le sue uscite sono codificate utilizzando le informazioni su come sono utilizzati i suoi fanout.
 4. **Pair decoding**: Ha la stessa funzione del merging, ma a  differenza del precedente questo comando utilizza un altro metodo per scegliere quali nodi unire.
-5. **Bi-decomposition**: roduce dei nodi multi-valore intermedi.  Esso acquisisce una rete MV appiattita, o parzialmente appiattita, e ne genera una nuova composta da porte MAX e MIN multi-valutate a due ingressi e da iterali multi-valutati. In questo processo, per la creazione dei nuovi nodi, Vengono sfruttate sia l’incompletezza della specifica iniziale che le flessibilità generate nel processo di composizione.
+5. **Bi-decomposition**: roduce dei nodi multi-valore intermedi.  Esso acquisisce una rete MV appiattita, o parzialmente appiattita, e ne genera una nuova composta da porte MAX e MIN multi-valutate a due ingressi e da iterali multi-valutati. In questo processo, per la creazione dei nuovi nodi, Vengono sfruttate sia l’incompletezza della specifica iniziale che le flessibilità generate nel processo di composizione. [@chai2003mvsis] [@yang1991logic]
 
 \newpage
 
@@ -59,7 +59,7 @@ Si può dire che Questo programma sia nato dalle esperienze assimilate dall’us
 
 La comprensione di queste problematiche ha spinto a ri-sviluppare i pacchetti di base di MVSIS creando un nuovo ambiente di programmazione chiamato ABC. Come suggerisce il nome, l’obiettivo primario di questo sistema software è quello di mantenere strutture di dati semplici e flessibili in modo da poter essere impiegate da una vasta gamma di applicazioni.
 
-L’obiettivo del progetto ABC è quello di fornire un’implementazione pubblica degli algoritmi di sintesi combinatoria e sequenziale allo stato dell’arte e, allo stesso tempo, creare un ambiente open-source, in cui tali applicazioni possano essere sviluppate e confrontate. La versione attuale di ABC può  ottimizzare, mappare e realizzare progetti industriali a livello di gate con 100K porte e 10K elementi sequenziali cont tempi di calcolo non superiori al minuto prendendo in considerazione un computer moderno.
+L’obiettivo del progetto ABC è quello di fornire un’implementazione pubblica degli algoritmi di sintesi combinatoria e sequenziale allo stato dell’arte e, allo stesso tempo, creare un ambiente open-source, in cui tali applicazioni possano essere sviluppate e confrontate. La versione attuale di ABC può  ottimizzare, mappare e realizzare progetti industriali a livello di gate con 100K porte e 10K elementi sequenziali cont tempi di calcolo non superiori al minuto prendendo in considerazione un computer moderno. [@mishchenko2007abc]
 
 \newpage
 
@@ -89,7 +89,7 @@ In ABC, i confini dei nodi sono inizialmente distrutti dall’hashing struttural
 
 ### Sintesi sequenziale
 
-La sintesi sequenziale è un processo che, ove presenti, trasforma la rete corrente modificandone la logica insieme agli elementi di memorizzazione (latches o flip-flops). La rete risultante dalla sintesi sequenziale può avere una codifica di stato e uno spazio di stato diversi rispetto alla rete originale, ma le due reti sono sequenzialmente equivalenti; nello specifico, (partendo dagli stati iniziali, per le stesse sequenze di vettori d’ingresso  vengono generate sequenze identiche di vettori d’uscita).
+La sintesi sequenziale è un processo che, ove presenti, trasforma la rete corrente modificandone la logica insieme agli elementi di memorizzazione (latches o flip-flops). La rete risultante dalla sintesi sequenziale può avere una codifica di stato e uno spazio di stato diversi rispetto alla rete originale, ma le due reti sono sequenzialmente equivalenti; nello specifico, (partendo dagli stati iniziali, per le stesse sequenze di vettori d’ingresso  vengono generate sequenze identiche di vettori d’uscita). [@manual2006quick]
 
 - **Cycle**: Simula la rete sequenziale con un input casuale per poi aggiornare il suo stato attuale..
 - **init**: Ripristina gli stati iniziali di tutte le porte della rete corrente.
@@ -105,4 +105,4 @@ La sintesi sequenziale è un processo che, ove presenti, trasforma la rete corre
 - **scleanup**: Esegue la pulizia sequenziale, cioè rimuove i nodi e le latches che non sono a fanout.
 - **ssw**: Implementa i segnali corrispondenti applicando l’induzione K-step. E in seguito Rileva e fonde i nodi sequenzialmente equivalenti.
 - **undc**: Converte i registri con gli stati iniziali don’t care in registri con uno stato iniziale costante -0. In particolare è possibile utilizzare questo comando prima di eseguire qualsiasi verifica sequenziale.
-- **xsim**: Esegue la simulazione con $X$ valore  della rete sequenziale corrente.
+- **xsim**: Esegue la simulazione con $X$ valore  della rete sequenziale corrente. 

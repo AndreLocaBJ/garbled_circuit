@@ -87,4 +87,4 @@ Il protocollo di base di Yao è sicuro contro gli avversari semi-onesti. Possiam
 \newpage
 
 Yao ha spiegato come confondere un circuito (nascondere la sua struttura) in modo che due parti, mittente e ricevitore, possano imparare l’uscita del circuito e nient’altro. Ad un alto livello, il mittente prepara il circuito confuso e lo invia al ricevitore, che ignaro valuta il circuito, imparando le codifiche corrispondenti all’uscita sua e del mittente. Poi si limita a rimandare le codifiche del mittente, permettendo a quest’ultimo di calcolare la sua parte di output. Il mittente invia la mappatura dalle codifiche di uscita dei ricevitori e i bit al ricevitore, permettendo a quest’ultimo di ottenere la propria uscita. 
-Nel capitolo successivo andremo ad analizzare più in profondità questo processo, spiegandone dettagliatamente la logica di funzionamento.
+Nel capitolo successivo andremo ad analizzare più in profondità questo processo, spiegandone dettagliatamente la logica di funzionamento. [@Venturi2012]

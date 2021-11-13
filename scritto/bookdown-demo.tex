@@ -109,6 +109,12 @@
 \setcounter{secnumdepth}{5}
 \usepackage{pmboxdraw}
 \usepackage{float}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{ifthen}
+\usepackage{keyval}
+\usepackage{rotate}
+\usepackage{trig}
 \usepackage[]{natbib}
 \bibliographystyle{plainnat}
 
@@ -1679,639 +1685,82 @@ Per far fronte alla mancanza di replicabilità di alcuni comandi in questo siste
 
 Come primo approccio alla conversione da binaria a multivalore abbiamo optato per lo stesso valore di dominio per tutti i circuiti. La scelta è stata quella di andare ad aggiungere altri 2 valori rispetto a ad un circuito binario utilizzando il modulo 3.
 
-\begin{longtable}[]{@{}lllllllll@{}}
-\toprule
-\begin{minipage}[b]{0.07\columnwidth}\raggedright
-NOME CIRC\strut
-\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\raggedright
-COSTO BOOL\strut
-\end{minipage} & \begin{minipage}[b]{0.08\columnwidth}\raggedright
-INPUT ALICE\strut
-\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\raggedright
-INPUT BOB\strut
-\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
-DOMINIO MULTI\strut
-\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\raggedright
-COSTO MULTI\strut
-\end{minipage} & \begin{minipage}[b]{0.08\columnwidth}\raggedright
-INPUT ALICE\strut
-\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\raggedright
-INPUT BOB\strut
-\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\raggedright
-\% Guadagno\strut
-\end{minipage}\tabularnewline
-\midrule
-\endhead
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-amd\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-469\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-47568\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--10042\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-tms\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-322\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-2048\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--536\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-pdc\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-2818\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1310720\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--46412\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-mlp4\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-594\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-784\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--32\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-apla\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-343\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1029\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--200\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-f51m\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-261\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-340\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--30\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-m4\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-974\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1601\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--64\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-newtpla2\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-48\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-2048\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--4167\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-test1\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-1095\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1280\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--17\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-m2\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-339\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1121\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--231\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-br2\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-179\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-16384\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--9053\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-alu1\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-83\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-5122\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--6071\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-sqr6\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-197\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-276\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--40\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-bench\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-198\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-256\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--29\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-in5\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-446\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-117440512\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--26331853\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-newtpla1\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-33\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1024\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--3003\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-m3\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-571\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1169\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--105\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-newapla\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-83\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-9728\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--11620\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-l8err\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-454\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-337\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-26\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-t4\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-238\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-10240\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--4203\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-br1\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-252\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-16384\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--6402\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-fout\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-442\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-320\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-28\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-mp2d\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-136\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-95\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-alu2\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-225\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1282\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--470\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-t3\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-131\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-97\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-p3\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-385\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1408\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--266\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-m1\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-125\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-225\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--80\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-bcd\_div3\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-54\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-32\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-41\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-alu3\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-139\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-97\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-in7\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-182\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-23085056\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--12683997\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-\textbf{393,87}\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-\textbf{4,87}\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-\textbf{4,87}\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-\textbf{4731943,63}\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-\textbf{2,43}\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-\textbf{2,83}\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-\textbf{-13039,51}\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-\textbf{COSTO BOOL MEDIO}\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-\textbf{COSTO MULTI MEDIO}\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-\strut
-\end{minipage}\tabularnewline
-\bottomrule
-\end{longtable}
+\%
+
+\usepackage{rotating}
+
+\begin{table}
+\centering
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|} 
+\hline
+\textbf{ NOME CIRC } & \textbf{COSTO BOOL }                                    & \textbf{INPUT ALICE } & \textbf{INPUT BOB } & \textbf{DOMINIO MULTI } & \textbf{COSTO MULTI }                                    & \textbf{INPUT ALICE } & \textbf{INPUT BOB } & \% Guadagno            \\ 
+\hline
+amd                  & 469                                                     & 7                     & 7                   & 3                       & 47568                                                    & 3                     & 4                   & \textbf{-10042\% }     \\ 
+\hline
+tms                  & 322                                                     & 4                     & 4                   & 3                       & 2048                                                     & 2                     & 2                   & \textbf{-536\% }       \\ 
+\hline
+pdc                  & 2818                                                    & 7                     & 7                   & 3                       & 1310720                                                  & 4                     & 4                   & \textbf{-46412\% }     \\ 
+\hline
+mlp4                 & 594                                                     & 4                     & 4                   & 3                       & 784                                                      & 2                     & 2                   & \textbf{-32\% }        \\ 
+\hline
+apla                 & 343                                                     & 5                     & 5                   & 3                       & 1029                                                     & 2                     & 3                   & \textbf{-200\% }       \\ 
+\hline
+f51m                 & 261                                                     & 4                     & 4                   & 3                       & 340                                                      & 2                     & 2                   & \textbf{-30\% }        \\ 
+\hline
+m4                   & 974                                                     & 4                     & 4                   & 3                       & 1601                                                     & 2                     & 2                   & \textbf{-64\% }        \\ 
+\hline
+newtpla2             & 48                                                      & 5                     & 5                   & 3                       & 2048                                                     & 2                     & 3                   & \textbf{-4167\% }      \\ 
+\hline
+test1                & 1095                                                    & 4                     & 4                   & 3                       & 1280                                                     & 2                     & 2                   & \textbf{-17\% }        \\ 
+\hline
+m2                   & 339                                                     & 4                     & 4                   & 3                       & 1121                                                     & 2                     & 2                   & \textbf{-231\% }       \\ 
+\hline
+br2                  & 179                                                     & 6                     & 6                   & 3                       & 16384                                                    & 3                     & 3                   & \textbf{-9053\% }      \\ 
+\hline
+alu1                 & 83                                                      & 6                     & 6                   & 3                       & 5122                                                     & 3                     & 3                   & \textbf{-6071\% }      \\ 
+\hline
+sqr6                 & 197                                                     & 3                     & 3                   & 3                       & 276                                                      & 1                     & 2                   & \textbf{-40\% }        \\ 
+\hline
+bench                & 198                                                     & 3                     & 3                   & 3                       & 256                                                      & 1                     & 2                   & \textbf{-29\% }        \\ 
+\hline
+in5                  & 446                                                     & 7                     & 7                   & 3                       & 117440512                                                & 6                     & 6                   & \textbf{-26331853\% }  \\ 
+\hline
+newtpla1             & 33                                                      & 5                     & 5                   & 3                       & 1024                                                     & 2                     & 3                   & \textbf{-3003\% }      \\ 
+\hline
+m3                   & 571                                                     & 4                     & 4                   & 3                       & 1169                                                     & 2                     & 2                   & \textbf{-105\% }       \\ 
+\hline
+newapla              & 83                                                      & 6                     & 6                   & 3                       & 9728                                                     & 3                     & 3                   & \textbf{-11620\% }     \\ 
+\hline
+l8err                & 454                                                     & 4                     & 4                   & 3                       & 337                                                      & 2                     & 2                   & \textbf{26\% }         \\ 
+\hline
+t4                   & 238                                                     & 6                     & 6                   & 3                       & 10240                                                    & 3                     & 3                   & \textbf{-4203\% }      \\ 
+\hline
+br1                  & 252                                                     & 6                     & 6                   & 3                       & 16384                                                    & 3                     & 3                   & \textbf{-6402\% }      \\ 
+\hline
+fout                 & 442                                                     & 3                     & 3                   & 3                       & 320                                                      & 1                     & 2                   & \textbf{28\% }         \\ 
+\hline
+mp2d                 & 136                                                     & 7                     & 7                   & 3                       & 7                                                        & 3                     & 4                   & \textbf{95\% }         \\ 
+\hline
+alu2                 & 225                                                     & 5                     & 5                   & 3                       & 1282                                                     & 2                     & 3                   & \textbf{-470\% }       \\ 
+\hline
+t3                   & 131                                                     & 6                     & 6                   & 3                       & 4                                                        & 3                     & 3                   & \textbf{97\% }         \\ 
+\hline
+p3                   & 385                                                     & 4                     & 4                   & 3                       & 1408                                                     & 2                     & 2                   & \textbf{-266\% }       \\ 
+\hline
+m1                   & 125                                                     & 3                     & 3                   & 3                       & 225                                                      & 1                     & 2                   & \textbf{-80\% }        \\ 
+\hline
+bcd\_div3            & 54                                                      & 2                     & 2                   & 3                       & 32                                                       & 1                     & 1                   & \textbf{41\% }         \\ 
+\hline
+alu3                 & 139                                                     & 5                     & 5                   & 3                       & 4                                                        & 2                     & 3                   & \textbf{97\% }         \\ 
+\hline
+in7                  & 182                                                     & 7                     & 7                   & 3                       & 23085056                                                 & 6                     & 7                   & \textbf{-12683997\% }  \\ 
+\hline
+\textasciitilde{}    & \textbf{93,87}                                          & \textbf{4,87}         & \textbf{4,87}       & \textasciitilde{}       & \textbf{4731943,63}                                      & \textbf{2,43}         & \textbf{2,83}       & -13039,51              \\ 
+\hline
+\textasciitilde{}    & \begin{sideways}\textbf{COSTO BOOL MEDIO}\end{sideways} & \textasciitilde{}     & \textasciitilde{}   & \textasciitilde{}       & \begin{sideways}\textbf{COSTO MULTI MEDIO}\end{sideways} & \textasciitilde{}     & \textasciitilde{}   &                        \\
+\hline
+\end{tabular}
+\end{table}
 
 Questa tabella racchiude i risultati ottenuti dalla sintesi dei circuiti multivalore e dei circuiti binari. Possiamo notare che nella maggior parte dei casi il circuito binario mantiene ancora una grande efficienza rispetto a quello multivalore.
 

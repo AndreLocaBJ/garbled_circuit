@@ -7,7 +7,6 @@ output:
     includes:
       in_header: preamble.tex
 bibliography: ["book.bib"]
-biblio-style: apalike
+citation_package: natbib
 link-citations: yes
-lang: it
 ---

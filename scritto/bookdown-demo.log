@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.11.13)  13 NOV 2021 19:01
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.11.13)  15 NOV 2021 10:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -418,8 +418,7 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibsep=\skip59
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count314
-)
-No file bookdown-demo.aux.
+) (./bookdown-demo.aux)
 \openout1 = `bookdown-demo.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 125.
@@ -726,9 +725,6 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 125.
 LaTeX Info: Redefining \pageref on input line 125.
 LaTeX Info: Redefining \nameref on input line 125.
-
-Package hyperref Warning: Rerun to get /PageLabels entry.
-
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
 (Font)              scaled to size 12.0pt on input line 127.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
@@ -766,43 +762,38 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 ] [2
 
-]
+] (./bookdown-demo.toc
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 7.0pt on input line 2.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 5.0pt on input line 2.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 10.00092pt on input line 2.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 7.00064pt on input line 2.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 5.00046pt on input line 2.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 9.99893pt on input line 2.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 6.99925pt on input line 2.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 4.99947pt on input line 2.
+[3])
 \tf@toc=\write4
 \openout4 = `bookdown-demo.toc'.
 
-[3] [4
-
-]
+[4]
 Chapter 1.
-[5] [6]
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 156.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 156.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.00092pt on input line 156.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.00064pt on input line 156.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.00046pt on input line 156.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 9.99893pt on input line 156.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.99925pt on input line 156.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.99947pt on input line 156.
-[7] [8]
+[5
+
+] [6] [7] [8]
 Underfull \hbox (badness 1043) in paragraph at lines 187--189
 []\TU/lmr/m/n/10 Per i protocolli MPC, l’ambiente in cui il protocollo opera è 
 associato
  []
 
-[9] [10] [11] [12]
-
-Package natbib Warning: Citation `Venturi2012' on page 13 undefined on input li
-ne 245.
-
-[13] [14
+[9] [10] [11] [12] [13] [14
 
 ]
 Chapter 2.
@@ -814,105 +805,33 @@ File: ./media/01.png Graphic file (type bmp)
 Package natbib Warning: Citation `INPROCEEDINGS' on page 18 undefined on input 
 line 326.
 
-
-Package natbib Warning: Citation `prog' on page 18 undefined on input line 326.
-
-
-
-Package natbib Warning: Citation `kolesnikov2008improved' on page 18 undefined 
-on input line 328.
-
 [18]
 File: ./media/02.png Graphic file (type bmp)
 <./media/02.png>
-
-Package natbib Warning: Citation `4568207' on page 19 undefined on input line 3
-43.
-
 [19]
 File: ./media/03.png Graphic file (type bmp)
 <./media/03.png>
-
-Package natbib Warning: Citation `hemenway2014achieving' on page 20 undefined o
-n input line 366.
-
 [20]
 Chapter 3.
-
-Package natbib Warning: Citation `brayton1999multi' on page 21 undefined on inp
-ut line 371.
-
 [21
 
-] [22]
-
-Package natbib Warning: Citation `mvsis' on page 23 undefined on input line 404
-.
-
-[23]
-
-Package natbib Warning: Citation `chai2003mvsis' on page 24 undefined on input 
-line 446.
-
-
-Package natbib Warning: Citation `yang1991logic' on page 24 undefined on input 
-line 446.
-
-[24]
-
-Package natbib Warning: Citation `mishchenko2007abc' on page 25 undefined on in
-put line 468.
-
-[25]
-
-Package natbib Warning: Citation `ICCAD97' on page 26 undefined on input line 4
-88.
-
-
-Package natbib Warning: Citation `TCAD92' on page 26 undefined on input line 49
-0.
-
-[26] [27]
-
-Package natbib Warning: Citation `manual2006quick' on page 28 undefined on inpu
-t line 518.
-
-
-Package natbib Warning: Citation `ICCD_1997' on page 28 undefined on input line
- 542.
-
-[28]
+] [22] [23] [24] [25] [26] [27] [28]
 Chapter 4.
 [29
 
 ]
-
-Package natbib Warning: Citation `gao2002optimization' on page 30 undefined on 
-input line 594.
-
-
 Underfull \hbox (badness 1824) in paragraph at lines 594--595
 \TU/lmr/m/n/10 disponibilità della realizzazione di questi circuiti che devono 
 comunque
  []
 
-[30] [31]
-
-Package natbib Warning: Citation `Dubrova2002' on page 32 undefined on input li
-ne 639.
-
-[32]
+[30] [31] [32]
 File: ./media/04.png Graphic file (type bmp)
 <./media/04.png>
 [33] [34] [35] [36] [37] [38] [39] [40]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
 (Font)              Font shape `TU/lmtt/b/n' tried instead on input line 855.
-[41] [42] [43] [44] [45] [46] [47] [48] [49] [50]
-
-Package natbib Warning: Citation `kukimoto1996blif' on page 51 undefined on inp
-ut line 1252.
-
-[51] [52] [53]
+[41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52] [53]
 Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
@@ -979,22 +898,685 @@ Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 ]
 Chapter 5.
 [63] [64]
+Overfull \hbox (7.10747pt too wide) in paragraph at lines 1691--1692
+[]\TU/lmr/m/n/10 NOME 
+ []
 
-! LaTeX Error: Can be used only in preamble.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1690 \usepackage
-                  {rotating} 
+Overfull \hbox (0.97748pt too wide) in paragraph at lines 1691--1692
+\TU/lmr/m/n/10 CIRC|  
+ []
+
+
+Overfull \hbox (5.03937pt too wide) in paragraph at lines 1695--1696
+[]\TU/lmr/m/n/10 INPUT 
+ []
+
+
+Overfull \hbox (3.78937pt too wide) in paragraph at lines 1695--1696
+\TU/lmr/m/n/10 ALICE|  
+ []
+
+
+Overfull \hbox (8.48747pt too wide) in paragraph at lines 1697--1698
+[]\TU/lmr/m/n/10 INPUT 
+ []
+
+
+Overfull \hbox (16.04126pt too wide) in paragraph at lines 1699--1700
+[]\TU/lmr/m/n/10 DOMINIO 
+ []
+
+
+Overfull \hbox (1.87126pt too wide) in paragraph at lines 1699--1700
+\TU/lmr/m/n/10 MULTI|  
+ []
+
+
+Overfull \hbox (5.03937pt too wide) in paragraph at lines 1703--1704
+[]\TU/lmr/m/n/10 INPUT 
+ []
+
+
+Overfull \hbox (3.78937pt too wide) in paragraph at lines 1703--1704
+\TU/lmr/m/n/10 ALICE|  
+ []
+
+
+Overfull \hbox (8.48747pt too wide) in paragraph at lines 1705--1706
+[]\TU/lmr/m/n/10 INPUT 
+ []
+
+
+Overfull \hbox (20.37747pt too wide) in paragraph at lines 1707--1708
+\TU/lmr/m/n/10 Guadagno|  
+ []
+
+
+Overfull \hbox (13.20877pt too wide) in alignment at lines 1688--1710
+ [] [] [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (9.17747pt too wide) in paragraph at lines 1728--1729
+\TU/lmr/m/n/10 10042%|  
+ []
+
+
+Overfull \hbox (9.17747pt too wide) in paragraph at lines 1766--1767
+\TU/lmr/m/n/10 46412%|  
+ []
+
+
+Overfull \hbox (15.29747pt too wide) in paragraph at lines 1845--1846
+[]\TU/lmr/m/n/10 newtpla2|  
+ []
+
+
+Overfull \hbox (4.17747pt too wide) in paragraph at lines 1861--1862
+\TU/lmr/m/n/10 4167%|  
+ []
+
+
+Overfull \hbox (4.17747pt too wide) in paragraph at lines 1918--1919
+\TU/lmr/m/n/10 9053%|  
+ []
+
+
+Overfull \hbox (4.17747pt too wide) in paragraph at lines 1937--1938
+\TU/lmr/m/n/10 6071%|  
+ []
+
+
+Overfull \hbox (1.40747pt too wide) in paragraph at lines 1959--1960
+[]\TU/lmr/m/n/10 bench|  
+ []
+
+
+Overfull \hbox (3.60168pt too wide) in paragraph at lines 1988--1989
+[]\TU/lmr/m/n/10 117440512|  
+ []
+
+
+Overfull \hbox (24.17747pt too wide) in paragraph at lines 1994--1995
+\TU/lmr/m/n/10 26331853%|  
+ []
+
+
+Overfull \hbox (15.29747pt too wide) in paragraph at lines 1997--1998
+[]\TU/lmr/m/n/10 newtpla1|  
+ []
+
+
+Overfull \hbox (4.17747pt too wide) in paragraph at lines 2013--2014
+\TU/lmr/m/n/10 3003%|  
+ []
+
+
+Overfull \hbox (11.12747pt too wide) in paragraph at lines 2035--2036
+[]\TU/lmr/m/n/10 newapla|  
+ []
+
+
+Overfull \hbox (9.17747pt too wide) in paragraph at lines 2051--2052
+\TU/lmr/m/n/10 11620%|  
+ []
+
+
+Overfull \hbox (4.17747pt too wide) in paragraph at lines 2089--2090
+\TU/lmr/m/n/10 4203%|  
+ []
+
+
+Overfull \hbox (4.17747pt too wide) in paragraph at lines 2108--2109
+\TU/lmr/m/n/10 6402%|  
+ []
+
+
+Overfull \hbox (17.80748pt too wide) in paragraph at lines 2225--2226
+[]\TU/lmr/m/n/10 bcd_div3|  
+ []
+
+
+Overfull \hbox (24.17747pt too wide) in paragraph at lines 2279--2280
+\TU/lmr/m/n/10 12683997%|  
+ []
+
+
+Overfull \hbox (13.54169pt too wide) in paragraph at lines 2292--2293
+[]\TU/lmr/bx/n/10 4731943,63|  
+ []
+
+
+Overfull \hbox (19.28748pt too wide) in paragraph at lines 2298--2299
+\TU/lmr/bx/n/10 13039,51|  
+ []
+
+
+Overfull \hbox (2.02979pt too wide) in paragraph at lines 2303--2304
+[]\TU/lmr/bx/n/10 COSTO 
+ []
+
+
+Overfull \hbox (2.3498pt too wide) in paragraph at lines 2303--2304
+\TU/lmr/bx/n/10 MEDIO|  
+ []
+
+
+Overfull \hbox (13.20877pt too wide) in alignment at lines 1710--2320
+ [] [] [] [] [] [] [] [] [] 
+ []
+
+[65]
+Overfull \hbox (7.10747pt too wide) in paragraph at lines 2332--2333
+[]\TU/lmr/m/n/10 NOME 
+ []
+
+
+Overfull \hbox (0.97748pt too wide) in paragraph at lines 2332--2333
+\TU/lmr/m/n/10 CIRC|  
+ []
+
+
+Overfull \hbox (5.03937pt too wide) in paragraph at lines 2336--2337
+[]\TU/lmr/m/n/10 INPUT 
+ []
+
+
+Overfull \hbox (3.78937pt too wide) in paragraph at lines 2336--2337
+\TU/lmr/m/n/10 ALICE|  
+ []
+
+
+Overfull \hbox (8.48747pt too wide) in paragraph at lines 2338--2339
+[]\TU/lmr/m/n/10 INPUT 
+ []
+
+
+Overfull \hbox (16.04126pt too wide) in paragraph at lines 2340--2341
+[]\TU/lmr/m/n/10 DOMINIO 
+ []
+
+
+Overfull \hbox (1.87126pt too wide) in paragraph at lines 2340--2341
+\TU/lmr/m/n/10 MULTI|  
+ []
+
+
+Overfull \hbox (33.6117pt too wide) in paragraph at lines 2342--2343
+\TU/lmr/m/n/10 MULTIVALORE|  
+ []
+
+
+Overfull \hbox (5.03937pt too wide) in paragraph at lines 2344--2345
+[]\TU/lmr/m/n/10 INPUT 
+ []
+
+
+Overfull \hbox (3.78937pt too wide) in paragraph at lines 2344--2345
+\TU/lmr/m/n/10 ALICE|  
+ []
+
+
+Overfull \hbox (8.48747pt too wide) in paragraph at lines 2346--2347
+[]\TU/lmr/m/n/10 INPUT 
+ []
+
+
+Overfull \hbox (36.40747pt too wide) in paragraph at lines 2348--2349
+\TU/lmr/m/n/10 GUADAGNO|  
+ []
+
+
+Overfull \hbox (13.20877pt too wide) in alignment at lines 2329--2351
+ [] [] [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (15.29747pt too wide) in paragraph at lines 2486--2487
+[]\TU/lmr/m/n/10 newtpla2|  
+ []
+
+
+Overfull \hbox (1.40747pt too wide) in paragraph at lines 2600--2601
+[]\TU/lmr/m/n/10 bench|  
+ []
+
+
+Overfull \hbox (3.60168pt too wide) in paragraph at lines 2629--2630
+[]\TU/lmr/m/n/10 117440512|  
+ []
+
+
+Overfull \hbox (4.17747pt too wide) in paragraph at lines 2635--2636
+\TU/lmr/m/n/10 6300%|  
+ []
+
+
+Overfull \hbox (15.29747pt too wide) in paragraph at lines 2638--2639
+[]\TU/lmr/m/n/10 newtpla1|  
+ []
+
+
+Overfull \hbox (11.12747pt too wide) in paragraph at lines 2676--2677
+[]\TU/lmr/m/n/10 newapla|  
+ []
+
+
+Overfull \hbox (17.80748pt too wide) in paragraph at lines 2866--2867
+[]\TU/lmr/m/n/10 bcd_div3|  
+ []
+
+
+Overfull \hbox (3.60168pt too wide) in paragraph at lines 2914--2915
+[]\TU/lmr/m/n/10 335544320|  
+ []
+
+
+Overfull \hbox (9.17747pt too wide) in paragraph at lines 2920--2921
+\TU/lmr/m/n/10 25500%|  
+ []
+
+
+Overfull \hbox (4.82979pt too wide) in paragraph at lines 2925--2926
+[]\TU/lmr/m/n/10 221982,07|  
+ []
+
+
+Overfull \hbox (11.38168pt too wide) in paragraph at lines 2933--2934
+[]\TU/lmr/m/n/10 15153786,67|  
+ []
+
+
+Overfull \hbox (13.20877pt too wide) in alignment at lines 2351--2961
+ [] [] [] [] [] [] [] [] [] 
+ []
+
+[66] [67]
+Overfull \hbox (7.10747pt too wide) in paragraph at lines 2970--2971
+[]\TU/lmr/m/n/10 NOME 
+ []
+
+
+Overfull \hbox (0.97748pt too wide) in paragraph at lines 2970--2971
+\TU/lmr/m/n/10 CIRC|  
+ []
+
+
+Overfull \hbox (5.03937pt too wide) in paragraph at lines 2974--2975
+[]\TU/lmr/m/n/10 INPUT 
+ []
+
+
+Overfull \hbox (3.78937pt too wide) in paragraph at lines 2974--2975
+\TU/lmr/m/n/10 ALICE|  
+ []
+
+
+Overfull \hbox (8.48747pt too wide) in paragraph at lines 2976--2977
+[]\TU/lmr/m/n/10 INPUT 
+ []
+
+
+Overfull \hbox (16.04126pt too wide) in paragraph at lines 2978--2979
+[]\TU/lmr/m/n/10 DOMINIO 
+ []
+
+
+Overfull \hbox (1.87126pt too wide) in paragraph at lines 2978--2979
+\TU/lmr/m/n/10 MULTI|  
+ []
+
+
+Overfull \hbox (33.6117pt too wide) in paragraph at lines 2980--2981
+\TU/lmr/m/n/10 MULTIVALORE|  
+ []
+
+
+Overfull \hbox (5.03937pt too wide) in paragraph at lines 2982--2983
+[]\TU/lmr/m/n/10 INPUT 
+ []
+
+
+Overfull \hbox (3.78937pt too wide) in paragraph at lines 2982--2983
+\TU/lmr/m/n/10 ALICE|  
+ []
+
+
+Overfull \hbox (8.48747pt too wide) in paragraph at lines 2984--2985
+[]\TU/lmr/m/n/10 INPUT 
+ []
+
+
+Overfull \hbox (36.40747pt too wide) in paragraph at lines 2986--2987
+\TU/lmr/m/n/10 GUADAGNO|  
+ []
+
+
+Overfull \hbox (13.20877pt too wide) in alignment at lines 2967--2989
+ [] [] [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (9.17747pt too wide) in paragraph at lines 3007--3008
+\TU/lmr/m/n/10 10042%|  
+ []
+
+
+Overfull \hbox (9.17747pt too wide) in paragraph at lines 3045--3046
+\TU/lmr/m/n/10 46412%|  
+ []
+
+
+Overfull \hbox (15.29747pt too wide) in paragraph at lines 3124--3125
+[]\TU/lmr/m/n/10 newtpla2|  
+ []
+
+
+Overfull \hbox (4.17747pt too wide) in paragraph at lines 3140--3141
+\TU/lmr/m/n/10 4167%|  
+ []
+
+
+Overfull \hbox (4.17747pt too wide) in paragraph at lines 3197--3198
+\TU/lmr/m/n/10 4477%|  
+ []
+
+
+Overfull \hbox (4.17747pt too wide) in paragraph at lines 3216--3217
+\TU/lmr/m/n/10 4836%|  
+ []
+
+
+Overfull \hbox (1.40747pt too wide) in paragraph at lines 3238--3239
+[]\TU/lmr/m/n/10 bench|  
+ []
+
+
+Overfull \hbox (0.97168pt too wide) in paragraph at lines 3267--3268
+[]\TU/lmr/m/n/10 1,17E+08|  
+ []
+
+
+Overfull \hbox (24.17747pt too wide) in paragraph at lines 3273--3274
+\TU/lmr/m/n/10 26331853%|  
+ []
+
+
+Overfull \hbox (15.29747pt too wide) in paragraph at lines 3276--3277
+[]\TU/lmr/m/n/10 newtpla1|  
+ []
+
+
+Overfull \hbox (4.17747pt too wide) in paragraph at lines 3292--3293
+\TU/lmr/m/n/10 3003%|  
+ []
+
+
+Overfull \hbox (11.12747pt too wide) in paragraph at lines 3314--3315
+[]\TU/lmr/m/n/10 newapla|  
+ []
+
+
+Overfull \hbox (9.17747pt too wide) in paragraph at lines 3330--3331
+\TU/lmr/m/n/10 11620%|  
+ []
+
+
+Overfull \hbox (4.17747pt too wide) in paragraph at lines 3368--3369
+\TU/lmr/m/n/10 3342%|  
+ []
+
+
+Overfull \hbox (4.17747pt too wide) in paragraph at lines 3387--3388
+\TU/lmr/m/n/10 3151%|  
+ []
+
+
+Overfull \hbox (17.80748pt too wide) in paragraph at lines 3504--3505
+[]\TU/lmr/m/n/10 bcd_div3|  
+ []
+
+
+Overfull \hbox (24.17747pt too wide) in paragraph at lines 3558--3559
+\TU/lmr/m/n/10 12683997%|  
+ []
+
+
+Overfull \hbox (6.38168pt too wide) in paragraph at lines 3571--3572
+[]\TU/lmr/m/n/10 4716541,87|  
+ []
+
+
+Overfull \hbox (13.20877pt too wide) in alignment at lines 2989--3599
+ [] [] [] [] [] [] [] [] [] 
+ []
+
+[68] [69] [70]
+Overfull \hbox (7.10747pt too wide) in paragraph at lines 3636--3637
+[]\TU/lmr/m/n/10 NOME 
+ []
+
+
+Overfull \hbox (0.97748pt too wide) in paragraph at lines 3636--3637
+\TU/lmr/m/n/10 CIRC|  
+ []
+
+
+Overfull \hbox (5.03937pt too wide) in paragraph at lines 3640--3641
+[]\TU/lmr/m/n/10 INPUT 
+ []
+
+
+Overfull \hbox (3.78937pt too wide) in paragraph at lines 3640--3641
+\TU/lmr/m/n/10 ALICE|  
+ []
+
+
+Overfull \hbox (8.48747pt too wide) in paragraph at lines 3642--3643
+[]\TU/lmr/m/n/10 INPUT 
+ []
+
+
+Overfull \hbox (16.04126pt too wide) in paragraph at lines 3644--3645
+[]\TU/lmr/m/n/10 DOMINIO 
+ []
+
+
+Overfull \hbox (1.87126pt too wide) in paragraph at lines 3644--3645
+\TU/lmr/m/n/10 MULTI|  
+ []
+
+
+Overfull \hbox (33.6117pt too wide) in paragraph at lines 3646--3647
+\TU/lmr/m/n/10 MULTIVALORE|  
+ []
+
+
+Overfull \hbox (5.03937pt too wide) in paragraph at lines 3648--3649
+[]\TU/lmr/m/n/10 INPUT 
+ []
+
+
+Overfull \hbox (3.78937pt too wide) in paragraph at lines 3648--3649
+\TU/lmr/m/n/10 ALICE|  
+ []
+
+
+Overfull \hbox (8.48747pt too wide) in paragraph at lines 3650--3651
+[]\TU/lmr/m/n/10 INPUT 
+ []
+
+
+Overfull \hbox (36.40747pt too wide) in paragraph at lines 3652--3653
+\TU/lmr/m/n/10 GUADAGNO|  
+ []
+
+
+Overfull \hbox (13.20877pt too wide) in alignment at lines 3633--3655
+ [] [] [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (15.29747pt too wide) in paragraph at lines 3790--3791
+[]\TU/lmr/m/n/10 newtpla2|  
+ []
+
+
+Overfull \hbox (1.40747pt too wide) in paragraph at lines 3904--3905
+[]\TU/lmr/m/n/10 bench|  
+ []
+
+
+Overfull \hbox (15.29747pt too wide) in paragraph at lines 3942--3943
+[]\TU/lmr/m/n/10 newtpla1|  
+ []
+
+
+Overfull \hbox (11.12747pt too wide) in paragraph at lines 3980--3981
+[]\TU/lmr/m/n/10 newapla|  
+ []
+
+
+Overfull \hbox (17.80748pt too wide) in paragraph at lines 4170--4171
+[]\TU/lmr/m/n/10 bcd_div3|  
+ []
+
+
+Overfull \hbox (13.20877pt too wide) in alignment at lines 3655--4265
+ [] [] [] [] [] [] [] [] [] 
+ []
+
+[71]
+Underfull \hbox (badness 1168) in paragraph at lines 4272--4273
+\TU/lmr/m/n/10 Come ultimo test, come in MVSIS, abbiamo deciso di applicare anc
+he
+ []
+
+
+Overfull \hbox (7.10747pt too wide) in paragraph at lines 4277--4278
+[]\TU/lmr/m/n/10 NOME 
+ []
+
+
+Overfull \hbox (0.97748pt too wide) in paragraph at lines 4277--4278
+\TU/lmr/m/n/10 CIRC|  
+ []
+
+
+Overfull \hbox (5.03937pt too wide) in paragraph at lines 4281--4282
+[]\TU/lmr/m/n/10 INPUT 
+ []
+
+
+Overfull \hbox (3.78937pt too wide) in paragraph at lines 4281--4282
+\TU/lmr/m/n/10 ALICE|  
+ []
+
+
+Overfull \hbox (8.48747pt too wide) in paragraph at lines 4283--4284
+[]\TU/lmr/m/n/10 INPUT 
+ []
+
+
+Overfull \hbox (16.04126pt too wide) in paragraph at lines 4285--4286
+[]\TU/lmr/m/n/10 DOMINIO 
+ []
+
+
+Overfull \hbox (1.87126pt too wide) in paragraph at lines 4285--4286
+\TU/lmr/m/n/10 MULTI|  
+ []
+
+
+Overfull \hbox (33.6117pt too wide) in paragraph at lines 4287--4288
+\TU/lmr/m/n/10 MULTIVALORE|  
+ []
+
+
+Overfull \hbox (5.03937pt too wide) in paragraph at lines 4289--4290
+[]\TU/lmr/m/n/10 INPUT 
+ []
+
+
+Overfull \hbox (3.78937pt too wide) in paragraph at lines 4289--4290
+\TU/lmr/m/n/10 ALICE|  
+ []
+
+
+Overfull \hbox (8.48747pt too wide) in paragraph at lines 4291--4292
+[]\TU/lmr/m/n/10 INPUT 
+ []
+
+
+Overfull \hbox (36.40747pt too wide) in paragraph at lines 4293--4294
+\TU/lmr/m/n/10 GUADAGNO|  
+ []
+
+
+Overfull \hbox (13.20877pt too wide) in alignment at lines 4274--4296
+ [] [] [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (15.29747pt too wide) in paragraph at lines 4431--4432
+[]\TU/lmr/m/n/10 newtpla2|  
+ []
+
+
+Overfull \hbox (1.40747pt too wide) in paragraph at lines 4545--4546
+[]\TU/lmr/m/n/10 bench|  
+ []
+
+
+Overfull \hbox (15.29747pt too wide) in paragraph at lines 4583--4584
+[]\TU/lmr/m/n/10 newtpla1|  
+ []
+
+
+Overfull \hbox (11.12747pt too wide) in paragraph at lines 4621--4622
+[]\TU/lmr/m/n/10 newapla|  
+ []
+
+
+Overfull \hbox (4.17747pt too wide) in paragraph at lines 4732--4733
+\TU/lmr/m/n/10 1133%|  
+ []
+
+
+Overfull \hbox (17.80748pt too wide) in paragraph at lines 4811--4812
+[]\TU/lmr/m/n/10 bcd_div3|  
+ []
+
+
+Overfull \hbox (13.20877pt too wide) in alignment at lines 4296--4906
+ [] [] [] [] [] [] [] [] [] 
+ []
+
+[72] [73] [74]
+Overfull \hbox (143.79677pt too wide) in alignment at lines 4923--4927
+ [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (143.79677pt too wide) in alignment at lines 4927--4952
+ [] [] [] [] [] [] 
+ []
+
+[75] [76] (./bookdown-demo.bbl [77
+
+])
+
+Package natbib Warning: There were undefined citations.
+
+[78] (./bookdown-demo.aux) ) 
 Here is how much of TeX's memory you used:
- 18006 strings out of 478274
- 326424 string characters out of 5856297
- 783739 words of memory out of 5000000
- 38268 multiletter control sequences out of 15000+600000
+ 18136 strings out of 478274
+ 328851 string characters out of 5856297
+ 832400 words of memory out of 5000000
+ 38390 multiletter control sequences out of 15000+600000
  409921 words of font info for 85 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 86i,8n,121p,1289b,433s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 86i,8n,121p,1289b,521s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on bookdown-demo.pdf (64 pages).
+Output written on bookdown-demo.pdf (78 pages).

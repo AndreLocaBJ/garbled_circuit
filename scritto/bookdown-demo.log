@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.11.13)  15 NOV 2021 10:02
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.11.15)  15 NOV 2021 19:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -407,11 +407,6 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \float@box=\box61
 \@float@everytoks=\toks25
 \@floatcapt=\box62
-) (/home/andrea/.TinyTeX/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
-) (/home/andrea/.TinyTeX/texmf-dist/tex/generic/dvips/rotate.sty
-\@rotdimen=\dimen182
-\@rotbox=\box63
 ) (/home/andrea/.TinyTeX/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip58
@@ -421,43 +416,43 @@ LaTeX Info: Redefining \cite on input line 694.
 ) (./bookdown-demo.aux)
 \openout1 = `bookdown-demo.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
 LaTeX Font Info:    Checking defaults for pmboxdraw/pmboxdraw/m/n on input line
- 125.
-LaTeX Font Info:    ... okay on input line 125.
+ 120.
+LaTeX Font Info:    ... okay on input line 120.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 125.
+(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 120.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 125.
+(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 120.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 125.
+(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 120.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 125.
+(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 120.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 125.
+(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 120.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 125.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 120.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 125.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 120.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -486,7 +481,7 @@ pt=math;language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(0)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 125.
+(Font)              scaled to size 10.0pt on input line 120.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -525,18 +520,18 @@ pt=math;language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 125.
+(Font)              scaled to size 10.0pt on input line 120.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 125.
+(Font)              `operators' in the math version `normal' on input line 120.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input
- line 125.
+ line 120.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 125.
+(Font)              `operators' in the math version `bold' on input line 120.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on inpu
-t line 125.
+t line 120.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -623,15 +618,15 @@ t=math;language=dflt;"
 (fontspec)             \fontdimen 21\font =0pt\relax 
 
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 125.
+(Font)              `symbols' in the math version `normal' on input line 120.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
 (Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on inpu
-t line 125.
+t line 120.
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 125.
+(Font)              `symbols' in the math version `bold' on input line 120.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
 (Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on inpu
-t line 125.
+t line 120.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -701,17 +696,17 @@ pt=math;language=dflt;"
 
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
 (Font)              `largesymbols' in the math version `normal' on input line 1
-25.
+20.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on inpu
-t line 125.
+t line 120.
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 125
+(Font)              `largesymbols' in the math version `bold' on input line 120
 .
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on inpu
-t line 125.
-Package hyperref Info: Link coloring OFF on input line 125.
+t line 120.
+Package hyperref Info: Link coloring OFF on input line 120.
 (/home/andrea/.TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 (/home/andrea/.TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty
@@ -722,38 +717,38 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count315
 )
-LaTeX Info: Redefining \ref on input line 125.
-LaTeX Info: Redefining \pageref on input line 125.
-LaTeX Info: Redefining \nameref on input line 125.
+LaTeX Info: Redefining \ref on input line 120.
+LaTeX Info: Redefining \pageref on input line 120.
+LaTeX Info: Redefining \nameref on input line 120.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 127.
+(Font)              scaled to size 12.0pt on input line 122.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 127.
+(Font)              scaled to size 8.0pt on input line 122.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.0pt on input line 127.
+(Font)              scaled to size 6.0pt on input line 122.
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-27.
+22.
 (/home/andrea/.TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 12.0011pt on input line 127.
+(Font)              scaled to size 12.0011pt on input line 122.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.00073pt on input line 127.
+(Font)              scaled to size 8.00073pt on input line 122.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.00055pt on input line 127.
+(Font)              scaled to size 6.00055pt on input line 122.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 11.99872pt on input line 127.
+(Font)              scaled to size 11.99872pt on input line 122.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.99915pt on input line 127.
+(Font)              scaled to size 7.99915pt on input line 122.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.99936pt on input line 127.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 127
+(Font)              scaled to size 5.99936pt on input line 122.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 122
 .
 (/home/andrea/.TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 127
+LaTeX Font Info:    Trying to load font information for U+msb on input line 122
 .
 (/home/andrea/.TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -788,7 +783,7 @@ Chapter 1.
 [5
 
 ] [6] [7] [8]
-Underfull \hbox (badness 1043) in paragraph at lines 187--189
+Underfull \hbox (badness 1043) in paragraph at lines 182--184
 []\TU/lmr/m/n/10 Per i protocolli MPC, l’ambiente in cui il protocollo opera è 
 associato
  []
@@ -803,7 +798,7 @@ File: ./media/01.png Graphic file (type bmp)
 [16] [17]
 
 Package natbib Warning: Citation `INPROCEEDINGS' on page 18 undefined on input 
-line 326.
+line 321.
 
 [18]
 File: ./media/02.png Graphic file (type bmp)
@@ -820,7 +815,7 @@ Chapter 4.
 [29
 
 ]
-Underfull \hbox (badness 1824) in paragraph at lines 594--595
+Underfull \hbox (badness 1824) in paragraph at lines 589--590
 \TU/lmr/m/n/10 disponibilità della realizzazione di questi circuiti che devono 
 comunque
  []
@@ -830,7 +825,7 @@ File: ./media/04.png Graphic file (type bmp)
 <./media/04.png>
 [33] [34] [35] [36] [37] [38] [39] [40]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 855.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 850.
 [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52] [53]
 Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
@@ -898,683 +893,513 @@ Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 ]
 Chapter 5.
 [63] [64]
-Overfull \hbox (7.10747pt too wide) in paragraph at lines 1691--1692
+Overfull \hbox (7.10747pt too wide) in paragraph at lines 1686--1687
 []\TU/lmr/m/n/10 NOME 
  []
 
 
-Overfull \hbox (0.97748pt too wide) in paragraph at lines 1691--1692
+Overfull \hbox (0.97748pt too wide) in paragraph at lines 1686--1687
 \TU/lmr/m/n/10 CIRC|  
  []
 
 
-Overfull \hbox (5.03937pt too wide) in paragraph at lines 1695--1696
+Overfull \hbox (5.03937pt too wide) in paragraph at lines 1690--1691
 []\TU/lmr/m/n/10 INPUT 
  []
 
 
-Overfull \hbox (3.78937pt too wide) in paragraph at lines 1695--1696
+Overfull \hbox (3.78937pt too wide) in paragraph at lines 1690--1691
 \TU/lmr/m/n/10 ALICE|  
  []
 
 
-Overfull \hbox (8.48747pt too wide) in paragraph at lines 1697--1698
+Overfull \hbox (8.48747pt too wide) in paragraph at lines 1692--1693
 []\TU/lmr/m/n/10 INPUT 
  []
 
 
-Overfull \hbox (16.04126pt too wide) in paragraph at lines 1699--1700
+Overfull \hbox (16.04126pt too wide) in paragraph at lines 1694--1695
 []\TU/lmr/m/n/10 DOMINIO 
  []
 
 
-Overfull \hbox (1.87126pt too wide) in paragraph at lines 1699--1700
+Overfull \hbox (1.87126pt too wide) in paragraph at lines 1694--1695
 \TU/lmr/m/n/10 MULTI|  
  []
 
 
-Overfull \hbox (5.03937pt too wide) in paragraph at lines 1703--1704
+Overfull \hbox (5.03937pt too wide) in paragraph at lines 1698--1699
 []\TU/lmr/m/n/10 INPUT 
  []
 
 
-Overfull \hbox (3.78937pt too wide) in paragraph at lines 1703--1704
+Overfull \hbox (3.78937pt too wide) in paragraph at lines 1698--1699
 \TU/lmr/m/n/10 ALICE|  
  []
 
 
-Overfull \hbox (8.48747pt too wide) in paragraph at lines 1705--1706
+Overfull \hbox (8.48747pt too wide) in paragraph at lines 1700--1701
 []\TU/lmr/m/n/10 INPUT 
  []
 
 
-Overfull \hbox (20.37747pt too wide) in paragraph at lines 1707--1708
+Overfull \hbox (20.37747pt too wide) in paragraph at lines 1702--1703
 \TU/lmr/m/n/10 Guadagno|  
  []
 
 
-Overfull \hbox (13.20877pt too wide) in alignment at lines 1688--1710
+Overfull \hbox (13.20877pt too wide) in alignment at lines 1683--1705
  [] [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (9.17747pt too wide) in paragraph at lines 1728--1729
+Overfull \hbox (9.17747pt too wide) in paragraph at lines 1723--1724
 \TU/lmr/m/n/10 10042%|  
  []
 
 
-Overfull \hbox (9.17747pt too wide) in paragraph at lines 1766--1767
+Overfull \hbox (9.17747pt too wide) in paragraph at lines 1761--1762
 \TU/lmr/m/n/10 46412%|  
  []
 
 
-Overfull \hbox (15.29747pt too wide) in paragraph at lines 1845--1846
+Overfull \hbox (15.29747pt too wide) in paragraph at lines 1840--1841
 []\TU/lmr/m/n/10 newtpla2|  
  []
 
 
-Overfull \hbox (4.17747pt too wide) in paragraph at lines 1861--1862
+Overfull \hbox (4.17747pt too wide) in paragraph at lines 1856--1857
 \TU/lmr/m/n/10 4167%|  
  []
 
 
-Overfull \hbox (4.17747pt too wide) in paragraph at lines 1918--1919
+Overfull \hbox (4.17747pt too wide) in paragraph at lines 1913--1914
 \TU/lmr/m/n/10 9053%|  
  []
 
 
-Overfull \hbox (4.17747pt too wide) in paragraph at lines 1937--1938
+Overfull \hbox (4.17747pt too wide) in paragraph at lines 1932--1933
 \TU/lmr/m/n/10 6071%|  
  []
 
 
-Overfull \hbox (1.40747pt too wide) in paragraph at lines 1959--1960
+Overfull \hbox (1.40747pt too wide) in paragraph at lines 1954--1955
 []\TU/lmr/m/n/10 bench|  
  []
 
 
-Overfull \hbox (3.60168pt too wide) in paragraph at lines 1988--1989
+Overfull \hbox (3.60168pt too wide) in paragraph at lines 1983--1984
 []\TU/lmr/m/n/10 117440512|  
  []
 
 
-Overfull \hbox (24.17747pt too wide) in paragraph at lines 1994--1995
+Overfull \hbox (24.17747pt too wide) in paragraph at lines 1989--1990
 \TU/lmr/m/n/10 26331853%|  
  []
 
 
-Overfull \hbox (15.29747pt too wide) in paragraph at lines 1997--1998
+Overfull \hbox (15.29747pt too wide) in paragraph at lines 1992--1993
 []\TU/lmr/m/n/10 newtpla1|  
  []
 
 
-Overfull \hbox (4.17747pt too wide) in paragraph at lines 2013--2014
+Overfull \hbox (4.17747pt too wide) in paragraph at lines 2008--2009
 \TU/lmr/m/n/10 3003%|  
  []
 
 
-Overfull \hbox (11.12747pt too wide) in paragraph at lines 2035--2036
+Overfull \hbox (11.12747pt too wide) in paragraph at lines 2030--2031
 []\TU/lmr/m/n/10 newapla|  
  []
 
 
-Overfull \hbox (9.17747pt too wide) in paragraph at lines 2051--2052
+Overfull \hbox (9.17747pt too wide) in paragraph at lines 2046--2047
 \TU/lmr/m/n/10 11620%|  
  []
 
 
-Overfull \hbox (4.17747pt too wide) in paragraph at lines 2089--2090
+Overfull \hbox (4.17747pt too wide) in paragraph at lines 2084--2085
 \TU/lmr/m/n/10 4203%|  
  []
 
 
-Overfull \hbox (4.17747pt too wide) in paragraph at lines 2108--2109
+Overfull \hbox (4.17747pt too wide) in paragraph at lines 2103--2104
 \TU/lmr/m/n/10 6402%|  
  []
 
 
-Overfull \hbox (17.80748pt too wide) in paragraph at lines 2225--2226
+Overfull \hbox (17.80748pt too wide) in paragraph at lines 2220--2221
 []\TU/lmr/m/n/10 bcd_div3|  
  []
 
 
-Overfull \hbox (24.17747pt too wide) in paragraph at lines 2279--2280
+Overfull \hbox (24.17747pt too wide) in paragraph at lines 2274--2275
 \TU/lmr/m/n/10 12683997%|  
  []
 
 
-Overfull \hbox (13.54169pt too wide) in paragraph at lines 2292--2293
+Overfull \hbox (13.54169pt too wide) in paragraph at lines 2287--2288
 []\TU/lmr/bx/n/10 4731943,63|  
  []
 
 
-Overfull \hbox (19.28748pt too wide) in paragraph at lines 2298--2299
+Overfull \hbox (19.28748pt too wide) in paragraph at lines 2293--2294
 \TU/lmr/bx/n/10 13039,51|  
  []
 
 
-Overfull \hbox (2.02979pt too wide) in paragraph at lines 2303--2304
+Overfull \hbox (2.02979pt too wide) in paragraph at lines 2298--2299
 []\TU/lmr/bx/n/10 COSTO 
  []
 
 
-Overfull \hbox (2.3498pt too wide) in paragraph at lines 2303--2304
+Overfull \hbox (2.3498pt too wide) in paragraph at lines 2298--2299
 \TU/lmr/bx/n/10 MEDIO|  
  []
 
 
-Overfull \hbox (13.20877pt too wide) in alignment at lines 1710--2320
+Overfull \hbox (13.20877pt too wide) in alignment at lines 1705--2315
  [] [] [] [] [] [] [] [] [] 
  []
 
 [65]
-Overfull \hbox (7.10747pt too wide) in paragraph at lines 2332--2333
+Overfull \hbox (7.10747pt too wide) in paragraph at lines 2327--2328
 []\TU/lmr/m/n/10 NOME 
  []
 
 
-Overfull \hbox (0.97748pt too wide) in paragraph at lines 2332--2333
+Overfull \hbox (0.97748pt too wide) in paragraph at lines 2327--2328
 \TU/lmr/m/n/10 CIRC|  
  []
 
 
-Overfull \hbox (5.03937pt too wide) in paragraph at lines 2336--2337
+Overfull \hbox (5.03937pt too wide) in paragraph at lines 2331--2332
 []\TU/lmr/m/n/10 INPUT 
  []
 
 
-Overfull \hbox (3.78937pt too wide) in paragraph at lines 2336--2337
+Overfull \hbox (3.78937pt too wide) in paragraph at lines 2331--2332
 \TU/lmr/m/n/10 ALICE|  
  []
 
 
-Overfull \hbox (8.48747pt too wide) in paragraph at lines 2338--2339
+Overfull \hbox (8.48747pt too wide) in paragraph at lines 2333--2334
 []\TU/lmr/m/n/10 INPUT 
  []
 
 
-Overfull \hbox (16.04126pt too wide) in paragraph at lines 2340--2341
+Overfull \hbox (16.04126pt too wide) in paragraph at lines 2335--2336
 []\TU/lmr/m/n/10 DOMINIO 
  []
 
 
-Overfull \hbox (1.87126pt too wide) in paragraph at lines 2340--2341
+Overfull \hbox (1.87126pt too wide) in paragraph at lines 2335--2336
 \TU/lmr/m/n/10 MULTI|  
  []
 
 
-Overfull \hbox (33.6117pt too wide) in paragraph at lines 2342--2343
+Overfull \hbox (33.6117pt too wide) in paragraph at lines 2337--2338
 \TU/lmr/m/n/10 MULTIVALORE|  
  []
 
 
-Overfull \hbox (5.03937pt too wide) in paragraph at lines 2344--2345
+Overfull \hbox (5.03937pt too wide) in paragraph at lines 2339--2340
 []\TU/lmr/m/n/10 INPUT 
  []
 
 
-Overfull \hbox (3.78937pt too wide) in paragraph at lines 2344--2345
+Overfull \hbox (3.78937pt too wide) in paragraph at lines 2339--2340
 \TU/lmr/m/n/10 ALICE|  
  []
 
 
-Overfull \hbox (8.48747pt too wide) in paragraph at lines 2346--2347
+Overfull \hbox (8.48747pt too wide) in paragraph at lines 2341--2342
 []\TU/lmr/m/n/10 INPUT 
  []
 
 
-Overfull \hbox (36.40747pt too wide) in paragraph at lines 2348--2349
+Overfull \hbox (36.40747pt too wide) in paragraph at lines 2343--2344
 \TU/lmr/m/n/10 GUADAGNO|  
  []
 
 
-Overfull \hbox (13.20877pt too wide) in alignment at lines 2329--2351
+Overfull \hbox (13.20877pt too wide) in alignment at lines 2324--2346
  [] [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (15.29747pt too wide) in paragraph at lines 2486--2487
+Overfull \hbox (15.29747pt too wide) in paragraph at lines 2481--2482
 []\TU/lmr/m/n/10 newtpla2|  
  []
 
 
-Overfull \hbox (1.40747pt too wide) in paragraph at lines 2600--2601
+Overfull \hbox (1.40747pt too wide) in paragraph at lines 2595--2596
 []\TU/lmr/m/n/10 bench|  
  []
 
 
-Overfull \hbox (3.60168pt too wide) in paragraph at lines 2629--2630
+Overfull \hbox (3.60168pt too wide) in paragraph at lines 2624--2625
 []\TU/lmr/m/n/10 117440512|  
  []
 
 
-Overfull \hbox (4.17747pt too wide) in paragraph at lines 2635--2636
+Overfull \hbox (4.17747pt too wide) in paragraph at lines 2630--2631
 \TU/lmr/m/n/10 6300%|  
  []
 
 
-Overfull \hbox (15.29747pt too wide) in paragraph at lines 2638--2639
+Overfull \hbox (15.29747pt too wide) in paragraph at lines 2633--2634
 []\TU/lmr/m/n/10 newtpla1|  
  []
 
 
-Overfull \hbox (11.12747pt too wide) in paragraph at lines 2676--2677
+Overfull \hbox (11.12747pt too wide) in paragraph at lines 2671--2672
 []\TU/lmr/m/n/10 newapla|  
  []
 
 
-Overfull \hbox (17.80748pt too wide) in paragraph at lines 2866--2867
+Overfull \hbox (17.80748pt too wide) in paragraph at lines 2861--2862
 []\TU/lmr/m/n/10 bcd_div3|  
  []
 
 
-Overfull \hbox (3.60168pt too wide) in paragraph at lines 2914--2915
+Overfull \hbox (3.60168pt too wide) in paragraph at lines 2909--2910
 []\TU/lmr/m/n/10 335544320|  
  []
 
 
-Overfull \hbox (9.17747pt too wide) in paragraph at lines 2920--2921
+Overfull \hbox (9.17747pt too wide) in paragraph at lines 2915--2916
 \TU/lmr/m/n/10 25500%|  
  []
 
 
-Overfull \hbox (4.82979pt too wide) in paragraph at lines 2925--2926
+Overfull \hbox (4.82979pt too wide) in paragraph at lines 2920--2921
 []\TU/lmr/m/n/10 221982,07|  
  []
 
 
-Overfull \hbox (11.38168pt too wide) in paragraph at lines 2933--2934
+Overfull \hbox (11.38168pt too wide) in paragraph at lines 2928--2929
 []\TU/lmr/m/n/10 15153786,67|  
  []
 
 
-Overfull \hbox (13.20877pt too wide) in alignment at lines 2351--2961
+Overfull \hbox (13.20877pt too wide) in alignment at lines 2346--2956
  [] [] [] [] [] [] [] [] [] 
  []
 
 [66] [67]
-Overfull \hbox (7.10747pt too wide) in paragraph at lines 2970--2971
+Overfull \hbox (7.10747pt too wide) in paragraph at lines 2965--2966
 []\TU/lmr/m/n/10 NOME 
  []
 
 
-Overfull \hbox (0.97748pt too wide) in paragraph at lines 2970--2971
+Overfull \hbox (0.97748pt too wide) in paragraph at lines 2965--2966
 \TU/lmr/m/n/10 CIRC|  
  []
 
 
-Overfull \hbox (5.03937pt too wide) in paragraph at lines 2974--2975
+Overfull \hbox (5.03937pt too wide) in paragraph at lines 2969--2970
 []\TU/lmr/m/n/10 INPUT 
  []
 
 
-Overfull \hbox (3.78937pt too wide) in paragraph at lines 2974--2975
+Overfull \hbox (3.78937pt too wide) in paragraph at lines 2969--2970
 \TU/lmr/m/n/10 ALICE|  
  []
 
 
-Overfull \hbox (8.48747pt too wide) in paragraph at lines 2976--2977
+Overfull \hbox (8.48747pt too wide) in paragraph at lines 2971--2972
 []\TU/lmr/m/n/10 INPUT 
  []
 
 
-Overfull \hbox (16.04126pt too wide) in paragraph at lines 2978--2979
+Overfull \hbox (16.04126pt too wide) in paragraph at lines 2973--2974
 []\TU/lmr/m/n/10 DOMINIO 
  []
 
 
-Overfull \hbox (1.87126pt too wide) in paragraph at lines 2978--2979
+Overfull \hbox (1.87126pt too wide) in paragraph at lines 2973--2974
 \TU/lmr/m/n/10 MULTI|  
  []
 
 
-Overfull \hbox (33.6117pt too wide) in paragraph at lines 2980--2981
+Overfull \hbox (33.6117pt too wide) in paragraph at lines 2975--2976
 \TU/lmr/m/n/10 MULTIVALORE|  
  []
 
 
-Overfull \hbox (5.03937pt too wide) in paragraph at lines 2982--2983
+Overfull \hbox (5.03937pt too wide) in paragraph at lines 2977--2978
 []\TU/lmr/m/n/10 INPUT 
  []
 
 
-Overfull \hbox (3.78937pt too wide) in paragraph at lines 2982--2983
+Overfull \hbox (3.78937pt too wide) in paragraph at lines 2977--2978
 \TU/lmr/m/n/10 ALICE|  
  []
 
 
-Overfull \hbox (8.48747pt too wide) in paragraph at lines 2984--2985
+Overfull \hbox (8.48747pt too wide) in paragraph at lines 2979--2980
 []\TU/lmr/m/n/10 INPUT 
  []
 
 
-Overfull \hbox (36.40747pt too wide) in paragraph at lines 2986--2987
+Overfull \hbox (36.40747pt too wide) in paragraph at lines 2981--2982
 \TU/lmr/m/n/10 GUADAGNO|  
  []
 
 
-Overfull \hbox (13.20877pt too wide) in alignment at lines 2967--2989
+Overfull \hbox (13.20877pt too wide) in alignment at lines 2962--2984
  [] [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (9.17747pt too wide) in paragraph at lines 3007--3008
+Overfull \hbox (9.17747pt too wide) in paragraph at lines 3002--3003
 \TU/lmr/m/n/10 10042%|  
  []
 
 
-Overfull \hbox (9.17747pt too wide) in paragraph at lines 3045--3046
+Overfull \hbox (9.17747pt too wide) in paragraph at lines 3040--3041
 \TU/lmr/m/n/10 46412%|  
  []
 
 
-Overfull \hbox (15.29747pt too wide) in paragraph at lines 3124--3125
+Overfull \hbox (15.29747pt too wide) in paragraph at lines 3119--3120
 []\TU/lmr/m/n/10 newtpla2|  
  []
 
 
-Overfull \hbox (4.17747pt too wide) in paragraph at lines 3140--3141
+Overfull \hbox (4.17747pt too wide) in paragraph at lines 3135--3136
 \TU/lmr/m/n/10 4167%|  
  []
 
 
-Overfull \hbox (4.17747pt too wide) in paragraph at lines 3197--3198
+Overfull \hbox (4.17747pt too wide) in paragraph at lines 3192--3193
 \TU/lmr/m/n/10 4477%|  
  []
 
 
-Overfull \hbox (4.17747pt too wide) in paragraph at lines 3216--3217
+Overfull \hbox (4.17747pt too wide) in paragraph at lines 3211--3212
 \TU/lmr/m/n/10 4836%|  
  []
 
 
-Overfull \hbox (1.40747pt too wide) in paragraph at lines 3238--3239
+Overfull \hbox (1.40747pt too wide) in paragraph at lines 3233--3234
 []\TU/lmr/m/n/10 bench|  
  []
 
 
-Overfull \hbox (0.97168pt too wide) in paragraph at lines 3267--3268
+Overfull \hbox (0.97168pt too wide) in paragraph at lines 3262--3263
 []\TU/lmr/m/n/10 1,17E+08|  
  []
 
 
-Overfull \hbox (24.17747pt too wide) in paragraph at lines 3273--3274
+Overfull \hbox (24.17747pt too wide) in paragraph at lines 3268--3269
 \TU/lmr/m/n/10 26331853%|  
  []
 
 
-Overfull \hbox (15.29747pt too wide) in paragraph at lines 3276--3277
+Overfull \hbox (15.29747pt too wide) in paragraph at lines 3271--3272
 []\TU/lmr/m/n/10 newtpla1|  
  []
 
 
-Overfull \hbox (4.17747pt too wide) in paragraph at lines 3292--3293
+Overfull \hbox (4.17747pt too wide) in paragraph at lines 3287--3288
 \TU/lmr/m/n/10 3003%|  
  []
 
 
-Overfull \hbox (11.12747pt too wide) in paragraph at lines 3314--3315
+Overfull \hbox (11.12747pt too wide) in paragraph at lines 3309--3310
 []\TU/lmr/m/n/10 newapla|  
  []
 
 
-Overfull \hbox (9.17747pt too wide) in paragraph at lines 3330--3331
+Overfull \hbox (9.17747pt too wide) in paragraph at lines 3325--3326
 \TU/lmr/m/n/10 11620%|  
  []
 
 
-Overfull \hbox (4.17747pt too wide) in paragraph at lines 3368--3369
+Overfull \hbox (4.17747pt too wide) in paragraph at lines 3363--3364
 \TU/lmr/m/n/10 3342%|  
  []
 
 
-Overfull \hbox (4.17747pt too wide) in paragraph at lines 3387--3388
+Overfull \hbox (4.17747pt too wide) in paragraph at lines 3382--3383
 \TU/lmr/m/n/10 3151%|  
  []
 
 
-Overfull \hbox (17.80748pt too wide) in paragraph at lines 3504--3505
+Overfull \hbox (17.80748pt too wide) in paragraph at lines 3499--3500
 []\TU/lmr/m/n/10 bcd_div3|  
  []
 
 
-Overfull \hbox (24.17747pt too wide) in paragraph at lines 3558--3559
+Overfull \hbox (24.17747pt too wide) in paragraph at lines 3553--3554
 \TU/lmr/m/n/10 12683997%|  
  []
 
 
-Overfull \hbox (6.38168pt too wide) in paragraph at lines 3571--3572
+Overfull \hbox (6.38168pt too wide) in paragraph at lines 3566--3567
 []\TU/lmr/m/n/10 4716541,87|  
  []
 
 
-Overfull \hbox (13.20877pt too wide) in alignment at lines 2989--3599
+Overfull \hbox (13.20877pt too wide) in alignment at lines 2984--3594
  [] [] [] [] [] [] [] [] [] 
  []
 
 [68] [69] [70]
-Overfull \hbox (7.10747pt too wide) in paragraph at lines 3636--3637
-[]\TU/lmr/m/n/10 NOME 
+Overfull \hbox (192.2301pt too wide) in alignment at lines 3628--3632
+ [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (0.97748pt too wide) in paragraph at lines 3636--3637
-\TU/lmr/m/n/10 CIRC|  
+Overfull \hbox (192.2301pt too wide) in alignment at lines 3632--3666
+ [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (5.03937pt too wide) in paragraph at lines 3640--3641
-[]\TU/lmr/m/n/10 INPUT 
- []
-
-
-Overfull \hbox (3.78937pt too wide) in paragraph at lines 3640--3641
-\TU/lmr/m/n/10 ALICE|  
- []
-
-
-Overfull \hbox (8.48747pt too wide) in paragraph at lines 3642--3643
-[]\TU/lmr/m/n/10 INPUT 
- []
-
-
-Overfull \hbox (16.04126pt too wide) in paragraph at lines 3644--3645
-[]\TU/lmr/m/n/10 DOMINIO 
- []
-
-
-Overfull \hbox (1.87126pt too wide) in paragraph at lines 3644--3645
-\TU/lmr/m/n/10 MULTI|  
- []
-
-
-Overfull \hbox (33.6117pt too wide) in paragraph at lines 3646--3647
-\TU/lmr/m/n/10 MULTIVALORE|  
- []
-
-
-Overfull \hbox (5.03937pt too wide) in paragraph at lines 3648--3649
-[]\TU/lmr/m/n/10 INPUT 
- []
-
-
-Overfull \hbox (3.78937pt too wide) in paragraph at lines 3648--3649
-\TU/lmr/m/n/10 ALICE|  
- []
-
-
-Overfull \hbox (8.48747pt too wide) in paragraph at lines 3650--3651
-[]\TU/lmr/m/n/10 INPUT 
- []
-
-
-Overfull \hbox (36.40747pt too wide) in paragraph at lines 3652--3653
-\TU/lmr/m/n/10 GUADAGNO|  
- []
-
-
-Overfull \hbox (13.20877pt too wide) in alignment at lines 3633--3655
- [] [] [] [] [] [] [] [] [] 
- []
-
-
-Overfull \hbox (15.29747pt too wide) in paragraph at lines 3790--3791
-[]\TU/lmr/m/n/10 newtpla2|  
- []
-
-
-Overfull \hbox (1.40747pt too wide) in paragraph at lines 3904--3905
-[]\TU/lmr/m/n/10 bench|  
- []
-
-
-Overfull \hbox (15.29747pt too wide) in paragraph at lines 3942--3943
-[]\TU/lmr/m/n/10 newtpla1|  
- []
-
-
-Overfull \hbox (11.12747pt too wide) in paragraph at lines 3980--3981
-[]\TU/lmr/m/n/10 newapla|  
- []
-
-
-Overfull \hbox (17.80748pt too wide) in paragraph at lines 4170--4171
-[]\TU/lmr/m/n/10 bcd_div3|  
- []
-
-
-Overfull \hbox (13.20877pt too wide) in alignment at lines 3655--4265
- [] [] [] [] [] [] [] [] [] 
- []
-
-[71]
-Underfull \hbox (badness 1168) in paragraph at lines 4272--4273
+Underfull \hbox (badness 1168) in paragraph at lines 3673--3674
 \TU/lmr/m/n/10 Come ultimo test, come in MVSIS, abbiamo deciso di applicare anc
 he
  []
 
 
-Overfull \hbox (7.10747pt too wide) in paragraph at lines 4277--4278
-[]\TU/lmr/m/n/10 NOME 
- []
-
-
-Overfull \hbox (0.97748pt too wide) in paragraph at lines 4277--4278
-\TU/lmr/m/n/10 CIRC|  
- []
-
-
-Overfull \hbox (5.03937pt too wide) in paragraph at lines 4281--4282
-[]\TU/lmr/m/n/10 INPUT 
- []
-
-
-Overfull \hbox (3.78937pt too wide) in paragraph at lines 4281--4282
-\TU/lmr/m/n/10 ALICE|  
- []
-
-
-Overfull \hbox (8.48747pt too wide) in paragraph at lines 4283--4284
-[]\TU/lmr/m/n/10 INPUT 
- []
-
-
-Overfull \hbox (16.04126pt too wide) in paragraph at lines 4285--4286
-[]\TU/lmr/m/n/10 DOMINIO 
- []
-
-
-Overfull \hbox (1.87126pt too wide) in paragraph at lines 4285--4286
-\TU/lmr/m/n/10 MULTI|  
- []
-
-
-Overfull \hbox (33.6117pt too wide) in paragraph at lines 4287--4288
-\TU/lmr/m/n/10 MULTIVALORE|  
- []
-
-
-Overfull \hbox (5.03937pt too wide) in paragraph at lines 4289--4290
-[]\TU/lmr/m/n/10 INPUT 
- []
-
-
-Overfull \hbox (3.78937pt too wide) in paragraph at lines 4289--4290
-\TU/lmr/m/n/10 ALICE|  
- []
-
-
-Overfull \hbox (8.48747pt too wide) in paragraph at lines 4291--4292
-[]\TU/lmr/m/n/10 INPUT 
- []
-
-
-Overfull \hbox (36.40747pt too wide) in paragraph at lines 4293--4294
-\TU/lmr/m/n/10 GUADAGNO|  
- []
-
-
-Overfull \hbox (13.20877pt too wide) in alignment at lines 4274--4296
- [] [] [] [] [] [] [] [] [] 
- []
-
-
-Overfull \hbox (15.29747pt too wide) in paragraph at lines 4431--4432
-[]\TU/lmr/m/n/10 newtpla2|  
- []
-
-
-Overfull \hbox (1.40747pt too wide) in paragraph at lines 4545--4546
-[]\TU/lmr/m/n/10 bench|  
- []
-
-
-Overfull \hbox (15.29747pt too wide) in paragraph at lines 4583--4584
-[]\TU/lmr/m/n/10 newtpla1|  
- []
-
-
-Overfull \hbox (11.12747pt too wide) in paragraph at lines 4621--4622
-[]\TU/lmr/m/n/10 newapla|  
- []
-
-
-Overfull \hbox (4.17747pt too wide) in paragraph at lines 4732--4733
-\TU/lmr/m/n/10 1133%|  
- []
-
-
-Overfull \hbox (17.80748pt too wide) in paragraph at lines 4811--4812
-[]\TU/lmr/m/n/10 bcd_div3|  
- []
-
-
-Overfull \hbox (13.20877pt too wide) in alignment at lines 4296--4906
- [] [] [] [] [] [] [] [] [] 
- []
-
-[72] [73] [74]
-Overfull \hbox (143.79677pt too wide) in alignment at lines 4923--4927
+Overfull \hbox (192.2301pt too wide) in alignment at lines 3675--3679
  [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (143.79677pt too wide) in alignment at lines 4927--4952
+Overfull \hbox (192.2301pt too wide) in alignment at lines 3679--3713
  [] [] [] [] [] [] 
  []
 
-[75] [76] (./bookdown-demo.bbl [77
+[71] [72] [73]
+Overfull \hbox (143.79677pt too wide) in alignment at lines 3730--3734
+ [] [] [] [] [] [] 
+ []
 
-])
+
+Overfull \hbox (143.79677pt too wide) in alignment at lines 3734--3759
+ [] [] [] [] [] [] 
+ []
+
+[74] [75] (./bookdown-demo.bbl [76
+
+]
+Underfull \hbox (badness 3302) in paragraph at lines 32--37
+[]\TU/lmr/m/n/10 Donald Chai, Jie-Hong Jiang, Yunjian Jiang, Yinghua Li, Alan
+ []
+
+[77])
 
 Package natbib Warning: There were undefined citations.
 
 [78] (./bookdown-demo.aux) ) 
 Here is how much of TeX's memory you used:
- 18136 strings out of 478274
- 328851 string characters out of 5856297
- 832400 words of memory out of 5000000
- 38390 multiletter control sequences out of 15000+600000
+ 18046 strings out of 478274
+ 327188 string characters out of 5856297
+ 831165 words of memory out of 5000000
+ 38307 multiletter control sequences out of 15000+600000
  409921 words of font info for 85 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  86i,8n,121p,1289b,521s stack positions out of 5000i,500n,10000p,200000b,80000s

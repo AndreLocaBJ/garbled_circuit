@@ -36,7 +36,7 @@ Il modo più semplice per rappresentare un funzione con $m$ valori e $n$ variabi
 
 #### Positional cube notation
 
-Utilizzata nella logica booleana questa tecnica di visualizzazione può essere utilizzata anche per funzioni con input multi-valore e output booleano. Qunado un letterale binario, $x$ o $x'$, viene rappresentato da un campo a 2 bit una funzione letterali multivalore $m$ viene rappresenta con un campo a $m$ bit. Il valore $i \in M$ corrisponde al bit $i$ dell campo. Un letterale $x^S$ ha 1 in tutte le posizioni $i \in S$. Per esempio:
+Utilizzata nella logica booleana questa tecnica di visualizzazione può essere utilizzata anche per funzioni con input multi-valore e output booleano. Quando un letterale binario, $x$ o $x'$, viene rappresentato da un campo a 2 bit una funzione letterali multivalore $m$ viene rappresenta con un campo a $m$ bit. Il valore $i \in M$ corrisponde al bit $i$ dell campo. Un letterale $x^S$ ha 1 in tutte le posizioni $i \in S$. Per esempio:
 
 $$\begin{tabular}{ c|c c c} 
  \hline

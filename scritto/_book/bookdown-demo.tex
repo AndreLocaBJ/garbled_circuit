@@ -124,6 +124,85 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
+\hypertarget{introduzione}{%
+\chapter{Introduzione}\label{introduzione}}
+
+Per meglio comprendere le tematiche di questa tesi è di fondamentale importanza introdurre al contesto storico e informatico in cui si inserisce. Nel contesto in questione l'utente passa da essere un semplice fruitore passivo dei servizi, a diventare sempre più un elemento cardine della piattaforma in quanto monetizzabile tramite le informazioni che lo riguardano. Questo cambiamento di prospettiva porta la persona al centro dell'interesse delle aziende, che potranno trarre guadagno movimentando e memorizzando quantità sempre maggiori di dati. Queste nuove dinamiche hanno fatto si che, per mantenere protetta ed intatta la privacy dei possessori dei dati, venissero sviluppate delle nuove tecniche di sicurezza informatica. Partendo da questi presupposti, la tesi si sviluppa analizzando la letteratura preesistente in materia e sperimentando un nuovo approccio alla problematica.
+
+L'approccio maggiormente impiegato nella letteratura studiata è quello definito SMPC, ovvero la ``secure multi party computation''. Essa si presenta come sotto categoria della crittografia e si pone come obiettivo quello di elaborare metodi di calcolo congiunto di una funzione sugli input privati di due o più parti coinvolte. Una volta sviscerate tutte le caratteristiche di questo tema, la tesi sposta la sua attenzione su quello che sarà il vero argomento centrale di essa: la ``Two party computation'' e come renderla più efficiente.
+
+Si tratta di una particolare sotto-categoria delle SMPC che descrive uno scenario in cui due parti comunicano tra di loro per la risoluzione di un problema, senza però scambiarsi informazioni sensibili e senza ricorrere all'utilizzo di una terza parte fidata.
+
+Il padre di questo approccio è Yao, il quale ha sviluppato lo ``Yao garbeled circuit''. Questo tipo di circuito, nelle sue varie fasi, permette di raggiungere l'obbiettivo di privacy mediante l'utilizzo di un circuito virtuale in cui gli utenti inseriscono i propri input crittografati e non verranno a conoscenza, al termine delle operazioni, di altri dati se non i propri input e l'output finale del circuito.
+
+Nella letteratura citata, questo tipo di approccio viene applicato solo e soltanto a circuiti di tipo booleano. La finalità di questa tesi è dunque quella di studiare se, applicando un circuito con logica multi valore a questi sistemi, sia possibile ottenere una riduzione dei costi operazionali per conseguire una miglior performance del protocollo.
+
+Prima di intraprendere questa analisi è stato necessario soffermarsi su quali fossero i metodi più efficaci per ottenere una corretta conversione dei circuiti da binari a multi valore. Per conversione efficace si intende quella conversione che non va a snaturare la struttura del circuito e che rende quindi possibile una comparazione finale con i dati forniti dalla letteratura. Un ulteriore strumento analizzato ed utilizzato è la sintesi dei circuiti, che viene applicata sia ai circuiti booleani che a quelli multi valore, in modo tale da andare a ripulire la struttura da ridondanze e strutture ininfluenti ai fini dei calcoli. Gli strumenti di sintesi in nostro possesso hanno giocato un ruolo fondamentale ai fini dell'analisi, in quanto i tool disponibili per gestire la logica multi valore sono datati e non implementati o aggiornati nel tempo.
+
+Per far fronte a questa carenza, la direzione della tesi si è spostata verso un approccio ``ibrido'' alla questione. L'obbiettivo di questo metodo è quello di poter andare a sfruttare e valorizzare i punti di forza di entrambe le logiche. Nel caso della logica multi valore, riducendo il numero degli input che le parti devono devono inserire e limitando drasticamente la dimensione del dominio, è stato possibile ridurre i costi computazionali del processo. Dall'altra parte invece, nel caso della logica booleana, sfruttando gli strumenti di sintesi più evoluti ed implementati nel tempo è stato possibile ridurre notevolmente le dimensioni della struttura del circuito, riducendo ulteriormente i costi computazionali del processo.
+
+I risultati finali della tesi hanno dimostrato che l'approccio ibrido può essere considerato interessante in quanto, nella maggior parte dei casi, è stato possibile notare una riduzione sostanziale dei costi del circuito in esame rispetto ad un normale circuito booleano sintetizzato.
+
+\newpage
+
+All'interno del secondo capitolo di questa tesi viene introdotto il cambiamento a livello storico ed economico del valore dei dati degli utenti, che li ha resi un business primario per le aziende, portando alla monetizzazione di essi. Questo processo ha reso evidente una possibile problematica relativa alla violazione della privacy individuale della persona in quanto veniva attuato un massivo movimento di dati. Queste nuove dinamiche, le quali hanno definito le basi e le premesse dell'attuale processo per la sicurezza chiamato Secure multiparty computation (SMPC), hanno reso possibile operare sui dati senza esporli o spostarli dalla sede di partenza. In questo capitolo viene analizzato il funzionamento di questo processo atto ad elaborare metodi di calcolo congiunto di una funzione sugli input privati di due o più parti coinvolte proteggendo la privacy dei partecipanti l'uno dall'altro.
+Una volta definito il protocollo lo studio tratta quelle che vengono definite ``garanzie di sicurezza'' che rendono quest'ultimo efficace, i modelli di mondo reale/ideale al quale il paradigma viene associalo e i possibili avversari alla sicurezza che potrebbero partecipare a questo sistema.
+
+Lo studio si focalizza in particolare su una sottocategoria dell'SMPC: la two party computation,\\
+Essa descrive uno scenario in cui due parti parti comunicano tra di loro per la risoluzione di un problema, senza però scambiarsi informazioni sensibili e senza ricorrere all'utilizzo di una terza parte fidata. Questo scenario risulta analizzato per la prima volta tramite il Yao's garbled circuit protocol.
+
+In seguito nel capitolo è esposta la struttura di questo tipo di circuiti, i quali risultano efficienti in quantità di passaggi e in sicurezza della struttura in quanto sono composti da circuiti booleani che permettono di ``confondere'' il circuito in modo che i partecipanti possano dedurre solo gli output senza venire a conoscenza di altri dati del sistema.
+
+\newpage
+
+Il terzo capitolo si sviluppa partendo dall'utilizzo di un esempio per giungere ad una comprensione più approfondita del ``Yao Garbled Circuit''. Tramite questa dimostrazione è reso chiaro il metodo tramite il quale questo circuito è in grado di garantire un buon livello di sicurezza: i partecipanti modellano la funzione come un circuito booleano, e in seguito il mittente confonde i valori del circuito. Come conseguenza viene illustrato il protocollo chiamato oblivius tranfer, tramite il quale il mittente trasmette un pezzo di informazione al ricevitore, ma rimane ignaro di quale pezzo di informazione sia stato trasmesso, in questo modo il mittente non sarà in grado di conoscere l'input del ricevitore, conservando così la privacy dei dati.
+
+In seguito all'esempio sopracitato, il capitolo necessita di un'ulteriore focus cruciale dedicato al garbling delle porte logiche e della loro tabella di verità. In questa sezione sono descritte le modalità con le quali è possibile confondere la tabella di verità e, alla fine del processo, criptare i valori di uscita adottando lo schema della crittografia simmetrica.
+
+Una volta analizzate queste tematiche viene discussa la differenza tra un circuito booleano e un circuito confuso, in quanto questi due tipi di circuiti presentano delle differenze strutturali fondamentali riguardanti la semantica e la sintassi.
+
+Il processo di confusione del circuito presenta un'ulteriore problematica: come avere la conferma del successo della decrittazione del circuito?. Per questo motivo viene analizzato di seguito l'espediente chiamato ``permute and point'' andandone a sviscerare la struttura e il funzionamento, per poi concludere il capitolo con un ulteriore esempio del permute and point in grado di mostrare effettivamente il funzionamento di questa tecnica.
+
+\newpage
+
+Il quarto capitolo esordisce con una tematica molto importante dell'informatica in generale: l'efficienza del circuito. Applicando questa questione al nostro circuito confuso, questo capitolo è dedicato a due tool che vengono utilizzati come sintetizzatori, rispettivamente chiamati MVSIS e ABC. La funzione specifica di questi tool è quella di andare a ridurre quanto possibile le dimensioni dei circuiti dati loro in ingresso in modo da diminuire il costo totale dei circuiti eliminando nodi, ridondanze e inoltre cambiando e sintetizzando la struttura dei nodi. Nonostante entrambi abbiano lo stesso obbiettivo, essi lavorano utilizzando comandi e strumenti diversi.
+
+Proseguendo nello sviluppo del capitolo si analizza per primo il tool MVSIS, descrivendone la struttura derivante dal tool SIS. MVSIS è stato implementato in modo tale da manipolare i circuiti con una logica detta ``logica multivalore''. Come verrà dettagliatamente descritto tramite esempi, esistono numerosi comandi in grado di svolgere funzioni sul circuito, tra queste quella di sintetizzare, di ottimizzare il circuito e molte altre per manipolare la struttura dei nodi. Oltre all'utilizzo dei sintetizzatori viene anche presentato un altro metodo che consiste nell'applicare metodi algebrici al fine di estrarre nuovi nodi che hanno divisori comuni per altri nodi con lo scopo di trovare sottoespressioni comuni, applicare una divisione semi-algebrica, attuare la decomposizione di una rete multi-valore e la fattorizzazione di una forma SOP.
+
+In seguito, è presente l'analisi del tool ABC, che viene presentato come un successore di SIS, VIS e MVSIS., in quanto nato e creato con lo scopo di mantenere strutture di dati semplici e flessibili in modo da poter essere impiegate da una vasta gamma di applicazioni. Viene considerato un successore in quanto creato prendendo come base le esperienze di utilizzo dei tre tool sopracitati, i quali presentavano per ogni caso delle inadeguatezze differenti. Per meglio spiegare i funzionamenti di ABC, esso, nello svolgimento del capitolo, è stato messo a confronto con quello di MVSIS, evidenziandone le differenze ed esplicando quali sono i comandi utilizzabili nel sistema di ABC.
+Al termine del confronto viene spiegata la logica e i comandi che agendo all'unisono danno forma alla sintesi sequenziale.
+
+\newpage
+
+Nel quinto capitolo si entra nel vivo della sperimentazione ed analisi convertendo in codice tutto ciò che è stato appreso dalla letteratura e dal lavoro di ricerca svolto nei capitoli precedenti. In particolare, nella prima parte del capitolo, l'attenzione è focalizzata sul testare l'efficacia dell'utilizzo di un multi valore rispetto all'utilizzo di un circuito booleano. Per poterli mettere a confronto viene presentata una ricerca sulle modalità esistenti finalizzate ad eseguire una conversione che però non vada ad intaccare la funzionalità del circuito. Questa conversione permetterà, tramite l'analisi sviluppata durante lo svolgersi del capitolo, di andare ad individuare quale dei due risulti essere più efficace e conveniente.
+
+Il capitolo prosegue approfondendo le caratteristiche che competono la logica multi valore, andando a delineare quali sono la potenzialità che potrebbero risultare vantaggiose rispetto alla logica di un circuito booleano.
+In seguito a questa analisi è presentato un focus riguardante i circuiti binari. Il motivo di tale approfondimento risulta chiaro dal momento che, per testare la tesi, è stato necessario sviluppare una tecnica di conversione dei circuiti binari di partenza senza snaturarne la logica.
+
+Una volta stabiliti i termini di questa conversione l'attenzione dello studio si sposta sulla ricerca di un nuovo dominio multi valore che fosse adatto all'analisi ma allo stesso tempo conveniente in termine di costi.
+Tutte queste operazioni svolte sui circuiti hanno portato con se la necessità di identificare un nuovo formato in grado di rappresentarli senza andarne a modificare la struttura. Il capitolo prosegue dunque con un'analisi approfondita di PLA (il formato selezionato per i circuiti binari), introducendo quindi l'elemento ``don't care`` che verrà sviluppato durante il proseguimento dello studio e applicato all'analisi svolta.
+
+Oltre a PLA viene introdotto ed analizzato anche il formato blmf (sviluppato per i circuiti multivalore), necessario in quanto PLA non era sufficiente in quanto funzionale solo alla logica dei circuiti binari.
+Per implementare la conversione dei circuiti in analisi e renderli ready to use, viene inoltre utilizzato il linguaggio di programmazione Python.
+
+Una volta approfonditi tutti questi argomenti il capitolo prosegue applicando la sintetizzazione dei circuiti risultanti mediante MVSIS E ABC, implementando e automatizzando i processi per poi valutare in fine i costi effettivi dei circuiti messi a confronto.
+
+\newpage
+
+Il sesto capitolo di questa tesi contiene al suo interno i risultati sperimentali derivati dall'analisi svolta nei capitoli precedenti mirata a valutare se il nuovo approccio sviluppato potesse essere considerato una alternativa possibile o vincente rispetto alle proposte già presenti in letteratura.
+
+Il capitolo mostra come la prima analisi sia stata svolta scegliendo l'approccio classico della logica binaria per provare ad applicarlo a quella multivalore, usando quindi MVSIS, al termine ritenuto non funzionale per due motivi: la mancanza di replicabilità di alcuni comandi in questo sistema e lo scarso sviluppo che il programma ha avuto nel tempo che lo rendono meno agile al fine dei calcoli e del suo utilizzo. L'analisi in questo senso ha mostrato come i costi vengono notevolmente abbassati nel caso del booleano mentre in quello multivalore rimangono più elevati. poichè la sintesi sui circuiti binari è nettamente più sviluppata e sono stati scoperti metodi di sintesi più efficaci rispetto a quelli studiati per una logica multivalore.
+
+Proseguendo nelle analisi del capitolo è stato possibile appurare che, inizialmente il costo del circuito multivalore possiede dei costi più bassi per via del minor numero di input, ma che la logica binaria può appoggiarsi a degli strumenti di sintesi più sviluppati. Per questo motivo la sperimentazione procede provando ad applicare ABC.
+
+La parte finale del capitolo parte del capitolo si focalizza dunque sull'utilizzo di questo tool. I circuiti vengono convertiti da multivalore a binari in modo da poter applicare gli algoritmi di sintesi di ABC i quali risultano più efficienti e sviluppati, generando però come output un circuito binario.
+
+\newpage
+
+Il capitolo finale presenta una approfondita analisi derivata dai risultati sperimentali. Essi mettono in luce come l'utilizzo della logica multivalore all'interno dei circuiti potrebbe rivelarsi molto interessante in termini di riduzione dei costi, ma, nonostante questo, sia molto difficoltoso sviluppare un calcolo con MVSIS a causa dello sviluppo del tool troppo datato. Dall'altra parte invece il tool ABC, che risulta essere molto più sviluppato e all'avanguardia, accetta in ingresso circuiti multivalore, ma, per poter fare questo, nel suo motore di sintesi, essi vengono convertiti in circuiti booleani.
+
+I calcoli effettuati hanno messo in luce come il miglior approccio applicabile sia quello ibrido, in quanto l'applicazione della logica multivalore dimezza i valori di imput e riduce drasticamente la dimensione del dominio, e, tramite ABC con la sua conversione interna booleana del circuito multivalore creato, i calcoli sono facilitati dalla continua evoluzione e dal continuo aggiornamento del tool e dei suoi algoritmi di sintesi.
+
 \hypertarget{secure-multi-party-computation}{%
 \chapter{Secure multi-party computation}\label{secure-multi-party-computation}}
 
@@ -141,7 +220,7 @@ Uno dei sottoprodotti potenzialmente rischiosi di questo processo è ad esempio 
 
 Per far fronte a questa possibile problematica sono state studiate e sviluppate molteplici soluzioni nelle quali sia possibile utilizzare fonti dati diverse, senza però dover necessariamente centralizzare l'informazione. Questa tecnica fa in modo che la privacy individuale degli utenti venga protetta e garantisce che nessuna informazione venga rivelata a terzi nel corso delle operazioni.
 
-Le nuove dinamiche relative alla sicurezza dei dati stileranno dunque le basi e le premesse dell'attuale processo per la sicurezza chiamato Secure multiparty computation (SMPC). In altri termini , grazie al SMPC, sarà possibile consentire ai Data Scientist e Data Analyst di operare sui dati senza il bisogno di esporli o spostarli dalla loro sede di storage di partenza.
+Le nuove dinamiche relative alla sicurezza dei dati stileranno dunque le basi e le premesse dell'attuale processo per la sicurezza chiamato Secure multiparty computation (SMPC). In altri termini , grazie al SMPC, sarà possibile consentire ai Data Scientist e Data Analyst di operare sui dati senza il bisogno di esporli o spostarli dalla loro sede di storage di partenza.\citep{du2001secure}
 
 \newpage
 
@@ -196,7 +275,7 @@ A differenza delle applicazioni crittografiche tradizionali, come la crittografi
 
 \newpage
 
-Sia \(n\) il numero di parti nel protocollo e \(t\) il numero di parti che possono essere avversarie. I protocolli e le soluzioni per il caso di \(t< n/2\) (cioè quando si assume una maggioranza onesta) sono diversi da quelli in cui non viene fatta tale assunzione,quelli cioè dove le parti avversarie all'interno del sistema siano presenti in numero maggiore rispetto alle parti oneste. Quest'ultimo scenario include l'importante caso di calcolo a due parti in cui uno dei partecipanti può essere corrotto, e il caso generale in cui un numero illimitato di partecipanti è corrotto e collude per attaccare i partecipanti onesti.
+Sia \(n\) il numero di parti nel protocollo e \(t\) il numero di parti che possono essere avversarie. I protocolli e le soluzioni per il caso di \(t< n/2\) (cioè quando si assume una maggioranza onesta) sono diversi da quelli in cui non viene fatta tale assunzione,quelli cioè dove le parti avversarie all'interno del sistema siano presenti in numero maggiore rispetto alle parti oneste. Quest'ultimo scenario include l'importante caso di calcolo a due parti in cui uno dei partecipanti può essere corrotto, e il caso generale in cui un numero illimitato di partecipanti è corrotto e collude per attaccare i partecipanti onesti.\citep{ben2016optimizing}
 
 Gli avversari affrontati dai diversi protocolli possono essere classificati in base a quanto, nel loro tentativo di eludere il sistema, sono disposti a deviare dal protocollo. Ci sono essenzialmente due tipi di avversari, ognuno dei quali dà luogo a diverse forme di sicurezza (e ognuno si adatta a diversi scenari del mondo reale):
 
@@ -229,10 +308,10 @@ Come per molti protocolli crittografici, la sicurezza di un protocollo MPC può 
 \hypertarget{two-party-computation}{%
 \section{Two-party computation}\label{two-party-computation}}
 
-Una particolare sotto-categoria delle SMPC che andremo di seguito ad analizzare è la Two-party computation. Questa categoria descrive uno scenario in cui 2 parti parti comunicano tra di loro per la risoluzione di un problema, senza però scambiarsi informazioni sensibili e senza ricorrere all'utilizzo di una terza parte fidata.
+Una particolare sotto-categoria delle SMPC che andremo di seguito ad analizzare è la Two-party computation. Questa categoria descrive uno scenario in cui due parti comunicano tra di loro per la risoluzione di un problema, senza però scambiarsi informazioni sensibili e senza ricorrere all'utilizzo di una terza parte fidata.
 Lo scenario a due parti è particolarmente interessante ai fini di un'analisi, in quanto non solo presenta delle diversità dal punto di vista delle applicazioni, ma anche perché a questo scenario a due si possono applicare tecniche speciali che non si applicano nel caso a più parti. Infatti, il calcolo sicuro a più parti è stato presentato per la prima volta nell'impostazione a due parti. Il lavoro originale è spesso citato come proveniente da uno dei due articoli di Yao; anche se gli articoli non contengono effettivamente quello che ora è noto come il Yao's garbled circuit protocol.
 
-Il protocollo di base di Yao è sicuro contro gli avversari semi-onesti. Possiamo ritenere questo protcollo estremamente efficiente in termini di numero di passaggi in quanto questi sono costanti, e possiamo definirlo indipendente dalla funzione obiettivo che viene valutata. La funzione è vista come un circuito booleano, con ingressi in binario di lunghezza fissa. Un circuito booleano è un insieme di porte collegate con tre diversi tipi di fili: fili di ingresso al circuito, fili di uscita al circuito e fili intermedi. Ogni porta riceve due fili d'ingresso e ha un singolo filo d'uscita che potrebbe essere fan-out (cioè essere passato a più porte al livello successivo). La semplice valutazione del circuito viene fatta valutando ogni porta a turno e assumendo che le porte siano state ordinate topologicamente. Il gate è rappresentato come una tabella di verità tale che per ogni possibile coppia di bit (quelli provenienti dal gate dei fili di ingresso) la tabella assegna un unico bit di uscita; che è il valore del filo di uscita del gate. I risultati della valutazione sono i bit ottenuti nei fili di uscita del circuito.
+Il protocollo di base di Yao è sicuro contro gli avversari semi-onesti. Possiamo ritenere questo protcollo estremamente efficiente in termini di numero di passaggi in quanto questi sono costanti, e possiamo definirlo indipendente dalla funzione obiettivo che viene valutata. La funzione è vista come un circuito booleano, con ingressi in binario di lunghezza fissa. Un circuito booleano è un insieme di porte collegate con tre diversi tipi di fili: fili di ingresso al circuito, fili di uscita al circuito e fili intermedi. Ogni porta riceve due fili d'ingresso e ha un singolo filo d'uscita che potrebbe essere fan-out (cioè essere passato a più porte al livello successivo). La semplice valutazione del circuito viene fatta valutando ogni porta a turno e assumendo che le porte siano state ordinate topologicamente. Il gate è rappresentato come una tabella di verità tale che per ogni possibile coppia di bit (quelli provenienti dal gate dei fili di ingresso) la tabella assegna un unico bit di uscita; che è il valore del filo di uscita del gate. I risultati della valutazione sono i bit ottenuti nei fili di uscita del circuito.\citep{yao1982protocols}
 
 \newpage
 
@@ -603,7 +682,7 @@ Il modo più semplice per rappresentare un funzione con \(m\) valori e \(n\) var
 \hypertarget{positional-cube-notation}{%
 \subsubsection{Positional cube notation}\label{positional-cube-notation}}
 
-Utilizzata nella logica booleana questa tecnica di visualizzazione può essere utilizzata anche per funzioni con input multi-valore e output booleano. Qunado un letterale binario, \(x\) o \(x'\), viene rappresentato da un campo a 2 bit una funzione letterali multivalore \(m\) viene rappresenta con un campo a \(m\) bit. Il valore \(i \in M\) corrisponde al bit \(i\) dell campo. Un letterale \(x^S\) ha 1 in tutte le posizioni \(i \in S\). Per esempio:
+Utilizzata nella logica booleana questa tecnica di visualizzazione può essere utilizzata anche per funzioni con input multi-valore e output booleano. Quando un letterale binario, \(x\) o \(x'\), viene rappresentato da un campo a 2 bit una funzione letterali multivalore \(m\) viene rappresenta con un campo a \(m\) bit. Il valore \(i \in M\) corrisponde al bit \(i\) dell campo. Un letterale \(x^S\) ha 1 in tutte le posizioni \(i \in S\). Per esempio:
 
 \[\begin{tabular}{ c|c c c} 
  \hline
@@ -3714,10 +3793,8 @@ in7 & 182 & 7 & 7 & 1676 & -821\%\tabularnewline
 
 In questo caso possiamo appurare che tra i due approcci non ci sono differenze sostanziali, questo risultato potrebbe essere derivato dalle modalità con cui abc legge i circuiti multivalore in input.
 
-\newpage
-
-\hypertarget{conclusioni-sui-risultati}{%
-\section{Conclusioni sui risultati}\label{conclusioni-sui-risultati}}
+\hypertarget{conclusioni}{%
+\chapter{Conclusioni}\label{conclusioni}}
 
 Una volta terminate tutte le analisi e le sperimentazioni eseguite sui circuiti binari e multivalore siamo stati in grado di trarre alcune informazioni molto importanti riguardanti essi e i loro funzionamenti. Tutti i dati ottenuti da questa sperimentazione ci hanno portati a notare come l'utilizzo della logica multivalore all'interno dei circuiti potrebbe rivelarsi molto interessante in termini di riduzione dei costi relativi ai valori di input che sono richiesti dai circuiti.
 
@@ -3775,6 +3852,8 @@ La tecnica di analisi ibrida offre i risultati migliori in quanto:
 \end{itemize}
 
 La tabella riassume anche qual è stata l'evoluzione di questa analisi sperimentale: inizialmente ci si è concentrati su un metodo ottimale di conversione binaria e abbiamo analizzato se effettivamente questa sperimentazione potesse avere dei reali benefici, successivamente si è passati alla sintesi dei circuiti per capire se la sintesi di domini non binari potesse essere efficace come quella binaria. Una volta individuati i tool migliori si è cercato di capire quali tecniche di sintesi potessero essere le migliori fino ad arrivare ai risultati finali con la constatazione che l'approccio ibrido, ad oggi, risulti la tecnica migliore da noi testata.
+
+Lo studio dell'utilizzo della logica multivalore ha portato ha dei risultati interessanti nonostante la limitazione data dalla scarsità e obsolescenza degli strumenti di sintesi. Le tecniche analizzate in un'ottica futura potranno affiancare le classiche metodologie binarie in quanto, analizzando i risultati, alcuni tipi di circuiti non giovano della conversione in multivalore generando costi maggiori rispetto alla controparte booleana.
 
 \newpage
 

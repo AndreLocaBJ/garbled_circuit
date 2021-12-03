@@ -1,46 +1,39 @@
-% Options for packages loaded elsewhere
-\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
 \PassOptionsToPackage{hyphens}{url}
 %
-\documentclass[
-]{book}
+\documentclass[]{book}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provide euro and other symbols
-\else % if luatex or xetex
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
   \usepackage{unicode-math}
-  \defaultfontfeatures{Scale=MatchLowercase}
-  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 \fi
-% Use upquote if available, for straight quotes in verbatim environments
+% use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-\IfFileExists{microtype.sty}{% use microtype if available
-  \usepackage[]{microtype}
-  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\makeatletter
-\@ifundefined{KOMAClassName}{% if non-KOMA class
-  \IfFileExists{parskip.sty}{%
-    \usepackage{parskip}
-  }{% else
-    \setlength{\parindent}{0pt}
-    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
-}{% if KOMA class
-  \KOMAoptions{parskip=half}}
-\makeatother
-\usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
 \hypersetup{
-  pdftitle={Tesi},
-  pdfauthor={Andrea Locatelli},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
+            pdftitle={Tesi},
+            pdfauthor={Andrea Locatelli},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -82,15 +75,9 @@
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs}
-% Correct order of tables after \paragraph or \subparagraph
-\usepackage{etoolbox}
-\makeatletter
-\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
-\makeatother
-% Allow footnotes in longtable head/foot
-\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
-\makesavenoteenv{longtable}
-\usepackage{graphicx}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
+\usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -99,14 +86,25 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-% Set default figure placement to htbp
-\makeatletter
-\def\fps@figure{htbp}
-\makeatother
-\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
 \usepackage{pmboxdraw}
 \usepackage{float}
 \usepackage[square,numbers]{natbib}
@@ -460,7 +458,7 @@ Nonostante l'uguale utilizzo per il quale questi due diversi tool sono stati svi
 \hypertarget{design-specification}{%
 \subsection{Design specification}\label{design-specification}}
 
-Un circuito multi valore (MV circuit) può essere dato come valore di input a MVSIS tramite l'apposito comando (read\_blifmv) e, oltre ai circuiti multi valore, è possibile anche dare come imput circuiti binari. Internamente, la rappresentazione del progetto è una rete di nodi MV dove ogni nodo rappresenta una funzione MV con una singola uscita a più valori. È importante però specificare una fondamentale distinzione con alcuni altri metodi multi valore, cioè che ogni variabile del nodo può avere un dominio diverso. L'intervallo per la variabile \(y_k\) è rappresentato dall'insieme \$P\_k=\{0,1,\ldots,p\_k -1 \}. La funzione il cui esito dà UN SET dei mintermi (Una sola uscita con 0 o 1) per i quali \(f_k = i\) (la funzione al nodo \(k\) è uguale al valore \(i\) ) è chiamata \emph{i-set} della funzione \(f_k\) e viene memorizzata in forma SOP (Somma di prodotti). Nel caso di logica a 2 valori, l'insieme 0 corrisponde all'off-set e l'insieme 1 all'on set. Una variabile MV yk è associata all'uscita del nodo k. Un margine congiunge \(k\) a \(j\) se uno qualsiasi degli i-set di \(j\) dipende esplicitamente da \(y_k\). La rete ha un insieme di ingressi primari (che possono essere tutti a più valori) e un insieme di nodi di ingressi primari.
+Un circuito multi valore (MV circuit) può essere dato come valore di input a MVSIS tramite l'apposito comando (read\_blifmv) e, oltre ai circuiti multi valore, è possibile anche dare come imput circuiti binari. Internamente, la rappresentazione del progetto è una rete di nodi MV dove ogni nodo rappresenta una funzione MV con una singola uscita a più valori. È importante però specificare una fondamentale distinzione con alcuni altri metodi multi valore, cioè che ogni variabile del nodo può avere un dominio diverso. L'intervallo per la variabile \(y_k\) è rappresentato dall'insieme \$P\_k=\{0,1,\ldots{},p\_k -1 \}. La funzione il cui esito dà UN SET dei mintermi (Una sola uscita con 0 o 1) per i quali \(f_k = i\) (la funzione al nodo \(k\) è uguale al valore \(i\) ) è chiamata \emph{i-set} della funzione \(f_k\) e viene memorizzata in forma SOP (Somma di prodotti). Nel caso di logica a 2 valori, l'insieme 0 corrisponde all'off-set e l'insieme 1 all'on set. Una variabile MV yk è associata all'uscita del nodo k. Un margine congiunge \(k\) a \(j\) se uno qualsiasi degli i-set di \(j\) dipende esplicitamente da \(y_k\). La rete ha un insieme di ingressi primari (che possono essere tutti a più valori) e un insieme di nodi di ingressi primari.
 
 \newpage
 
@@ -918,31 +916,31 @@ Questa dinamica fa si che il sistema, una volta installato il linguaggio di prog
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{def}\NormalTok{ read\_pla(path\_file):}
+\KeywordTok{def}\NormalTok{ read_pla(path_file):}
 \NormalTok{  inp }\OperatorTok{=} \VariableTok{None}
 \NormalTok{  out }\OperatorTok{=} \VariableTok{None}
-\NormalTok{  inp\_array }\OperatorTok{=}\NormalTok{ []}
-\NormalTok{  out\_array }\OperatorTok{=}\NormalTok{ []}
-\NormalTok{  truth\_table }\OperatorTok{=}\NormalTok{ []}
-  \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(path\_file, }\StringTok{\textquotesingle{}r\textquotesingle{}}\NormalTok{) }\ImportTok{as}\NormalTok{ input\_file:}
-    \ControlFlowTok{for}\NormalTok{ line }\KeywordTok{in}\NormalTok{ input\_file.readlines():}
-      \ControlFlowTok{if} \StringTok{\textquotesingle{}.i\textquotesingle{}} \KeywordTok{in}\NormalTok{ line }\KeywordTok{and}\NormalTok{ line[}\DecValTok{2}\NormalTok{] }\OperatorTok{==} \StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{:}
-\NormalTok{        inp }\OperatorTok{=}\NormalTok{ line.split(}\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{)[}\DecValTok{1}\NormalTok{]}
-      \ControlFlowTok{elif} \StringTok{\textquotesingle{}.o\textquotesingle{}} \KeywordTok{in}\NormalTok{ line }\KeywordTok{and}\NormalTok{ line[}\DecValTok{2}\NormalTok{] }\OperatorTok{==} \StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{:}
-\NormalTok{        out }\OperatorTok{=}\NormalTok{ line.split(}\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{)[}\DecValTok{1}\NormalTok{]}
-      \ControlFlowTok{elif} \StringTok{\textquotesingle{}.ilb\textquotesingle{}} \KeywordTok{in}\NormalTok{ line:}
-\NormalTok{        inp\_array }\OperatorTok{=}\NormalTok{ line.strip().split(}\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{)[}\DecValTok{1}\NormalTok{:]}
-      \ControlFlowTok{elif} \StringTok{\textquotesingle{}.ob\textquotesingle{}} \KeywordTok{in}\NormalTok{ line:}
-\NormalTok{        out\_array }\OperatorTok{=}\NormalTok{ line.strip().split(}\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{)[}\DecValTok{1}\NormalTok{:]}
-      \ControlFlowTok{elif} \StringTok{\textquotesingle{}.end\textquotesingle{}} \KeywordTok{in}\NormalTok{ line:}
+\NormalTok{  inp_array }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{  out_array }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{  truth_table }\OperatorTok{=}\NormalTok{ []}
+  \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(path_file, }\StringTok{'r'}\NormalTok{) }\ImportTok{as}\NormalTok{ input_file:}
+    \ControlFlowTok{for}\NormalTok{ line }\KeywordTok{in}\NormalTok{ input_file.readlines():}
+      \ControlFlowTok{if} \StringTok{'.i'} \KeywordTok{in}\NormalTok{ line }\KeywordTok{and}\NormalTok{ line[}\DecValTok{2}\NormalTok{] }\OperatorTok{==} \StringTok{' '}\NormalTok{:}
+\NormalTok{        inp }\OperatorTok{=}\NormalTok{ line.split(}\StringTok{' '}\NormalTok{)[}\DecValTok{1}\NormalTok{]}
+      \ControlFlowTok{elif} \StringTok{'.o'} \KeywordTok{in}\NormalTok{ line }\KeywordTok{and}\NormalTok{ line[}\DecValTok{2}\NormalTok{] }\OperatorTok{==} \StringTok{' '}\NormalTok{:}
+\NormalTok{        out }\OperatorTok{=}\NormalTok{ line.split(}\StringTok{' '}\NormalTok{)[}\DecValTok{1}\NormalTok{]}
+      \ControlFlowTok{elif} \StringTok{'.ilb'} \KeywordTok{in}\NormalTok{ line:}
+\NormalTok{        inp_array }\OperatorTok{=}\NormalTok{ line.strip().split(}\StringTok{' '}\NormalTok{)[}\DecValTok{1}\NormalTok{:]}
+      \ControlFlowTok{elif} \StringTok{'.ob'} \KeywordTok{in}\NormalTok{ line:}
+\NormalTok{        out_array }\OperatorTok{=}\NormalTok{ line.strip().split(}\StringTok{' '}\NormalTok{)[}\DecValTok{1}\NormalTok{:]}
+      \ControlFlowTok{elif} \StringTok{'.end'} \KeywordTok{in}\NormalTok{ line:}
         \ControlFlowTok{continue}
       \ControlFlowTok{else}\NormalTok{:}
 \NormalTok{        line }\OperatorTok{=}\NormalTok{ \{}
-          \StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{:  line.strip().split(}\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{)[}\DecValTok{0}\NormalTok{],}
-          \StringTok{\textquotesingle{}out\textquotesingle{}}\NormalTok{:  line.strip().split(}\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{)[}\DecValTok{1}\NormalTok{]}
+          \StringTok{'inp'}\NormalTok{:  line.strip().split(}\StringTok{' '}\NormalTok{)[}\DecValTok{0}\NormalTok{],}
+          \StringTok{'out'}\NormalTok{:  line.strip().split(}\StringTok{' '}\NormalTok{)[}\DecValTok{1}\NormalTok{]}
 \NormalTok{        \}}
-\NormalTok{        truth\_table.append(line)}
-  \ControlFlowTok{return}\NormalTok{ inp, out, inp\_array, out\_array, truth\_table}
+\NormalTok{        truth_table.append(line)}
+  \ControlFlowTok{return}\NormalTok{ inp, out, inp_array, out_array, truth_table}
 \end{Highlighting}
 \end{Shaded}
 
@@ -973,9 +971,9 @@ Una volta ottenute tutte le informazioni disponibili dal circuito dato, succesiv
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{n\_dont\_care }\OperatorTok{=} \StringTok{\textquotesingle{}\textquotesingle{}}
+\NormalTok{n_dont_care }\OperatorTok{=} \StringTok{''}
   \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(dv):}
-\NormalTok{    n\_dont\_care }\OperatorTok{+=} \StringTok{\textquotesingle{}{-}\textquotesingle{}}
+\NormalTok{    n_dont_care }\OperatorTok{+=} \StringTok{'-'}
 \end{Highlighting}
 \end{Shaded}
 
@@ -983,20 +981,20 @@ Con questo ciclo vado a creare un array di \texttt{-} consecutivi che rispecchia
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{len\_truth\_table }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(truth\_table)}
+\NormalTok{len_truth_table }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(truth_table)}
 \NormalTok{i }\OperatorTok{=} \DecValTok{0}
-\ControlFlowTok{while}\NormalTok{ i }\OperatorTok{\textless{}}\NormalTok{ len\_truth\_table:}
-  \ControlFlowTok{if} \StringTok{\textquotesingle{}{-}\textquotesingle{}} \KeywordTok{in}\NormalTok{ truth\_table[i][}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{]:}
-\NormalTok{    truth\_table[i][}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{] }\OperatorTok{=} \StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{.join(truth\_table[i[}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{])}
-\NormalTok{    truth\_table[i][}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ [truth\_table[i][}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{[a:a}\OperatorTok{+}\NormalTok{dv]}
-                             \ControlFlowTok{for}\NormalTok{ a }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{, le(truth\_table[i][}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{], dv)]}
-    \ControlFlowTok{for}\NormalTok{ a }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\BuiltInTok{len}\NormalTok{(truth\_table[i][}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{])):}
-        \ControlFlowTok{if}\NormalTok{ truth\_table[i][}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{][a] }\OperatorTok{==}\NormalTok{ n\_dont\_care:}
-\NormalTok{            truth\_table[i][}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{][a] }\OperatorTok{=} \StringTok{\textquotesingle{}k\textquotesingle{}}\OperatorTok{*}\NormalTok{le(n\_dont\_care)}
-\NormalTok{    truth\_table[i][}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{] }\OperatorTok{=} \StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{.join(truth\_table[i[}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{])}
-\NormalTok{    new\_lines }\OperatorTok{=}\NormalTok{ resolve\_dont\_care(truth\_table[i],}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{)}
-\NormalTok{    truth\_table }\OperatorTok{=}\NormalTok{ truth\_table[:i] }\OperatorTok{+}\NormalTok{ new\_lines }\OperatorTok{+}\NormalTok{truth\_table[i}\OperatorTok{+}\DecValTok{1}\NormalTok{:]}
-\NormalTok{    len\_truth\_table }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(truth\_table)}
+\ControlFlowTok{while}\NormalTok{ i }\OperatorTok{<}\NormalTok{ len_truth_table:}
+  \ControlFlowTok{if} \StringTok{'-'} \KeywordTok{in}\NormalTok{ truth_table[i][}\StringTok{'inp'}\NormalTok{]:}
+\NormalTok{    truth_table[i][}\StringTok{'inp'}\NormalTok{] }\OperatorTok{=} \StringTok{''}\NormalTok{.join(truth_table[i[}\StringTok{'inp'}\NormalTok{])}
+\NormalTok{    truth_table[i][}\StringTok{'inp'}\NormalTok{] }\OperatorTok{=}\NormalTok{ [truth_table[i][}\StringTok{'inp'}\NormalTok{[a:a}\OperatorTok{+}\NormalTok{dv]}
+        \ControlFlowTok{for}\NormalTok{ a }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{, le(truth_table[i][}\StringTok{'inp'}\NormalTok{], dv)]}
+    \ControlFlowTok{for}\NormalTok{ a }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\BuiltInTok{len}\NormalTok{(truth_table[i][}\StringTok{'inp'}\NormalTok{])):}
+        \ControlFlowTok{if}\NormalTok{ truth_table[i][}\StringTok{'inp'}\NormalTok{][a] }\OperatorTok{==}\NormalTok{ n_dont_care:}
+\NormalTok{            truth_table[i][}\StringTok{'inp'}\NormalTok{][a] }\OperatorTok{=} \StringTok{'k'}\OperatorTok{*}\NormalTok{le(n_dont_care)}
+\NormalTok{    truth_table[i][}\StringTok{'inp'}\NormalTok{] }\OperatorTok{=} \StringTok{''}\NormalTok{.join(truth_table[i[}\StringTok{'inp'}\NormalTok{])}
+\NormalTok{    new_lines }\OperatorTok{=}\NormalTok{ resolve_dont_care(truth_table[i],}\StringTok{'inp'}\NormalTok{)}
+\NormalTok{    truth_table }\OperatorTok{=}\NormalTok{ truth_table[:i] }\OperatorTok{+}\NormalTok{ new_lines }\OperatorTok{+}\NormalTok{truth_table[i}\OperatorTok{+}\DecValTok{1}\NormalTok{:]}
+\NormalTok{    len_truth_table }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(truth_table)}
 \NormalTok{  i }\OperatorTok{+=} \DecValTok{1}
 \end{Highlighting}
 \end{Shaded}
@@ -1013,9 +1011,9 @@ Tramite questo ciclo \emph{while} l'intero circuito viene scandito e:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{truth\_table[i][}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ [}
-\NormalTok{   truth\_table[i][}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{[a:a}\OperatorTok{+}\NormalTok{dv]}
-   \ControlFlowTok{for}\NormalTok{ a }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{, le(truth\_table[i][}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{], dv)]}
+\NormalTok{truth_table[i][}\StringTok{'inp'}\NormalTok{] }\OperatorTok{=}\NormalTok{ [}
+\NormalTok{   truth_table[i][}\StringTok{'inp'}\NormalTok{[a:a}\OperatorTok{+}\NormalTok{dv]}
+   \ControlFlowTok{for}\NormalTok{ a }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{, le(truth_table[i][}\StringTok{'inp'}\NormalTok{], dv)]}
 \NormalTok{ ]}
 \end{Highlighting}
 \end{Shaded}
@@ -1028,8 +1026,8 @@ Tramite questo ciclo \emph{while} l'intero circuito viene scandito e:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ControlFlowTok{if}\NormalTok{ truth\_table[i][}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{][a] }\OperatorTok{==}\NormalTok{ n\_dont\_care:}
-\NormalTok{  truth\_table[i][}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{][a] }\OperatorTok{=} \StringTok{\textquotesingle{}k\textquotesingle{}}\OperatorTok{*}\NormalTok{le(n\_dont\_care)}
+\ControlFlowTok{if}\NormalTok{ truth_table[i][}\StringTok{'inp'}\NormalTok{][a] }\OperatorTok{==}\NormalTok{ n_dont_care:}
+\NormalTok{  truth_table[i][}\StringTok{'inp'}\NormalTok{][a] }\OperatorTok{=} \StringTok{'k'}\OperatorTok{*}\NormalTok{le(n_dont_care)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1044,8 +1042,8 @@ La funzione inizia andando ad individuare quanti don't care sono presenti nella 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{def}\NormalTok{ resolve\_dont\_care(line, in\_out):}
-\NormalTok{  n\_dc }\OperatorTok{=} \BuiltInTok{pow}\NormalTok{(}\DecValTok{2}\NormalTok{, line[in\_out].count(}\StringTok{\textquotesingle{}{-}\textquotesingle{}}\NormalTok{))}
+\KeywordTok{def}\NormalTok{ resolve_dont_care(line, in_out):}
+\NormalTok{  n_dc }\OperatorTok{=} \BuiltInTok{pow}\NormalTok{(}\DecValTok{2}\NormalTok{, line[in_out].count(}\StringTok{'-'}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1055,8 +1053,8 @@ Successivamente viene iniziato un ciclo che scandisce ogni elemento della linea 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ControlFlowTok{for}\NormalTok{ h }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(line[in\_out].count(}\StringTok{\textquotesingle{}{-}\textquotesingle{}}\NormalTok{)):}
-\NormalTok{  val\_array }\OperatorTok{=}\NormalTok{ create\_0\_1\_array(n\_dc, }\BuiltInTok{pow}\NormalTok{(}\DecValTok{2}\NormalTok{, h))}
+\ControlFlowTok{for}\NormalTok{ h }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(line[in_out].count(}\StringTok{'-'}\NormalTok{)):}
+\NormalTok{  val_array }\OperatorTok{=}\NormalTok{ create_0_1_array(n_dc, }\BuiltInTok{pow}\NormalTok{(}\DecValTok{2}\NormalTok{, h))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1071,16 +1069,16 @@ Successivamente vengono differenziate 2 casistiche:
 \begin{Shaded}
 \begin{Highlighting}[]
 \ControlFlowTok{if}\NormalTok{ h }\OperatorTok{==} \DecValTok{0}\NormalTok{:}
-  \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(n\_dc):}
+  \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(n_dc):}
 \NormalTok{    it }\OperatorTok{=} \DecValTok{0}
-\NormalTok{    new\_line }\OperatorTok{=}\NormalTok{ []}
-    \ControlFlowTok{for}\NormalTok{ j }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\BuiltInTok{len}\NormalTok{(input\_entry)}\OperatorTok{{-}}\DecValTok{1}\NormalTok{, }\OperatorTok{{-}}\DecValTok{1}\NormalTok{, }\OperatorTok{{-}}\DecValTok{1}\NormalTok{):}
-      \ControlFlowTok{if}\NormalTok{ input\_entry[j] }\OperatorTok{==} \StringTok{\textquotesingle{}{-}\textquotesingle{}} \KeywordTok{and}\NormalTok{ it }\OperatorTok{==} \DecValTok{0}\NormalTok{:}
-\NormalTok{        new\_line.append(val\_array[(}\BuiltInTok{len}\NormalTok{(val\_array)}\OperatorTok{{-}}\DecValTok{1}\NormalTok{) }\OperatorTok{{-}}\NormalTok{ i])}
+\NormalTok{    new_line }\OperatorTok{=}\NormalTok{ []}
+    \ControlFlowTok{for}\NormalTok{ j }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\BuiltInTok{len}\NormalTok{(input_entry)}\OperatorTok{-}\DecValTok{1}\NormalTok{, }\DecValTok{-1}\NormalTok{, }\DecValTok{-1}\NormalTok{):}
+      \ControlFlowTok{if}\NormalTok{ input_entry[j] }\OperatorTok{==} \StringTok{'-'} \KeywordTok{and}\NormalTok{ it }\OperatorTok{==} \DecValTok{0}\NormalTok{:}
+\NormalTok{        new_line.append(val_array[(}\BuiltInTok{len}\NormalTok{(val_array)}\OperatorTok{-}\DecValTok{1}\NormalTok{) }\OperatorTok{-}\NormalTok{ i])}
 \NormalTok{        it }\OperatorTok{+=} \DecValTok{1}
       \ControlFlowTok{else}\NormalTok{:}
-\NormalTok{        new\_line.append(line[in\_out][j])}
-\NormalTok{    new\_array.append(new\_line[::}\OperatorTok{{-}}\DecValTok{1}\NormalTok{])}
+\NormalTok{        new_line.append(line[in_out][j])}
+\NormalTok{    new_array.append(new_line[::}\OperatorTok{-}\DecValTok{1}\NormalTok{])}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1094,10 +1092,10 @@ Successivamente vengono differenziate 2 casistiche:
 \begin{Highlighting}[]
 \ControlFlowTok{else}\NormalTok{:}
 \NormalTok{  it }\OperatorTok{=} \DecValTok{0}
-  \ControlFlowTok{for}\NormalTok{ c, l }\KeywordTok{in} \BuiltInTok{enumerate}\NormalTok{(new\_array):}
-    \ControlFlowTok{for}\NormalTok{ j }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\BuiltInTok{len}\NormalTok{(l)}\OperatorTok{{-}}\DecValTok{1}\NormalTok{, }\OperatorTok{{-}}\DecValTok{1}\NormalTok{, }\OperatorTok{{-}}\DecValTok{1}\NormalTok{):}
-      \ControlFlowTok{if}\NormalTok{ l[j] }\OperatorTok{==} \StringTok{\textquotesingle{}{-}\textquotesingle{}} \KeywordTok{and}\NormalTok{ it }\OperatorTok{==} \DecValTok{0}\NormalTok{:}
-\NormalTok{        l[j] }\OperatorTok{=}\NormalTok{ val\_array[(}\BuiltInTok{len}\NormalTok{(val\_array)}\OperatorTok{{-}}\DecValTok{1}\NormalTok{) }\OperatorTok{{-}}\NormalTok{ c]}
+  \ControlFlowTok{for}\NormalTok{ c, l }\KeywordTok{in} \BuiltInTok{enumerate}\NormalTok{(new_array):}
+    \ControlFlowTok{for}\NormalTok{ j }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\BuiltInTok{len}\NormalTok{(l)}\OperatorTok{-}\DecValTok{1}\NormalTok{, }\DecValTok{-1}\NormalTok{, }\DecValTok{-1}\NormalTok{):}
+      \ControlFlowTok{if}\NormalTok{ l[j] }\OperatorTok{==} \StringTok{'-'} \KeywordTok{and}\NormalTok{ it }\OperatorTok{==} \DecValTok{0}\NormalTok{:}
+\NormalTok{        l[j] }\OperatorTok{=}\NormalTok{ val_array[(}\BuiltInTok{len}\NormalTok{(val_array)}\OperatorTok{-}\DecValTok{1}\NormalTok{) }\OperatorTok{-}\NormalTok{ c]}
 \NormalTok{        it }\OperatorTok{+=} \DecValTok{1}
 \NormalTok{    it }\OperatorTok{=} \DecValTok{0}
 \end{Highlighting}
@@ -1109,10 +1107,10 @@ Ogni riga viene scandita a partire dal fondo per iniziare a convertire i don't c
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ControlFlowTok{if}\NormalTok{ in\_out }\OperatorTok{==} \StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{:}
-  \ControlFlowTok{return}\NormalTok{ [\{}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{:  l, }\StringTok{\textquotesingle{}out\textquotesingle{}}\NormalTok{:  line[}\StringTok{\textquotesingle{}out\textquotesingle{}}\NormalTok{]\} }\ControlFlowTok{for}\NormalTok{ l }\KeywordTok{in}\NormalTok{ new\_array]}
+\ControlFlowTok{if}\NormalTok{ in_out }\OperatorTok{==} \StringTok{'inp'}\NormalTok{:}
+  \ControlFlowTok{return}\NormalTok{ [\{}\StringTok{'inp'}\NormalTok{:  l, }\StringTok{'out'}\NormalTok{:  line[}\StringTok{'out'}\NormalTok{]\} }\ControlFlowTok{for}\NormalTok{ l }\KeywordTok{in}\NormalTok{ new_array]}
 \ControlFlowTok{else}\NormalTok{:}
-  \ControlFlowTok{return}\NormalTok{ [\{}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{:  line[}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{], }\StringTok{\textquotesingle{}out\textquotesingle{}}\NormalTok{:  l\} }\ControlFlowTok{for}\NormalTok{ l }\KeywordTok{in}\NormalTok{ new\_array]}
+  \ControlFlowTok{return}\NormalTok{ [\{}\StringTok{'inp'}\NormalTok{:  line[}\StringTok{'inp'}\NormalTok{], }\StringTok{'out'}\NormalTok{:  l\} }\ControlFlowTok{for}\NormalTok{ l }\KeywordTok{in}\NormalTok{ new_array]}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1125,10 +1123,10 @@ L'oggetto restituito dalla funzione è un array contenente un vocabolario con la
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{def}\NormalTok{ create\_0\_1\_array(le, pad):}
-\NormalTok{  count\_1 }\OperatorTok{=}\NormalTok{ pad}
-\NormalTok{  count\_0 }\OperatorTok{=}\NormalTok{ pad}
-  \ControlFlowTok{return}\NormalTok{ [}\BuiltInTok{str}\NormalTok{(}\DecValTok{1}\NormalTok{) }\ControlFlowTok{if}\NormalTok{ i }\OperatorTok{\%}\NormalTok{ (count\_1 }\OperatorTok{+}\NormalTok{ count\_0) }\OperatorTok{\textless{}}\NormalTok{ count\_1 }
+\KeywordTok{def}\NormalTok{ create_0_1_array(le, pad):}
+\NormalTok{  count_1 }\OperatorTok{=}\NormalTok{ pad}
+\NormalTok{  count_0 }\OperatorTok{=}\NormalTok{ pad}
+  \ControlFlowTok{return}\NormalTok{ [}\BuiltInTok{str}\NormalTok{(}\DecValTok{1}\NormalTok{) }\ControlFlowTok{if}\NormalTok{ i }\OperatorTok{%}\NormalTok{ (count_1 }\OperatorTok{+}\NormalTok{ count_0) }\OperatorTok{<}\NormalTok{ count_1 }
     \ControlFlowTok{else} \BuiltInTok{str}\NormalTok{(}\DecValTok{0}\NormalTok{) }\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(le)]}
 \end{Highlighting}
 \end{Shaded}
@@ -1148,30 +1146,30 @@ Le funzioni analizzate e osservate nelle sezioni precedenti restituiscono sempre
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{def}\NormalTok{ create\_mv\_truth\_table(truth\_array, dv):}
-\NormalTok{  conv\_truth }\OperatorTok{=}\NormalTok{ []}
-  \ControlFlowTok{for}\NormalTok{ line }\KeywordTok{in}\NormalTok{ truth\_array:}
-\NormalTok{    line[}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{] }\OperatorTok{=} \StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{.join(line[}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{])}
-\NormalTok{    line[}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ [line[}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{][i }\OperatorTok{*}\NormalTok{ dv:(i }\OperatorTok{+} \DecValTok{1}\NormalTok{) }\OperatorTok{*}\NormalTok{ dv]}
-      \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{((}\BuiltInTok{len}\NormalTok{(line[}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{]) }\OperatorTok{+}\NormalTok{ dv }\OperatorTok{{-}} \DecValTok{1}\NormalTok{) }\OperatorTok{//}\NormalTok{ dv)]}
-    \ControlFlowTok{if} \StringTok{\textquotesingle{}{-}\textquotesingle{}} \KeywordTok{not} \KeywordTok{in}\NormalTok{ line[}\StringTok{\textquotesingle{}out\textquotesingle{}}\NormalTok{]:}
-\NormalTok{      line[}\StringTok{\textquotesingle{}out\textquotesingle{}}\NormalTok{] }\OperatorTok{=} \StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{.join(line[}\StringTok{\textquotesingle{}out\textquotesingle{}}\NormalTok{])}
-\NormalTok{      line[}\StringTok{\textquotesingle{}out\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ [line[}\StringTok{\textquotesingle{}out\textquotesingle{}}\NormalTok{][i }\OperatorTok{*}\NormalTok{ dv:(i }\OperatorTok{+} \DecValTok{1}\NormalTok{) }\OperatorTok{*}\NormalTok{ dv]}
-        \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{((}\BuiltInTok{len}\NormalTok{(line[}\StringTok{\textquotesingle{}out\textquotesingle{}}\NormalTok{]) }\OperatorTok{+}\NormalTok{ dv }\OperatorTok{{-}} \DecValTok{1}\NormalTok{) }\OperatorTok{//}\NormalTok{ dv)]}
-\NormalTok{      l\_supp\_inp }\OperatorTok{=}\NormalTok{ []}
-\NormalTok{      l\_supp\_out }\OperatorTok{=}\NormalTok{ []}
-      \ControlFlowTok{for}\NormalTok{ val }\KeywordTok{in}\NormalTok{ line[}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{]:}
-        \ControlFlowTok{if} \StringTok{\textquotesingle{}{-}\textquotesingle{}} \KeywordTok{not} \KeywordTok{in}\NormalTok{ val:}
-\NormalTok{          l\_supp\_inp.append(}\BuiltInTok{int}\NormalTok{(val, }\DecValTok{2}\NormalTok{))}
+\KeywordTok{def}\NormalTok{ create_mv_truth_table(truth_array, dv):}
+\NormalTok{  conv_truth }\OperatorTok{=}\NormalTok{ []}
+  \ControlFlowTok{for}\NormalTok{ line }\KeywordTok{in}\NormalTok{ truth_array:}
+\NormalTok{    line[}\StringTok{'inp'}\NormalTok{] }\OperatorTok{=} \StringTok{''}\NormalTok{.join(line[}\StringTok{'inp'}\NormalTok{])}
+\NormalTok{    line[}\StringTok{'inp'}\NormalTok{] }\OperatorTok{=}\NormalTok{ [line[}\StringTok{'inp'}\NormalTok{][i }\OperatorTok{*}\NormalTok{ dv:(i }\OperatorTok{+} \DecValTok{1}\NormalTok{) }\OperatorTok{*}\NormalTok{ dv]}
+      \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{((}\BuiltInTok{len}\NormalTok{(line[}\StringTok{'inp'}\NormalTok{]) }\OperatorTok{+}\NormalTok{ dv }\OperatorTok{-} \DecValTok{1}\NormalTok{) }\OperatorTok{//}\NormalTok{ dv)]}
+    \ControlFlowTok{if} \StringTok{'-'} \KeywordTok{not} \KeywordTok{in}\NormalTok{ line[}\StringTok{'out'}\NormalTok{]:}
+\NormalTok{      line[}\StringTok{'out'}\NormalTok{] }\OperatorTok{=} \StringTok{''}\NormalTok{.join(line[}\StringTok{'out'}\NormalTok{])}
+\NormalTok{      line[}\StringTok{'out'}\NormalTok{] }\OperatorTok{=}\NormalTok{ [line[}\StringTok{'out'}\NormalTok{][i }\OperatorTok{*}\NormalTok{ dv:(i }\OperatorTok{+} \DecValTok{1}\NormalTok{) }\OperatorTok{*}\NormalTok{ dv]}
+        \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{((}\BuiltInTok{len}\NormalTok{(line[}\StringTok{'out'}\NormalTok{]) }\OperatorTok{+}\NormalTok{ dv }\OperatorTok{-} \DecValTok{1}\NormalTok{) }\OperatorTok{//}\NormalTok{ dv)]}
+\NormalTok{      l_supp_inp }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{      l_supp_out }\OperatorTok{=}\NormalTok{ []}
+      \ControlFlowTok{for}\NormalTok{ val }\KeywordTok{in}\NormalTok{ line[}\StringTok{'inp'}\NormalTok{]:}
+        \ControlFlowTok{if} \StringTok{'-'} \KeywordTok{not} \KeywordTok{in}\NormalTok{ val:}
+\NormalTok{          l_supp_inp.append(}\BuiltInTok{int}\NormalTok{(val, }\DecValTok{2}\NormalTok{))}
         \ControlFlowTok{else}\NormalTok{:}
-\NormalTok{          l\_supp\_inp.append(}\StringTok{\textquotesingle{}{-}\textquotesingle{}}\NormalTok{)}
-      \ControlFlowTok{for}\NormalTok{ val }\KeywordTok{in}\NormalTok{ line[}\StringTok{\textquotesingle{}out\textquotesingle{}}\NormalTok{]:}
-\NormalTok{        l\_supp\_out.append(}\BuiltInTok{int}\NormalTok{(val, }\DecValTok{2}\NormalTok{))}
-\NormalTok{      conv\_truth.append(\{}
-        \StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{:  l\_supp\_inp,}
-        \StringTok{\textquotesingle{}out\textquotesingle{}}\NormalTok{:  l\_supp\_out}
+\NormalTok{          l_supp_inp.append(}\StringTok{'-'}\NormalTok{)}
+      \ControlFlowTok{for}\NormalTok{ val }\KeywordTok{in}\NormalTok{ line[}\StringTok{'out'}\NormalTok{]:}
+\NormalTok{        l_supp_out.append(}\BuiltInTok{int}\NormalTok{(val, }\DecValTok{2}\NormalTok{))}
+\NormalTok{      conv_truth.append(\{}
+        \StringTok{'inp'}\NormalTok{:  l_supp_inp,}
+        \StringTok{'out'}\NormalTok{:  l_supp_out}
 \NormalTok{      \})}
-  \ControlFlowTok{return}\NormalTok{ conv\_truth}
+  \ControlFlowTok{return}\NormalTok{ conv_truth}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1208,27 +1206,28 @@ Questo formato deriva dal formato blif, ampiamente utilizzato per la logica bina
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ImportTok{import}\NormalTok{ string}
-\NormalTok{mv\_input }\OperatorTok{=}\NormalTok{ [i }\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{list}\NormalTok{(string.ascii\_lowercase)[}
-\NormalTok{    :}\BuiltInTok{len}\NormalTok{(mv\_table[}\DecValTok{0}\NormalTok{][}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{])]}
+\NormalTok{mv_input }\OperatorTok{=}\NormalTok{ [i }\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{list}\NormalTok{(string.ascii_lowercase)[}
+\NormalTok{    :}\BuiltInTok{len}\NormalTok{(mv_table[}\DecValTok{0}\NormalTok{][}\StringTok{'inp'}\NormalTok{])]}
 \NormalTok{  ]}
-\NormalTok{mv\_output }\OperatorTok{=}\NormalTok{ [}\StringTok{\textquotesingle{}o}\SpecialCharTok{\{\}}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(i) }\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\BuiltInTok{len}\NormalTok{(mv\_table[}\DecValTok{0}\NormalTok{][}\StringTok{\textquotesingle{}out\textquotesingle{}}\NormalTok{]))]}
-\ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/blfmv/}\SpecialCharTok{\{\}}\StringTok{.mv\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir, nomefile), }\StringTok{\textquotesingle{}w\textquotesingle{}}\NormalTok{) }\ImportTok{as}\NormalTok{ blif:}
-\NormalTok{  blif.write(}\StringTok{\textquotesingle{}.model }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir, nomefile))}
-\NormalTok{  blif.write(}\StringTok{\textquotesingle{}.inputs }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
-      \StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{.join(}\BuiltInTok{map}\NormalTok{(}\BuiltInTok{str}\NormalTok{, mv\_input))))}
-\NormalTok{  blif.write(}\StringTok{\textquotesingle{}.outputs }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
-      \StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{.join(}\BuiltInTok{map}\NormalTok{(}\BuiltInTok{str}\NormalTok{, mv\_output))))}
-\NormalTok{  blif.write(}\StringTok{\textquotesingle{}.mv }\SpecialCharTok{\{\}}\StringTok{ }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
-      \StringTok{\textquotesingle{}, \textquotesingle{}}\NormalTok{.join(}\BuiltInTok{map}\NormalTok{(}\BuiltInTok{str}\NormalTok{, mv\_input)), mv))}
-\NormalTok{  blif.write(}\StringTok{\textquotesingle{}.mv }\SpecialCharTok{\{\}}\StringTok{ }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
-      \StringTok{\textquotesingle{}, \textquotesingle{}}\NormalTok{.join(}\BuiltInTok{map}\NormalTok{(}\BuiltInTok{str}\NormalTok{, mv\_output)), mv))}
-  \ControlFlowTok{for}\NormalTok{ count, out }\KeywordTok{in} \BuiltInTok{enumerate}\NormalTok{(mv\_output):}
-\NormalTok{      blif.write(}\StringTok{\textquotesingle{}.table }\SpecialCharTok{\{\}}\StringTok{ }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{.join(}\BuiltInTok{map}\NormalTok{(}\BuiltInTok{str}\NormalTok{,mv\_input)), out))}
-    \ControlFlowTok{for}\NormalTok{ line }\KeywordTok{in}\NormalTok{ mv\_table:}
-\NormalTok{      blif.write(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{ }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
-        \StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{.join(}\BuiltInTok{map}\NormalTok{(}\BuiltInTok{str}\NormalTok{, line[}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{])), line[}\StringTok{\textquotesingle{}out\textquotesingle{}}\NormalTok{][count]))}
-\NormalTok{  blif.write(}\StringTok{\textquotesingle{}.end}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+\NormalTok{mv_output }\OperatorTok{=}\NormalTok{ [}\StringTok{'o}\SpecialCharTok{\{\}}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(i) }\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\BuiltInTok{len}\NormalTok{(mv_table[}\DecValTok{0}\NormalTok{][}\StringTok{'out'}\NormalTok{]))]}
+\ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/blfmv/}\SpecialCharTok{\{\}}\StringTok{.mv'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir, nomefile), }\StringTok{'w'}\NormalTok{) }\ImportTok{as}\NormalTok{ blif:}
+\NormalTok{  blif.write(}\StringTok{'.model }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir, nomefile))}
+\NormalTok{  blif.write(}\StringTok{'.inputs }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
+      \StringTok{' '}\NormalTok{.join(}\BuiltInTok{map}\NormalTok{(}\BuiltInTok{str}\NormalTok{, mv_input))))}
+\NormalTok{  blif.write(}\StringTok{'.outputs }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
+      \StringTok{' '}\NormalTok{.join(}\BuiltInTok{map}\NormalTok{(}\BuiltInTok{str}\NormalTok{, mv_output))))}
+\NormalTok{  blif.write(}\StringTok{'.mv }\SpecialCharTok{\{\}}\StringTok{ }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
+      \StringTok{', '}\NormalTok{.join(}\BuiltInTok{map}\NormalTok{(}\BuiltInTok{str}\NormalTok{, mv_input)), mv))}
+\NormalTok{  blif.write(}\StringTok{'.mv }\SpecialCharTok{\{\}}\StringTok{ }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
+      \StringTok{', '}\NormalTok{.join(}\BuiltInTok{map}\NormalTok{(}\BuiltInTok{str}\NormalTok{, mv_output)), mv))}
+  \ControlFlowTok{for}\NormalTok{ count, out }\KeywordTok{in} \BuiltInTok{enumerate}\NormalTok{(mv_output):}
+\NormalTok{      blif.write(}\StringTok{'.table }\SpecialCharTok{\{\}}\StringTok{ }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
+        \StringTok{' '}\NormalTok{.join(}\BuiltInTok{map}\NormalTok{(}\BuiltInTok{str}\NormalTok{,mv_input)), out)}
+\NormalTok{      )}
+    \ControlFlowTok{for}\NormalTok{ line }\KeywordTok{in}\NormalTok{ mv_table:}
+\NormalTok{      blif.write(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{ }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
+        \StringTok{' '}\NormalTok{.join(}\BuiltInTok{map}\NormalTok{(}\BuiltInTok{str}\NormalTok{, line[}\StringTok{'inp'}\NormalTok{])), line[}\StringTok{'out'}\NormalTok{][count]))}
+\NormalTok{  blif.write(}\StringTok{'.end}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1331,43 +1330,43 @@ A questo punto dell'analisi abbiamo a disposizione tutti i file per poter fare e
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/}\SpecialCharTok{\{\}}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir, circuito)) }\ImportTok{as}\NormalTok{ circ:}
+\ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/}\SpecialCharTok{\{\}}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir, circuito)) }\ImportTok{as}\NormalTok{ circ:}
   \BuiltInTok{input} \OperatorTok{=} \VariableTok{None}
 \NormalTok{  output }\OperatorTok{=} \VariableTok{None}
 \NormalTok{  mv }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\DecValTok{0}\NormalTok{)}
-\NormalTok{  table\_array }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{  table_array }\OperatorTok{=}\NormalTok{ []}
   \ControlFlowTok{for}\NormalTok{ line }\KeywordTok{in}\NormalTok{ circ.readlines():}
-    \ControlFlowTok{if} \StringTok{\textquotesingle{}.inputs\textquotesingle{}} \KeywordTok{in}\NormalTok{ line.strip():}
-      \BuiltInTok{input} \OperatorTok{=}\NormalTok{ line.strip().split(}\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{)[}\DecValTok{1}\NormalTok{:]}
-    \ControlFlowTok{if} \StringTok{\textquotesingle{}.outputs\textquotesingle{}} \KeywordTok{in}\NormalTok{ line.strip():}
-\NormalTok{      output }\OperatorTok{=}\NormalTok{ line.strip().split(}\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{)[}\DecValTok{1}\NormalTok{:]}
-    \ControlFlowTok{if} \StringTok{\textquotesingle{}.mv\textquotesingle{}} \KeywordTok{in}\NormalTok{ line.strip():}
-      \ControlFlowTok{if}\NormalTok{ mv }\OperatorTok{\textless{}} \BuiltInTok{int}\NormalTok{(line.strip().split(}\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{)[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{]):}
-\NormalTok{        mv }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(line.strip().split(}\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{)[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{])}
-    \ControlFlowTok{if} \StringTok{\textquotesingle{}.table\textquotesingle{}} \KeywordTok{in}\NormalTok{ line.strip():}
-\NormalTok{      l }\OperatorTok{=}\NormalTok{ line.strip().split(}\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{)}
-\NormalTok{      table\_array.append(}
+    \ControlFlowTok{if} \StringTok{'.inputs'} \KeywordTok{in}\NormalTok{ line.strip():}
+      \BuiltInTok{input} \OperatorTok{=}\NormalTok{ line.strip().split(}\StringTok{' '}\NormalTok{)[}\DecValTok{1}\NormalTok{:]}
+    \ControlFlowTok{if} \StringTok{'.outputs'} \KeywordTok{in}\NormalTok{ line.strip():}
+\NormalTok{      output }\OperatorTok{=}\NormalTok{ line.strip().split(}\StringTok{' '}\NormalTok{)[}\DecValTok{1}\NormalTok{:]}
+    \ControlFlowTok{if} \StringTok{'.mv'} \KeywordTok{in}\NormalTok{ line.strip():}
+      \ControlFlowTok{if}\NormalTok{ mv }\OperatorTok{<} \BuiltInTok{int}\NormalTok{(line.strip().split(}\StringTok{' '}\NormalTok{)[}\OperatorTok{-}\DecValTok{1}\NormalTok{]):}
+\NormalTok{        mv }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(line.strip().split(}\StringTok{' '}\NormalTok{)[}\OperatorTok{-}\DecValTok{1}\NormalTok{])}
+    \ControlFlowTok{if} \StringTok{'.table'} \KeywordTok{in}\NormalTok{ line.strip():}
+\NormalTok{      l }\OperatorTok{=}\NormalTok{ line.strip().split(}\StringTok{' '}\NormalTok{)}
+\NormalTok{      table_array.append(}
 \NormalTok{        \{}
-          \StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{:    l[}\DecValTok{1}\NormalTok{:}\BuiltInTok{len}\NormalTok{(l)}\OperatorTok{{-}}\DecValTok{1}\NormalTok{],}
-          \StringTok{\textquotesingle{}output\textquotesingle{}}\NormalTok{:   l[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{]}
+          \StringTok{'input'}\NormalTok{:    l[}\DecValTok{1}\NormalTok{:}\BuiltInTok{len}\NormalTok{(l)}\OperatorTok{-}\DecValTok{1}\NormalTok{],}
+          \StringTok{'output'}\NormalTok{:   l[}\OperatorTok{-}\DecValTok{1}\NormalTok{]}
 \NormalTok{        \}}
 \NormalTok{      )}
-    \ControlFlowTok{if} \StringTok{\textquotesingle{}.names\textquotesingle{}} \KeywordTok{in}\NormalTok{ line.strip():}
-\NormalTok{      l }\OperatorTok{=}\NormalTok{ line.strip().split(}\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{)}
-\NormalTok{      table\_array.append(}
+    \ControlFlowTok{if} \StringTok{'.names'} \KeywordTok{in}\NormalTok{ line.strip():}
+\NormalTok{      l }\OperatorTok{=}\NormalTok{ line.strip().split(}\StringTok{' '}\NormalTok{)}
+\NormalTok{      table_array.append(}
 \NormalTok{        \{}
-          \StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{:    l[}\DecValTok{1}\NormalTok{:}\BuiltInTok{len}\NormalTok{(l)}\OperatorTok{{-}}\DecValTok{1}\NormalTok{],}
-          \StringTok{\textquotesingle{}output\textquotesingle{}}\NormalTok{:   l[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{]}
+          \StringTok{'input'}\NormalTok{:    l[}\DecValTok{1}\NormalTok{:}\BuiltInTok{len}\NormalTok{(l)}\OperatorTok{-}\DecValTok{1}\NormalTok{],}
+          \StringTok{'output'}\NormalTok{:   l[}\OperatorTok{-}\DecValTok{1}\NormalTok{]}
 \NormalTok{        \}}
 \NormalTok{      )}
-  \CommentTok{\# i blif non hanno .mv, quindi gli do il valore di dominio}
+  \CommentTok{# i blif non hanno .mv, quindi gli do il valore di dominio}
   \ControlFlowTok{if}\NormalTok{ mv }\OperatorTok{==} \DecValTok{0}\NormalTok{:}
 \NormalTok{    mv }\OperatorTok{=} \DecValTok{2}
   \ControlFlowTok{return}\NormalTok{ \{}
-    \StringTok{\textquotesingle{}dominio\textquotesingle{}}\NormalTok{:   mv,}
-    \StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{:    }\BuiltInTok{input}\NormalTok{,}
-    \StringTok{\textquotesingle{}output\textquotesingle{}}\NormalTok{:   output,}
-    \StringTok{\textquotesingle{}tabelle\textquotesingle{}}\NormalTok{:  table\_array}
+    \StringTok{'dominio'}\NormalTok{:   mv,}
+    \StringTok{'input'}\NormalTok{:    }\BuiltInTok{input}\NormalTok{,}
+    \StringTok{'output'}\NormalTok{:   output,}
+    \StringTok{'tabelle'}\NormalTok{:  table_array}
 \NormalTok{  \}}
 \end{Highlighting}
 \end{Shaded}
@@ -1379,9 +1378,9 @@ Questa funzione, dato un circuito sia binario che mutli-valore, prende tutte le 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{costo }\OperatorTok{=} \DecValTok{0}
-\ControlFlowTok{for}\NormalTok{ t }\KeywordTok{in}\NormalTok{ circuito[}\StringTok{\textquotesingle{}tabelle\textquotesingle{}}\NormalTok{]:}
-\NormalTok{  intersection }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(}\BuiltInTok{set}\NormalTok{(circuito[}\StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{]).intersection(t[}\StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{]))}
-\NormalTok{  costo }\OperatorTok{=}\NormalTok{ costo }\OperatorTok{+} \BuiltInTok{pow}\NormalTok{(circuito[}\StringTok{\textquotesingle{}dominio\textquotesingle{}}\NormalTok{], intersection)}
+\ControlFlowTok{for}\NormalTok{ t }\KeywordTok{in}\NormalTok{ circuito[}\StringTok{'tabelle'}\NormalTok{]:}
+\NormalTok{  intersection }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(}\BuiltInTok{set}\NormalTok{(circuito[}\StringTok{'input'}\NormalTok{]).intersection(t[}\StringTok{'input'}\NormalTok{]))}
+\NormalTok{  costo }\OperatorTok{=}\NormalTok{ costo }\OperatorTok{+} \BuiltInTok{pow}\NormalTok{(circuito[}\StringTok{'dominio'}\NormalTok{], intersection)}
 \ControlFlowTok{return}\NormalTok{ costo}
 \end{Highlighting}
 \end{Shaded}
@@ -1390,32 +1389,33 @@ Una volta eseguita questa conversione è stato possibile ottenere tutti i valori
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{\textquotesingle{}calcolo\_costi.csv\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}a\textquotesingle{}}\NormalTok{) }\ImportTok{as} \BuiltInTok{file}\NormalTok{:}
+\ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{'calcolo_costi.csv'}\NormalTok{, }\StringTok{'a'}\NormalTok{) }\ImportTok{as} \BuiltInTok{file}\NormalTok{:}
   \BuiltInTok{file}\NormalTok{.write(}
-    \StringTok{\textquotesingle{}NOME CIRC;COSTO BOOLEANO;INPUT ALICE;INPUT BOB;}
-\StringTok{    DOMINIO MULTIVALORE;COSTO MULTIVALORE;INPUT ALICEINPUT BOB}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
-  \ControlFlowTok{for}\NormalTok{ blfmv }\KeywordTok{in}\NormalTok{ listdir(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/blfmv\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir)):}
-    \ControlFlowTok{if}\NormalTok{ blfmv.endswith(}\StringTok{\textquotesingle{}.mv\textquotesingle{}}\NormalTok{):}
-\NormalTok{      circ\_mv }\OperatorTok{=}\NormalTok{ info\_circuito(}
-          \StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/blfmv/synth\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir),blfmv)}
-\NormalTok{      costo\_mv }\OperatorTok{=}\NormalTok{ calcolo\_costo\_circuito(circ\_mv)}
-      \ControlFlowTok{if} \BuiltInTok{len}\NormalTok{(circ\_mv[}\StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{]) }\OperatorTok{\%} \DecValTok{2} \OperatorTok{!=} \DecValTok{0}\NormalTok{:}
-\NormalTok{          alice\_var\_mv }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ\_mv[}\StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{])}\OperatorTok{/} \DecValTok{2}\NormalTok{)}
-\NormalTok{          bob\_var\_mv }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ\_mv[}\StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{]) }\OperatorTok{/}\DecValTok{2}\NormalTok{) }\OperatorTok{+} \DecValTok{1}
+    \StringTok{'NOME CIRC;COSTO BOOLEANO;INPUT ALICE;INPUT BOB;}
+\StringTok{    DOMINIO MULTIVALORE;COSTO MULTIVALORE;INPUT ALICEINPUT BOB}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
+  \ControlFlowTok{for}\NormalTok{ blfmv }\KeywordTok{in}\NormalTok{ listdir(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/blfmv'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir)):}
+    \ControlFlowTok{if}\NormalTok{ blfmv.endswith(}\StringTok{'.mv'}\NormalTok{):}
+\NormalTok{      circ_mv }\OperatorTok{=}\NormalTok{ info_circuito(}
+          \StringTok{'}\SpecialCharTok{\{\}}\StringTok{/blfmv/synth'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir),blfmv)}
+\NormalTok{      costo_mv }\OperatorTok{=}\NormalTok{ calcolo_costo_circuito(circ_mv)}
+      \ControlFlowTok{if} \BuiltInTok{len}\NormalTok{(circ_mv[}\StringTok{'input'}\NormalTok{]) }\OperatorTok{%} \DecValTok{2} \OperatorTok{!=} \DecValTok{0}\NormalTok{:}
+\NormalTok{          alice_var_mv }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ_mv[}\StringTok{'input'}\NormalTok{])}\OperatorTok{/} \DecValTok{2}\NormalTok{)}
+\NormalTok{          bob_var_mv }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ_mv[}\StringTok{'input'}\NormalTok{]) }\OperatorTok{/}\DecValTok{2}\NormalTok{) }\OperatorTok{+} \DecValTok{1}
       \ControlFlowTok{else}\NormalTok{:}
-\NormalTok{          alice\_var\_mv }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ\_mv[}\StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{])}\OperatorTok{/} \DecValTok{2}\NormalTok{)}
-\NormalTok{          bob\_var\_mv }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ\_mv[}\StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{]) }\OperatorTok{/}\DecValTok{2}\NormalTok{)}
-\NormalTok{      circ\_bool }\OperatorTok{=}\NormalTok{ info\_circuito(}
-          \StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/blif/synth\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir), }\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{blif\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(blfmv.split(}\StringTok{\textquotesingle{}.\textquotesingle{}}\NormalTok{)[}\DecValTok{0}\NormalTok{]))}
-\NormalTok{      costo\_bool }\OperatorTok{=}\NormalTok{ calcolo\_costo\_circuito(circ\_bool)}
-      \ControlFlowTok{if} \BuiltInTok{len}\NormalTok{(circ\_bool[}\StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{]) }\OperatorTok{\%} \DecValTok{2} \OperatorTok{!=} \DecValTok{0}\NormalTok{:}
-\NormalTok{          alice\_var\_bool }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ\_boo[}\StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{]) }\OperatorTok{/} \DecValTok{2}\NormalTok{)}
-\NormalTok{          bob\_var\_bool }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ\_bool[}\StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{) }\OperatorTok{/} \DecValTok{2}\NormalTok{) }\OperatorTok{+} \DecValTok{1}
+\NormalTok{          alice_var_mv }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ_mv[}\StringTok{'input'}\NormalTok{])}\OperatorTok{/} \DecValTok{2}\NormalTok{)}
+\NormalTok{          bob_var_mv }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ_mv[}\StringTok{'input'}\NormalTok{]) }\OperatorTok{/}\DecValTok{2}\NormalTok{)}
+\NormalTok{      circ_bool }\OperatorTok{=}\NormalTok{ info_circuito(}
+          \StringTok{'}\SpecialCharTok{\{\}}\StringTok{/blif/synth'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir), }\StringTok{'}\SpecialCharTok{\{\}}\StringTok{blif'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(blfmv.split(}\StringTok{'.'}\NormalTok{)[}\DecValTok{0}\NormalTok{]))}
+\NormalTok{      costo_bool }\OperatorTok{=}\NormalTok{ calcolo_costo_circuito(circ_bool)}
+      \ControlFlowTok{if} \BuiltInTok{len}\NormalTok{(circ_bool[}\StringTok{'input'}\NormalTok{]) }\OperatorTok{%} \DecValTok{2} \OperatorTok{!=} \DecValTok{0}\NormalTok{:}
+\NormalTok{          alice_var_bool }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ_boo[}\StringTok{'input'}\NormalTok{]) }\OperatorTok{/} \DecValTok{2}\NormalTok{)}
+\NormalTok{          bob_var_bool }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ_bool[}\StringTok{'input'}\NormalTok{) }\OperatorTok{/} \DecValTok{2}\NormalTok{) }\OperatorTok{+} \DecValTok{1}
       \ControlFlowTok{else}\NormalTok{:}
-\NormalTok{          alice\_var\_bool }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ\_boo[}\StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{]) }\OperatorTok{/} \DecValTok{2}\NormalTok{)}
-\NormalTok{          bob\_var\_bool }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ\_bool[}\StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{) }\OperatorTok{/} \DecValTok{2}\NormalTok{)}
-      \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{;}\SpecialCharTok{\{\}}\StringTok{;}\SpecialCharTok{\{\}}\StringTok{;}\SpecialCharTok{\{\}}\StringTok{;}\SpecialCharTok{\{\}}\StringTok{;}\SpecialCharTok{\{\}}\StringTok{;}\SpecialCharTok{\{\}}\StringTok{;}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.forma(blfmv.split(}\StringTok{\textquotesingle{}.\textquotesingle{}}\NormalTok{)[}
-          \DecValTok{0}\NormalTok{], costo\_bool, alice\_var\_bool,bob\_var\_bool, circ\_mv[}\StringTok{\textquotesingle{}dominio\textquotesingle{}}\NormalTok{],costo\_mv, alice\_var\_mv, bob\_var\_mv))}
+\NormalTok{          alice_var_bool }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ_boo[}\StringTok{'input'}\NormalTok{]) }\OperatorTok{/} \DecValTok{2}\NormalTok{)}
+\NormalTok{          bob_var_bool }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ_bool[}\StringTok{'input'}\NormalTok{) }\OperatorTok{/} \DecValTok{2}\NormalTok{)}
+      \BuiltInTok{file}\NormalTok{.write(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{;}\SpecialCharTok{\{\}}\StringTok{;}\SpecialCharTok{\{\}}\StringTok{;}\SpecialCharTok{\{\}}\StringTok{;}\SpecialCharTok{\{\}}\StringTok{;}\SpecialCharTok{\{\}}\StringTok{;}\SpecialCharTok{\{\}}\StringTok{;}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{.forma(}
+\NormalTok{        blfmv.split(}\StringTok{'.'}\NormalTok{)[}\DecValTok{0}\NormalTok{], costo_bool, alice_var_bool,bob_var_bool, }
+\NormalTok{          circ_mv[}\StringTok{'dominio'}\NormalTok{],costo_mv, alice_var_mv, bob_var_mv))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1464,22 +1464,22 @@ Tutte le fasi mostrate sopra, più altre secondarie, sono state automatizzate in
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{working\_dir }\OperatorTok{=} \StringTok{\textquotesingle{}./prova\textquotesingle{}}
- \ControlFlowTok{if}\NormalTok{ path.exists(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/blif\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir)) }
-    \KeywordTok{and}\NormalTok{ path.exists(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/blfmv\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir)):}
-\NormalTok{        rmtree(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/blif\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir))}
-\NormalTok{        rmtree(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/blfmv\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir))}
+\NormalTok{working_dir }\OperatorTok{=} \StringTok{'./prova'}
+ \ControlFlowTok{if}\NormalTok{ path.exists(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/blif'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir)) }
+    \KeywordTok{and}\NormalTok{ path.exists(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/blfmv'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir)):}
+\NormalTok{        rmtree(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/blif'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir))}
+\NormalTok{        rmtree(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/blfmv'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir))}
       
-\NormalTok{makedirs(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/blif/synth\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir))}
-\NormalTok{makedirs(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/blfmv/synth\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir))}
-\NormalTok{makedirs(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/blfmv/synth/abc\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir))}
-\NormalTok{makedirs(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/blfmv/synth/mvsis\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir))}
+\NormalTok{makedirs(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/blif/synth'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir))}
+\NormalTok{makedirs(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/blfmv/synth'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir))}
+\NormalTok{makedirs(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/blfmv/synth/abc'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir))}
+\NormalTok{makedirs(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/blfmv/synth/mvsis'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir))}
 
-\ControlFlowTok{if}\NormalTok{ path.exists(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/synth\_out.mvsis\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir)):}
-\NormalTok{    remove(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/synth\_out.mvsis\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir))}
+\ControlFlowTok{if}\NormalTok{ path.exists(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/synth_out.mvsis'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir)):}
+\NormalTok{    remove(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/synth_out.mvsis'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir))}
 
-\ControlFlowTok{if} \KeywordTok{not}\NormalTok{ path.exists(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/pla\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir)):}
-    \BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}CARTELLA PLA NON PRESENTE\textquotesingle{}}\NormalTok{)}
+\ControlFlowTok{if} \KeywordTok{not}\NormalTok{ path.exists(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/pla'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir)):}
+    \BuiltInTok{print}\NormalTok{(}\StringTok{'CARTELLA PLA NON PRESENTE'}\NormalTok{)}
 \NormalTok{    exit}
 \end{Highlighting}
 \end{Shaded}
@@ -1488,10 +1488,10 @@ In questa fase viene creata la struttura delle directory che conterranno i file 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{bin\_to\_mv\_mcd(working\_dir)}
-\ControlFlowTok{if}\NormalTok{ exists(}\StringTok{\textquotesingle{}./pla\_to\_blif.mvsis\textquotesingle{}}\NormalTok{):}
-\NormalTok{  remove(}\StringTok{\textquotesingle{}./pla\_to\_blif.mvsis\textquotesingle{}}\NormalTok{)}
-\NormalTok{pla\_to\_blif(working\_dir)}
+\NormalTok{bin_to_mv_mcd(working_dir)}
+\ControlFlowTok{if}\NormalTok{ exists(}\StringTok{'./pla_to_blif.mvsis'}\NormalTok{):}
+\NormalTok{  remove(}\StringTok{'./pla_to_blif.mvsis'}\NormalTok{)}
+\NormalTok{pla_to_blif(working_dir)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1514,13 +1514,13 @@ In questa sezione vengono chiamate due utility create con lo scopo di generare d
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{def}\NormalTok{ pla\_to\_blif(working\_dir):}
-  \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{\textquotesingle{}./pla\_to\_blif.mvsis\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}w\textquotesingle{}}\NormalTok{) }\ImportTok{as} \BuiltInTok{file}\NormalTok{:}
-    \BuiltInTok{file}\NormalTok{.write(}\StringTok{"source abc\_alias.abc}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
-    \ControlFlowTok{for}\NormalTok{ ele }\KeywordTok{in}\NormalTok{ os.listdir(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/pla\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir)):}
-      \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}read\_pla }\SpecialCharTok{\{\}}\StringTok{/pla/}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir,ele))}
-      \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}write\_blif }\SpecialCharTok{\{\}}\StringTok{/blif/}\SpecialCharTok{\{\}}\StringTok{.blif}\CharTok{\textbackslash{}n\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
-\NormalTok{        working\_dir, ele.split(}\StringTok{\textquotesingle{}.\textquotesingle{}}\NormalTok{)[}\DecValTok{0}\NormalTok{]))}
+\KeywordTok{def}\NormalTok{ pla_to_blif(working_dir):}
+  \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{'./pla_to_blif.mvsis'}\NormalTok{, }\StringTok{'w'}\NormalTok{) }\ImportTok{as} \BuiltInTok{file}\NormalTok{:}
+    \BuiltInTok{file}\NormalTok{.write(}\StringTok{"source abc_alias.abc}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+    \ControlFlowTok{for}\NormalTok{ ele }\KeywordTok{in}\NormalTok{ os.listdir(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/pla'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir)):}
+      \BuiltInTok{file}\NormalTok{.write(}\StringTok{'read_pla }\SpecialCharTok{\{\}}\StringTok{/pla/}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir,ele))}
+      \BuiltInTok{file}\NormalTok{.write(}\StringTok{'write_blif }\SpecialCharTok{\{\}}\StringTok{/blif/}\SpecialCharTok{\{\}}\StringTok{.blif}\CharTok{\textbackslash{}n\textbackslash{}n}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
+\NormalTok{        working_dir, ele.split(}\StringTok{'.'}\NormalTok{)[}\DecValTok{0}\NormalTok{]))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1542,7 +1542,7 @@ In questo modo ogni circuito viene convertito semplicemente chiamando
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{call([}\StringTok{\textquotesingle{}abc\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}{-}F\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}./pla\_to\_blif.mvsis\textquotesingle{}}\NormalTok{])}
+\NormalTok{call([}\StringTok{'abc'}\NormalTok{, }\StringTok{'-F'}\NormalTok{, }\StringTok{'./pla_to_blif.mvsis'}\NormalTok{])}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1553,23 +1553,24 @@ In questo modo ogni circuito viene convertito semplicemente chiamando
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{def}\NormalTok{ bin\_to\_mv\_mcd(working\_dir):}
-  \ControlFlowTok{for}\NormalTok{ pla }\KeywordTok{in}\NormalTok{ listdir(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/pla\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir)):}
-    \ControlFlowTok{if}\NormalTok{ pla.endswith(}\StringTok{\textquotesingle{}.pla\textquotesingle{}}\NormalTok{):}
-\NormalTok{      inp, out, inp\_array, out\_array, truth\_table }\OperatorTok{=}\NormalTok{ read\_pla(}
-        \StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/pla/}\SpecialCharTok{\{\}}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir, pla))}
+\KeywordTok{def}\NormalTok{ bin_to_mv_mcd(working_dir):}
+  \ControlFlowTok{for}\NormalTok{ pla }\KeywordTok{in}\NormalTok{ listdir(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/pla'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir)):}
+    \ControlFlowTok{if}\NormalTok{ pla.endswith(}\StringTok{'.pla'}\NormalTok{):}
+\NormalTok{      inp, out, inp_array, out_array, truth_table }\OperatorTok{=}\NormalTok{ read_pla(}
+        \StringTok{'}\SpecialCharTok{\{\}}\StringTok{/pla/}\SpecialCharTok{\{\}}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir, pla))}
 \NormalTok{      dv }\OperatorTok{=}\NormalTok{ euclide(}\BuiltInTok{int}\NormalTok{(inp), }\BuiltInTok{int}\NormalTok{(out))}
       \ControlFlowTok{if} \BuiltInTok{int}\NormalTok{(inp.strip()) }\OperatorTok{==} \BuiltInTok{int}\NormalTok{(out.strip()) }\KeywordTok{or}\NormalTok{ dv }\OperatorTok{==} \BuiltInTok{int}\NormalTok{(inp):}
 \NormalTok{        dv }\OperatorTok{=}\NormalTok{ dv}\OperatorTok{/}\DecValTok{2}
-      \ControlFlowTok{if}\NormalTok{ dv }\OperatorTok{\textgreater{}=} \DecValTok{8}\NormalTok{:}
+      \ControlFlowTok{if}\NormalTok{ dv }\OperatorTok{>=} \DecValTok{8}\NormalTok{:}
 \NormalTok{        dv }\OperatorTok{=} \DecValTok{2} 
 \NormalTok{        mv }\OperatorTok{=} \BuiltInTok{pow}\NormalTok{(}\DecValTok{2}\NormalTok{, dv)}
-        \BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{inp: }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{out:}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{multi{-}valore:}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{divide ogni:}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(pla,}
-\NormalTok{          inp.strip(), out.strip(), }\BuiltInTok{int}\NormalTok{(mv), }\BuiltInTok{int}\NormalTok{(dv)))}
-\NormalTok{        truth\_table }\OperatorTok{=}\NormalTok{ expand\_dont\_care(truth\_table, }\BuiltInTok{int}\NormalTok{(dv))}
-\NormalTok{        mv\_table }\OperatorTok{=}\NormalTok{ create\_mv\_truth\_table(truth\_table, }\BuiltInTok{int}\NormalTok{(dv))}
-\NormalTok{        crete\_blif\_mv(working\_dir, mv\_table, }\BuiltInTok{int}\NormalTok{(mv),}
-\NormalTok{          basename(pla).split(}\StringTok{\textquotesingle{}.\textquotesingle{}}\NormalTok{)[}\DecValTok{0}\NormalTok{])}
+        \BuiltInTok{print}\NormalTok{(}\StringTok{'}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{inp: }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{out:}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{multi-valore:}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}
+\StringTok{          divide ogni:}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(pla,inp.strip(), }
+\NormalTok{          out.strip(), }\BuiltInTok{int}\NormalTok{(mv), }\BuiltInTok{int}\NormalTok{(dv)))}
+\NormalTok{        truth_table }\OperatorTok{=}\NormalTok{ expand_dont_care(truth_table, }\BuiltInTok{int}\NormalTok{(dv))}
+\NormalTok{        mv_table }\OperatorTok{=}\NormalTok{ create_mv_truth_table(truth_table, }\BuiltInTok{int}\NormalTok{(dv))}
+\NormalTok{        crete_blif_mv(working_dir, mv_table, }\BuiltInTok{int}\NormalTok{(mv),}
+\NormalTok{          basename(pla).split(}\StringTok{'.'}\NormalTok{)[}\DecValTok{0}\NormalTok{])}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1583,12 +1584,12 @@ In questa funzione vengono racchiuse le funzioni descritte precedentemente per l
   \ControlFlowTok{if} \BuiltInTok{int}\NormalTok{(inp.strip()) }\OperatorTok{==} \BuiltInTok{int}\NormalTok{(out.strip())}
     \KeywordTok{or}\NormalTok{ dv }\OperatorTok{==} \BuiltInTok{int}\NormalTok{(inp):}
 \NormalTok{    dv }\OperatorTok{=}\NormalTok{ dv}\OperatorTok{/}\DecValTok{2}
-  \ControlFlowTok{if}\NormalTok{ dv }\OperatorTok{\textgreater{}=} \DecValTok{8}\NormalTok{:}
+  \ControlFlowTok{if}\NormalTok{ dv }\OperatorTok{>=} \DecValTok{8}\NormalTok{:}
 \NormalTok{    dv }\OperatorTok{=} \DecValTok{2} 
 
 \KeywordTok{def}\NormalTok{ euclide(a, b):}
   \ControlFlowTok{while}\NormalTok{(b }\OperatorTok{!=} \DecValTok{0}\NormalTok{):}
-\NormalTok{    R }\OperatorTok{=}\NormalTok{ a }\OperatorTok{\%}\NormalTok{ b}
+\NormalTok{    R }\OperatorTok{=}\NormalTok{ a }\OperatorTok{%}\NormalTok{ b}
 \NormalTok{    a }\OperatorTok{=}\NormalTok{ b}
 \NormalTok{    b }\OperatorTok{=}\NormalTok{ R}
   \ControlFlowTok{return}\NormalTok{ a}
@@ -1599,11 +1600,11 @@ In questa porzione avvengono le fasi di individuazione del M.C.D. tramite la fun
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{synth(working\_dir)}
+\NormalTok{synth(working_dir)}
 
-\NormalTok{call([}\StringTok{\textquotesingle{}abc\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}{-}F\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}./synth\_bool.abc\textquotesingle{}}\NormalTok{])}
-\NormalTok{call([}\StringTok{\textquotesingle{}abc\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}{-}F\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}./synth\_mv.abc\textquotesingle{}}\NormalTok{])}
-\NormalTok{call([}\StringTok{\textquotesingle{}mvsis\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}{-}F\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}./synth\_mv.mvsis\textquotesingle{}}\NormalTok{])}
+\NormalTok{call([}\StringTok{'abc'}\NormalTok{, }\StringTok{'-F'}\NormalTok{, }\StringTok{'./synth_bool.abc'}\NormalTok{])}
+\NormalTok{call([}\StringTok{'abc'}\NormalTok{, }\StringTok{'-F'}\NormalTok{, }\StringTok{'./synth_mv.abc'}\NormalTok{])}
+\NormalTok{call([}\StringTok{'mvsis'}\NormalTok{, }\StringTok{'-F'}\NormalTok{, }\StringTok{'./synth_mv.mvsis'}\NormalTok{])}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1614,44 +1615,48 @@ L'ultimo passo consiste nella sintesi dei circuiti ottenuti e nella loro controp
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{def}\NormalTok{ synth(working\_dir):  }
-  \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{\textquotesingle{}./synth\_bool.abc\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}w\textquotesingle{}}\NormalTok{) }\ImportTok{as} \BuiltInTok{file}\NormalTok{:}
-    \BuiltInTok{file}\NormalTok{.write(}\StringTok{"source abc\_alias.abc}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
-    \ControlFlowTok{for}\NormalTok{ ele }\KeywordTok{in}\NormalTok{ os.listdir(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/blif\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir)):}
-      \ControlFlowTok{if}\NormalTok{ ele.endswith(}\StringTok{\textquotesingle{}.blif\textquotesingle{}}\NormalTok{):}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}read\_blif }\SpecialCharTok{\{\}}\StringTok{/blif/}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir,ele))}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}cl}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}resyn2}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}cl}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}write\_blif }\SpecialCharTok{\{\}}\StringTok{/blif/synth/}\SpecialCharTok{\{\}}\StringTok{.blif}\CharTok{\textbackslash{}n\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir,ele.split(}\StringTok{\textquotesingle{}.\textquotesingle{}}\NormalTok{)[}\DecValTok{0}\NormalTok{]))}
-  \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{\textquotesingle{}./synth\_mv.abc\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}w\textquotesingle{}}\NormalTok{) }\ImportTok{as} \BuiltInTok{file}\NormalTok{:}
-    \BuiltInTok{file}\NormalTok{.write(}\StringTok{"source abc\_alias.abc}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
-    \ControlFlowTok{for}\NormalTok{ ele }\KeywordTok{in}\NormalTok{ os.listdir(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/blfmv\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir)):}
-      \ControlFlowTok{if}\NormalTok{ ele.endswith(}\StringTok{\textquotesingle{}.mv\textquotesingle{}}\NormalTok{):}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}read\_blif\_mv }\SpecialCharTok{\{\}}\StringTok{/blfmv/}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir, ele))}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}strash}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}compress2}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}cl}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}resyn2}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}cl}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}write\_blif\_mv }\SpecialCharTok{\{\}}\StringTok{/blfmv/synth/abc/}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dele))}
-  
-  \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{\textquotesingle{}./synth\_mv.mvsis\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}w\textquotesingle{}}\NormalTok{) }\ImportTok{as} \BuiltInTok{file}\NormalTok{:}
-    \ControlFlowTok{for}\NormalTok{ ele }\KeywordTok{in}\NormalTok{ os.listdir(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/blfmv\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir)):}
-      \ControlFlowTok{if}\NormalTok{ ele.endswith(}\StringTok{\textquotesingle{}.mv\textquotesingle{}}\NormalTok{):}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}read\_blif\_mv }\SpecialCharTok{\{\}}\StringTok{/blfmv/}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir, ele))}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}sweep}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}eliminate {-}l 1}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}simplify {-}m nocomp}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}eliminate {-}l 1}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}sweep}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}eliminate {-}l 5}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}simplify}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}sweep}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}eliminate {-}l 1}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}sweep}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}fullsimp {-}m nocomp}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}write\_blif\_mv }\SpecialCharTok{\{\}}\StringTok{/blfmv/synth/mvsis/}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir, ele))}
+\KeywordTok{def}\NormalTok{ synth(working_dir):  }
+  \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{'./synth_bool.abc'}\NormalTok{, }\StringTok{'w'}\NormalTok{) }\ImportTok{as} \BuiltInTok{file}\NormalTok{:}
+    \BuiltInTok{file}\NormalTok{.write(}\StringTok{"source abc_alias.abc}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+    \ControlFlowTok{for}\NormalTok{ ele }\KeywordTok{in}\NormalTok{ os.listdir(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/blif'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir)):}
+      \ControlFlowTok{if}\NormalTok{ ele.endswith(}\StringTok{'.blif'}\NormalTok{):}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'read_blif }\SpecialCharTok{\{\}}\StringTok{/blif/}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir,ele))}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'cl}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'resyn2}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'cl}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'write_blif }\SpecialCharTok{\{\}}\StringTok{/blif/synth/}\SpecialCharTok{\{\}}\StringTok{.blif}\CharTok{\textbackslash{}n\textbackslash{}n}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
+\NormalTok{          working_dir,ele.split(}\StringTok{'.'}\NormalTok{)[}\DecValTok{0}\NormalTok{]))}
+  \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{'./synth_mv.abc'}\NormalTok{, }\StringTok{'w'}\NormalTok{) }\ImportTok{as} \BuiltInTok{file}\NormalTok{:}
+    \BuiltInTok{file}\NormalTok{.write(}\StringTok{"source abc_alias.abc}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+    \ControlFlowTok{for}\NormalTok{ ele }\KeywordTok{in}\NormalTok{ os.listdir(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/blfmv'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir)):}
+      \ControlFlowTok{if}\NormalTok{ ele.endswith(}\StringTok{'.mv'}\NormalTok{):}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'read_blif_mv }\SpecialCharTok{\{\}}\StringTok{/blfmv/}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{'}
+\NormalTok{          .}\BuiltInTok{format}\NormalTok{(working_dir, ele))}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'strash}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'compress2}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'cl}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'resyn2}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'cl}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'write_blif_mv }\SpecialCharTok{\{\}}\StringTok{/blfmv/synth/abc/}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n\textbackslash{}n}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dele))}
+  \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{'./synth_mv.mvsis'}\NormalTok{, }\StringTok{'w'}\NormalTok{) }\ImportTok{as} \BuiltInTok{file}\NormalTok{:}
+    \ControlFlowTok{for}\NormalTok{ ele }\KeywordTok{in}\NormalTok{ os.listdir(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/blfmv'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir)):}
+      \ControlFlowTok{if}\NormalTok{ ele.endswith(}\StringTok{'.mv'}\NormalTok{):}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'read_blif_mv }\SpecialCharTok{\{\}}\StringTok{/blfmv/}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
+\NormalTok{          working_dir, ele)}
+\NormalTok{        )}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'sweep}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'eliminate -l 1}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'simplify -m nocomp}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'eliminate -l 1}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'sweep}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'eliminate -l 5}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'simplify}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'sweep}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'eliminate -l 1}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'sweep}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'fullsimp -m nocomp}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'write_blif_mv }\SpecialCharTok{\{\}}\StringTok{/blfmv/synth/mvsis/}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n\textbackslash{}n}\StringTok{'}
+\NormalTok{          .}\BuiltInTok{format}\NormalTok{(working_dir, ele))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1671,10 +1676,10 @@ Viene poi controllato se è già presente un file contenente dei costi e, se c'�
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ControlFlowTok{if}\NormalTok{ exists(}\StringTok{\textquotesingle{}./calcolo\_costi.csv\textquotesingle{}}\NormalTok{):}
-\NormalTok{    remove(}\StringTok{\textquotesingle{}./calcolo\_costi.csv\textquotesingle{}}\NormalTok{)}
-\ControlFlowTok{if}\NormalTok{ exists(}\StringTok{\textquotesingle{}./calcolo\_costi\_no\_synth.csv\textquotesingle{}}\NormalTok{):}
-\NormalTok{    remove(}\StringTok{\textquotesingle{}./calcolo\_costi\_no\_synth.csv\textquotesingle{}}\NormalTok{)}
+\ControlFlowTok{if}\NormalTok{ exists(}\StringTok{'./calcolo_costi.csv'}\NormalTok{):}
+\NormalTok{    remove(}\StringTok{'./calcolo_costi.csv'}\NormalTok{)}
+\ControlFlowTok{if}\NormalTok{ exists(}\StringTok{'./calcolo_costi_no_synth.csv'}\NormalTok{):}
+\NormalTok{    remove(}\StringTok{'./calcolo_costi_no_synth.csv'}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1682,14 +1687,14 @@ Infine i costi dei circuiti possono essere calcolati
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{calcolo\_costi\_synth(working\_dir)}
-\NormalTok{calcolo\_costi\_no\_synth(working\_dir)}
+\NormalTok{calcolo_costi_synth(working_dir)}
+\NormalTok{calcolo_costi_no_synth(working_dir)}
 
-\KeywordTok{def}\NormalTok{ calcolo\_costo\_circuito(circuito):}
+\KeywordTok{def}\NormalTok{ calcolo_costo_circuito(circuito):}
 \NormalTok{  costo }\OperatorTok{=} \DecValTok{0}
-  \ControlFlowTok{for}\NormalTok{ t }\KeywordTok{in}\NormalTok{ circuito[}\StringTok{\textquotesingle{}tabelle\textquotesingle{}}\NormalTok{]:}
-\NormalTok{    intersection }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(}\BuiltInTok{set}\NormalTok{(circuito[}\StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{]).intersection(t[}\StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{]))}
-\NormalTok{    costo }\OperatorTok{=}\NormalTok{ costo }\OperatorTok{+} \BuiltInTok{pow}\NormalTok{(circuito[}\StringTok{\textquotesingle{}dominio\textquotesingle{}}\NormalTok{], intersection)}
+  \ControlFlowTok{for}\NormalTok{ t }\KeywordTok{in}\NormalTok{ circuito[}\StringTok{'tabelle'}\NormalTok{]:}
+\NormalTok{    intersection }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(}\BuiltInTok{set}\NormalTok{(circuito[}\StringTok{'input'}\NormalTok{]).intersection(t[}\StringTok{'input'}\NormalTok{]))}
+\NormalTok{    costo }\OperatorTok{=}\NormalTok{ costo }\OperatorTok{+} \BuiltInTok{pow}\NormalTok{(circuito[}\StringTok{'dominio'}\NormalTok{], intersection)}
   \ControlFlowTok{return}\NormalTok{ costo}
 \end{Highlighting}
 \end{Shaded}
@@ -1751,637 +1756,43 @@ Per far fronte alla mancanza di replicabilità di alcuni comandi in questo siste
 
 Come primo approccio alla conversione da binaria a multi valore abbiamo optato per lo stesso valore di dominio per tutti i circuiti. La scelta è stata quella di andare ad aggiungere altri 2 valori rispetto a ad un circuito binario utilizzando il modulo 3.
 
-\begin{longtable}[]{@{}lllllllll@{}}
+\begin{longtable}[]{@{}llllllll@{}}
 \toprule
-\begin{minipage}[b]{0.07\columnwidth}\raggedright
-NOME CIRC\strut
-\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\raggedright
-COSTO BOOL\strut
-\end{minipage} & \begin{minipage}[b]{0.08\columnwidth}\raggedright
-INPUT ALICE\strut
-\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\raggedright
-INPUT BOB\strut
-\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
-DOMINIO MULTI\strut
-\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\raggedright
-COSTO MULTI\strut
-\end{minipage} & \begin{minipage}[b]{0.08\columnwidth}\raggedright
-INPUT ALICE\strut
-\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\raggedright
-INPUT BOB\strut
-\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\raggedright
-\% Guadagno\strut
-\end{minipage}\tabularnewline
+CIRC & COSTO & ALICE & BOB & COSTO & ALICE & BOB & \% Guadagno\tabularnewline
 \midrule
 \endhead
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-amd\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-469\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-47568\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--10042\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-tms\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-322\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-2048\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--536\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-pdc\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-2818\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1310720\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--46412\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-mlp4\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-594\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-784\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--32\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-apla\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-343\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1029\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--200\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-f51m\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-261\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-340\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--30\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-m4\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-974\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1601\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--64\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-newtpla2\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-48\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-2048\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--4167\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-test1\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-1095\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1280\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--17\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-m2\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-339\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1121\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--231\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-br2\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-179\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-16384\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--9053\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-alu1\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-83\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-5122\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--6071\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-sqr6\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-197\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-276\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--40\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-bench\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-198\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-256\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--29\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-in5\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-446\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-117440512\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--26331853\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-newtpla1\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-33\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1024\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--3003\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-m3\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-571\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1169\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--105\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-newapla\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-83\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-9728\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--11620\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-l8err\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-454\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-337\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-26\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-t4\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-238\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-10240\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--4203\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-br1\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-252\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-16384\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--6402\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-fout\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-442\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-320\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-28\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-mp2d\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-136\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-95\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-alu2\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-225\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1282\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--470\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-t3\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-131\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-97\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-p3\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-385\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1408\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--266\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-m1\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-125\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-225\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--80\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-bcd\_div3\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-54\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-32\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-41\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-alu3\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-139\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-97\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-in7\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-182\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-23085056\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--12683997\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-\textbf{393,87}\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-\textbf{4,87}\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-\textbf{4,87}\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-\textbf{4731943,63}\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-\textbf{2,43}\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-\textbf{2,83}\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-\textbf{-13039,51}\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-\textbf{COSTO BOOL MEDIO}\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-\textbf{COSTO MULTI MEDIO}\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-\strut
-\end{minipage}\tabularnewline
+amd & 469 & 7 & 7 & 47568 & 3 & 4 & -10042\%\tabularnewline
+tms & 322 & 4 & 4 & 2048 & 2 & 2 & -536\%\tabularnewline
+pdc & 2818 & 7 & 7 & 1310720 & 4 & 4 & -46412\%\tabularnewline
+mlp4 & 594 & 4 & 4 & 784 & 2 & 2 & -32\%\tabularnewline
+apla & 343 & 5 & 5 & 1029 & 2 & 3 & -200\%\tabularnewline
+f51m & 261 & 4 & 4 & 340 & 2 & 2 & -30\%\tabularnewline
+m4 & 974 & 4 & 4 & 1601 & 2 & 2 & -64\%\tabularnewline
+newtpla2 & 48 & 5 & 5 & 2048 & 2 & 3 & -4167\%\tabularnewline
+test1 & 1095 & 4 & 4 & 1280 & 2 & 2 & -17\%\tabularnewline
+m2 & 339 & 4 & 4 & 1121 & 2 & 2 & -231\%\tabularnewline
+br2 & 179 & 6 & 6 & 16384 & 3 & 3 & -9053\%\tabularnewline
+alu1 & 83 & 6 & 6 & 5122 & 3 & 3 & -6071\%\tabularnewline
+sqr6 & 197 & 3 & 3 & 276 & 1 & 2 & -40\%\tabularnewline
+bench & 198 & 3 & 3 & 256 & 1 & 2 & -29\%\tabularnewline
+in5 & 446 & 7 & 7 & 117440512 & 6 & 6 & -26331853\%\tabularnewline
+newtpla1 & 33 & 5 & 5 & 1024 & 2 & 3 & -3003\%\tabularnewline
+m3 & 571 & 4 & 4 & 1169 & 2 & 2 & -105\%\tabularnewline
+newapla & 83 & 6 & 6 & 9728 & 3 & 3 & -11620\%\tabularnewline
+l8err & 454 & 4 & 4 & 337 & 2 & 2 & 26\%\tabularnewline
+t4 & 238 & 6 & 6 & 10240 & 3 & 3 & -4203\%\tabularnewline
+br1 & 252 & 6 & 6 & 16384 & 3 & 3 & -6402\%\tabularnewline
+fout & 442 & 3 & 3 & 320 & 1 & 2 & 28\%\tabularnewline
+mp2d & 136 & 7 & 7 & 7 & 3 & 4 & 95\%\tabularnewline
+alu2 & 225 & 5 & 5 & 1282 & 2 & 3 & -470\%\tabularnewline
+t3 & 131 & 6 & 6 & 4 & 3 & 3 & 97\%\tabularnewline
+p3 & 385 & 4 & 4 & 1408 & 2 & 2 & -266\%\tabularnewline
+m1 & 125 & 3 & 3 & 225 & 1 & 2 & -80\%\tabularnewline
+bcd\_div3 & 54 & 2 & 2 & 32 & 1 & 1 & 41\%\tabularnewline
+alu3 & 139 & 5 & 5 & 4 & 2 & 3 & 97\%\tabularnewline
+in7 & 182 & 7 & 7 & 23085056 & 6 & 7 & -12683997\%\tabularnewline
+& \textbf{393,87} & \textbf{4,87} & \textbf{4,87} & \textbf{4731943,63} & \textbf{2,43} & \textbf{2,83} & \textbf{-13039,51}\tabularnewline
+& \textbf{MEDIA} & & & \textbf{MEDIA} & & &\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -2392,637 +1803,43 @@ Questa tabella racchiude i risultati ottenuti dalla sintesi dei circuiti multi v
 
 Nella sperimentazione successiva si è voluto testare un dominio variabile in base al MCD, come descritto nel capitolo precedente. Nella seguente tabella vengono mostrati i costi dei circuiti senza sintesi. Possiamo osservare che nella maggior parte dei casi il dominio multi valore senza sintesi ha un costo minore. Questo risultato può essere considerato una conseguenza diretta del minor numero di input che le parti dovranno inserire all'interno del protocollo durante la computazione. Questi input, essendo in minor quantità, rendono l'intero processo di sintesi più leggero e meno costoso.
 
-\begin{longtable}[]{@{}lllllllll@{}}
+\begin{longtable}[]{@{}llllll@{}}
 \toprule
-\begin{minipage}[b]{0.07\columnwidth}\raggedright
-NOME CIRC\strut
-\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\raggedright
-COSTO BOOL\strut
-\end{minipage} & \begin{minipage}[b]{0.08\columnwidth}\raggedright
-INPUT ALICE\strut
-\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\raggedright
-INPUT BOB\strut
-\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
-DOMINIO MULTI\strut
-\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\raggedright
-COSTO MULTIVALORE\strut
-\end{minipage} & \begin{minipage}[b]{0.08\columnwidth}\raggedright
-INPUT ALICE\strut
-\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\raggedright
-INPUT BOB\strut
-\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\raggedright
-\% GUADAGNO\strut
-\end{minipage}\tabularnewline
+NOME CIRC & DOMINIO & COSTO & ALICE & BOB & \% GUADAGNO\tabularnewline
 \midrule
 \endhead
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-amd\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-393216\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-196608\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-50\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-tms\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-4096\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-16\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1024\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-75\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-pdc\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-2621440\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-8\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-8\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1310720\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-50\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-mlp4\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-2048\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-16\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-512\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-75\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-apla\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-12288\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-6144\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-50\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-f51m\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-2048\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-16\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-512\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-75\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-m4\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-4096\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-16\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1024\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-75\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-newtpla2\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-4096\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-2048\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-50\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-test1\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-2560\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1280\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-50\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-m2\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-4096\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-16\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1024\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-75\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-br2\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-32768\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-16\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-8192\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-75\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-alu1\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-32768\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-16\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-8192\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-75\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-sqr6\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-705\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-8\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-256\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-64\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-bench\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-512\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-256\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-50\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-in5\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-1835008\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-9\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-9\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-117440512\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--6300\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-newtpla1\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-2048\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1024\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-50\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-m3\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-4096\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-16\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1024\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-75\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-newapla\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-40960\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-20480\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-50\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-l8err\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-1283\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-16\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-512\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-60\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-t4\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-32768\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-16\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-8192\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-75\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-br1\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-32768\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-16\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-8192\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-75\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-fout\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-640\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-320\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-50\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-mp2d\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-229376\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-128\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-32768\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-86\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-alu2\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-8192\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-4096\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-50\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-t3\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-32768\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-16\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-8192\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-75\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-p3\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-3074\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1792\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-42\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-m1\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-768\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-8\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-256\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-67\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-bcd\_div3\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-64\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-32\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-50\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-alu3\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-8192\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-4096\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-50\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-in7\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-1310720\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-9\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-9\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-335544320\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--25500\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-221982,07\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-5,03\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-5,03\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-15153786,67\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1,80\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2,27\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--10,02\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-COSTO BOOL MEDIO\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-COSTO MULTI MEDIO\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-\strut
-\end{minipage}\tabularnewline
+amd & 4 & 196608 & 3 & 4 & 50\%\tabularnewline
+tms & 16 & 1024 & 1 & 1 & 75\%\tabularnewline
+pdc & 4 & 1310720 & 4 & 4 & 50\%\tabularnewline
+mlp4 & 16 & 512 & 1 & 1 & 75\%\tabularnewline
+apla & 4 & 6144 & 2 & 3 & 50\%\tabularnewline
+f51m & 16 & 512 & 1 & 1 & 75\%\tabularnewline
+m4 & 16 & 1024 & 1 & 1 & 75\%\tabularnewline
+newtpla2 & 4 & 2048 & 2 & 3 & 50\%\tabularnewline
+test1 & 4 & 1280 & 2 & 2 & 50\%\tabularnewline
+m2 & 16 & 1024 & 1 & 1 & 75\%\tabularnewline
+br2 & 16 & 8192 & 1 & 2 & 75\%\tabularnewline
+alu1 & 16 & 8192 & 1 & 2 & 75\%\tabularnewline
+sqr6 & 8 & 256 & 1 & 1 & 64\%\tabularnewline
+bench & 4 & 256 & 1 & 2 & 50\%\tabularnewline
+in5 & 4 & 117440512 & 6 & 6 & -6300\%\tabularnewline
+newtpla1 & 4 & 1024 & 2 & 3 & 50\%\tabularnewline
+m3 & 16 & 1024 & 1 & 1 & 75\%\tabularnewline
+newapla & 4 & 20480 & 3 & 3 & 50\%\tabularnewline
+l8err & 16 & 512 & 1 & 1 & 60\%\tabularnewline
+t4 & 16 & 8192 & 1 & 2 & 75\%\tabularnewline
+br1 & 16 & 8192 & 1 & 2 & 75\%\tabularnewline
+fout & 4 & 320 & 1 & 2 & 50\%\tabularnewline
+mp2d & 128 & 32768 & 1 & 1 & 86\%\tabularnewline
+alu2 & 4 & 4096 & 2 & 3 & 50\%\tabularnewline
+t3 & 16 & 8192 & 1 & 2 & 75\%\tabularnewline
+p3 & 4 & 1792 & 2 & 2 & 42\%\tabularnewline
+m1 & 8 & 256 & 1 & 1 & 67\%\tabularnewline
+bcd\_div3 & 4 & 32 & 1 & 1 & 50\%\tabularnewline
+alu3 & 4 & 4096 & 2 & 3 & 50\%\tabularnewline
+in7 & 4 & 335544320 & 6 & 7 & -25500\%\tabularnewline
+& & \textbf{15153786,67} & \textbf{1,80} & \textbf{2,27} & \textbf{-10,02}\tabularnewline
+& & \textbf{MEDIA} & & &\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -3030,642 +1847,47 @@ COSTO MULTI MEDIO\strut
 
 Una vota applicato la sintesi dei circuiti i risultati sono i seguenti:
 
-\begin{longtable}[]{@{}lllllllll@{}}
+\begin{longtable}[]{@{}lllllll@{}}
 \toprule
-\begin{minipage}[b]{0.07\columnwidth}\raggedright
-NOME CIRC\strut
-\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\raggedright
-COSTO BOOL\strut
-\end{minipage} & \begin{minipage}[b]{0.08\columnwidth}\raggedright
-INPUT ALICE\strut
-\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\raggedright
-INPUT BOB\strut
-\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
-DOMINIO MULTI\strut
-\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\raggedright
-COSTO MULTIVALORE\strut
-\end{minipage} & \begin{minipage}[b]{0.08\columnwidth}\raggedright
-INPUT ALICE\strut
-\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\raggedright
-INPUT BOB\strut
-\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\raggedright
-\% GUADAGNO\strut
-\end{minipage}\tabularnewline
+NOME CIRC & COSTO & DOMINIO & COSTO & ALICE & BOB & \% GUADAGNO\tabularnewline
 \midrule
 \endhead
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-amd\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-469\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-47568\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--10042\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-tms\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-322\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-16\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1024\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--218\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-pdc\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-2818\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1310720\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--46412\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-mlp4\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-594\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-16\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-512\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-14\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-apla\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-343\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1029\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--200\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-f51m\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-261\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-16\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-272\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--4\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-m4\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-974\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-16\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1024\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--5\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-newtpla2\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-48\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-2048\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--4167\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-test1\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-1095\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1280\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--17\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-m2\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-339\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-16\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1024\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--202\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-br2\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-179\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-16\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-8192\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--4477\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-alu1\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-83\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-16\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-4097\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--4836\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-sqr6\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-197\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-8\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-200\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--2\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-bench\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-198\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-256\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--29\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-in5\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-446\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1,17E+08\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--26331853\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-newtpla1\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-33\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1024\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--3003\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-m3\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-571\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-16\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1024\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--79\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-newapla\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-83\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-9728\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--11620\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-l8err\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-454\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-16\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-512\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--13\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-t4\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-238\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-16\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-8192\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--3342\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-br1\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-252\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-16\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-8192\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--3151\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-fout\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-442\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-320\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-28\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-mp2d\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-136\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-95\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-alu2\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-225\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1282\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--470\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-t3\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-131\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-97\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-p3\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-385\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-1408\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--266\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-m1\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-125\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-225\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--80\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-bcd\_div3\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-54\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-32\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-41\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-alu3\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-139\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-97\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-in7\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-182\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-23085056\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
--12683997\%\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-393,87\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-4,87\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-4,87\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-4716541,87\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-1,93\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-2,43\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
-COSTO BOOL MEDIO\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
-COSTO MULTI MEDIO\strut
-\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\raggedright
-\strut
-\end{minipage}\tabularnewline
+amd & 469 & 4 & 47568 & 3 & 4 & -10042\%\tabularnewline
+tms & 322 & 16 & 1024 & 1 & 1 & -218\%\tabularnewline
+pdc & 2818 & 4 & 1310720 & 4 & 4 & -46412\%\tabularnewline
+mlp4 & 594 & 16 & 512 & 1 & 1 & 14\%\tabularnewline
+apla & 343 & 4 & 1029 & 2 & 3 & -200\%\tabularnewline
+f51m & 261 & 16 & 272 & 1 & 1 & -4\%\tabularnewline
+m4 & 974 & 16 & 1024 & 1 & 1 & -5\%\tabularnewline
+newtpla2 & 48 & 4 & 2048 & 2 & 3 & -4167\%\tabularnewline
+test1 & 1095 & 4 & 1280 & 2 & 2 & -17\%\tabularnewline
+m2 & 339 & 16 & 1024 & 1 & 1 & -202\%\tabularnewline
+br2 & 179 & 16 & 8192 & 1 & 2 & -4477\%\tabularnewline
+alu1 & 83 & 16 & 4097 & 1 & 2 & -4836\%\tabularnewline
+sqr6 & 197 & 8 & 200 & 1 & 1 & -2\%\tabularnewline
+bench & 198 & 4 & 256 & 1 & 2 & -29\%\tabularnewline
+in5 & 446 & 4 & 1,17E+08 & 6 & 6 & -26331853\%\tabularnewline
+newtpla1 & 33 & 4 & 1024 & 2 & 3 & -3003\%\tabularnewline
+m3 & 571 & 16 & 1024 & 1 & 1 & -79\%\tabularnewline
+newapla & 83 & 4 & 9728 & 3 & 3 & -11620\%\tabularnewline
+l8err & 454 & 16 & 512 & 1 & 1 & -13\%\tabularnewline
+t4 & 238 & 16 & 8192 & 1 & 2 & -3342\%\tabularnewline
+br1 & 252 & 16 & 8192 & 1 & 2 & -3151\%\tabularnewline
+fout & 442 & 4 & 320 & 1 & 2 & 28\%\tabularnewline
+mp2d & 136 & 3 & 7 & 3 & 4 & 95\%\tabularnewline
+alu2 & 225 & 3 & 1282 & 2 & 3 & -470\%\tabularnewline
+t3 & 131 & 3 & 4 & 3 & 3 & 97\%\tabularnewline
+p3 & 385 & 3 & 1408 & 2 & 2 & -266\%\tabularnewline
+m1 & 125 & 3 & 225 & 1 & 2 & -80\%\tabularnewline
+bcd\_div3 & 54 & 3 & 32 & 1 & 1 & 41\%\tabularnewline
+alu3 & 139 & 3 & 4 & 2 & 3 & 97\%\tabularnewline
+in7 & 182 & 3 & 23085056 & 6 & 7 & -12683997\%\tabularnewline
+& \textbf{393,87} & & \textbf{4716541,87} & \textbf{1,93} & \textbf{2,43} &\tabularnewline
+& \textbf{MEDIA} & & \textbf{MEDIA} & & &\tabularnewline
 \bottomrule
 \end{longtable}
 
 I costi vengono notevolmente abbassati nel caso del booleano mentre in quello multi valore rimangono più elevati. Analizzando Questo fenomeno potremmo trovare una spiegazione nel fatto che la sintesi sui circuiti binari è nettamente più sviluppata e sono stati scoperti metodi di sintesi più efficaci rispetto a quelli studiati per una logica multi valore.
-
 Il tool MVSIS infatti, come affermato in precedenza, non è più stato sviluppato ne mantenuto. All'atto pratico si presenta infatti più lento nella sintesi ed ha una gestione della memoria che porta a dump di memoria durante l'analisi di circuiti di grandi dimensioni.
 
 \newpage
@@ -3698,7 +1920,7 @@ Come con \emph{MVSIS} è stato inizialmente utilizzato un dominio fisso per svol
 
 \begin{longtable}[]{@{}llllll@{}}
 \toprule
-NOME CIRC & COSTO BOOL & INPUT ALICE & INPUT BOB & COSTO MULTIVALORE & \% GUADAGNO\tabularnewline
+NOME CIRC & COSTO & ALICE & BOB & COSTO & \% GUADAGNO\tabularnewline
 \midrule
 \endhead
 amd & 469 & 7 & 7 & 1860 & -297\%\tabularnewline
@@ -3731,8 +1953,8 @@ m1 & 125 & 3 & 3 & 116 & 7\%\tabularnewline
 bcd\_div3 & 54 & 2 & 2 & 46 & 15\%\tabularnewline
 alu3 & 139 & 5 & 5 & 406 & -192\%\tabularnewline
 in7 & 182 & 7 & 7 & 1676 & -821\%\tabularnewline
-& 393,87 & 4,87 & 4,87 & 599,47 & -0,55\tabularnewline
-& COSTO BOOL MEDIO & & & COSTO MULTI MEDIO &\tabularnewline
+& \textbf{393,87} & \textbf{4,87} & \textbf{4,87} & \textbf{599,47} & \textbf{-0,55}\tabularnewline
+& \textbf{MEDIA} & & & \textbf{MEDIA} &\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -3745,7 +1967,7 @@ Come ultimo test, come in MVSIS, abbiamo deciso di applicare anche l'approccio M
 
 \begin{longtable}[]{@{}llllll@{}}
 \toprule
-NOME CIRC & COSTO BOOL & INPUT ALICE & INPUT BOB & COSTO MULTIVALORE & \% GUADAGNO\tabularnewline
+NOME CIRC & BOOL & ALICE & BOB & COSTO & \% GUADAGNO\tabularnewline
 \midrule
 \endhead
 amd & 469 & 7 & 7 & 1860 & -297\%\tabularnewline
@@ -3779,7 +2001,7 @@ bcd\_div3 & 54 & 2 & 2 & 46 & 15\%\tabularnewline
 alu3 & 139 & 5 & 5 & 406 & -192\%\tabularnewline
 in7 & 182 & 7 & 7 & 1676 & -821\%\tabularnewline
 & 393,87 & 4,87 & 4,87 & 654,50 & -1,15\tabularnewline
-& COSTO BOOL MEDIO & & & COSTO MULTI MEDIO &\tabularnewline
+& MEDIA & & & MEDIA &\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -3798,7 +2020,7 @@ Applicando un approccio ibrido siamo stati in grado di prendere il meglio dei si
 
 \begin{longtable}[]{@{}llllll@{}}
 \toprule
-\textbf{Circuito} & \textbf{BINARIO} & \textbf{MULTIVALORE} & \textbf{MVSIS dom var} & \textbf{ABC dom var} & \textbf{Riduzione costo. \%}\tabularnewline
+\textbf{Circuito} & \textbf{BIN} & \textbf{MV} & \textbf{MVSIS var} & \textbf{ABC var} & \textbf{RIDUZ \%}\tabularnewline
 \midrule
 \endhead
 amd & 393216 & 196608 & 47568 & 1860 & 96,09\%\tabularnewline
@@ -3823,7 +2045,7 @@ l8err & 1283 & 512 & 512 & 338 & 33,98\%\tabularnewline
 t4 & 32768 & 8192 & 8192 & 248 & 96,97\%\tabularnewline
 br1 & 32768 & 8192 & 8192 & 136 & 98,34\%\tabularnewline
 fout & 640 & 320 & 320 & 214 & 33,13\%\tabularnewline
-\textbf{MEDIA} & 230286,73 & 5409911,27 & 5402215,91 & 666,86 & 65,27\%\tabularnewline
+\textbf{MEDIA} & & & & & 65,27\%\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -3849,6 +2071,6 @@ Lo studio dell'utilizzo della logica multi valore ha portato a dei risultati int
 
 \newpage
 
-  \bibliography{book.bib}
+\bibliography{book.bib}
 
 \end{document}

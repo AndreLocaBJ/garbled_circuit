@@ -8,7 +8,7 @@ Applicando un approccio ibrido siamo stati in grado di prendere il meglio dei si
 
 \newpage
 
-| **Circuito** 	| **BINARIO** | **MULTIVALORE** | **MVSIS dom var** | **ABC dom var** | **Riduzione costo. %** |
+| **Circuito** 	| **BIN** | **MV** | **MVSIS var** | **ABC var** | **RIDUZ %** |
 |--------------	|-------------|-----------------|-------------------|-----------------|------------------------|
 | amd          	| 393216      | 196608          | 47568             | 1860            | 96,09%                 |
 | tms          	| 4096        | 1024            | 1024              | 184             | 82,03%                 |
@@ -32,7 +32,7 @@ Applicando un approccio ibrido siamo stati in grado di prendere il meglio dei si
 | t4           	| 32768       | 8192            | 8192              | 248             | 96,97%                 |
 | br1          	| 32768       | 8192            | 8192              | 136             | 98,34%                 |
 | fout         	| 640         | 320             | 320               | 214             | 33,13%                 |
-| **MEDIA**     | 230286,73   | 5409911,27      | 5402215,91        | 666,86          | 65,27%                 |
+| **MEDIA**     |  |   |        |           | 65,27%                 |
 
 
 \newpage

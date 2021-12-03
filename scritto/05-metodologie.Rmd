@@ -287,7 +287,7 @@ while i < len_truth_table:
   if '-' in truth_table[i]['inp']:
     truth_table[i]['inp'] = ''.join(truth_table[i['inp'])
     truth_table[i]['inp'] = [truth_table[i]['inp'[a:a+dv]
-                             for a in range(0, le(truth_table[i]['inp'], dv)]
+        for a in range(0, le(truth_table[i]['inp'], dv)]
     for a in range(len(truth_table[i]['inp'])):
         if truth_table[i]['inp'][a] == n_dont_care:
             truth_table[i]['inp'][a] = 'k'*le(n_dont_care)
@@ -452,7 +452,6 @@ Per i circuiti multi valore non viene adottato il formato PLA in quanto quest’
 Questo formato deriva dal formato blif, ampiamente utilizzato per la logica binaria.
 
 ```python
-import string
 mv_input = [i for i in list(string.ascii_lowercase)[
     :len(mv_table[0]['inp'])]
   ]
@@ -468,7 +467,9 @@ with open('{}/blfmv/{}.mv'.format(working_dir, nomefile), 'w') as blif:
   blif.write('.mv {} {}\n'.format(
       ', '.join(map(str, mv_output)), mv))
   for count, out in enumerate(mv_output):
-      blif.write('.table {} {}\n'.format(' '.join(map(str,mv_input)), out))
+      blif.write('.table {} {}\n'.format(
+        ' '.join(map(str,mv_input)), out)
+      )
     for line in mv_table:
       blif.write('{} {}\n'.format(
         ' '.join(map(str, line['inp'])), line['out'][count]))
@@ -635,8 +636,9 @@ with open('calcolo_costi.csv', 'a') as file:
       else:
           alice_var_bool = int(len(circ_boo['input']) / 2)
           bob_var_bool = int(len(circ_bool['input') / 2)
-      file.write('{};{};{};{};{};{};{};{}\n'.forma(blfmv.split('.')[
-          0], costo_bool, alice_var_bool,bob_var_bool, circ_mv['dominio'],costo_mv, alice_var_mv, bob_var_mv))
+      file.write('{};{};{};{};{};{};{};{}\n'.forma(
+        blfmv.split('.')[0], costo_bool, alice_var_bool,bob_var_bool, 
+          circ_mv['dominio'],costo_mv, alice_var_mv, bob_var_mv))
 ```
 
 Ottenute tutte le informazioni, per avere una migliore visione per l’analisi, esse vengono salvate all'interno di una file _CVS_ con la funzione sopra mostrata.
@@ -760,8 +762,9 @@ def bin_to_mv_mcd(working_dir):
       if dv >= 8:
         dv = 2 
         mv = pow(2, dv)
-        print('{}\ninp: {}\nout:{}\nmulti-valore:{}\ndivide ogni:{}\n'.format(pla,
-          inp.strip(), out.strip(), int(mv), int(dv)))
+        print('{}\ninp: {}\nout:{}\nmulti-valore:{}\n
+          divide ogni:{}\n'.format(pla,inp.strip(), 
+          out.strip(), int(mv), int(dv)))
         truth_table = expand_dont_care(truth_table, int(dv))
         mv_table = create_mv_truth_table(truth_table, int(dv))
         crete_blif_mv(working_dir, mv_table, int(mv),
@@ -812,23 +815,26 @@ def synth(working_dir):
         file.write('cl\n')
         file.write('resyn2\n')
         file.write('cl\n')
-        file.write('write_blif {}/blif/synth/{}.blif\n\n'.format(working_dir,ele.split('.')[0]))
+        file.write('write_blif {}/blif/synth/{}.blif\n\n'.format(
+          working_dir,ele.split('.')[0]))
   with open('./synth_mv.abc', 'w') as file:
     file.write("source abc_alias.abc\n")
     for ele in os.listdir('{}/blfmv'.format(working_dir)):
       if ele.endswith('.mv'):
-        file.write('read_blif_mv {}/blfmv/{}\n'.format(working_dir, ele))
+        file.write('read_blif_mv {}/blfmv/{}\n'
+          .format(working_dir, ele))
         file.write('strash\n')
         file.write('compress2\n')
         file.write('cl\n')
         file.write('resyn2\n')
         file.write('cl\n')
         file.write('write_blif_mv {}/blfmv/synth/abc/{}\n\n'.format(working_dele))
-  
   with open('./synth_mv.mvsis', 'w') as file:
     for ele in os.listdir('{}/blfmv'.format(working_dir)):
       if ele.endswith('.mv'):
-        file.write('read_blif_mv {}/blfmv/{}\n'.format(working_dir, ele))
+        file.write('read_blif_mv {}/blfmv/{}\n'.format(
+          working_dir, ele)
+        )
         file.write('sweep\n')
         file.write('eliminate -l 1\n')
         file.write('simplify -m nocomp\n')
@@ -840,7 +846,8 @@ def synth(working_dir):
         file.write('eliminate -l 1\n')
         file.write('sweep\n')
         file.write('fullsimp -m nocomp\n')
-        file.write('write_blif_mv {}/blfmv/synth/mvsis/{}\n\n'.format(working_dir, ele))
+        file.write('write_blif_mv {}/blfmv/synth/mvsis/{}\n\n'
+          .format(working_dir, ele))
 ```
 
 - **synth_bool**: crea il file per la sintesi utilizzata da **ABC** per i circuiti booleani;

@@ -43,40 +43,41 @@ Per far fronte alla mancanza di replicabilità di alcuni comandi in questo siste
 
 Come primo approccio alla conversione da binaria a multi valore abbiamo optato per lo stesso valore di dominio per tutti i circuiti. La scelta è stata quella di andare ad aggiungere altri 2 valori rispetto a ad un circuito binario utilizzando il modulo 3.
 
-| NOME CIRC | COSTO BOOL       | INPUT ALICE | INPUT BOB | DOMINIO MULTI | COSTO MULTI       | INPUT ALICE | INPUT BOB | % Guadagno |
-|-----------|------------------|-------------|-----------|---------------|-------------------|-------------|-----------|------------|
-| amd       | 469              | 7           | 7         | 3             | 47568             | 3           | 4         | -10042%    |
-| tms       | 322              | 4           | 4         | 3             | 2048              | 2           | 2         | -536%      |
-| pdc       | 2818             | 7           | 7         | 3             | 1310720           | 4           | 4         | -46412%    |
-| mlp4      | 594              | 4           | 4         | 3             | 784               | 2           | 2         | -32%       |
-| apla      | 343              | 5           | 5         | 3             | 1029              | 2           | 3         | -200%      |
-| f51m      | 261              | 4           | 4         | 3             | 340               | 2           | 2         | -30%       |
-| m4        | 974              | 4           | 4         | 3             | 1601              | 2           | 2         | -64%       |
-| newtpla2  | 48               | 5           | 5         | 3             | 2048              | 2           | 3         | -4167%     |
-| test1     | 1095             | 4           | 4         | 3             | 1280              | 2           | 2         | -17%       |
-| m2        | 339              | 4           | 4         | 3             | 1121              | 2           | 2         | -231%      |
-| br2       | 179              | 6           | 6         | 3             | 16384             | 3           | 3         | -9053%     |
-| alu1      | 83               | 6           | 6         | 3             | 5122              | 3           | 3         | -6071%     |
-| sqr6      | 197              | 3           | 3         | 3             | 276               | 1           | 2         | -40%       |
-| bench     | 198              | 3           | 3         | 3             | 256               | 1           | 2         | -29%       |
-| in5       | 446              | 7           | 7         | 3             | 117440512         | 6           | 6         | -26331853% |
-| newtpla1  | 33               | 5           | 5         | 3             | 1024              | 2           | 3         | -3003%     |
-| m3        | 571              | 4           | 4         | 3             | 1169              | 2           | 2         | -105%      |
-| newapla   | 83               | 6           | 6         | 3             | 9728              | 3           | 3         | -11620%    |
-| l8err     | 454              | 4           | 4         | 3             | 337               | 2           | 2         | 26%        |
-| t4        | 238              | 6           | 6         | 3             | 10240             | 3           | 3         | -4203%     |
-| br1       | 252              | 6           | 6         | 3             | 16384             | 3           | 3         | -6402%     |
-| fout      | 442              | 3           | 3         | 3             | 320               | 1           | 2         | 28%        |
-| mp2d      | 136              | 7           | 7         | 3             | 7                 | 3           | 4         | 95%        |
-| alu2      | 225              | 5           | 5         | 3             | 1282              | 2           | 3         | -470%      |
-| t3        | 131              | 6           | 6         | 3             | 4                 | 3           | 3         | 97%        |
-| p3        | 385              | 4           | 4         | 3             | 1408              | 2           | 2         | -266%      |
-| m1        | 125              | 3           | 3         | 3             | 225               | 1           | 2         | -80%       |
-| bcd_div3  | 54               | 2           | 2         | 3             | 32                | 1           | 1         | 41%        |
-| alu3      | 139              | 5           | 5         | 3             | 4                 | 2           | 3         | 97%        |
-| in7       | 182              | 7           | 7         | 3             | 23085056          | 6           | 7         | -12683997% |
-|           |    **393,87**    |   **4,87**  |  **4,87** |               |   **4731943,63**  |   **2,43**  |  **2,83** |**-13039,51**|
-|           |**COSTO BOOL MEDIO**|             |           |               |**COSTO MULTI MEDIO**|             |           |            |
+| CIRC     | COSTO      | ALICE    | BOB      | COSTO          | ALICE    | BOB      | % Guadagno    |
+|----------|------------|----------|----------|----------------|----------|----------|---------------|
+| amd      | 469        | 7        | 7        | 47568          | 3        | 4        | -10042%       |
+| tms      | 322        | 4        | 4        | 2048           | 2        | 2        | -536%         |
+| pdc      | 2818       | 7        | 7        | 1310720        | 4        | 4        | -46412%       |
+| mlp4     | 594        | 4        | 4        | 784            | 2        | 2        | -32%          |
+| apla     | 343        | 5        | 5        | 1029           | 2        | 3        | -200%         |
+| f51m     | 261        | 4        | 4        | 340            | 2        | 2        | -30%          |
+| m4       | 974        | 4        | 4        | 1601           | 2        | 2        | -64%          |
+| newtpla2 | 48         | 5        | 5        | 2048           | 2        | 3        | -4167%        |
+| test1    | 1095       | 4        | 4        | 1280           | 2        | 2        | -17%          |
+| m2       | 339        | 4        | 4        | 1121           | 2        | 2        | -231%         |
+| br2      | 179        | 6        | 6        | 16384          | 3        | 3        | -9053%        |
+| alu1     | 83         | 6        | 6        | 5122           | 3        | 3        | -6071%        |
+| sqr6     | 197        | 3        | 3        | 276            | 1        | 2        | -40%          |
+| bench    | 198        | 3        | 3        | 256            | 1        | 2        | -29%          |
+| in5      | 446        | 7        | 7        | 117440512      | 6        | 6        | -26331853%    |
+| newtpla1 | 33         | 5        | 5        | 1024           | 2        | 3        | -3003%        |
+| m3       | 571        | 4        | 4        | 1169           | 2        | 2        | -105%         |
+| newapla  | 83         | 6        | 6        | 9728           | 3        | 3        | -11620%       |
+| l8err    | 454        | 4        | 4        | 337            | 2        | 2        | 26%           |
+| t4       | 238        | 6        | 6        | 10240          | 3        | 3        | -4203%        |
+| br1      | 252        | 6        | 6        | 16384          | 3        | 3        | -6402%        |
+| fout     | 442        | 3        | 3        | 320            | 1        | 2        | 28%           |
+| mp2d     | 136        | 7        | 7        | 7              | 3        | 4        | 95%           |
+| alu2     | 225        | 5        | 5        | 1282           | 2        | 3        | -470%         |
+| t3       | 131        | 6        | 6        | 4              | 3        | 3        | 97%           |
+| p3       | 385        | 4        | 4        | 1408           | 2        | 2        | -266%         |
+| m1       | 125        | 3        | 3        | 225            | 1        | 2        | -80%          |
+| bcd_div3 | 54         | 2        | 2        | 32             | 1        | 1        | 41%           |
+| alu3     | 139        | 5        | 5        | 4              | 2        | 3        | 97%           |
+| in7      | 182        | 7        | 7        | 23085056       | 6        | 7        | -12683997%    |
+|          | **393,87** | **4,87** | **4,87** | **4731943,63** | **2,43** | **2,83** | **-13039,51** |
+|          | **MEDIA**  |          |          | **MEDIA**      |          |          |               |
+
 
 Questa tabella racchiude i risultati ottenuti dalla sintesi dei circuiti multi valore e dei circuiti binari. Possiamo notare che nella maggior parte dei casi il circuito binario mantiene ancora una grande efficienza rispetto a quello multi valore.
 
@@ -84,81 +85,83 @@ Questa tabella racchiude i risultati ottenuti dalla sintesi dei circuiti multi v
 
 Nella sperimentazione successiva si è voluto testare un dominio variabile in base al MCD, come descritto nel capitolo precedente. Nella seguente tabella vengono mostrati i costi dei circuiti senza sintesi. Possiamo osservare che nella maggior parte dei casi il dominio multi valore senza sintesi ha un costo minore. Questo risultato può essere considerato una conseguenza diretta del minor numero di input che le parti dovranno inserire all’interno del protocollo durante la computazione. Questi input, essendo in minor quantità, rendono l’intero processo di sintesi più leggero e meno costoso.
 
-| NOME CIRC | COSTO BOOL       | INPUT ALICE | INPUT BOB | DOMINIO MULTI | COSTO MULTIVALORE | INPUT ALICE | INPUT BOB | % GUADAGNO |
-|-----------|------------------|-------------|-----------|---------------|-------------------|-------------|-----------|------------|
-| amd       | 393216           | 7           | 7         | 4             | 196608            | 3           | 4         | 50%        |
-| tms       | 4096             | 4           | 4         | 16            | 1024              | 1           | 1         | 75%        |
-| pdc       | 2621440          | 8           | 8         | 4             | 1310720           | 4           | 4         | 50%        |
-| mlp4      | 2048             | 4           | 4         | 16            | 512               | 1           | 1         | 75%        |
-| apla      | 12288            | 5           | 5         | 4             | 6144              | 2           | 3         | 50%        |
-| f51m      | 2048             | 4           | 4         | 16            | 512               | 1           | 1         | 75%        |
-| m4        | 4096             | 4           | 4         | 16            | 1024              | 1           | 1         | 75%        |
-| newtpla2  | 4096             | 5           | 5         | 4             | 2048              | 2           | 3         | 50%        |
-| test1     | 2560             | 4           | 4         | 4             | 1280              | 2           | 2         | 50%        |
-| m2        | 4096             | 4           | 4         | 16            | 1024              | 1           | 1         | 75%        |
-| br2       | 32768            | 6           | 6         | 16            | 8192              | 1           | 2         | 75%        |
-| alu1      | 32768            | 6           | 6         | 16            | 8192              | 1           | 2         | 75%        |
-| sqr6      | 705              | 3           | 3         | 8             | 256               | 1           | 1         | 64%        |
-| bench     | 512              | 3           | 3         | 4             | 256               | 1           | 2         | 50%        |
-| in5       | 1835008          | 9           | 9         | 4             | 117440512         | 6           | 6         | -6300%     |
-| newtpla1  | 2048             | 5           | 5         | 4             | 1024              | 2           | 3         | 50%        |
-| m3        | 4096             | 4           | 4         | 16            | 1024              | 1           | 1         | 75%        |
-| newapla   | 40960            | 6           | 6         | 4             | 20480             | 3           | 3         | 50%        |
-| l8err     | 1283             | 4           | 4         | 16            | 512               | 1           | 1         | 60%        |
-| t4        | 32768            | 6           | 6         | 16            | 8192              | 1           | 2         | 75%        |
-| br1       | 32768            | 6           | 6         | 16            | 8192              | 1           | 2         | 75%        |
-| fout      | 640              | 3           | 3         | 4             | 320               | 1           | 2         | 50%        |
-| mp2d      | 229376           | 7           | 7         | 128           | 32768             | 1           | 1         | 86%        |
-| alu2      | 8192             | 5           | 5         | 4             | 4096              | 2           | 3         | 50%        |
-| t3        | 32768            | 6           | 6         | 16            | 8192              | 1           | 2         | 75%        |
-| p3        | 3074             | 4           | 4         | 4             | 1792              | 2           | 2         | 42%        |
-| m1        | 768              | 3           | 3         | 8             | 256               | 1           | 1         | 67%        |
-| bcd_div3  | 64               | 2           | 2         | 4             | 32                | 1           | 1         | 50%        |
-| alu3      | 8192             | 5           | 5         | 4             | 4096              | 2           | 3         | 50%        |
-| in7       | 1310720          | 9           | 9         | 4             | 335544320         | 6           | 7         | -25500%    |
-|           | 221982,07        | 5,03        | 5,03      |               | 15153786,67       | 1,80        | 2,27      | -10,02     |
-|           | COSTO BOOL MEDIO |             |           |               | COSTO MULTI MEDIO |             |           |            |
+| NOME CIRC | DOMINIO | COSTO           | ALICE    | BOB      | % GUADAGNO |
+|-----------|---------|-----------------|----------|----------|------------|
+| amd       | 4       | 196608          | 3        | 4        | 50%        |
+| tms       | 16      | 1024            | 1        | 1        | 75%        |
+| pdc       | 4       | 1310720         | 4        | 4        | 50%        |
+| mlp4      | 16      | 512             | 1        | 1        | 75%        |
+| apla      | 4       | 6144            | 2        | 3        | 50%        |
+| f51m      | 16      | 512             | 1        | 1        | 75%        |
+| m4        | 16      | 1024            | 1        | 1        | 75%        |
+| newtpla2  | 4       | 2048            | 2        | 3        | 50%        |
+| test1     | 4       | 1280            | 2        | 2        | 50%        |
+| m2        | 16      | 1024            | 1        | 1        | 75%        |
+| br2       | 16      | 8192            | 1        | 2        | 75%        |
+| alu1      | 16      | 8192            | 1        | 2        | 75%        |
+| sqr6      | 8       | 256             | 1        | 1        | 64%        |
+| bench     | 4       | 256             | 1        | 2        | 50%        |
+| in5       | 4       | 117440512       | 6        | 6        | -6300%     |
+| newtpla1  | 4       | 1024            | 2        | 3        | 50%        |
+| m3        | 16      | 1024            | 1        | 1        | 75%        |
+| newapla   | 4       | 20480           | 3        | 3        | 50%        |
+| l8err     | 16      | 512             | 1        | 1        | 60%        |
+| t4        | 16      | 8192            | 1        | 2        | 75%        |
+| br1       | 16      | 8192            | 1        | 2        | 75%        |
+| fout      | 4       | 320             | 1        | 2        | 50%        |
+| mp2d      | 128     | 32768           | 1        | 1        | 86%        |
+| alu2      | 4       | 4096            | 2        | 3        | 50%        |
+| t3        | 16      | 8192            | 1        | 2        | 75%        |
+| p3        | 4       | 1792            | 2        | 2        | 42%        |
+| m1        | 8       | 256             | 1        | 1        | 67%        |
+| bcd_div3  | 4       | 32              | 1        | 1        | 50%        |
+| alu3      | 4       | 4096            | 2        | 3        | 50%        |
+| in7       | 4       | 335544320       | 6        | 7        | -25500%    |
+|           |         | **15153786,67** | **1,80** | **2,27** | **-10,02** |
+|           |         | **MEDIA**       |          |          |            |
+
+
 
 \newpage
 Una vota applicato la sintesi dei circuiti i risultati sono i seguenti:
 
-| NOME CIRC | COSTO BOOL       | INPUT ALICE | INPUT BOB | DOMINIO MULTI | COSTO MULTIVALORE | INPUT ALICE | INPUT BOB | % GUADAGNO |
-|-----------|------------------|-------------|-----------|---------------|-------------------|-------------|-----------|------------|
-| amd       | 469              | 7           | 7         | 4             | 47568             | 3           | 4         | -10042%    |
-| tms       | 322              | 4           | 4         | 16            | 1024              | 1           | 1         | -218%      |
-| pdc       | 2818             | 7           | 7         | 4             | 1310720           | 4           | 4         | -46412%    |
-| mlp4      | 594              | 4           | 4         | 16            | 512               | 1           | 1         | 14%        |
-| apla      | 343              | 5           | 5         | 4             | 1029              | 2           | 3         | -200%      |
-| f51m      | 261              | 4           | 4         | 16            | 272               | 1           | 1         | -4%        |
-| m4        | 974              | 4           | 4         | 16            | 1024              | 1           | 1         | -5%        |
-| newtpla2  | 48               | 5           | 5         | 4             | 2048              | 2           | 3         | -4167%     |
-| test1     | 1095             | 4           | 4         | 4             | 1280              | 2           | 2         | -17%       |
-| m2        | 339              | 4           | 4         | 16            | 1024              | 1           | 1         | -202%      |
-| br2       | 179              | 6           | 6         | 16            | 8192              | 1           | 2         | -4477%     |
-| alu1      | 83               | 6           | 6         | 16            | 4097              | 1           | 2         | -4836%     |
-| sqr6      | 197              | 3           | 3         | 8             | 200               | 1           | 1         | -2%        |
-| bench     | 198              | 3           | 3         | 4             | 256               | 1           | 2         | -29%       |
-| in5       | 446              | 7           | 7         | 4             | 1,17E+08          | 6           | 6         | -26331853% |
-| newtpla1  | 33               | 5           | 5         | 4             | 1024              | 2           | 3         | -3003%     |
-| m3        | 571              | 4           | 4         | 16            | 1024              | 1           | 1         | -79%       |
-| newapla   | 83               | 6           | 6         | 4             | 9728              | 3           | 3         | -11620%    |
-| l8err     | 454              | 4           | 4         | 16            | 512               | 1           | 1         | -13%       |
-| t4        | 238              | 6           | 6         | 16            | 8192              | 1           | 2         | -3342%     |
-| br1       | 252              | 6           | 6         | 16            | 8192              | 1           | 2         | -3151%     |
-| fout      | 442              | 3           | 3         | 4             | 320               | 1           | 2         | 28%        |
-| mp2d      | 136              | 7           | 7         | 3             | 7                 | 3           | 4         | 95%        |
-| alu2      | 225              | 5           | 5         | 3             | 1282              | 2           | 3         | -470%      |
-| t3        | 131              | 6           | 6         | 3             | 4                 | 3           | 3         | 97%        |
-| p3        | 385              | 4           | 4         | 3             | 1408              | 2           | 2         | -266%      |
-| m1        | 125              | 3           | 3         | 3             | 225               | 1           | 2         | -80%       |
-| bcd_div3  | 54               | 2           | 2         | 3             | 32                | 1           | 1         | 41%        |
-| alu3      | 139              | 5           | 5         | 3             | 4                 | 2           | 3         | 97%        |
-| in7       | 182              | 7           | 7         | 3             | 23085056          | 6           | 7         | -12683997% |
-|           | 393,87           | 4,87        | 4,87      |               | 4716541,87        | 1,93        | 2,43      |            |
-|           | COSTO BOOL MEDIO |             |           |               | COSTO MULTI MEDIO |             |           |            |
+| NOME CIRC | COSTO      | DOMINIO | COSTO          | ALICE    | BOB      | % GUADAGNO |
+|-----------|------------|---------|----------------|----------|----------|------------|
+| amd       | 469        | 4       | 47568          | 3        | 4        | -10042%    |
+| tms       | 322        | 16      | 1024           | 1        | 1        | -218%      |
+| pdc       | 2818       | 4       | 1310720        | 4        | 4        | -46412%    |
+| mlp4      | 594        | 16      | 512            | 1        | 1        | 14%        |
+| apla      | 343        | 4       | 1029           | 2        | 3        | -200%      |
+| f51m      | 261        | 16      | 272            | 1        | 1        | -4%        |
+| m4        | 974        | 16      | 1024           | 1        | 1        | -5%        |
+| newtpla2  | 48         | 4       | 2048           | 2        | 3        | -4167%     |
+| test1     | 1095       | 4       | 1280           | 2        | 2        | -17%       |
+| m2        | 339        | 16      | 1024           | 1        | 1        | -202%      |
+| br2       | 179        | 16      | 8192           | 1        | 2        | -4477%     |
+| alu1      | 83         | 16      | 4097           | 1        | 2        | -4836%     |
+| sqr6      | 197        | 8       | 200            | 1        | 1        | -2%        |
+| bench     | 198        | 4       | 256            | 1        | 2        | -29%       |
+| in5       | 446        | 4       | 1,17E+08       | 6        | 6        | -26331853% |
+| newtpla1  | 33         | 4       | 1024           | 2        | 3        | -3003%     |
+| m3        | 571        | 16      | 1024           | 1        | 1        | -79%       |
+| newapla   | 83         | 4       | 9728           | 3        | 3        | -11620%    |
+| l8err     | 454        | 16      | 512            | 1        | 1        | -13%       |
+| t4        | 238        | 16      | 8192           | 1        | 2        | -3342%     |
+| br1       | 252        | 16      | 8192           | 1        | 2        | -3151%     |
+| fout      | 442        | 4       | 320            | 1        | 2        | 28%        |
+| mp2d      | 136        | 3       | 7              | 3        | 4        | 95%        |
+| alu2      | 225        | 3       | 1282           | 2        | 3        | -470%      |
+| t3        | 131        | 3       | 4              | 3        | 3        | 97%        |
+| p3        | 385        | 3       | 1408           | 2        | 2        | -266%      |
+| m1        | 125        | 3       | 225            | 1        | 2        | -80%       |
+| bcd_div3  | 54         | 3       | 32             | 1        | 1        | 41%        |
+| alu3      | 139        | 3       | 4              | 2        | 3        | 97%        |
+| in7       | 182        | 3       | 23085056       | 6        | 7        | -12683997% |
+|           | **393,87** |         | **4716541,87** | **1,93** | **2,43** |            |
+|           | **MEDIA**  |         | **MEDIA**      |          |          |            |
+
 
 I costi vengono notevolmente abbassati nel caso del booleano mentre in quello multi valore rimangono più elevati. Analizzando Questo fenomeno potremmo trovare una spiegazione nel fatto che la sintesi sui circuiti binari è nettamente più sviluppata e sono stati scoperti metodi di sintesi più efficaci rispetto a quelli studiati per una logica multi valore.
-
 Il tool MVSIS infatti, come affermato in precedenza, non è più stato sviluppato ne mantenuto. All’atto pratico si presenta infatti più lento nella sintesi ed ha una gestione della memoria che porta a dump di memoria durante l’analisi di circuiti di grandi dimensioni.
 
 \newpage
@@ -187,7 +190,7 @@ Rispetto a prima però vi sarà la differenza che l’output post sintesi non sa
 
 Come con *MVSIS* è stato inizialmente utilizzato un dominio fisso per svolgere una prima analisi.
 
-| NOME CIRC | COSTO BOOL       | INPUT ALICE | INPUT BOB | COSTO MULTIVALORE | % GUADAGNO |
+| NOME CIRC | COSTO        | ALICE | BOB | COSTO | % GUADAGNO |
 |-----------|------------------|-------------|-----------|-------------------|------------|
 | amd       | 469              | 7           | 7         | 1860              | -297%      |
 | tms       | 322              | 4           | 4         | 198               | 39%        |
@@ -219,8 +222,8 @@ Come con *MVSIS* è stato inizialmente utilizzato un dominio fisso per svolgere 
 | bcd_div3  | 54               | 2           | 2         | 46                | 15%        |
 | alu3      | 139              | 5           | 5         | 406               | -192%      |
 | in7       | 182              | 7           | 7         | 1676              | -821%      |
-|           | 393,87           | 4,87        | 4,87      | 599,47            | -0,55      |
-|           | COSTO BOOL MEDIO |             |           | COSTO MULTI MEDIO |            |
+|           | **393,87**           | **4,87**        | **4,87**      | **599,47**            | **-0,55**      |
+|           | **MEDIA** |             |           | **MEDIA** |            |
 
 E’ ora possibile notare come i risultati siano già migliorati e, in molti casi, la sintesi del circuito multi valore risulti essere migliore di quella binaria, tranne in sporadici casi.
 
@@ -228,7 +231,7 @@ E’ ora possibile notare come i risultati siano già migliorati e, in molti cas
 
 Come ultimo test, come in MVSIS, abbiamo deciso di applicare anche l’approccio MCD.
 
-| NOME CIRC | COSTO BOOL       | INPUT ALICE 	| INPUT BOB | COSTO MULTIVALORE | % GUADAGNO 	|
+| NOME CIRC | BOOL       | ALICE 	| BOB | COSTO | % GUADAGNO 	|
 |-----------|------------------|-------------	|-----------|-------------------|------------	|
 | amd       | 469              | 7           	| 7         | 1860              | -297%      	|
 | tms       | 322              | 4           	| 4         | 184               | 43%        	|
@@ -261,6 +264,6 @@ Come ultimo test, come in MVSIS, abbiamo deciso di applicare anche l’approccio
 | alu3      | 139              | 5           	| 5         | 406               | -192%      	|
 | in7       | 182              | 7           	| 7         | 1676              | -821%      	|
 |           | 393,87           | 4,87        	| 4,87      | 654,50            | -1,15      	|
-|           | COSTO BOOL MEDIO |             	|           | COSTO MULTI MEDIO |            	|
+|           | MEDIA |             	|           | MEDIA |            	|
 
 In questo caso possiamo appurare che tra i due approcci non ci sono differenze sostanziali, questo risultato potrebbe essere derivato dalle modalità con cui ABC legge i circuiti multi valore in input.

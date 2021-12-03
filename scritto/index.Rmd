@@ -1,6 +1,4 @@
 ---
-title: "Tesi"
-author: "Andrea Locatelli"
 documentclass: book
 output:
   bookdown::pdf_book:
@@ -8,4 +6,5 @@ output:
       in_header: preamble.tex
 bibliography: ["book.bib"]
 link-citations: yes
+lang: it-it
 ---

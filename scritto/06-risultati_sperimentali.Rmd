@@ -1,6 +1,6 @@
 # Risultati sperimentali
 
-Una volta concluso il processo di conversione dei circuiti e  terminato tutto il sistema di automazione dei processi, si è proceduto con l’analisi sperimentale dei dati raccolti, in modo tale da valutare se questo nuovo approccio sviluppato potesse essere considerato una alternativa possibile o vincente rispetto alle proposte già presenti in letteratura.
+Una volta concluso il processo di conversione dei circuiti e terminato tutto il sistema di automazione dei processi, si è proceduto con l’analisi sperimentale dei dati raccolti, in modo tale da valutare se questo nuovo approccio sviluppato potesse essere considerato una alternativa possibile o vincente rispetto alle proposte già presenti in letteratura.
 
 Tutte le operazioni computazionali sono state effettuate utilizzando un DELL-XPS 13 9350, la macchina ha le seguenti specifiche:
 
@@ -12,9 +12,9 @@ Tutte le operazioni computazionali sono state effettuate utilizzando un DELL-XPS
 
 ## MVSIS
 
-Nelle prime fasi di sperimentazione si e’ decido di utilizzare MVSIS come motore di sintesi , sia per i circuiti binari che per quelli multivalore. Questo primo approccio è nato dalla volontà di replicare le operazioni che si svolgono solitamente sulla logica binaria per poi applicarle alla logica multivalore.
+Nelle prime fasi di sperimentazione si e’ decido di utilizzare MVSIS come motore di sintesi, sia per i circuiti binari che per quelli multi valore. Questo primo approccio è nato dalla volontà di replicare le operazioni che si svolgono solitamente sulla logica binaria per poi applicarle alla logica multi valore.
 
-Per le operazioni di sintesi si sono utilizzati i seguenti comandi
+Per le operazioni di sintesi si sono utilizzati i seguenti comandi:
 
 ```
 read_blif_mv ./prova/blfmv/amd.mv
@@ -31,17 +31,17 @@ sweep
 fullsimp -m nocomp
 write_blif_mv ./prova/blfmv/synth/mvsis/amd.mv
 ```
-Con questi comandi andiamo ad attuare una sintesi del  circuito preso in ingresso, nello specifico vengono effettuate tutte le operazioni  necessarie di pulizia e di rimozione di nodi inutili tramite i comandi _eliminate_ e _sweep_. Successivamente, tramite _simplify_ e _fullsimp_, il circuito viene semplificato su due livelli: sia  per quanto concerne i nodi presenti all’interno del circuito , sia per quanto riguarda il circuito stesso  nella sua interezza.
+Con questi comandi si va ad attuare una sintesi del circuito preso in ingresso, nello specifico vengono effettuate tutte le operazioni necessarie di pulizia e di rimozione di nodi inutili tramite i comandi _eliminate_ e _sweep_. Successivamente, tramite _simplify_ e _fullsimp_, il circuito viene semplificato su due livelli: sia per quanto concerne i nodi presenti all’interno del circuito, sia per quanto riguarda il circuito stesso nella sua interezza.
 
-Questi comandi sono la conversione della variante **MVSIS** di _script.rugged_ usato con il tool per la logica binaria SIS.  In questo caso, però, Non è stato possibile operare una conversione 1:1 dello script in quanto non tutti i comandi sono replicabili.
+Questi comandi sono la conversione della variante **MVSIS** di _script.rugged_ usato con il tool per la logica binaria SIS. In questo caso, però, Non è stato possibile operare una conversione 1:1 dello script in quanto non tutti i comandi sono replicabili.
 
-Per far fronte alla mancanza di replicabilità di alcuni comandi in questo sistema, è stato necessario eseguire un’ulteriore ricerca Sia In rete che in altri paper riguardanti l’argomento. Quello che ne viene dedotto è che è stato creato ed esiste un determinato script, chiamato _mvsis.rugged_ che ,  secondo la nostra ricerca, dovrebbe rappresentare la vera conversione adattata per il multivalore. Purtroppo però non è stato possibile in alcun modo reperire questo file in nessun repository, rendendolo quindi per noi non utilizzabile ai fini delle analisi.
+Per far fronte alla mancanza di replicabilità di alcuni comandi in questo sistema, è stato necessario eseguire un’ulteriore ricerca Sia in rete che in altri paper riguardanti l’argomento. Quello che ne viene dedotto è che è stato creato ed esiste un determinato script, chiamato _mvsis.rugged_ che, secondo la nostra ricerca, dovrebbe rappresentare la vera conversione adattata per il multi valore. Purtroppo però non è stato possibile in alcun modo reperire questo file in nessun repository, rendendolo quindi per noi non utilizzabile ai fini delle analisi.
 
 \newpage
 
-### Conversione multivalore fissa
+### Conversione multi valore fissa
 
-Come primo approccio alla conversione da binaria a multivalore abbiamo optato per lo stesso valore di dominio per tutti i circuiti. La scelta è stata quella di andare ad aggiungere altri 2 valori rispetto a ad un circuito binario utilizzando il modulo 3.
+Come primo approccio alla conversione da binaria a multi valore abbiamo optato per lo stesso valore di dominio per tutti i circuiti. La scelta è stata quella di andare ad aggiungere altri 2 valori rispetto a ad un circuito binario utilizzando il modulo 3.
 
 | NOME CIRC | COSTO BOOL       | INPUT ALICE | INPUT BOB | DOMINIO MULTI | COSTO MULTI       | INPUT ALICE | INPUT BOB | % Guadagno |
 |-----------|------------------|-------------|-----------|---------------|-------------------|-------------|-----------|------------|
@@ -78,11 +78,11 @@ Come primo approccio alla conversione da binaria a multivalore abbiamo optato pe
 |           |    **393,87**    |   **4,87**  |  **4,87** |               |   **4731943,63**  |   **2,43**  |  **2,83** |**-13039,51**|
 |           |**COSTO BOOL MEDIO**|             |           |               |**COSTO MULTI MEDIO**|             |           |            |
 
-Questa tabella racchiude i risultati ottenuti dalla sintesi dei circuiti multivalore e dei circuiti binari. Possiamo notare che nella maggior parte dei casi il circuito binario mantiene ancora una grande efficienza rispetto a quello multivalore.
+Questa tabella racchiude i risultati ottenuti dalla sintesi dei circuiti multi valore e dei circuiti binari. Possiamo notare che nella maggior parte dei casi il circuito binario mantiene ancora una grande efficienza rispetto a quello multi valore.
 
 ### MVSIS e dominio variabile
 
-Nella sperimentazione successiva si è voluto testare un dominio variabile in base al MCD, come descritto nel capitolo precedente. Nella seguente tabella vengono mostrati i costi dei circuiti senza sintesi. Possiamo osservare che nella maggior parte dei casi il dominio multivalore senza sintesi ha un costo minore . Questo risultato può essere considerato una conseguenza diretta del minor numero di input che le parti dovranno inserire all’interno del protocollo durante la computazione. Questi input, essendo in minor quantità, rendono l’intero processo di sintesi più leggero e meno costoso.
+Nella sperimentazione successiva si è voluto testare un dominio variabile in base al MCD, come descritto nel capitolo precedente. Nella seguente tabella vengono mostrati i costi dei circuiti senza sintesi. Possiamo osservare che nella maggior parte dei casi il dominio multi valore senza sintesi ha un costo minore. Questo risultato può essere considerato una conseguenza diretta del minor numero di input che le parti dovranno inserire all’interno del protocollo durante la computazione. Questi input, essendo in minor quantità, rendono l’intero processo di sintesi più leggero e meno costoso.
 
 | NOME CIRC | COSTO BOOL       | INPUT ALICE | INPUT BOB | DOMINIO MULTI | COSTO MULTIVALORE | INPUT ALICE | INPUT BOB | % GUADAGNO |
 |-----------|------------------|-------------|-----------|---------------|-------------------|-------------|-----------|------------|
@@ -157,7 +157,7 @@ Una vota applicato la sintesi dei circuiti i risultati sono i seguenti:
 |           | 393,87           | 4,87        | 4,87      |               | 4716541,87        | 1,93        | 2,43      |            |
 |           | COSTO BOOL MEDIO |             |           |               | COSTO MULTI MEDIO |             |           |            |
 
-I costi vengono notevolmente abbassati nel caso del booleano mentre in quello multivalore rimangono più elevati. Analizzando Questo fenomeno potremmo trovare una spiegazione nel fatto che la sintesi sui circuiti binari è nettamente più sviluppata e sono stati scoperti metodi di sintesi più efficaci rispetto a quelli studiati per una logica multivalore.
+I costi vengono notevolmente abbassati nel caso del booleano mentre in quello multi valore rimangono più elevati. Analizzando Questo fenomeno potremmo trovare una spiegazione nel fatto che la sintesi sui circuiti binari è nettamente più sviluppata e sono stati scoperti metodi di sintesi più efficaci rispetto a quelli studiati per una logica multi valore.
 
 Il tool MVSIS infatti, come affermato in precedenza, non è più stato sviluppato ne mantenuto. All’atto pratico si presenta infatti più lento nella sintesi ed ha una gestione della memoria che porta a dump di memoria durante l’analisi di circuiti di grandi dimensioni.
 
@@ -165,9 +165,9 @@ Il tool MVSIS infatti, come affermato in precedenza, non è più stato sviluppat
 
 ## ABC
 
-Avendo potuto appurare che, inizialmente il costo del circuito multivalore possiede dei costi più bassi per via del minor numero di input, ma che la logica binaria può appoggiarsi a degli strumenti di sintesi più ottimizzati, si è provato ad utilizzare un approccio ibrido tra i due.
+Avendo potuto appurare che, inizialmente il costo del circuito multi valore possiede dei costi più bassi per via del minor numero di input, ma che la logica binaria può appoggiarsi a degli strumenti di sintesi più ottimizzati, si è provato ad utilizzare un approccio ibrido tra i due.
 
-Sfruttando quindi come input un circuito multivalore ad ABC, questo tool è in grado di convertire automaticamente il circuito da multivalore a binario,  in modo tale da poter utilizzare i suoi algoritmi di sintesi nettamente più ottimizzati.
+Sfruttando quindi come input un circuito multi valore ad ABC, questo tool è in grado di convertire automaticamente il circuito da multi valore a binario, in modo tale da poter utilizzare i suoi algoritmi di sintesi nettamente più ottimizzati.
 
 ```
 read_blif_mv ./prova/blfmv/amd.mv
@@ -179,13 +179,13 @@ cl
 write_blif_mv ./prova/blfmv/synth/abc/amd.mv
 ```
 
-Rispetto a prima però vi sarà la differenza che l’output post sintesi non sarà più un circuito multivalore, bensì uno binario.
+Rispetto a prima però vi sarà la differenza che l’output post sintesi non sarà più un circuito multi valore, bensì uno binario.
 
 \newpage
 
 ## ABC e dominio fisso
 
-Come con *MVSIS* abbiamo inizialmente utilizzato un dominio fisso per svolgere una prima analisi.
+Come con *MVSIS* è stato inizialmente utilizzato un dominio fisso per svolgere una prima analisi.
 
 | NOME CIRC | COSTO BOOL       | INPUT ALICE | INPUT BOB | COSTO MULTIVALORE | % GUADAGNO |
 |-----------|------------------|-------------|-----------|-------------------|------------|
@@ -222,11 +222,11 @@ Come con *MVSIS* abbiamo inizialmente utilizzato un dominio fisso per svolgere u
 |           | 393,87           | 4,87        | 4,87      | 599,47            | -0,55      |
 |           | COSTO BOOL MEDIO |             |           | COSTO MULTI MEDIO |            |
 
-E’ ora possibile notare come i risultati siano già migliorati e , in molti casi,  la sintesi del circuito multivalore risulti essere migliore di quella binaria, tranne in sporadici casi.
+E’ ora possibile notare come i risultati siano già migliorati e, in molti casi, la sintesi del circuito multi valore risulti essere migliore di quella binaria, tranne in sporadici casi.
 
 ## ABC e dominio variabile
 
-Come ultimo test, come in MVSIS,  abbiamo deciso di applicare anche l’approccio MCD.
+Come ultimo test, come in MVSIS, abbiamo deciso di applicare anche l’approccio MCD.
 
 | NOME CIRC | COSTO BOOL       | INPUT ALICE 	| INPUT BOB | COSTO MULTIVALORE | % GUADAGNO 	|
 |-----------|------------------|-------------	|-----------|-------------------|------------	|
@@ -263,4 +263,4 @@ Come ultimo test, come in MVSIS,  abbiamo deciso di applicare anche l’approcci
 |           | 393,87           | 4,87        	| 4,87      | 654,50            | -1,15      	|
 |           | COSTO BOOL MEDIO |             	|           | COSTO MULTI MEDIO |            	|
 
-In questo caso possiamo appurare che tra i due approcci non ci sono differenze sostanziali, questo  risultato potrebbe essere derivato dalle modalità con cui  abc legge i circuiti multivalore in input.
+In questo caso possiamo appurare che tra i due approcci non ci sono differenze sostanziali, questo risultato potrebbe essere derivato dalle modalità con cui ABC legge i circuiti multi valore in input.

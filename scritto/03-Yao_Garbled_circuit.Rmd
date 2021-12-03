@@ -92,6 +92,6 @@ Potrà poi continuare la sua valutazione con la seconda porta, che è la porta O
 
 Potrà ora decifrare la porta XOR finale usando l'ingresso calcolato $({\color{green}\bullet}{}w_5^0,{\color{green}\bullet}{}w_6^1)$, decifrando così la voce $\color{green}\bullet\color{green}\bullet$ che gli fornisce il risultato finale: $1$.
 
-Bob non  è a conoscenza di quale sia stato effettivamente l’input di Alice, ne conosce solo l’output finale “1” e le stringhe generate casualmente $w_1^0,w_2^0,w_3^1,w_4^0,w_5^0,w_6^1$. Egli può ancora, per esempio, dedurre dal circuito che i valori semantici di $w_5^0$ e $w_6^1$ sono opposti, tuttavia questo sistema non gli permette di invertire il circuito confuso fino ai valori di ingresso di Alice. 
+Bob non è a conoscenza di quale sia stato effettivamente l’input di Alice, ne conosce solo l’output finale “1” e le stringhe generate casualmente $w_1^0,w_2^0,w_3^1,w_4^0,w_5^0,w_6^1$. Egli può ancora, per esempio, dedurre dal circuito che i valori semantici di $w_5^0$ e $w_6^1$ sono opposti, tuttavia questo sistema non gli permette di invertire il circuito confuso fino ai valori di ingresso di Alice. 
 
 Ci sono alcuni circuiti in cui non è assicurata la privacy, come per esempio un circuito che calcola la somma degli ingressi. Tuttavia, in questo caso di esempio Bob, conoscendo i suoi valori semantici di ingresso, può semplicemente limitare gli ingressi di Alice a un sottoinsieme dei possibili ingressi, ma non può determinare in modo univoco i reali valori di ingresso di Alice. [@hemenway2014achieving]

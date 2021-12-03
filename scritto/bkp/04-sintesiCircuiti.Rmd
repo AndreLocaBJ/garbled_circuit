@@ -1,0 +1,108 @@
+# La sintesi dei circuiti
+
+Nel capitolo precedente abbiamo discusso dell’importanza della presenza di un circuito logico all’interno del protocollo creato da Yao. A livello di funzionalità La scelta di un circuito efficiente è da considerarsi un fattore importantissimo in quanto rende la computazione e i tempi di calcolo delle operazioni non elevati. Ciò che effettivamente rende efficace la scelta è trovare il giusto bilanciamento tra numero di input che le 2 parti coinvolte devono immettere nel circuito e, nel caso di un dominio multivalore, scegliere un dominio non troppo elevato poiché quest’ultimo andrebbe ad immettere, per ogni valore di input, troppi valori che di conseguenza porterebbero ad aumentare i costi totali del circuito. [@brayton1999multi]
+
+La scelta di questi circuiti viene facilitata dall'utilizzo di strumenti chiamati sintetizzatori, questi tool sono stati creati appositamente per andare a ridurre quanto possibile le dimensioni dei circuiti dati loro in ingresso. All’interno di questo lavoro di analisi sono stati utilizzati due tool differenti: **MVSIS** e **ABC**. Entrambi sono stati sviluppati nel tempo dall'università di Berkley. Sia **MVSIS** che **ABC** contengono diversi metodi di sintesi capaci di andare ad eliminare i nodi e le ridondanze superflue all’interno dei circuiti e in grado di sintetizzare il circuito andandone a cambiare radicalmente la struttura interna dei nodi.
+
+Nonostante l’uguale utilizzo per il quale questi due diversi tool sono stati sviluppati, vi sono comunque alcune differenze tra loro che andremo ad analizzare qui di seguito.
+
+\newpage
+
+## MVSIS
+
+**MVSIS** è il primo tool di sintesi dei circuiti di cui parleremo. Grazie alla sua implementazione esso è in grado di manipolare i circuiti con una logica detta “logica multivalore”. Per la sua creazione è stato preso come modello **SIS**, un tool sviluppato e specifico per la logica binaria, cercando di mantenerne simile la logica di funzionamento.
+
+### Design specification
+
+Un circuito multivalore (MV circuit) può essere dato come valore di input a MVSIS tramite l’apposito comando (read_blifmv) e, oltre ai circuiti multivalore,  è possibile anche dare come imput circuiti binari. Internamente, la rappresentazione del progetto è una rete di nodi MV  dove ogni nodo rappresenta una funzione MV con una singola uscita a più valori. È importante però specificare una fondamentale  distinzione con alcuni altri metodi multivalore, cioè  che ogni variabile del nodo può avere un dominio diverso. L'intervallo per la variabile $y_k$ è rappresentato dall'insieme $P_k=\{0,1,...,p_k -1 \}. La funzione il cui esito dà UN SET dei mintermi (Una sola uscita con 0 o 1) per i quali $f_k = i$ (la funzione al nodo $k$ è uguale al valore $i$ ) è chiamata *i-set* della funzione $f_k$ e viene memorizzata in forma SOP (Somma di prodotti). Nel caso di logica a 2 valori, l'insieme 0 corrisponde all'off-set e l'insieme 1 all'on set. Una variabile MV yk è associata all'uscita del nodo k. Un margine congiunge $k$ a $j$ se uno qualsiasi degli i-set di $j$ dipende esplicitamente da $y_k$. La rete ha un insieme di ingressi primari (che possono essere tutti a più valori) e un insieme di nodi di ingressi primari.
+
+\newpage
+
+### Semplificazione dei nodi
+
+L'i-set (uno per ogni valore di output) di un nodo multivalore può essere semplificato con 2 comandi:
+
+- SIMPLIFY
+- FULLSIMP
+
+FULLSIMP, tra le 2 opzioni, è quella che garantisce una semplificazione più efficace. Poichè Utilizza il CODC (Compatible Observability Don’t Cares) e l’ MV-image computation. Ogni i-set del nodo è  in seguito semplificato dal metodo di sintesi ESPRESSO-MV utilizzando i valori che siamo stati in grado di ricavare ricorrendo alle due tecniche precedenti. [@mvsis]
+
+### Kernel e Cube Extraction
+
+Oltre all’utilizzo dei sintetizzatori vi è però Un altro importante step che è possibile applicare per operare un’ ottimizzazione del circuito. questo ulteriore passaggio consiste nell’applicare metodi algebrici  al fine di estrarre nuovi nodi che hanno divisori comuni per altri nodi.  Nel tempo sono state sviluppate nuove tecniche algebriche dedicate alla logica MV che ci permettono di trattare uniformemente le variabili binarie e multi-valore. Tra le loro funzioni, queste tecniche algebriche includono svariate possibilità, tra cui: metodi per trovare sottoespressioni comuni, divisione semi-algebrica, decomposizione di una rete multi-valore e fattorizzazione di una forma SOP. Per fare maggiore chiarezza di seguito elencheremo quali sono i I comandi più rilevanti, seguiti da alcune brevi descrizioni delle loro capacità.
+
+1. **FX**: questo comando individua divisori comuni all’interno della rete e crea nuovi nodi all’interno di essa, nei quali vengono raccolti tutti i nodi coinvolti nel divisore comune. 
+2. **Decomp**: questo comando esegue una completa fattorizzazione multivaloriale degli i-sets di ogni nodo e, in seguito,  suddivide i nodi secondo queste fattorizzazioni. Dopo questo procedimento viene utilizzato il comando  _resub_, che ricorre  alla divisione algebrica multivalore per eliminare i fattori duplicati all’interno della rete.
+
+\newpage
+
+### Altri comandi per la manipolazione dei nodi
+
+1. **Collapsing**: converte l’intera rete multilivello in modo che le forme SOP per ogni uscita siano in termini di soli ingressi primari. Così il numero di nodi nella rete sarà esattamente il numero di uscite primarie.
+2. **Merging**: Acquisisce tutti i nodi della rete e forza un’unione di questi, così facendo genera un singolo nodo multi-valore costruendo un i-set per ogni combinazione di valori creata. Nel caso in cui da questo processo vengano generati i-set  uguali, essi vengono uniti in un singolo nodo.
+3. **Encoding**: è considerabile come l’inverso del merging di funzioni binarie, esso infatti Cerca di trovare una buona codifica binaria per ogni variabile multi-valore nella rete, compresi gli ingressi e le uscite primarie. Alla fine di questo procedimento ogni segnale è codificato come un segnale binario. È possibile quindi, grazie al comando encoding, scrivere un file binario a partire da un multivalore. Questo processo di traslazione può essere così spiegato in due fasi:
+   1. Inizia dagli ingressi e per ogni nodo, determina se uno dei suoi fanin può essere usato per codificare parzialmente il nodo.
+   2. nizia dalle uscite e, in ordine topologico inverso, lavora a ritroso fino agli ingressi primari. Ad ogni nodo, le sue uscite sono codificate utilizzando le informazioni su come sono utilizzati i suoi fanout.
+4. **Pair decoding**: Ha la stessa funzione del merging, ma a  differenza del precedente questo comando utilizza un altro metodo per scegliere quali nodi unire.
+5. **Bi-decomposition**: roduce dei nodi multi-valore intermedi.  Esso acquisisce una rete MV appiattita, o parzialmente appiattita, e ne genera una nuova composta da porte MAX e MIN multi-valutate a due ingressi e da iterali multi-valutati. In questo processo, per la creazione dei nuovi nodi, Vengono sfruttate sia l’incompletezza della specifica iniziale che le flessibilità generate nel processo di composizione. [@chai2003mvsis] [@yang1991logic]
+
+\newpage
+
+## ABC
+
+ABC è un sistema software in sviluppo che ha come obbiettivi la sintesi e la verifica di circuiti logici sequenziali binari che appaiono in progetti hardware. Il meccanismo di ABC si basa sulla combinazione di  un’ottimizzazione logica scalabile basata su And-Inverter Graphs (AIGs), una mappatura tecnologica basata su DAG per tabelle di look-up, celle standard e algoritmi innovativi per la sintesi e la verifica sequenziale.
+
+Si può dire che Questo programma sia nato dalle esperienze assimilate dall’uso di SIS, VIS e MVSIS , lo sviluppo di ABC è stato portato avanti in quanto Questi sistemi precedentemente citati non erano in grado di fornire un ambiente di programmazione flessibile per implementare le recenti innovazioni, per quanto riguarda l’ambiente SIS, esso risulta essere obsoleto e piuttosto inefficiente nella gestione di grandi circuiti. VIS, invece, essendo stato progettato come strumento di verifica formale per specifiche multi-valore, non fornisce abbastanza flessibilità per la sintesi binaria. Diverso è invece il discorso per quanto riguarda MVSIS che, nonostante il suo ampio utilizzo, presenta alcune problematiche:
+
+- Le strutture dati e gli algoritmi di base di MVSIS possono essere resi considerevolmente più semplici e facili da utilizzare assumendo come punto di partenza le reti binarie.
+- Un posto centrale nel nuovo sistema dovrebbe essere dato a una nuova struttura dati, le AIG (reti logiche multilivello composte da AND e inverter a due ingressi), che promettono miglioramenti nella qualità e nel tempo di esecuzione della sintesi e della verifica.
+
+La comprensione di queste problematiche ha spinto a ri-sviluppare i pacchetti di base di MVSIS creando un nuovo ambiente di programmazione chiamato ABC. Come suggerisce il nome, l’obiettivo primario di questo sistema software è quello di mantenere strutture di dati semplici e flessibili in modo da poter essere impiegate da una vasta gamma di applicazioni.
+
+L’obiettivo del progetto ABC è quello di fornire un’implementazione pubblica degli algoritmi di sintesi combinatoria e sequenziale allo stato dell’arte e, allo stesso tempo, creare un ambiente open-source, in cui tali applicazioni possano essere sviluppate e confrontate. La versione attuale di ABC può  ottimizzare, mappare e realizzare progetti industriali a livello di gate con 100K porte e 10K elementi sequenziali cont tempi di calcolo non superiori al minuto prendendo in considerazione un computer moderno. [@mishchenko2007abc]
+
+\newpage
+
+### Sintesi combinatoria
+
+Per comprendere a pieno l’innovazione di ABC ci basta eseguire una comparazione con MVSIS. Infatti, I metodi di logica combinatoria utilizzati da ABC all’interno dei suoi script (resyn e resyn2) sono tipicamente 10-100 volte più veloci se  messi a confronto con gli script utilizzati all’interno di SIS o MVSIS.
+
+In ABC, i confini dei nodi sono inizialmente distrutti dall’hashing strutturale (comando strash), che trasforma una rete logica in un AIG. I confini possono essere ricreati su richiesta utilizzando il comando renode, che può essere considerato come un inverso del comando SIS eliminate. Nel flusso di sintesi presentato sopra la logica viene trasformata a livello di AIG senza creare nodi.
+
+- **Balance**: prende come ingresso un AIG e lo bilancia in modo tale che la struttura risulti equilibrata per il calcolo.
+- **Cleanup**:  Mette in atto la rimozione dei nodi logici che non sono a ventaglio in PO e latches. 
+- **Collapse**: Collassa tutto il circuito ad una rete ad un solo livello. Le funzioni dei nodi sono rappresentate utilizzando le BDD. 
+- **Dsd**: Applica al circuito la decomposizione disjoint-support utilizzando l’algoritmo di Bertacco/Damiani [@ICCAD97]. 
+- **fx**: Rileva la logica di condivisione estraendo i divisori a due cubi e i divisori a due lettere a un cubo sfruttando l’algoritmo di Rajski/Vasudevamurthi [@TCAD92].
+- **Multi**: Espande l’AIG a due ingressi generando una rete di porte AND a più ingressi.
+- **refactor**: Esegue il collasso iterativo e il refactoring dei coni logici nell’AIG  con lo scopo di ridurre sia il numero di nodi AIG che il numero di livelli logici.
+
+\newpage
+
+- **renode**: Assume che l’input sia un AIG. Crea i confini dei nodi in quest’ultimo e collassa la logica intermedia per formare nodi più grandi.
+- **rewrite**: Assume che l’input sia un AIG. Crea i legami tra i nodi in quest’ultimo e collassa la logica intermedia allo scopo di formare nodi più grandi.
+- **rr**: Esegue la rimozione della ridondanza per le AIG.
+- **strash**: Trasforma la rete data in imput al programma in un AIG tramite un livello di hashing strutturale. L’AIG risultante è una rete logica composta da due fattori: porte AND a due ingressi e invertitori rappresentati come attributi complementari sui bordi. L’hashing strutturale è una trasformazione puramente combinatoria, che in quanto tale non modifica in alcun modo il numero e le posizioni delle porte.
+- **sweep**: Grazie al suo funzionamento Sweep esegue i seguenti compiti: rimuove i nodi dangling (nodi senza fanout), collassa i buffer e gli inverter nei loro fanout, propaga le costanti, e rimuove i fanin duplicati. Sweep non può però essere applicato a un AIG perché quest’ultimo  è strutturalmente hashed e quindi non ha buffer, invertitori e nodi costanti non propagati. Per rimuovere i nodi dandling nella rete logica è necessario dunque utilizzare cleanup. tramite questi comandi sweep è in gradi di ridisegnare completamente il circuito a livello strutturale.
+
+\newpage
+
+### Sintesi sequenziale
+
+La sintesi sequenziale è un processo che, ove presenti, trasforma la rete corrente modificandone la logica insieme agli elementi di memorizzazione (latches o flip-flops). La rete risultante dalla sintesi sequenziale può avere una codifica di stato e uno spazio di stato diversi rispetto alla rete originale, ma le due reti sono sequenzialmente equivalenti; nello specifico, (partendo dagli stati iniziali, per le stesse sequenze di vettori d’ingresso  vengono generate sequenze identiche di vettori d’uscita). [@manual2006quick]
+
+- **Cycle**: Simula la rete sequenziale con un input casuale per poi aggiornare il suo stato attuale..
+- **init**: Ripristina gli stati iniziali di tutte le porte della rete corrente.
+- **lcorr**  attua una Implementazione suddivisa di registro-corrispondenza usando l’induzione semplice. Per poi Rilevare e fondere registri che siano sequenzialmente equivalenti.
+- **retime**: Implementa diversi tipi di retiming, tra questi citiamo i seguenti: 
+   - most forward;
+   - most backward;
+   - minimum-register;
+   - minimum-delay euristico;
+   - delay-optimal retiming [@ICCD_1997]
+
+   Quando il circuito è trasformato dall’AIG in una rete logica, le porte sono condivise in modo ottimale attraverso gli archi di fanout . Il calcolo degli stati iniziali dopo il retiming è ridotto ad un problema SAT, che viene risolto ricorrendo a MiniSat.
+- **scleanup**: Esegue la pulizia sequenziale, cioè rimuove i nodi e le latches che non sono a fanout.
+- **ssw**: Implementa i segnali corrispondenti applicando l’induzione K-step. E in seguito Rileva e fonde i nodi sequenzialmente equivalenti.
+- **undc**: Converte i registri con gli stati iniziali don’t care in registri con uno stato iniziale costante -0. In particolare è possibile utilizzare questo comando prima di eseguire qualsiasi verifica sequenziale.
+- **xsim**: Esegue la simulazione con $X$ valore  della rete sequenziale corrente. 

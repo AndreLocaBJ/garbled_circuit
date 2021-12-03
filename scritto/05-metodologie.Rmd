@@ -2,24 +2,19 @@
 
 Il protocollo di Yao prevede, durante i suoi scambi, che le due parti coinvolte concordino anche sulla trasmissione di un circuito a cui entrambi gli attori debbano inserire dei valori di input. Uno degli scopi della nostra tesi consiste nel testare l’efficacia dell’utilizzo di un multi valore rispetto all’utilizzo “classico” di un circuito booleano, concentrandoci specificatamente sull'importante valore costituito dal fattore di costo computazionale delle operazioni che vengono svolte.
 
-Per avviare la nostra analisi siamo partiti quindi selezionando un set di circuiti binari con caratteristiche diverse, tra cui differente numero di ingressi, uscite e livelli. Partendo da questa base ci siamo successivamente concentrati sulla ricerca di una metodologia di conversione dei circuiti  atta a traslarli  da un ‘classico’ dominio booleano ad uno multi-valore, dove quindi i valori non sono più rappresentati da 0 e 1 ma da  un set più ampio di valori. Tutto ciò sempre  mantenendo le funzionalità del circuito. Una volta ottenuta una controparte per ogni circuito abbiamo proceduto con un confronto dei circuiti al fine di riuscire ad individuare quali di questi set fossero più efficaci.
+Per avviare la nostra analisi siamo partiti quindi selezionando un set di circuiti binari con caratteristiche diverse, tra cui differente numero di ingressi, uscite e livelli. Partendo da questa base ci siamo successivamente concentrati sulla ricerca di una metodologia di conversione dei circuiti atta a traslarli da un ‘classico’ dominio booleano ad uno multi valore, dove quindi i valori non sono più rappresentati da 0 e 1 ma da  un set più ampio di valori. Tutto ciò sempre  mantenendo le funzionalità del circuito. Una volta ottenuta una controparte per ogni circuito si è proceduto con un confronto dei circuiti al fine di riuscire ad individuare quali di questi set fossero più efficaci.
 
 \newpage
 
 ## La logica multi-valore
 
-La logica multi-valore è una generalizzazione della classica logica booleana. Una delle ragioni per la quale consideriamo questa generalizzazione è che essa può portare ad una comprensione più profonda di problemi specifici. Per generalizzare la struttura alcune proprietà, rispetto a quelle della logica booleana, vanno mantenuta mentre altre dovranno essere scartate. Un altro motivo per cui consideriamo la logica multi-valore è dato dalla sua capacità di poter risolvere alcuni problemi in modo più efficace rispetto alla logica booleana.
+La logica multi-valore è una generalizzazione della classica logica booleana. Una delle ragioni per la quale è stata presa in considerazione è che essa può portare ad una comprensione più profonda di problemi specifici. La logica multi valore può avere numerosi vantaggi teorici rispetto a quelle booleana:
 
+- Memory design: Memorizzare informazioni a blocchi di 2bit invece che uno raddoppia la densità delle informazioni che si possono racchiudere nello stesso spazio.
 - Utilizzo per rappresentazione di funzioni booleane con più output;
 - Design di PLA con input decoder;
 - Ottimizzazione di macchine a stato finite;
 - Testing e verifica.
-
-La logica multi-valore può avere un numero di vantaggi teorici risolvere a quelle booleana:
-
-- Il numero di chip all'interno di un circuito con più on/off può essere ridotto se il segnale nel circuito assume più livelli al posto che i classici 2 messi a disposizione dalla logica booleana;
-- Memory design: Memorizzare informazioni a blocchi di 2bit invece che uno raddoppia la densità delle informazioni che si possono racchiudere nello stesso spazio.
-- ecc.
 
 Le potenzialità pratiche di questi vantaggi dipendono pesantemente dalla disponibilità della realizzazione di questi circuiti che devono comunque rimanere compatibili con gli standard tecnologici odierni. [@gao2002optimization]
 
@@ -27,16 +22,16 @@ Le potenzialità pratiche di questi vantaggi dipendono pesantemente dalla dispon
 
 ### Le funzioni multi-valore
 
-Una funzione multi-valore è una funzione discreta che ha come input e output variabili che assumono più di 2 valori. Solitamente le funzioni multi-valore sono definite come: $f: P_1 \times P_2 \times ... P_n \rightarrow Q$ dove le variabili $x_i$ della funzione prendono valore dal gruppo $P_i = \{ 0,1,2,...,p_i-1 \}, p_i > 1 
+Una funzione multi-valore è una funzione discreta che ha, sia come input che come output, delle variabili che assumono più di 2 valori. Solitamente le funzioni multi-valore sono definite come: $f: P_1 \times P_2 \times ... P_n \rightarrow Q$ dove le variabili $x_i$ della funzione prendono valore dal gruppo $P_i = \{ 0,1,2,...,p_i-1 \}, p_i > 1 
 , i \in \{ 1,2,...,n\}$ e la funzione prende valori dal set $Q = \{0,1,2,...,q\}, q>1$
 
 ### Rappresentazione di funzioni multi-valore
 
-Il modo più semplice per rappresentare un funzione con $m$ valori e $n$ variabili consiste nel creare una tabella di verità con $m^n$ righe, ognuna delle quali specifica il valore della funzione corrispondente alla combinazione delle variabili in ingresso. Una tabella di verità può essere ridisegnata come un rettangolo n-dimensionale con m-valore in una mappa di Karneaugh. Il problema di queste due rappresentazioni consiste nella difficoltà nella rappresentazione in caso di tabelle complesse. Nei prossimi capitoli mostrerò metodi di rappresentazione più efficaci per la logica multi-valore.
+Il modo più semplice per rappresentare un funzione con $m$ valori e $n$ variabili consiste nel creare una tabella di verità con $m^n$ righe, ognuna delle quali specifica il valore della funzione corrispondente alla combinazione delle variabili in ingresso. Una tabella di verità può essere ridisegnata come un rettangolo n-dimensionale con m-valore in una mappa di Karneaugh. Il problema di queste due rappresentazioni consiste nella difficoltà di raffigurazione in caso di tabelle complesse. Nei prossimi capitoli mostrerò metodi di rappresentazione più efficaci per la logica multi valore.
 
 #### Positional cube notation
 
-Utilizzata nella logica booleana questa tecnica di visualizzazione può essere utilizzata anche per funzioni con input multi-valore e output booleano. Quando un letterale binario, $x$ o $x'$, viene rappresentato da un campo a 2 bit una funzione letterali multivalore $m$ viene rappresenta con un campo a $m$ bit. Il valore $i \in M$ corrisponde al bit $i$ dell campo. Un letterale $x^S$ ha 1 in tutte le posizioni $i \in S$. Per esempio:
+Utilizzata nella logica booleana, questa tecnica di visualizzazione può essere applicata anche per funzioni con input multi valore e output booleano. A differenza di un letterale binario, $x$ o $x'$, viene rappresentato da un campo a 2 bit, una funzione letterale multi valore $m$ viene rappresenta con un campo a $m$ bit. Il valore $i \in M$ corrisponde al bit $i$ dell campo. Un letterale $x^S$ presenta il valore 1 in tutte le posizioni $i \in S$. Per esempio:
 
 $$\begin{tabular}{ c|c c c} 
  \hline
@@ -49,7 +44,7 @@ $$\begin{tabular}{ c|c c c}
 
 \newpage
 
-Applicando la Positional Cube Notation diventa:
+Applicando la Positional Cube Notation esso diventa:
 
 $$\begin{array}{ccc}
 110 & - & 100 \\
@@ -57,20 +52,20 @@ $$\begin{array}{ccc}
 011 & - & 001 
 \end{array}$$
 
-Per il caso booleano una condizione don't care di un valore in una riga corrisponde al fatto che quell'elemento può assumere valori 0 o 1. Per una funzione multi-valore essa può essere rappresentata nel seguente modo:
+Per quanto riguarda il caso booleano la condizione don't care di un valore in una riga corrisponde al fatto che quell'elemento può assumere valori 0 o 1. Per una funzione multi valore, invece, una condizione don't care può essere rappresentata nel seguente modo:
 
-- Si spezza la funzione $f: M^n \rightarrow M$ rispettando tutti i valori $i \in M$ in $m$ funzione multivalore in input e output multi-valore con la seguente logica $f^i: M^n \rightarrow \{0,1\}$
+- Si spezza la funzione $f: M^n \rightarrow M$, rispettandone tutti i valori $i \in M$, generando $m$ funzioni multi valore, input e output multi valore utilizzando la seguente logica $f^i: M^n \rightarrow \{0,1\}$
 - Infine si rappresenta ognuna delle funzioni spezzate nella notazione. [@Dubrova2002]
 
 #### Multiple Valued Network
 
-UN Multiple Valued network è un grafo multi-livello simile a quello booleano con la differenza che, ogni nodo, rappresenta una funzione multi-valore. Per sistemi con alto livello di astrazione l'utilizzo di questi grafi può rendere il design della progettazione più intuitivo. Prendiamo, per esempio, il controller di un semaforo, esso può prendere valore _rosso_, _giallo_ o _verde_ piuttosto che considerare l'encoding in modo binario. Questo tipo di progettazione è possibile solamente semplificando il sistema fino a che non è possibile renderlo ancora più ottimale nella manipolazione del dominio dei valori. Il lato negativo di questa tecnica è che la rappresentazione di un sistema non è canonica, poichè una funzione può assumere più rappresentazioni. Questo lato negativo rende il testing più difficoltoso.
+Una Multiple Valued network è un grafo multi-livello simile a quello booleano con la differenza che ogni nodo rappresenta una funzione multi valore. Per sistemi con alto livello di astrazione l'utilizzo di questi grafi può rendere il design della progettazione più intuitivo. Prendiamo, per esempio, il controller di un semaforo, esso può prendere valore _rosso_, _giallo_ o _verde_ piuttosto che considerare l'encoding in modo binario. Questo tipo di progettazione è possibile solamente semplificando il sistema fino al punto in cui non è possibile renderlo ancora più ottimale nella manipolazione del dominio dei valori. Il lato negativo di questa tecnica è che la rappresentazione di un sistema non si presenta in forma canonica, poichè una funzione può assumere più rappresentazioni. Questo lato negativo rende il testing più difficoltoso.
 
 \newpage
 
 #### MDDS
 
-Multiple Valued Decision Diagrams sono semplicemente una generalizzazione degli alberi binari di decisione (BDDs). Le funzioni sono rappresentate creando un diagramma aciclico con nodi non terminali $v$ etichettati da una variabile di indice $index(i), i \in \{1,2,...,n\}$. Ogni vertice $v$ ha $m$ uscite dirette verso i nodi figli, chiamtti $child_j(v), j \in M$. Ogni vertice terminale $v$ ha come attributo un valore $value(v)$ in $M$.
+I Multiple Valued Decision Diagrams sono una generalizzazione degli alberi binari di decisione (BDDs). Le funzioni sono rappresentate creando un diagramma aciclico con nodi non terminali $v$ etichettati da una variabile di indice $index(i), i \in \{1,2,...,n\}$. Ogni vertice $v$ ha $m$ uscite dirette verso i nodi figli, chiamati $child_j(v), j \in M$. Ogni vertice terminale $v$ ha come attributo un valore $value(v)$ in $M$.
 
 ![](./media/04.png){width=70%}
 
@@ -78,7 +73,7 @@ Multiple Valued Decision Diagrams sono semplicemente una generalizzazione degli 
 
 ## Studio del circuito binario
 
-Analizzando i vari circuiti per testare la nostra tesi  è stato necessario ai fini dell’analisi sviluppare una tecnica di conversione dei circuiti binari di partenza. La caratteristica di una naturale rappresentazione di un circuito consiste nella sua divisione in nodi, ognuno dei quali viene rappresentato da una tabella di verità i cui input e output vanno a correlarsi tra loro tramite dei collegamenti. Soffermandoci più attentamente sulle tabelle di verità abbiamo notato come, andando ad applicare un raggruppamento di  bit per ogni riga della tabella,  sarebbe possibile riuscire a rappresentare un valore di dominio più grande di quello binario del circuito in analisi. Di conseguenza, così facendo, è possibile attuare una riduzione del numero di input richiesti dal gate.
+Analizzando i vari circuiti per testare la tesi  è stato necessario, ai fini dell’analisi, sviluppare una tecnica di conversione dei circuiti binari di partenza. La caratteristica di una naturale rappresentazione di un circuito consiste nella sua divisione in nodi, ognuno dei quali viene rappresentato da una tabella di verità i cui input e output vanno a correlarsi tra loro tramite dei collegamenti. Soffermandosi più attentamente sulle tabelle di verità è stato possibile notare come, andando ad applicare un raggruppamento di $n$ bit per ogni riga della tabella, sarebbe possibile riuscire a rappresentare un valore di dominio più grande di quello binario del circuito in analisi. Di conseguenza, così facendo, è possibile attuare una riduzione del numero di input richiesti dal gate.
 
 $$\begin{matrix}
     \underbrace{10} & \underbrace{11} & \underbrace{00} \\
@@ -86,23 +81,23 @@ $$\begin{matrix}
     2 & 3 & 0
 \end{matrix}$$
 
-Con questo approccio è possibile non snaturare quella che è la logica della tabella originale poiché, sapendo qual è il nuovo dominio applicato,  abbiamo la possibilità di invertire il processo di conversione ritornando  quindi al circuito originale.
+Con questo approccio è possibile non snaturare quella che è la logica della tabella originale poiché, sapendo qual è il nuovo dominio applicato,  vi è la possibilità di invertire il processo di conversione, ritornando quindi al circuito originale.
 
-È necessario però considerare i vincoli presentati da questo approccio di conversione dei circuiti booleani. Quest’ultimi risiedono nel fatto che, al momento, la conversione può essere attuata solo e soltanto con un numero pari di input, e che il numero di output sia un divisore del numero di bit utilizzati per il raggruppamento.
+È necessario però considerare i vincoli presentati da questo approccio di conversione dei circuiti booleani. Queste limitazioni risiedono nel fatto che, al momento, la conversione può essere attuata solo e soltanto con un numero pari di input e che il numero di output sia un divisore del numero di bit utilizzati per il raggruppamento.
 
 \newpage
 
 Una volta definito il metodo di conversione e preso atto dei vincoli di questo tipo di approccio, abbiamo proseguito con la scelta del nuovo dominio da applicare ai circuiti, questo con l’obiettivo di trovare il giusto compromesso per ottenere i seguenti  risultati:
 
 - Una riduzione degli input che facesse diminuire il costo del circuito di ingresso rispetto al circuito di partenza.
-- Trovare un dominio multivalore che risulti efficace nella riduzione dei costi. avere un dominio superiore a quello booleano ma troppo elevato significherebbe che, per ogni input, ogni parte dovrebbe inserire tanti valori di input quanti quelli del dominio richiesto e, se si sceglie un dominio troppo grande, nonostante la riduzione degli input ci si troverebbe comunque con un costo totale del circuito elevato. Si è deciso quindi di sperimentare 2 approcci alla scelta di questo valore, uno statico e uno dinamico.
+- Trovare un dominio multi valore che risulti efficace nella riduzione dei costi. avere un dominio superiore a quello booleano ma troppo elevato significherebbe che, per ogni input, ogni parte dovrebbe inserire tanti valori di input quanti quelli del dominio richiesto e, se si sceglie un dominio troppo grande, nonostante la riduzione degli input ci si troverebbe comunque con un costo totale del circuito elevato. Si è deciso quindi di sperimentare 2 approcci alla scelta di questo valore, uno statico e uno dinamico.
 
     - **Statico**: per ognuno dei circuiti andremo ad applicare lo stesso valore di dominio, il valore scelto è 3,  in seguito procederemo quindi a raggruppare ogni 2 valori per riga della tabella di verità;
-    - **Dinamico**:ogni circuito  verrà analizzato andando a trovare il numero di input e output, successivamente procederemo con il calcolo del valore di M.C.D. e:
+    - **Dinamico**:ogni circuito  verrà analizzato andando a trovare il numero di input e output, successivamente procedendo con il calcolo del valore di M.C.D. e:
         - Se il valore trovato consente alla tabella di verità convertita di avere almeno 2 valori di input, in quel caso si utilizza quel valore per raggruppare i bit delle righe, altrimenti il valore viene dimezzato.
         - Se il valore risultante è un numero che creerebbe un dominio troppo grande, in quel caso viene utilizzato il dominio 3, come nel caso statico.
 
-Una volta definite  tutte le logiche di conversione è stato necessario affrontare una seconda problematica: identificare  un formato di file che rispettasse determinati requisiti, tra questi citiamo:
+Una volta definite tutte le logiche di conversione è stato necessario affrontare una seconda problematica: identificare un formato di file che rispettasse determinati requisiti, tra questi citiamo:
 
 - un formato in grado di rappresentare i circuiti
 - un formato che rispetti le esigenze per poter applicare tutte le elaborazioni sopra descritte
@@ -110,7 +105,7 @@ Una volta definite  tutte le logiche di conversione è stato necessario affronta
 
 \newpage
 
-Si è presentata dunque la necessità di una rappresentazione che avesse la possibilità  di rappresentare i circuiti con output multipli sulla stessa linea all’interno della tabella di verità
+Si è presentata dunque la necessità di una rappresentazione che avesse la possibilità di rappresentare i circuiti con output multipli sulla stessa linea all’interno della tabella di verità.
 
 Tra i vari formati a disposizione, dopo averne analizzate le caratteristiche, la scelta è ricaduta sul formato `PLA`, già ampiamente utilizzato per la rappresentazione di circuiti.
 Per comprendere meglio questa scelta è necessario però andare a sviscerare le caratteristiche e la struttura del formato selezionato.
@@ -143,7 +138,7 @@ Questo `PLA` preso come esempio rappresenta un circuito composto da una sola tab
 
 \newpage
 
-Il resto del file riportato rappresenta la tabella di verità con i possibili valori che si ottengono combinando i valori di input_file per ottenere gli output. Il circuito sopra descritto presenta 4 variabili di input e 2 valori di output. Come possiamo osservare all’interno della tabella di verità non tutti i valori sono booleani,   è infatti presente anche il valore “-”, esso prende il nome di don’t care e, all’interno del file, può assumere due significati diversi:
+Il resto del file riportato rappresenta la tabella di verità con i possibili valori che si ottengono combinando i valori di input_file per ottenere gli output. Il circuito sopra descritto presenta 4 variabili di input e 2 valori di output. Come possiamo osservare all’interno della tabella di verità non tutti i valori sono booleani, è infatti presente anche il valore “-”, esso prende il nome di don’t care e, all’interno del file, può assumere due significati diversi:
 
 - Quando - è presente negli output di una riga significa che l’output per quella determinata riga non genera un valore interessante ai fini dell’analisi;
 - Quando - è presente negli input significa che, in quella posizione, la variabile a cui fa riferimento può assumere un qualsiasi valore non andando ad influire sul valore di output che si andrà ad ottenere.
@@ -152,7 +147,7 @@ La presenza di questo nuovo valore, non presente nel caso dei circuiti booleani 
 
 ### La gestione dei don't care durante la conversione
 
-I dont’t care sono una caratteristica dei file PLA che deve essere gestita in modo funzionale ai cambi di dominio che andremo ad eseguire  all’interno delle tabelle di verità dei nostri circuiti.  Questa gestione è di primaria importanza in quanto, se affrontata nel modo sbagliato, modificherebbe la logica dell’intero circuito,  rendendo di conseguenza la conversione errata. Per fare più chiarezza riguardo il trattamento che applicheremo a questa caratteristica dei PLA, presenteremo l’esempio di  un circuito semplice che ha come valore di dominio di conversione il valore 3. Il circuito avrà la seguente struttura:
+I dont’t care sono una caratteristica dei file PLA che deve essere gestita in modo funzionale ai cambi di dominio che andremo ad eseguire  all’interno delle tabelle di verità dei nostri circuiti. Questa gestione è di primaria importanza in quanto, se affrontata nel modo sbagliato, modificherebbe la logica dell’intero circuito,  rendendo di conseguenza la conversione errata. Per fare più chiarezza riguardo il trattamento che va applicato a questa caratteristica dei PLA, è presentato l’esempio di un circuito semplice che ha come valore di dominio di conversione il valore 3. Il circuito avrà la seguente struttura:
 
 ```
 .i 4
@@ -171,7 +166,7 @@ I dont’t care sono una caratteristica dei file PLA che deve essere gestita in 
 
 \newpage
 
-Una volta stabilito  il nostro nuovo dominio di conversione sappiamo quanti bit dobbiamo raggruppare per rappresentare il nostro nuovo dominio. Nel nostro caso, essendo il domino 3, il numero di bit per rappresentare il valore più grande di questo dominio, abbiamo bisogno di un raggruppamento a 2 bit. Procediamo quindi a scandire riga per riga il circuito, raggruppando i bit a blocchi di due sia per tutti i valori di input che per quelli di output.
+Una volta stabilito il nostro nuovo dominio di conversione sappiamo quanti bit dobbiamo raggruppare per rappresentare il nostro nuovo dominio. Nel nostro caso, essendo il domino 3, il numero di bit per rappresentare il valore più grande di questo dominio, abbiamo bisogno di un raggruppamento a 2 bit. Procediamo quindi a scandire riga per riga il circuito, raggruppando i bit a blocchi di due sia per tutti i valori di input che per quelli di output.
 
 ```
 0- -0 00    
@@ -187,12 +182,12 @@ Una volta creati questi cluster di bit ci rendiamo conto di come i dont’t care
 
 \newpage
 
-Non è però sempre necessario andare a sviluppare i don’t care, per questo motivo andiamo a differenziare due possibili casistiche di intervento applicabili a questi casi:
-- Quando il numero di ‘-’ è uguale al numero di bit del raggruppamento multivalore. Quando si presenta questa situazione non c’è la necessità di sviluppare i valori, sarà  infatti sufficiente inserire al posto della coppia di bit un nuovo - rappresentante il don’t care.
+Non è però sempre necessario andare a sviluppare i don’t care, per questo motivo si differenziano due possibili casistiche di intervento applicabili a questi casi:
+- Quando il numero di ‘-’ è uguale al numero di bit del raggruppamento multi valore. Quando si presenta questa situazione non c’è la necessità di sviluppare i valori, sarà  infatti sufficiente inserire al posto della coppia di bit un nuovo - rappresentante il don’t care.
     $$ \begin{array}{ccc}
         10 & -- & 01 \\ & \downarrow & \\ 2 & - & 1 
     \end{array}$$
-- Quando nel gruppo di bit raggruppati il numero di - è minore del numero di bit richiesti.  Quando si presenta questa circostanza dobbiamo procedere con l’espansione del dont’t care a valori di verità, questo in modo tale da poter affrontare correttamente la conversione nel nuovo dominio.
+- Quando nel gruppo di bit raggruppati il numero di - è minore del numero di bit richiesti. Quando si presenta questa circostanza è necessario procedere con l’espansione del dont’t care a valori di verità, questo in modo tale da poter affrontare correttamente la conversione nel nuovo dominio.
         $$ \begin{array}{cccc}
             1- & 11 & 01\\
             & \downarrow &\\
@@ -205,7 +200,7 @@ Non è però sempre necessario andare a sviluppare i don’t care, per questo mo
 
 \newpage
 
-Analizzando e applicando queste due differenti casistiche ci è dunque possibile  sviluppare tutto il circuito binario e ottenere una conversione esatta. Il circuito convertito sarà quindi.
+Analizzando e applicando queste due differenti casistiche ci è dunque possibile sviluppare tutto il circuito binario e ottenere una conversione esatta. Il circuito convertito sarà quindi.
 
 ```
 00 0
@@ -221,11 +216,11 @@ Analizzando e applicando queste due differenti casistiche ci è dunque possibile
 3- 0
 ```
 
-Con questa nuova struttura è  in fine possibile procedere all’analisi dei circuiti, proseguendo in seguito con l’attività di sintesi logica.
+Con questa nuova struttura è in fine possibile procedere all’analisi dei circuiti, proseguendo in seguito con l’attività di sintesi logica.
 
 ## Implementazione della conversione
 
-La conversione dei circuiti in analisi viene implementata utilizzando il linguaggio di programmazione Python nella versione 3.8. questo implemento avviene senza l’ausilio di nessun package esterno, vengono infatti utilizzate solamente librerie che sono già comprese nel linguaggio in questione.
+La conversione dei circuiti in analisi viene implementata utilizzando il linguaggio di programmazione Python nella versione 3.8. Questo implemento avviene senza l’ausilio di nessun package esterno, vengono infatti utilizzate solamente librerie che sono già comprese nel linguaggio in questione.
 
 Questa dinamica fa si che il sistema, una volta installato il linguaggio di programmazione, se non già presente all’interno del SO, risulti essere “ready to use”.
 
@@ -261,7 +256,7 @@ def read_pla(path_file):
   return inp, out, inp_array, out_array, truth_table
 ```
 
-All’interno del processo sopra rappresentato, La funzione prende in input un circuito binario in formato PLA . Riga per riga,  procede ad un’analisi delle informazioni in base al prefisso all’interno di ogni riga del file, questo prefisso va a differenziare le informazioni del circuito. Scandendo il file recupera:
+All’interno del processo sopra rappresentato la funzione prende in input un circuito binario in formato PLA. Riga per riga,  procede ad un’analisi delle informazioni in base al prefisso all’interno di ogni riga del file. Questo prefisso va a differenziare le informazioni del circuito e scandendo il file recupera le seguenti informazioni:
 
 - Tabella delle verità
 - Numero di input
@@ -269,7 +264,7 @@ All’interno del processo sopra rappresentato, La funzione prende in input un c
 - Array contenente il nome delle variabili di input;
 - Array contenente il nome delle variabili di output;
 
-Queste informazioni  saranno necessarie successivamente per  poter convertire il circuito e poterne calcolare costi effettivi.
+Queste informazioni saranno necessarie successivamente per poter convertire il circuito e poterne calcolare costi effettivi.
 
 \newpage
 
@@ -322,7 +317,7 @@ if truth_table[i]['inp'][a] == n_dont_care:
 
 Ora la tabelle è finalmente pronta per l'espansione dei don't care tramite l'appostia funzione sviluppata
 
-Si è utilizzato un ciclo _while_ in questa funzione nonostante in Python sia meno efficiente vista la natura della sua implementazione in quanto la lunghezza della tabella della verità aumenta dinamicamente con l'andare dell'espansione dei don't care individuati.
+Si è utilizzato un ciclo _while_ in questa funzione nonostante in Python sia meno efficiente a causa della natura della sua implementazione; questo perchè la lunghezza della tabella della verità aumenta dinamicamente con l'andare dell'espansione dei don't care individuati.
 
 #### Resolve don't care
 
@@ -373,7 +368,7 @@ else:
     it = 0
 ```
 
-Ogni riga viene scandita a partire dal fondo per iniziare a convertire i don't care corrispondenti ai valori meno significativi, sfruttando l'array binario creato spora andiamo a sostituire il simbolo '-' con con il valore booleano corrispondente e creare una nuova linea di un array che conterrà tutti i valori ottenuti dall'espansione.
+Ogni riga viene scandita a partire dal fondo per iniziare a convertire i don't care corrispondenti ai valori meno significativi. Sfruttando l'array binario creato sopra andiamo a sostituire il simbolo '-' con con il valore booleano corrispondente e quindi a creare una nuova linea di un array che conterrà tutti i valori ottenuti dall'espansione.
 
 \newpage
 
@@ -384,9 +379,9 @@ else:
   return [{'inp':  line['inp'], 'out':  l} for l in new_array]
 ```
 
-Come possiamo notare dal ```return``` della funzione questa operazione di espansione è possibile sia sugli input che su gli output. Come detto nel capitolo precedente anche l'espansione dei valori di don't care degli output è importante per non perdere l'integrità del circuito.
+Come possiamo notare dal ```return``` della funzione, questa operazione di espansione è possibile sia sugli input che su gli output. Come detto nel capitolo precedente anche l'espansione dei valori di don't care degli output è importante per non perdere l'integrità del circuito.
 
-L'oggetto restituito dalla funzione è un array contenente un vocabolario con la stessa struttura che abbiamo usato durante l'estrazione dei dati dal file `PLA`, questo array sostituirà la riga contenente i don't care espansi.
+L'oggetto restituito dalla funzione è un array contenente un vocabolario con la stessa struttura che è stata usata durante l'estrazione dei dati dal file `PLA`, questo array sostituirà la riga contenente i don't care espansi.
 
 #### create_0_1_array
 
@@ -398,17 +393,17 @@ def create_0_1_array(le, pad):
     else str(0) for i in range(le)]
 ```
 
-Questa funzione restituisce una tabella di verità data una line con all’interno un numero di don’t care che necessitano di espansione.
+Questa funzione restituisce una tabella di verità data una linea con all’interno un numero di don’t care che necessitano di espansione.
 
-Questa tabella creata verrà inserita al posto della linea con i don’t care del circuito, in modo tale  da avere la tabella corretta per la conversione.
+Questa tabella creata verrà inserita al posto della linea con i don’t care del circuito in modo tale  da avere la tabella corretta per la conversione.
 
-Una volta terminato tutto il ciclo tutti i dont't care saranno risolti e la tabella sarà pronta per la conversione nel nuovo valore di dominio.
+Una volta terminato l'intero ciclo tutti i dont't care saranno risolti e la tabella sarà pronta per la conversione nel nuovo valore di dominio.
 
 \newpage
 
 ## La conversione in multi valore
 
-Le funzioni analizzate e osservate  nelle sezioni precedenti restituiscono sempre come valore di output una matrice corrispondente alla tabella della verità sviluppata. Questa tabella verrà utilizzata dalla funzione di conversione seguendo lo schema spiegato all’inizio del capitolo.
+Le funzioni analizzate e osservate nelle sezioni precedenti restituiscono sempre come valore di output una matrice corrispondente alla tabella della verità sviluppata. Questa tabella verrà utilizzata dalla funzione di conversione seguendo lo schema spiegato all’inizio del capitolo.
 
 ```python
 def create_mv_truth_table(truth_array, dv):
@@ -437,7 +432,7 @@ def create_mv_truth_table(truth_array, dv):
   return conv_truth
 ```
 
-La funzione prende in ingresso la matrice espansa creata precedentemente e il numero di bit da utilizzare per rappresentare il massimo numero del nuovo dominio multivalore.
+La funzione prende in ingresso la matrice espansa creata precedentemente e il numero di bit da utilizzare per rappresentare il massimo numero del nuovo dominio multi valore.
 
 \newpage
 
@@ -448,11 +443,11 @@ Inizialmente la funzione 'spezza' la stringa dei valori di input in gruppi di ta
   - un numero o una stringa di numeri da convertire
   - la base a cui si vuole fare la conversione
 
-Una volta scandita tutta la tabella di verità abbiamo finalmente ricavato un  circuito convertito. L’utlimo processo da mettere in atto consiste nell’andare a creare un file compatibile per la sintesi dei circuiti.
+Una volta scandita tutta la tabella di verità abbiamo finalmente ricavato un circuito convertito. L’utlimo processo da mettere in atto consiste nell’andare a creare un file compatibile per la sintesi dei circuiti.
 
 ## La creazione del file blfmv
 
-Per i circuiti multi valore non viene adottato il formato PLA in quanto quest’ultimo viene utilizzato solamente per i circuiti binari. Per sopperire a questa limitazione data dal formato PLA faremo uso di un altro formato standard appositamente creato per la logica multi valore:  il formato blfmv.
+Per i circuiti multi valore non viene adottato il formato PLA in quanto quest’ultimo viene utilizzato solamente per i circuiti binari. Per sopperire a questa limitazione data dal formato PLA si farà uso di un altro formato standard appositamente creato per la logica multi valore:  il formato blfmv.
 
 Questo formato deriva dal formato blif, ampiamente utilizzato per la logica binaria.
 
@@ -486,7 +481,7 @@ Questa funzione crea un file .mv relativo al circuito creato. Scegliamo questa t
 
 ## La sintesi
 
-Una volta ottenuti sia il circuito booleano che quello multivalore  procederemo con la sintesi dei circuiti. Quest’ultima si pone come obiettivo la riduzione e l’ottimizzazione della   la struttura dei circuiti stessi, andando a diminuire il numero di ingressi e di tabelle della verità in modo tale da avere dei costi totali minori.
+Una volta ottenuti sia il circuito booleano che quello multi valore procederemo con la sintesi dei circuiti. Quest’ultima si pone come obiettivo la riduzione e l’ottimizzazione della struttura dei circuiti stessi, andando a diminuire il numero di ingressi e di tabelle della verità in modo tale da avere dei costi totali minori.
 
 I programmi utilizzati per la sintesi logica sono stati entrambi sviluppati dall'università di Berkley e attualmente sono disponibili con licenza open source.
 
@@ -497,15 +492,15 @@ Per la sintesi durante l’analisi sperimentale sono state utilizzate due altern
 
 ### MVSIS
 
-E’ il primo programma utilizzato, al suo interno troviamo diversi metodi di sintesi da poter applicare,  i quali sfruttano tecniche differenti. La particolarità di questo tool consiste nel fatto che il programma è in grado di accettare come input sia circuiti binari che multivalore. Il lato negativo dell’utilizzo di questo programma, d’altra parte, è che l’ultima versione di questo software risale al 2005 e quindi non è più mantenuto.
+E’ il primo programma utilizzato, al suo interno troviamo diversi metodi di sintesi da poter applicare, i quali sfruttano tecniche differenti. La particolarità di questo tool consiste nel fatto che il programma è in grado di accettare come input sia circuiti binari che multi valore. Il lato negativo dell’utilizzo di questo programma, d’altra parte, è che l’ultima versione di questo software risale al 2005 e quindi non è più mantenuto.
 
 ### ABC
 
-ABC, come la sua alternativa descritta sopra, mette a disposizione delle tecniche di sintesi  che presentano il vantaggio di avere degli script pronti che uniscono più metodi, in questo modo è possibile  avere la certezza di non commettere errori o di utilizzare una concatenazione di metodi inefficace.
+ABC, come la sua alternativa descritta sopra, mette a disposizione delle tecniche di sintesi  che presentano il vantaggio di avere degli script pronti che uniscono più metodi, in questo modo è possibile avere la certezza di non commettere errori o di utilizzare una concatenazione di metodi inefficace.
 
 ABC è un’evoluzione di MVSIS e del più vecchio SIS. Esso viene tuttora mantenuto ma, a differenza di MVSIS, se gli viene dato in ingresso un valore di input, esso viene successivamente convertito in binario e solo in seguito è possibile utilizzare i metodi di sintesi.
 
-Una caratteristica molto utile di questi programmi sta nel fatto che essi accettano come parametri di ingresso degli script contenenti tutte le istruzioni da eseguire. Proseguendo con l’analisi sarò in grado di mostrarvi come tutto il processo di analisi viene automatizzato sfruttando questa caratteristica.
+Una caratteristica molto utile di questi programmi sta nel fatto che essi accettano come parametri di ingresso degli script contenenti tutte le istruzioni da eseguire. Proseguendo con lo sviluppo della tesi sarà possibile dimostrare come tutto il processo di analisi viene automatizzato sfruttando questa caratteristica.
 
 \newpage
 
@@ -524,7 +519,7 @@ cl
 write_blif_mv ./prova/blfmv/synth/amd.mv
 ```
 
-Il programma, in questo caso abc, non fa altro che prendere come input uno dei circuiti creati precedentemente e, applicando i metodi di sintesi, crea un  ulteriore file contenente il circuito sintetizzato. In questo modo è successivamente possibile fare degli ulteriori confronti, una volta sintetizzati tutti i circuiti.
+Il programma, in questo caso ABC, non fa altro che prendere come input uno dei circuiti creati precedentemente e, applicando i metodi di sintesi, crea un ulteriore file contenente il circuito sintetizzato. In questo modo è successivamente possibile fare degli ulteriori confronti, una volta sintetizzati tutti i circuiti.
 
 ## Il calcolo dei costi del circuito
 
@@ -532,7 +527,7 @@ Il costo del circuito viene calcolato sulla base di due fattori fondamentali:
 - Quanti input devono inviare entrambe le parti
 - Quanti valori devono inviare per ciascun valore di input in base al dominio
 
-Per calcolare questo tipo di informazioni si devono effettuare delle  ulteriori operazioni di lettura sui file precedentemente creati, il tutto analizzando due differenti caratteristiche:
+Per calcolare questo tipo di informazioni si devono effettuare delle ulteriori operazioni di lettura sui file precedentemente creati, il tutto analizzando due differenti caratteristiche:
 
 - Gli ingressi di ogni tabella di verità del circuito (andando a controllare quali dei valori di input devono essere inseriti da una delle parti e quali sono ingressi di valori di output delle altre tabelle.)
 - Il dominio dei valori di input che devono inserire le parti.
@@ -541,13 +536,13 @@ Per calcolare questo tipo di informazioni si devono effettuare delle  ulteriori 
 
 ### blfmv vs pla
 
-Per poter eseguire  il confronto sopra citato si è preferito utilizzare file che avessero la stessa sintassi di rappresentazione del circuito, sia nel caso multi valore che in quello booleano.
+Per poter eseguire il confronto sopra citato si è preferito utilizzare file che avessero la stessa sintassi di rappresentazione del circuito, sia nel caso multi valore che in quello booleano.
 
-Il formato pla attualmente non dispone di un’alternativa per i file multivalore, ma non è ancora supportata dai tool che abbiamo in utilizzo. Per questo motivo si è deciso di utilizzare il formato blif per rappresentare i circuiti binari. Blif è l’alternativa binaria a blfmv, la sintassi è la stessa con la differenza che non viene specificato il dominio dei valori di input in quanto sempre booleano.
+Il formato *pla* attualmente non dispone di un’alternativa per i file multi valore, ma non è ancora supportata dai tool che abbiamo in utilizzo. Per questo motivo si è deciso di utilizzare il formato *blif* per rappresentare i circuiti binari. *Blif* è l’alternativa binaria a *blfmv*, la sintassi è la stessa con la differenza che non viene specificato il dominio dei valori di input in quanto sempre booleano.
 
-La differenza con pla, invece, sta nel fatto che gli output non possono essere in numero maggiore di 1 per tabella: nella rappresentazione avrò quindi, per ogni nodo del circuito, tante tabelle quanti sono gli output di quel nodo. Questa tipologia di rappresentazione è utilizzata anche nei file blfmv , quindi sarà possibile una comparazione 1:1 tra il circuito binario e  quello multivalore.
+La differenza con *pla*, invece, sta nel fatto che gli output non possono essere in numero maggiore di 1 per tabella: nella rappresentazione avrò quindi, per ogni nodo del circuito, tante tabelle quanti sono gli output di quel nodo. Questa tipologia di rappresentazione è utilizzata anche nei file *blfmv*, quindi sarà possibile una comparazione 1:1 tra il circuito binario e quello multi valore.
 
-Per effettuare questa conversione vengono in aiuto i tool ABC e MVSIS, poiché entrambi contengono metodi di conversione automatica da pla a blif. Questa operazione viene effettuata tramite uno script contenente le istruzioni da eseguire e dato come parametro di ingresso al programma. [@kukimoto1996blif]
+Per effettuare questa conversione vengono in aiuto i tool ABC e MVSIS, poiché entrambi contengono metodi di conversione automatica da *pla* a *blif*. Questa operazione viene effettuata tramite uno script contenente le istruzioni da eseguire e dato come parametro di ingresso al programma. [@kukimoto1996blif]
 
 ```
 read_pla ./prova/pla/alu2.pla
@@ -603,7 +598,7 @@ with open('{}/{}'.format(working_dir, circuito)) as circ:
 
 \newpage
 
-Questa funzione, dato un circuito sia binario che mutli-valore,  prende tutte le informazioni ad essa necessarie per poter  effettuare il calcolo.
+Questa funzione, dato un circuito sia binario che mutli-valore, prende tutte le informazioni ad essa necessarie per poter effettuare il calcolo.
 
 ```python
 costo = 0
@@ -652,7 +647,7 @@ Ottenute tutte le informazioni, per avere una migliore visione per l’analisi, 
 
 Tutte le fasi mostrate sopra, più altre secondarie, sono state automatizzate in modo tale che:
 
-- non si debbano  effettuare operazioni ridondati per ogni circuito
+- non si debbano effettuare operazioni ridondati per ogni circuito
 - non si generino perdite di dati causate da errori umani.
 
 ### Struttura
@@ -675,7 +670,7 @@ Tutte le fasi mostrate sopra, più altre secondarie, sono state automatizzate in
 │   └── caloclo_costo.py
 ├── pla_to_blif.mvsis   #file con sintesi per MVSIS
 ├── synth_bool.abc      #file di sintesi  binaria per ABC
-└── synth_mv.abc        #file di sintesi multivalore per ABC
+└── synth_mv.abc        #file di sintesi multi valore per ABC
 ```
 
 \newpage
@@ -700,7 +695,7 @@ if not path.exists('{}/pla'.format(working_dir)):
     exit
 ```
 
-In questa fase viene creata la struttura delle directory che conterrà i file con i circuiti sintetizzati . Nel caso in cui questa struttura fosse già presente,  verranno cancellate tutte le cartelle e i file all’interno e successivamente ricreate le cartelle vuote.
+In questa fase viene creata la struttura delle directory che conterranno i file con i circuiti sintetizzati. Nel caso in cui questa struttura fosse già presente, verranno cancellate tutte le cartelle e i file all’interno e successivamente ricreate le cartelle vuote.
 
 ```python
 bin_to_mv_mcd(working_dir)
@@ -714,7 +709,7 @@ pla_to_blif(working_dir)
 In questa sezione vengono chiamate due utility create con lo scopo di generare dei file utilizzabili sia da **ABC** che da **MVSIS**.
 
 - **bin_to_mv_mcd**: ha lo scopo di creare i file *blfmv* di ogni circuito all'interno della directory di lavoro
-- **pla_to_blif**: prende dalla directory di lavoro i file *pla* contenenti i circuiti e li converte in *blif* per avere un formato identico di rappresentazione tra i circuiti binari e quelli multivalore.
+- **pla_to_blif**: prende dalla directory di lavoro i file *pla* contenenti i circuiti e li converte in *blif* per avere un formato identico di rappresentazione tra i circuiti binari e quelli multi valore.
 
 \newpage
 
@@ -729,7 +724,7 @@ def pla_to_blif(working_dir):
         working_dir, ele.split('.')[0]))
 ```
 
-Questa funzione restituisce un file leggibile come input da _mvsis_ o _abc_ in grado di cambiare automaticamente formato dei file da `PLA` a `BLIF`. In questo modo la conversione viene fatta automaticamnte da uno dei programmi scelti senza ricorrere ad ulteriore codice o incappare in errori di conversione. Il file ottenuto ha la seguente struttura.
+Questa funzione restituisce un file leggibile come input da _mvsis_ o _abc_ in grado di cambiare automaticamente formato dei file da *pla* a *blif*. In questo modo la conversione viene fatta automaticamnte da uno dei programmi scelti senza ricorrere ad ulteriore codice o incappare in errori di conversione. Il file ottenuto ha la seguente struttura.
 
 ```
 source abc_alias.abc
@@ -773,7 +768,7 @@ def bin_to_mv_mcd(working_dir):
           basename(pla).split('.')[0])
 ```
 
-In questa funzione vengono racchiuse le funzioni descritte precedentemente per la conversione del circuito da binario a multivalore e la creazione dei file utilizzabili dai motori di sintesi. Come detto nei capitoli precedenti utilizzo 2 tecniche di conversione in base al circuito, una statica e una dinamica, qui mostro solo la soluzione dinamica in quanto più complessa ma dalla struttura analoga alla proposta statica.
+In questa funzione vengono racchiuse le funzioni descritte precedentemente per la conversione del circuito da binario a multi valore e la creazione dei file utilizzabili dai motori di sintesi. Come descritto nei capitoli precedenti verranno utilizzate due tecniche di conversione in base al circuito, una statica e una dinamica. Di seguito verrà mostrata solo la soluzione dinamica in quanto più complessa ma dalla struttura analoga alla proposta statica.
 
 \newpage
 
@@ -793,7 +788,7 @@ def euclide(a, b):
   return a
 ```
 
-In questa porzione avvengono le fasi di individuazione del M.C.D. tramite la funzione *euclide* e viene effettuato il controllo in caso che il dominio trovato si troppo grande o che ci sia un solo input utilizzando questo dominio.
+In questa porzione avvengono le fasi di individuazione del M.C.D. tramite la funzione *euclide* e viene effettuato il controllo nel caso in cui il dominio trovato fosse troppo grande o che ci fosse un solo input utilizzando questo dominio.
 
 
 ```python
@@ -849,12 +844,12 @@ def synth(working_dir):
 ```
 
 - **synth_bool**: crea il file per la sintesi utilizzata da **ABC** per i circuiti booleani;
-- **synth_mv.abc**: crea il file per la sintesi utilizzata da **ABC** per i circuiti multivalore;
-- **synth_mv**: crea il file per la sintesi utilizzata da **MVSIS** per i circuiti multivalore;
+- **synth_mv.abc**: crea il file per la sintesi utilizzata da **ABC** per i circuiti multi valore;
+- **synth_mv**: crea il file per la sintesi utilizzata da **MVSIS** per i circuiti multi valore;
 
 \newpage
 
-Viene poi controllato se è presente già un file contenente dei costi e, se c'è, lo elimina
+Viene poi controllato se è già presente un file contenente dei costi e, se c'è, lo elimina
 
 ```python
 if exists('./calcolo_costi.csv'):
@@ -877,4 +872,4 @@ def calcolo_costo_circuito(circuito):
   return costo
 ```
 
-Le operazioni di calcolo dei costo vengono effettuate e infine viene generato il file *CSV* contenente i risultati.
+Le operazioni di calcolo del costo vengono effettuate e, infine, viene generato il file *CSV* contenente i risultati.

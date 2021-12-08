@@ -1,37 +1,46 @@
-\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 %
-\documentclass[italian,]{book}
+\documentclass[
+  italian,
+]{book}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provides euro and other symbols
-\else % if luatex or xelatex
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
   \usepackage{unicode-math}
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-% use upquote if available, for straight quotes in verbatim environments
+% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% use microtype if available
-\IfFileExists{microtype.sty}{%
-\usepackage[]{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
-\usepackage{hyperref}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-            pdfborder={0 0 0},
-            breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
+  pdflang={it-it},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -73,9 +82,15 @@
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs}
-% Fix footnotes in tables (requires footnote package)
-\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
-\usepackage{graphicx,grffile}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -84,34 +99,24 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{5}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-\fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
-
-% set default figure placement to htbp
+% Set default figure placement to htbp
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
-
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
 \usepackage{pmboxdraw}
 \usepackage{float}
 \usepackage[square,numbers]{natbib}
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \usepackage[shorthands=off,main=italian]{babel}
-\else
-  % load polyglossia as late as possible as it *could* call bidi if RTL lang (e.g. Hebrew or Arabic)
+
+\ifxetex
+  % Load polyglossia as late as possible: uses bidi with RTL langages (e.g. Hebrew, Arabic)
   \usepackage{polyglossia}
   \setmainlanguage[]{italian}
+\else
+  \usepackage[shorthands=off,main=italian]{babel}
 \fi
 \usepackage[]{natbib}
 \bibliographystyle{plainnat}
@@ -461,7 +466,7 @@ Nonostante l'uguale utilizzo per il quale questi due diversi tool sono stati svi
 \hypertarget{design-specification}{%
 \subsection{Design specification}\label{design-specification}}
 
-Un circuito multi valore (MV circuit) può essere dato come valore di input a MVSIS tramite l'apposito comando (read\_blifmv) e, oltre ai circuiti multi valore, è possibile anche dare come imput circuiti binari. Internamente, la rappresentazione del progetto è una rete di nodi MV dove ogni nodo rappresenta una funzione MV con una singola uscita a più valori. È importante però specificare una fondamentale distinzione con alcuni altri metodi multi valore, cioè che ogni variabile del nodo può avere un dominio diverso. L'intervallo per la variabile \(y_k\) è rappresentato dall'insieme \$P\_k=\{0,1,\ldots{},p\_k -1 \}. La funzione il cui esito dà UN SET dei mintermi (Una sola uscita con 0 o 1) per i quali \(f_k = i\) (la funzione al nodo \(k\) è uguale al valore \(i\) ) è chiamata \emph{i-set} della funzione \(f_k\) e viene memorizzata in forma SOP (Somma di prodotti). Nel caso di logica a 2 valori, l'insieme 0 corrisponde all'off-set e l'insieme 1 all'on set. Una variabile MV yk è associata all'uscita del nodo k. Un margine congiunge \(k\) a \(j\) se uno qualsiasi degli i-set di \(j\) dipende esplicitamente da \(y_k\). La rete ha un insieme di ingressi primari (che possono essere tutti a più valori) e un insieme di nodi di ingressi primari.
+Un circuito multi valore (MV circuit) può essere dato come valore di input a MVSIS tramite l'apposito comando (read\_blifmv) e, oltre ai circuiti multi valore, è possibile anche dare come imput circuiti binari. Internamente, la rappresentazione del progetto è una rete di nodi MV dove ogni nodo rappresenta una funzione MV con una singola uscita a più valori. È importante però specificare una fondamentale distinzione con alcuni altri metodi multi valore, cioè che ogni variabile del nodo può avere un dominio diverso. L'intervallo per la variabile \(y_k\) è rappresentato dall'insieme \(P_k=\{0,1,...,p_k -1 \}\). La funzione il cui esito dà UN SET dei mintermi (Una sola uscita con 0 o 1) per i quali \(f_k = i\) (la funzione al nodo \(k\) è uguale al valore \(i\) ) è chiamata \emph{i-set} della funzione \(f_k\) e viene memorizzata in forma SOP (Somma di prodotti). Nel caso di logica a 2 valori, l'insieme 0 corrisponde all'off-set e l'insieme 1 all'on set. Una variabile MV yk è associata all'uscita del nodo k. Un margine congiunge \(k\) a \(j\) se uno qualsiasi degli i-set di \(j\) dipende esplicitamente da \(y_k\). La rete ha un insieme di ingressi primari (che possono essere tutti a più valori) e un insieme di nodi di ingressi primari.
 
 \newpage
 
@@ -919,31 +924,31 @@ Questa dinamica fa si che il sistema, una volta installato il linguaggio di prog
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{def}\NormalTok{ read_pla(path_file):}
+\KeywordTok{def}\NormalTok{ read\_pla(path\_file):}
 \NormalTok{  inp }\OperatorTok{=} \VariableTok{None}
 \NormalTok{  out }\OperatorTok{=} \VariableTok{None}
-\NormalTok{  inp_array }\OperatorTok{=}\NormalTok{ []}
-\NormalTok{  out_array }\OperatorTok{=}\NormalTok{ []}
-\NormalTok{  truth_table }\OperatorTok{=}\NormalTok{ []}
-  \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(path_file, }\StringTok{'r'}\NormalTok{) }\ImportTok{as}\NormalTok{ input_file:}
-    \ControlFlowTok{for}\NormalTok{ line }\KeywordTok{in}\NormalTok{ input_file.readlines():}
-      \ControlFlowTok{if} \StringTok{'.i'} \KeywordTok{in}\NormalTok{ line }\KeywordTok{and}\NormalTok{ line[}\DecValTok{2}\NormalTok{] }\OperatorTok{==} \StringTok{' '}\NormalTok{:}
-\NormalTok{        inp }\OperatorTok{=}\NormalTok{ line.split(}\StringTok{' '}\NormalTok{)[}\DecValTok{1}\NormalTok{]}
-      \ControlFlowTok{elif} \StringTok{'.o'} \KeywordTok{in}\NormalTok{ line }\KeywordTok{and}\NormalTok{ line[}\DecValTok{2}\NormalTok{] }\OperatorTok{==} \StringTok{' '}\NormalTok{:}
-\NormalTok{        out }\OperatorTok{=}\NormalTok{ line.split(}\StringTok{' '}\NormalTok{)[}\DecValTok{1}\NormalTok{]}
-      \ControlFlowTok{elif} \StringTok{'.ilb'} \KeywordTok{in}\NormalTok{ line:}
-\NormalTok{        inp_array }\OperatorTok{=}\NormalTok{ line.strip().split(}\StringTok{' '}\NormalTok{)[}\DecValTok{1}\NormalTok{:]}
-      \ControlFlowTok{elif} \StringTok{'.ob'} \KeywordTok{in}\NormalTok{ line:}
-\NormalTok{        out_array }\OperatorTok{=}\NormalTok{ line.strip().split(}\StringTok{' '}\NormalTok{)[}\DecValTok{1}\NormalTok{:]}
-      \ControlFlowTok{elif} \StringTok{'.end'} \KeywordTok{in}\NormalTok{ line:}
+\NormalTok{  inp\_array }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{  out\_array }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{  truth\_table }\OperatorTok{=}\NormalTok{ []}
+  \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(path\_file, }\StringTok{\textquotesingle{}r\textquotesingle{}}\NormalTok{) }\ImportTok{as}\NormalTok{ input\_file:}
+    \ControlFlowTok{for}\NormalTok{ line }\KeywordTok{in}\NormalTok{ input\_file.readlines():}
+      \ControlFlowTok{if} \StringTok{\textquotesingle{}.i\textquotesingle{}} \KeywordTok{in}\NormalTok{ line }\KeywordTok{and}\NormalTok{ line[}\DecValTok{2}\NormalTok{] }\OperatorTok{==} \StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{:}
+\NormalTok{        inp }\OperatorTok{=}\NormalTok{ line.split(}\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{)[}\DecValTok{1}\NormalTok{]}
+      \ControlFlowTok{elif} \StringTok{\textquotesingle{}.o\textquotesingle{}} \KeywordTok{in}\NormalTok{ line }\KeywordTok{and}\NormalTok{ line[}\DecValTok{2}\NormalTok{] }\OperatorTok{==} \StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{:}
+\NormalTok{        out }\OperatorTok{=}\NormalTok{ line.split(}\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{)[}\DecValTok{1}\NormalTok{]}
+      \ControlFlowTok{elif} \StringTok{\textquotesingle{}.ilb\textquotesingle{}} \KeywordTok{in}\NormalTok{ line:}
+\NormalTok{        inp\_array }\OperatorTok{=}\NormalTok{ line.strip().split(}\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{)[}\DecValTok{1}\NormalTok{:]}
+      \ControlFlowTok{elif} \StringTok{\textquotesingle{}.ob\textquotesingle{}} \KeywordTok{in}\NormalTok{ line:}
+\NormalTok{        out\_array }\OperatorTok{=}\NormalTok{ line.strip().split(}\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{)[}\DecValTok{1}\NormalTok{:]}
+      \ControlFlowTok{elif} \StringTok{\textquotesingle{}.end\textquotesingle{}} \KeywordTok{in}\NormalTok{ line:}
         \ControlFlowTok{continue}
       \ControlFlowTok{else}\NormalTok{:}
 \NormalTok{        line }\OperatorTok{=}\NormalTok{ \{}
-          \StringTok{'inp'}\NormalTok{:  line.strip().split(}\StringTok{' '}\NormalTok{)[}\DecValTok{0}\NormalTok{],}
-          \StringTok{'out'}\NormalTok{:  line.strip().split(}\StringTok{' '}\NormalTok{)[}\DecValTok{1}\NormalTok{]}
+          \StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{:  line.strip().split(}\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{)[}\DecValTok{0}\NormalTok{],}
+          \StringTok{\textquotesingle{}out\textquotesingle{}}\NormalTok{:  line.strip().split(}\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{)[}\DecValTok{1}\NormalTok{]}
 \NormalTok{        \}}
-\NormalTok{        truth_table.append(line)}
-  \ControlFlowTok{return}\NormalTok{ inp, out, inp_array, out_array, truth_table}
+\NormalTok{        truth\_table.append(line)}
+  \ControlFlowTok{return}\NormalTok{ inp, out, inp\_array, out\_array, truth\_table}
 \end{Highlighting}
 \end{Shaded}
 
@@ -974,9 +979,9 @@ Una volta ottenute tutte le informazioni disponibili dal circuito dato, succesiv
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{n_dont_care }\OperatorTok{=} \StringTok{''}
+\NormalTok{n\_dont\_care }\OperatorTok{=} \StringTok{\textquotesingle{}\textquotesingle{}}
   \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(dv):}
-\NormalTok{    n_dont_care }\OperatorTok{+=} \StringTok{'-'}
+\NormalTok{    n\_dont\_care }\OperatorTok{+=} \StringTok{\textquotesingle{}{-}\textquotesingle{}}
 \end{Highlighting}
 \end{Shaded}
 
@@ -984,20 +989,20 @@ Con questo ciclo vado a creare un array di \texttt{-} consecutivi che rispecchia
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{len_truth_table }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(truth_table)}
+\NormalTok{len\_truth\_table }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(truth\_table)}
 \NormalTok{i }\OperatorTok{=} \DecValTok{0}
-\ControlFlowTok{while}\NormalTok{ i }\OperatorTok{<}\NormalTok{ len_truth_table:}
-  \ControlFlowTok{if} \StringTok{'-'} \KeywordTok{in}\NormalTok{ truth_table[i][}\StringTok{'inp'}\NormalTok{]:}
-\NormalTok{    truth_table[i][}\StringTok{'inp'}\NormalTok{] }\OperatorTok{=} \StringTok{''}\NormalTok{.join(truth_table[i[}\StringTok{'inp'}\NormalTok{])}
-\NormalTok{    truth_table[i][}\StringTok{'inp'}\NormalTok{] }\OperatorTok{=}\NormalTok{ [truth_table[i][}\StringTok{'inp'}\NormalTok{[a:a}\OperatorTok{+}\NormalTok{dv]}
-        \ControlFlowTok{for}\NormalTok{ a }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{, le(truth_table[i][}\StringTok{'inp'}\NormalTok{], dv)]}
-    \ControlFlowTok{for}\NormalTok{ a }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\BuiltInTok{len}\NormalTok{(truth_table[i][}\StringTok{'inp'}\NormalTok{])):}
-        \ControlFlowTok{if}\NormalTok{ truth_table[i][}\StringTok{'inp'}\NormalTok{][a] }\OperatorTok{==}\NormalTok{ n_dont_care:}
-\NormalTok{            truth_table[i][}\StringTok{'inp'}\NormalTok{][a] }\OperatorTok{=} \StringTok{'k'}\OperatorTok{*}\NormalTok{le(n_dont_care)}
-\NormalTok{    truth_table[i][}\StringTok{'inp'}\NormalTok{] }\OperatorTok{=} \StringTok{''}\NormalTok{.join(truth_table[i[}\StringTok{'inp'}\NormalTok{])}
-\NormalTok{    new_lines }\OperatorTok{=}\NormalTok{ resolve_dont_care(truth_table[i],}\StringTok{'inp'}\NormalTok{)}
-\NormalTok{    truth_table }\OperatorTok{=}\NormalTok{ truth_table[:i] }\OperatorTok{+}\NormalTok{ new_lines }\OperatorTok{+}\NormalTok{truth_table[i}\OperatorTok{+}\DecValTok{1}\NormalTok{:]}
-\NormalTok{    len_truth_table }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(truth_table)}
+\ControlFlowTok{while}\NormalTok{ i }\OperatorTok{\textless{}}\NormalTok{ len\_truth\_table:}
+  \ControlFlowTok{if} \StringTok{\textquotesingle{}{-}\textquotesingle{}} \KeywordTok{in}\NormalTok{ truth\_table[i][}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{]:}
+\NormalTok{    truth\_table[i][}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{] }\OperatorTok{=} \StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{.join(truth\_table[i[}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{])}
+\NormalTok{    truth\_table[i][}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ [truth\_table[i][}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{[a:a}\OperatorTok{+}\NormalTok{dv]}
+        \ControlFlowTok{for}\NormalTok{ a }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{, le(truth\_table[i][}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{], dv)]}
+    \ControlFlowTok{for}\NormalTok{ a }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\BuiltInTok{len}\NormalTok{(truth\_table[i][}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{])):}
+        \ControlFlowTok{if}\NormalTok{ truth\_table[i][}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{][a] }\OperatorTok{==}\NormalTok{ n\_dont\_care:}
+\NormalTok{            truth\_table[i][}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{][a] }\OperatorTok{=} \StringTok{\textquotesingle{}k\textquotesingle{}}\OperatorTok{*}\NormalTok{le(n\_dont\_care)}
+\NormalTok{    truth\_table[i][}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{] }\OperatorTok{=} \StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{.join(truth\_table[i[}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{])}
+\NormalTok{    new\_lines }\OperatorTok{=}\NormalTok{ resolve\_dont\_care(truth\_table[i],}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{)}
+\NormalTok{    truth\_table }\OperatorTok{=}\NormalTok{ truth\_table[:i] }\OperatorTok{+}\NormalTok{ new\_lines }\OperatorTok{+}\NormalTok{truth\_table[i}\OperatorTok{+}\DecValTok{1}\NormalTok{:]}
+\NormalTok{    len\_truth\_table }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(truth\_table)}
 \NormalTok{  i }\OperatorTok{+=} \DecValTok{1}
 \end{Highlighting}
 \end{Shaded}
@@ -1014,9 +1019,9 @@ Tramite questo ciclo \emph{while} l'intero circuito viene scandito e:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{truth_table[i][}\StringTok{'inp'}\NormalTok{] }\OperatorTok{=}\NormalTok{ [}
-\NormalTok{   truth_table[i][}\StringTok{'inp'}\NormalTok{[a:a}\OperatorTok{+}\NormalTok{dv]}
-   \ControlFlowTok{for}\NormalTok{ a }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{, le(truth_table[i][}\StringTok{'inp'}\NormalTok{], dv)]}
+\NormalTok{truth\_table[i][}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ [}
+\NormalTok{   truth\_table[i][}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{[a:a}\OperatorTok{+}\NormalTok{dv]}
+   \ControlFlowTok{for}\NormalTok{ a }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{, le(truth\_table[i][}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{], dv)]}
 \NormalTok{ ]}
 \end{Highlighting}
 \end{Shaded}
@@ -1029,8 +1034,8 @@ Tramite questo ciclo \emph{while} l'intero circuito viene scandito e:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ControlFlowTok{if}\NormalTok{ truth_table[i][}\StringTok{'inp'}\NormalTok{][a] }\OperatorTok{==}\NormalTok{ n_dont_care:}
-\NormalTok{  truth_table[i][}\StringTok{'inp'}\NormalTok{][a] }\OperatorTok{=} \StringTok{'k'}\OperatorTok{*}\NormalTok{le(n_dont_care)}
+\ControlFlowTok{if}\NormalTok{ truth\_table[i][}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{][a] }\OperatorTok{==}\NormalTok{ n\_dont\_care:}
+\NormalTok{  truth\_table[i][}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{][a] }\OperatorTok{=} \StringTok{\textquotesingle{}k\textquotesingle{}}\OperatorTok{*}\NormalTok{le(n\_dont\_care)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1045,8 +1050,8 @@ La funzione inizia andando ad individuare quanti don't care sono presenti nella 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{def}\NormalTok{ resolve_dont_care(line, in_out):}
-\NormalTok{  n_dc }\OperatorTok{=} \BuiltInTok{pow}\NormalTok{(}\DecValTok{2}\NormalTok{, line[in_out].count(}\StringTok{'-'}\NormalTok{))}
+\KeywordTok{def}\NormalTok{ resolve\_dont\_care(line, in\_out):}
+\NormalTok{  n\_dc }\OperatorTok{=} \BuiltInTok{pow}\NormalTok{(}\DecValTok{2}\NormalTok{, line[in\_out].count(}\StringTok{\textquotesingle{}{-}\textquotesingle{}}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1056,8 +1061,8 @@ Successivamente viene iniziato un ciclo che scandisce ogni elemento della linea 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ControlFlowTok{for}\NormalTok{ h }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(line[in_out].count(}\StringTok{'-'}\NormalTok{)):}
-\NormalTok{  val_array }\OperatorTok{=}\NormalTok{ create_0_1_array(n_dc, }\BuiltInTok{pow}\NormalTok{(}\DecValTok{2}\NormalTok{, h))}
+\ControlFlowTok{for}\NormalTok{ h }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(line[in\_out].count(}\StringTok{\textquotesingle{}{-}\textquotesingle{}}\NormalTok{)):}
+\NormalTok{  val\_array }\OperatorTok{=}\NormalTok{ create\_0\_1\_array(n\_dc, }\BuiltInTok{pow}\NormalTok{(}\DecValTok{2}\NormalTok{, h))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1072,16 +1077,16 @@ Successivamente vengono differenziate 2 casistiche:
 \begin{Shaded}
 \begin{Highlighting}[]
 \ControlFlowTok{if}\NormalTok{ h }\OperatorTok{==} \DecValTok{0}\NormalTok{:}
-  \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(n_dc):}
+  \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(n\_dc):}
 \NormalTok{    it }\OperatorTok{=} \DecValTok{0}
-\NormalTok{    new_line }\OperatorTok{=}\NormalTok{ []}
-    \ControlFlowTok{for}\NormalTok{ j }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\BuiltInTok{len}\NormalTok{(input_entry)}\OperatorTok{-}\DecValTok{1}\NormalTok{, }\DecValTok{-1}\NormalTok{, }\DecValTok{-1}\NormalTok{):}
-      \ControlFlowTok{if}\NormalTok{ input_entry[j] }\OperatorTok{==} \StringTok{'-'} \KeywordTok{and}\NormalTok{ it }\OperatorTok{==} \DecValTok{0}\NormalTok{:}
-\NormalTok{        new_line.append(val_array[(}\BuiltInTok{len}\NormalTok{(val_array)}\OperatorTok{-}\DecValTok{1}\NormalTok{) }\OperatorTok{-}\NormalTok{ i])}
+\NormalTok{    new\_line }\OperatorTok{=}\NormalTok{ []}
+    \ControlFlowTok{for}\NormalTok{ j }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\BuiltInTok{len}\NormalTok{(input\_entry)}\OperatorTok{{-}}\DecValTok{1}\NormalTok{, }\OperatorTok{{-}}\DecValTok{1}\NormalTok{, }\OperatorTok{{-}}\DecValTok{1}\NormalTok{):}
+      \ControlFlowTok{if}\NormalTok{ input\_entry[j] }\OperatorTok{==} \StringTok{\textquotesingle{}{-}\textquotesingle{}} \KeywordTok{and}\NormalTok{ it }\OperatorTok{==} \DecValTok{0}\NormalTok{:}
+\NormalTok{        new\_line.append(val\_array[(}\BuiltInTok{len}\NormalTok{(val\_array)}\OperatorTok{{-}}\DecValTok{1}\NormalTok{) }\OperatorTok{{-}}\NormalTok{ i])}
 \NormalTok{        it }\OperatorTok{+=} \DecValTok{1}
       \ControlFlowTok{else}\NormalTok{:}
-\NormalTok{        new_line.append(line[in_out][j])}
-\NormalTok{    new_array.append(new_line[::}\OperatorTok{-}\DecValTok{1}\NormalTok{])}
+\NormalTok{        new\_line.append(line[in\_out][j])}
+\NormalTok{    new\_array.append(new\_line[::}\OperatorTok{{-}}\DecValTok{1}\NormalTok{])}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1095,10 +1100,10 @@ Successivamente vengono differenziate 2 casistiche:
 \begin{Highlighting}[]
 \ControlFlowTok{else}\NormalTok{:}
 \NormalTok{  it }\OperatorTok{=} \DecValTok{0}
-  \ControlFlowTok{for}\NormalTok{ c, l }\KeywordTok{in} \BuiltInTok{enumerate}\NormalTok{(new_array):}
-    \ControlFlowTok{for}\NormalTok{ j }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\BuiltInTok{len}\NormalTok{(l)}\OperatorTok{-}\DecValTok{1}\NormalTok{, }\DecValTok{-1}\NormalTok{, }\DecValTok{-1}\NormalTok{):}
-      \ControlFlowTok{if}\NormalTok{ l[j] }\OperatorTok{==} \StringTok{'-'} \KeywordTok{and}\NormalTok{ it }\OperatorTok{==} \DecValTok{0}\NormalTok{:}
-\NormalTok{        l[j] }\OperatorTok{=}\NormalTok{ val_array[(}\BuiltInTok{len}\NormalTok{(val_array)}\OperatorTok{-}\DecValTok{1}\NormalTok{) }\OperatorTok{-}\NormalTok{ c]}
+  \ControlFlowTok{for}\NormalTok{ c, l }\KeywordTok{in} \BuiltInTok{enumerate}\NormalTok{(new\_array):}
+    \ControlFlowTok{for}\NormalTok{ j }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\BuiltInTok{len}\NormalTok{(l)}\OperatorTok{{-}}\DecValTok{1}\NormalTok{, }\OperatorTok{{-}}\DecValTok{1}\NormalTok{, }\OperatorTok{{-}}\DecValTok{1}\NormalTok{):}
+      \ControlFlowTok{if}\NormalTok{ l[j] }\OperatorTok{==} \StringTok{\textquotesingle{}{-}\textquotesingle{}} \KeywordTok{and}\NormalTok{ it }\OperatorTok{==} \DecValTok{0}\NormalTok{:}
+\NormalTok{        l[j] }\OperatorTok{=}\NormalTok{ val\_array[(}\BuiltInTok{len}\NormalTok{(val\_array)}\OperatorTok{{-}}\DecValTok{1}\NormalTok{) }\OperatorTok{{-}}\NormalTok{ c]}
 \NormalTok{        it }\OperatorTok{+=} \DecValTok{1}
 \NormalTok{    it }\OperatorTok{=} \DecValTok{0}
 \end{Highlighting}
@@ -1110,10 +1115,10 @@ Ogni riga viene scandita a partire dal fondo per iniziare a convertire i don't c
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ControlFlowTok{if}\NormalTok{ in_out }\OperatorTok{==} \StringTok{'inp'}\NormalTok{:}
-  \ControlFlowTok{return}\NormalTok{ [\{}\StringTok{'inp'}\NormalTok{:  l, }\StringTok{'out'}\NormalTok{:  line[}\StringTok{'out'}\NormalTok{]\} }\ControlFlowTok{for}\NormalTok{ l }\KeywordTok{in}\NormalTok{ new_array]}
+\ControlFlowTok{if}\NormalTok{ in\_out }\OperatorTok{==} \StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{:}
+  \ControlFlowTok{return}\NormalTok{ [\{}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{:  l, }\StringTok{\textquotesingle{}out\textquotesingle{}}\NormalTok{:  line[}\StringTok{\textquotesingle{}out\textquotesingle{}}\NormalTok{]\} }\ControlFlowTok{for}\NormalTok{ l }\KeywordTok{in}\NormalTok{ new\_array]}
 \ControlFlowTok{else}\NormalTok{:}
-  \ControlFlowTok{return}\NormalTok{ [\{}\StringTok{'inp'}\NormalTok{:  line[}\StringTok{'inp'}\NormalTok{], }\StringTok{'out'}\NormalTok{:  l\} }\ControlFlowTok{for}\NormalTok{ l }\KeywordTok{in}\NormalTok{ new_array]}
+  \ControlFlowTok{return}\NormalTok{ [\{}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{:  line[}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{], }\StringTok{\textquotesingle{}out\textquotesingle{}}\NormalTok{:  l\} }\ControlFlowTok{for}\NormalTok{ l }\KeywordTok{in}\NormalTok{ new\_array]}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1126,10 +1131,10 @@ L'oggetto restituito dalla funzione è un array contenente un vocabolario con la
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{def}\NormalTok{ create_0_1_array(le, pad):}
-\NormalTok{  count_1 }\OperatorTok{=}\NormalTok{ pad}
-\NormalTok{  count_0 }\OperatorTok{=}\NormalTok{ pad}
-  \ControlFlowTok{return}\NormalTok{ [}\BuiltInTok{str}\NormalTok{(}\DecValTok{1}\NormalTok{) }\ControlFlowTok{if}\NormalTok{ i }\OperatorTok{%}\NormalTok{ (count_1 }\OperatorTok{+}\NormalTok{ count_0) }\OperatorTok{<}\NormalTok{ count_1 }
+\KeywordTok{def}\NormalTok{ create\_0\_1\_array(le, pad):}
+\NormalTok{  count\_1 }\OperatorTok{=}\NormalTok{ pad}
+\NormalTok{  count\_0 }\OperatorTok{=}\NormalTok{ pad}
+  \ControlFlowTok{return}\NormalTok{ [}\BuiltInTok{str}\NormalTok{(}\DecValTok{1}\NormalTok{) }\ControlFlowTok{if}\NormalTok{ i }\OperatorTok{\%}\NormalTok{ (count\_1 }\OperatorTok{+}\NormalTok{ count\_0) }\OperatorTok{\textless{}}\NormalTok{ count\_1 }
     \ControlFlowTok{else} \BuiltInTok{str}\NormalTok{(}\DecValTok{0}\NormalTok{) }\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(le)]}
 \end{Highlighting}
 \end{Shaded}
@@ -1149,30 +1154,30 @@ Le funzioni analizzate e osservate nelle sezioni precedenti restituiscono sempre
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{def}\NormalTok{ create_mv_truth_table(truth_array, dv):}
-\NormalTok{  conv_truth }\OperatorTok{=}\NormalTok{ []}
-  \ControlFlowTok{for}\NormalTok{ line }\KeywordTok{in}\NormalTok{ truth_array:}
-\NormalTok{    line[}\StringTok{'inp'}\NormalTok{] }\OperatorTok{=} \StringTok{''}\NormalTok{.join(line[}\StringTok{'inp'}\NormalTok{])}
-\NormalTok{    line[}\StringTok{'inp'}\NormalTok{] }\OperatorTok{=}\NormalTok{ [line[}\StringTok{'inp'}\NormalTok{][i }\OperatorTok{*}\NormalTok{ dv:(i }\OperatorTok{+} \DecValTok{1}\NormalTok{) }\OperatorTok{*}\NormalTok{ dv]}
-      \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{((}\BuiltInTok{len}\NormalTok{(line[}\StringTok{'inp'}\NormalTok{]) }\OperatorTok{+}\NormalTok{ dv }\OperatorTok{-} \DecValTok{1}\NormalTok{) }\OperatorTok{//}\NormalTok{ dv)]}
-    \ControlFlowTok{if} \StringTok{'-'} \KeywordTok{not} \KeywordTok{in}\NormalTok{ line[}\StringTok{'out'}\NormalTok{]:}
-\NormalTok{      line[}\StringTok{'out'}\NormalTok{] }\OperatorTok{=} \StringTok{''}\NormalTok{.join(line[}\StringTok{'out'}\NormalTok{])}
-\NormalTok{      line[}\StringTok{'out'}\NormalTok{] }\OperatorTok{=}\NormalTok{ [line[}\StringTok{'out'}\NormalTok{][i }\OperatorTok{*}\NormalTok{ dv:(i }\OperatorTok{+} \DecValTok{1}\NormalTok{) }\OperatorTok{*}\NormalTok{ dv]}
-        \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{((}\BuiltInTok{len}\NormalTok{(line[}\StringTok{'out'}\NormalTok{]) }\OperatorTok{+}\NormalTok{ dv }\OperatorTok{-} \DecValTok{1}\NormalTok{) }\OperatorTok{//}\NormalTok{ dv)]}
-\NormalTok{      l_supp_inp }\OperatorTok{=}\NormalTok{ []}
-\NormalTok{      l_supp_out }\OperatorTok{=}\NormalTok{ []}
-      \ControlFlowTok{for}\NormalTok{ val }\KeywordTok{in}\NormalTok{ line[}\StringTok{'inp'}\NormalTok{]:}
-        \ControlFlowTok{if} \StringTok{'-'} \KeywordTok{not} \KeywordTok{in}\NormalTok{ val:}
-\NormalTok{          l_supp_inp.append(}\BuiltInTok{int}\NormalTok{(val, }\DecValTok{2}\NormalTok{))}
+\KeywordTok{def}\NormalTok{ create\_mv\_truth\_table(truth\_array, dv):}
+\NormalTok{  conv\_truth }\OperatorTok{=}\NormalTok{ []}
+  \ControlFlowTok{for}\NormalTok{ line }\KeywordTok{in}\NormalTok{ truth\_array:}
+\NormalTok{    line[}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{] }\OperatorTok{=} \StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{.join(line[}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{])}
+\NormalTok{    line[}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ [line[}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{][i }\OperatorTok{*}\NormalTok{ dv:(i }\OperatorTok{+} \DecValTok{1}\NormalTok{) }\OperatorTok{*}\NormalTok{ dv]}
+      \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{((}\BuiltInTok{len}\NormalTok{(line[}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{]) }\OperatorTok{+}\NormalTok{ dv }\OperatorTok{{-}} \DecValTok{1}\NormalTok{) }\OperatorTok{//}\NormalTok{ dv)]}
+    \ControlFlowTok{if} \StringTok{\textquotesingle{}{-}\textquotesingle{}} \KeywordTok{not} \KeywordTok{in}\NormalTok{ line[}\StringTok{\textquotesingle{}out\textquotesingle{}}\NormalTok{]:}
+\NormalTok{      line[}\StringTok{\textquotesingle{}out\textquotesingle{}}\NormalTok{] }\OperatorTok{=} \StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{.join(line[}\StringTok{\textquotesingle{}out\textquotesingle{}}\NormalTok{])}
+\NormalTok{      line[}\StringTok{\textquotesingle{}out\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ [line[}\StringTok{\textquotesingle{}out\textquotesingle{}}\NormalTok{][i }\OperatorTok{*}\NormalTok{ dv:(i }\OperatorTok{+} \DecValTok{1}\NormalTok{) }\OperatorTok{*}\NormalTok{ dv]}
+        \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{((}\BuiltInTok{len}\NormalTok{(line[}\StringTok{\textquotesingle{}out\textquotesingle{}}\NormalTok{]) }\OperatorTok{+}\NormalTok{ dv }\OperatorTok{{-}} \DecValTok{1}\NormalTok{) }\OperatorTok{//}\NormalTok{ dv)]}
+\NormalTok{      l\_supp\_inp }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{      l\_supp\_out }\OperatorTok{=}\NormalTok{ []}
+      \ControlFlowTok{for}\NormalTok{ val }\KeywordTok{in}\NormalTok{ line[}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{]:}
+        \ControlFlowTok{if} \StringTok{\textquotesingle{}{-}\textquotesingle{}} \KeywordTok{not} \KeywordTok{in}\NormalTok{ val:}
+\NormalTok{          l\_supp\_inp.append(}\BuiltInTok{int}\NormalTok{(val, }\DecValTok{2}\NormalTok{))}
         \ControlFlowTok{else}\NormalTok{:}
-\NormalTok{          l_supp_inp.append(}\StringTok{'-'}\NormalTok{)}
-      \ControlFlowTok{for}\NormalTok{ val }\KeywordTok{in}\NormalTok{ line[}\StringTok{'out'}\NormalTok{]:}
-\NormalTok{        l_supp_out.append(}\BuiltInTok{int}\NormalTok{(val, }\DecValTok{2}\NormalTok{))}
-\NormalTok{      conv_truth.append(\{}
-        \StringTok{'inp'}\NormalTok{:  l_supp_inp,}
-        \StringTok{'out'}\NormalTok{:  l_supp_out}
+\NormalTok{          l\_supp\_inp.append(}\StringTok{\textquotesingle{}{-}\textquotesingle{}}\NormalTok{)}
+      \ControlFlowTok{for}\NormalTok{ val }\KeywordTok{in}\NormalTok{ line[}\StringTok{\textquotesingle{}out\textquotesingle{}}\NormalTok{]:}
+\NormalTok{        l\_supp\_out.append(}\BuiltInTok{int}\NormalTok{(val, }\DecValTok{2}\NormalTok{))}
+\NormalTok{      conv\_truth.append(\{}
+        \StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{:  l\_supp\_inp,}
+        \StringTok{\textquotesingle{}out\textquotesingle{}}\NormalTok{:  l\_supp\_out}
 \NormalTok{      \})}
-  \ControlFlowTok{return}\NormalTok{ conv_truth}
+  \ControlFlowTok{return}\NormalTok{ conv\_truth}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1209,28 +1214,28 @@ Questo formato deriva dal formato blif, ampiamente utilizzato per la logica bina
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{mv_input }\OperatorTok{=}\NormalTok{ [i }\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{list}\NormalTok{(string.ascii_lowercase)[}
-\NormalTok{    :}\BuiltInTok{len}\NormalTok{(mv_table[}\DecValTok{0}\NormalTok{][}\StringTok{'inp'}\NormalTok{])]}
+\NormalTok{mv\_input }\OperatorTok{=}\NormalTok{ [i }\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{list}\NormalTok{(string.ascii\_lowercase)[}
+\NormalTok{    :}\BuiltInTok{len}\NormalTok{(mv\_table[}\DecValTok{0}\NormalTok{][}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{])]}
 \NormalTok{  ]}
-\NormalTok{mv_output }\OperatorTok{=}\NormalTok{ [}\StringTok{'o}\SpecialCharTok{\{\}}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(i) }\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\BuiltInTok{len}\NormalTok{(mv_table[}\DecValTok{0}\NormalTok{][}\StringTok{'out'}\NormalTok{]))]}
-\ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/blfmv/}\SpecialCharTok{\{\}}\StringTok{.mv'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir, nomefile), }\StringTok{'w'}\NormalTok{) }\ImportTok{as}\NormalTok{ blif:}
-\NormalTok{  blif.write(}\StringTok{'.model }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir, nomefile))}
-\NormalTok{  blif.write(}\StringTok{'.inputs }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
-      \StringTok{' '}\NormalTok{.join(}\BuiltInTok{map}\NormalTok{(}\BuiltInTok{str}\NormalTok{, mv_input))))}
-\NormalTok{  blif.write(}\StringTok{'.outputs }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
-      \StringTok{' '}\NormalTok{.join(}\BuiltInTok{map}\NormalTok{(}\BuiltInTok{str}\NormalTok{, mv_output))))}
-\NormalTok{  blif.write(}\StringTok{'.mv }\SpecialCharTok{\{\}}\StringTok{ }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
-      \StringTok{', '}\NormalTok{.join(}\BuiltInTok{map}\NormalTok{(}\BuiltInTok{str}\NormalTok{, mv_input)), mv))}
-\NormalTok{  blif.write(}\StringTok{'.mv }\SpecialCharTok{\{\}}\StringTok{ }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
-      \StringTok{', '}\NormalTok{.join(}\BuiltInTok{map}\NormalTok{(}\BuiltInTok{str}\NormalTok{, mv_output)), mv))}
-  \ControlFlowTok{for}\NormalTok{ count, out }\KeywordTok{in} \BuiltInTok{enumerate}\NormalTok{(mv_output):}
-\NormalTok{      blif.write(}\StringTok{'.table }\SpecialCharTok{\{\}}\StringTok{ }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
-        \StringTok{' '}\NormalTok{.join(}\BuiltInTok{map}\NormalTok{(}\BuiltInTok{str}\NormalTok{,mv_input)), out)}
+\NormalTok{mv\_output }\OperatorTok{=}\NormalTok{ [}\StringTok{\textquotesingle{}o}\SpecialCharTok{\{\}}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(i) }\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\BuiltInTok{len}\NormalTok{(mv\_table[}\DecValTok{0}\NormalTok{][}\StringTok{\textquotesingle{}out\textquotesingle{}}\NormalTok{]))]}
+\ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/blfmv/}\SpecialCharTok{\{\}}\StringTok{.mv\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir, nomefile), }\StringTok{\textquotesingle{}w\textquotesingle{}}\NormalTok{) }\ImportTok{as}\NormalTok{ blif:}
+\NormalTok{  blif.write(}\StringTok{\textquotesingle{}.model }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir, nomefile))}
+\NormalTok{  blif.write(}\StringTok{\textquotesingle{}.inputs }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
+      \StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{.join(}\BuiltInTok{map}\NormalTok{(}\BuiltInTok{str}\NormalTok{, mv\_input))))}
+\NormalTok{  blif.write(}\StringTok{\textquotesingle{}.outputs }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
+      \StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{.join(}\BuiltInTok{map}\NormalTok{(}\BuiltInTok{str}\NormalTok{, mv\_output))))}
+\NormalTok{  blif.write(}\StringTok{\textquotesingle{}.mv }\SpecialCharTok{\{\}}\StringTok{ }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
+      \StringTok{\textquotesingle{}, \textquotesingle{}}\NormalTok{.join(}\BuiltInTok{map}\NormalTok{(}\BuiltInTok{str}\NormalTok{, mv\_input)), mv))}
+\NormalTok{  blif.write(}\StringTok{\textquotesingle{}.mv }\SpecialCharTok{\{\}}\StringTok{ }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
+      \StringTok{\textquotesingle{}, \textquotesingle{}}\NormalTok{.join(}\BuiltInTok{map}\NormalTok{(}\BuiltInTok{str}\NormalTok{, mv\_output)), mv))}
+  \ControlFlowTok{for}\NormalTok{ count, out }\KeywordTok{in} \BuiltInTok{enumerate}\NormalTok{(mv\_output):}
+\NormalTok{      blif.write(}\StringTok{\textquotesingle{}.table }\SpecialCharTok{\{\}}\StringTok{ }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
+        \StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{.join(}\BuiltInTok{map}\NormalTok{(}\BuiltInTok{str}\NormalTok{,mv\_input)), out)}
 \NormalTok{      )}
-    \ControlFlowTok{for}\NormalTok{ line }\KeywordTok{in}\NormalTok{ mv_table:}
-\NormalTok{      blif.write(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{ }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
-        \StringTok{' '}\NormalTok{.join(}\BuiltInTok{map}\NormalTok{(}\BuiltInTok{str}\NormalTok{, line[}\StringTok{'inp'}\NormalTok{])), line[}\StringTok{'out'}\NormalTok{][count]))}
-\NormalTok{  blif.write(}\StringTok{'.end}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
+    \ControlFlowTok{for}\NormalTok{ line }\KeywordTok{in}\NormalTok{ mv\_table:}
+\NormalTok{      blif.write(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{ }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
+        \StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{.join(}\BuiltInTok{map}\NormalTok{(}\BuiltInTok{str}\NormalTok{, line[}\StringTok{\textquotesingle{}inp\textquotesingle{}}\NormalTok{])), line[}\StringTok{\textquotesingle{}out\textquotesingle{}}\NormalTok{][count]))}
+\NormalTok{  blif.write(}\StringTok{\textquotesingle{}.end}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1333,43 +1338,43 @@ A questo punto dell'analisi abbiamo a disposizione tutti i file per poter fare e
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/}\SpecialCharTok{\{\}}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir, circuito)) }\ImportTok{as}\NormalTok{ circ:}
+\ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/}\SpecialCharTok{\{\}}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir, circuito)) }\ImportTok{as}\NormalTok{ circ:}
   \BuiltInTok{input} \OperatorTok{=} \VariableTok{None}
 \NormalTok{  output }\OperatorTok{=} \VariableTok{None}
 \NormalTok{  mv }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\DecValTok{0}\NormalTok{)}
-\NormalTok{  table_array }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{  table\_array }\OperatorTok{=}\NormalTok{ []}
   \ControlFlowTok{for}\NormalTok{ line }\KeywordTok{in}\NormalTok{ circ.readlines():}
-    \ControlFlowTok{if} \StringTok{'.inputs'} \KeywordTok{in}\NormalTok{ line.strip():}
-      \BuiltInTok{input} \OperatorTok{=}\NormalTok{ line.strip().split(}\StringTok{' '}\NormalTok{)[}\DecValTok{1}\NormalTok{:]}
-    \ControlFlowTok{if} \StringTok{'.outputs'} \KeywordTok{in}\NormalTok{ line.strip():}
-\NormalTok{      output }\OperatorTok{=}\NormalTok{ line.strip().split(}\StringTok{' '}\NormalTok{)[}\DecValTok{1}\NormalTok{:]}
-    \ControlFlowTok{if} \StringTok{'.mv'} \KeywordTok{in}\NormalTok{ line.strip():}
-      \ControlFlowTok{if}\NormalTok{ mv }\OperatorTok{<} \BuiltInTok{int}\NormalTok{(line.strip().split(}\StringTok{' '}\NormalTok{)[}\OperatorTok{-}\DecValTok{1}\NormalTok{]):}
-\NormalTok{        mv }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(line.strip().split(}\StringTok{' '}\NormalTok{)[}\OperatorTok{-}\DecValTok{1}\NormalTok{])}
-    \ControlFlowTok{if} \StringTok{'.table'} \KeywordTok{in}\NormalTok{ line.strip():}
-\NormalTok{      l }\OperatorTok{=}\NormalTok{ line.strip().split(}\StringTok{' '}\NormalTok{)}
-\NormalTok{      table_array.append(}
+    \ControlFlowTok{if} \StringTok{\textquotesingle{}.inputs\textquotesingle{}} \KeywordTok{in}\NormalTok{ line.strip():}
+      \BuiltInTok{input} \OperatorTok{=}\NormalTok{ line.strip().split(}\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{)[}\DecValTok{1}\NormalTok{:]}
+    \ControlFlowTok{if} \StringTok{\textquotesingle{}.outputs\textquotesingle{}} \KeywordTok{in}\NormalTok{ line.strip():}
+\NormalTok{      output }\OperatorTok{=}\NormalTok{ line.strip().split(}\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{)[}\DecValTok{1}\NormalTok{:]}
+    \ControlFlowTok{if} \StringTok{\textquotesingle{}.mv\textquotesingle{}} \KeywordTok{in}\NormalTok{ line.strip():}
+      \ControlFlowTok{if}\NormalTok{ mv }\OperatorTok{\textless{}} \BuiltInTok{int}\NormalTok{(line.strip().split(}\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{)[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{]):}
+\NormalTok{        mv }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(line.strip().split(}\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{)[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{])}
+    \ControlFlowTok{if} \StringTok{\textquotesingle{}.table\textquotesingle{}} \KeywordTok{in}\NormalTok{ line.strip():}
+\NormalTok{      l }\OperatorTok{=}\NormalTok{ line.strip().split(}\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{)}
+\NormalTok{      table\_array.append(}
 \NormalTok{        \{}
-          \StringTok{'input'}\NormalTok{:    l[}\DecValTok{1}\NormalTok{:}\BuiltInTok{len}\NormalTok{(l)}\OperatorTok{-}\DecValTok{1}\NormalTok{],}
-          \StringTok{'output'}\NormalTok{:   l[}\OperatorTok{-}\DecValTok{1}\NormalTok{]}
+          \StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{:    l[}\DecValTok{1}\NormalTok{:}\BuiltInTok{len}\NormalTok{(l)}\OperatorTok{{-}}\DecValTok{1}\NormalTok{],}
+          \StringTok{\textquotesingle{}output\textquotesingle{}}\NormalTok{:   l[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{]}
 \NormalTok{        \}}
 \NormalTok{      )}
-    \ControlFlowTok{if} \StringTok{'.names'} \KeywordTok{in}\NormalTok{ line.strip():}
-\NormalTok{      l }\OperatorTok{=}\NormalTok{ line.strip().split(}\StringTok{' '}\NormalTok{)}
-\NormalTok{      table_array.append(}
+    \ControlFlowTok{if} \StringTok{\textquotesingle{}.names\textquotesingle{}} \KeywordTok{in}\NormalTok{ line.strip():}
+\NormalTok{      l }\OperatorTok{=}\NormalTok{ line.strip().split(}\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{)}
+\NormalTok{      table\_array.append(}
 \NormalTok{        \{}
-          \StringTok{'input'}\NormalTok{:    l[}\DecValTok{1}\NormalTok{:}\BuiltInTok{len}\NormalTok{(l)}\OperatorTok{-}\DecValTok{1}\NormalTok{],}
-          \StringTok{'output'}\NormalTok{:   l[}\OperatorTok{-}\DecValTok{1}\NormalTok{]}
+          \StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{:    l[}\DecValTok{1}\NormalTok{:}\BuiltInTok{len}\NormalTok{(l)}\OperatorTok{{-}}\DecValTok{1}\NormalTok{],}
+          \StringTok{\textquotesingle{}output\textquotesingle{}}\NormalTok{:   l[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{]}
 \NormalTok{        \}}
 \NormalTok{      )}
-  \CommentTok{# i blif non hanno .mv, quindi gli do il valore di dominio}
+  \CommentTok{\# i blif non hanno .mv, quindi gli do il valore di dominio}
   \ControlFlowTok{if}\NormalTok{ mv }\OperatorTok{==} \DecValTok{0}\NormalTok{:}
 \NormalTok{    mv }\OperatorTok{=} \DecValTok{2}
   \ControlFlowTok{return}\NormalTok{ \{}
-    \StringTok{'dominio'}\NormalTok{:   mv,}
-    \StringTok{'input'}\NormalTok{:    }\BuiltInTok{input}\NormalTok{,}
-    \StringTok{'output'}\NormalTok{:   output,}
-    \StringTok{'tabelle'}\NormalTok{:  table_array}
+    \StringTok{\textquotesingle{}dominio\textquotesingle{}}\NormalTok{:   mv,}
+    \StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{:    }\BuiltInTok{input}\NormalTok{,}
+    \StringTok{\textquotesingle{}output\textquotesingle{}}\NormalTok{:   output,}
+    \StringTok{\textquotesingle{}tabelle\textquotesingle{}}\NormalTok{:  table\_array}
 \NormalTok{  \}}
 \end{Highlighting}
 \end{Shaded}
@@ -1381,9 +1386,9 @@ Questa funzione, dato un circuito sia binario che mutli-valore, prende tutte le 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{costo }\OperatorTok{=} \DecValTok{0}
-\ControlFlowTok{for}\NormalTok{ t }\KeywordTok{in}\NormalTok{ circuito[}\StringTok{'tabelle'}\NormalTok{]:}
-\NormalTok{  intersection }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(}\BuiltInTok{set}\NormalTok{(circuito[}\StringTok{'input'}\NormalTok{]).intersection(t[}\StringTok{'input'}\NormalTok{]))}
-\NormalTok{  costo }\OperatorTok{=}\NormalTok{ costo }\OperatorTok{+} \BuiltInTok{pow}\NormalTok{(circuito[}\StringTok{'dominio'}\NormalTok{], intersection)}
+\ControlFlowTok{for}\NormalTok{ t }\KeywordTok{in}\NormalTok{ circuito[}\StringTok{\textquotesingle{}tabelle\textquotesingle{}}\NormalTok{]:}
+\NormalTok{  intersection }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(}\BuiltInTok{set}\NormalTok{(circuito[}\StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{]).intersection(t[}\StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{]))}
+\NormalTok{  costo }\OperatorTok{=}\NormalTok{ costo }\OperatorTok{+} \BuiltInTok{pow}\NormalTok{(circuito[}\StringTok{\textquotesingle{}dominio\textquotesingle{}}\NormalTok{], intersection)}
 \ControlFlowTok{return}\NormalTok{ costo}
 \end{Highlighting}
 \end{Shaded}
@@ -1392,33 +1397,33 @@ Una volta eseguita questa conversione è stato possibile ottenere tutti i valori
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{'calcolo_costi.csv'}\NormalTok{, }\StringTok{'a'}\NormalTok{) }\ImportTok{as} \BuiltInTok{file}\NormalTok{:}
+\ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{\textquotesingle{}calcolo\_costi.csv\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}a\textquotesingle{}}\NormalTok{) }\ImportTok{as} \BuiltInTok{file}\NormalTok{:}
   \BuiltInTok{file}\NormalTok{.write(}
-    \StringTok{'NOME CIRC;COSTO BOOLEANO;INPUT ALICE;INPUT BOB;}
-\StringTok{    DOMINIO MULTIVALORE;COSTO MULTIVALORE;INPUT ALICEINPUT BOB}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
-  \ControlFlowTok{for}\NormalTok{ blfmv }\KeywordTok{in}\NormalTok{ listdir(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/blfmv'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir)):}
-    \ControlFlowTok{if}\NormalTok{ blfmv.endswith(}\StringTok{'.mv'}\NormalTok{):}
-\NormalTok{      circ_mv }\OperatorTok{=}\NormalTok{ info_circuito(}
-          \StringTok{'}\SpecialCharTok{\{\}}\StringTok{/blfmv/synth'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir),blfmv)}
-\NormalTok{      costo_mv }\OperatorTok{=}\NormalTok{ calcolo_costo_circuito(circ_mv)}
-      \ControlFlowTok{if} \BuiltInTok{len}\NormalTok{(circ_mv[}\StringTok{'input'}\NormalTok{]) }\OperatorTok{%} \DecValTok{2} \OperatorTok{!=} \DecValTok{0}\NormalTok{:}
-\NormalTok{          alice_var_mv }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ_mv[}\StringTok{'input'}\NormalTok{])}\OperatorTok{/} \DecValTok{2}\NormalTok{)}
-\NormalTok{          bob_var_mv }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ_mv[}\StringTok{'input'}\NormalTok{]) }\OperatorTok{/}\DecValTok{2}\NormalTok{) }\OperatorTok{+} \DecValTok{1}
+    \StringTok{\textquotesingle{}NOME CIRC;COSTO BOOLEANO;INPUT ALICE;INPUT BOB;}
+\StringTok{    DOMINIO MULTIVALORE;COSTO MULTIVALORE;INPUT ALICEINPUT BOB}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+  \ControlFlowTok{for}\NormalTok{ blfmv }\KeywordTok{in}\NormalTok{ listdir(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/blfmv\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir)):}
+    \ControlFlowTok{if}\NormalTok{ blfmv.endswith(}\StringTok{\textquotesingle{}.mv\textquotesingle{}}\NormalTok{):}
+\NormalTok{      circ\_mv }\OperatorTok{=}\NormalTok{ info\_circuito(}
+          \StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/blfmv/synth\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir),blfmv)}
+\NormalTok{      costo\_mv }\OperatorTok{=}\NormalTok{ calcolo\_costo\_circuito(circ\_mv)}
+      \ControlFlowTok{if} \BuiltInTok{len}\NormalTok{(circ\_mv[}\StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{]) }\OperatorTok{\%} \DecValTok{2} \OperatorTok{!=} \DecValTok{0}\NormalTok{:}
+\NormalTok{          alice\_var\_mv }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ\_mv[}\StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{])}\OperatorTok{/} \DecValTok{2}\NormalTok{)}
+\NormalTok{          bob\_var\_mv }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ\_mv[}\StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{]) }\OperatorTok{/}\DecValTok{2}\NormalTok{) }\OperatorTok{+} \DecValTok{1}
       \ControlFlowTok{else}\NormalTok{:}
-\NormalTok{          alice_var_mv }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ_mv[}\StringTok{'input'}\NormalTok{])}\OperatorTok{/} \DecValTok{2}\NormalTok{)}
-\NormalTok{          bob_var_mv }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ_mv[}\StringTok{'input'}\NormalTok{]) }\OperatorTok{/}\DecValTok{2}\NormalTok{)}
-\NormalTok{      circ_bool }\OperatorTok{=}\NormalTok{ info_circuito(}
-          \StringTok{'}\SpecialCharTok{\{\}}\StringTok{/blif/synth'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir), }\StringTok{'}\SpecialCharTok{\{\}}\StringTok{blif'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(blfmv.split(}\StringTok{'.'}\NormalTok{)[}\DecValTok{0}\NormalTok{]))}
-\NormalTok{      costo_bool }\OperatorTok{=}\NormalTok{ calcolo_costo_circuito(circ_bool)}
-      \ControlFlowTok{if} \BuiltInTok{len}\NormalTok{(circ_bool[}\StringTok{'input'}\NormalTok{]) }\OperatorTok{%} \DecValTok{2} \OperatorTok{!=} \DecValTok{0}\NormalTok{:}
-\NormalTok{          alice_var_bool }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ_boo[}\StringTok{'input'}\NormalTok{]) }\OperatorTok{/} \DecValTok{2}\NormalTok{)}
-\NormalTok{          bob_var_bool }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ_bool[}\StringTok{'input'}\NormalTok{) }\OperatorTok{/} \DecValTok{2}\NormalTok{) }\OperatorTok{+} \DecValTok{1}
+\NormalTok{          alice\_var\_mv }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ\_mv[}\StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{])}\OperatorTok{/} \DecValTok{2}\NormalTok{)}
+\NormalTok{          bob\_var\_mv }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ\_mv[}\StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{]) }\OperatorTok{/}\DecValTok{2}\NormalTok{)}
+\NormalTok{      circ\_bool }\OperatorTok{=}\NormalTok{ info\_circuito(}
+          \StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/blif/synth\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir), }\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{blif\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(blfmv.split(}\StringTok{\textquotesingle{}.\textquotesingle{}}\NormalTok{)[}\DecValTok{0}\NormalTok{]))}
+\NormalTok{      costo\_bool }\OperatorTok{=}\NormalTok{ calcolo\_costo\_circuito(circ\_bool)}
+      \ControlFlowTok{if} \BuiltInTok{len}\NormalTok{(circ\_bool[}\StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{]) }\OperatorTok{\%} \DecValTok{2} \OperatorTok{!=} \DecValTok{0}\NormalTok{:}
+\NormalTok{          alice\_var\_bool }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ\_boo[}\StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{]) }\OperatorTok{/} \DecValTok{2}\NormalTok{)}
+\NormalTok{          bob\_var\_bool }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ\_bool[}\StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{) }\OperatorTok{/} \DecValTok{2}\NormalTok{) }\OperatorTok{+} \DecValTok{1}
       \ControlFlowTok{else}\NormalTok{:}
-\NormalTok{          alice_var_bool }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ_boo[}\StringTok{'input'}\NormalTok{]) }\OperatorTok{/} \DecValTok{2}\NormalTok{)}
-\NormalTok{          bob_var_bool }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ_bool[}\StringTok{'input'}\NormalTok{) }\OperatorTok{/} \DecValTok{2}\NormalTok{)}
-      \BuiltInTok{file}\NormalTok{.write(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{;}\SpecialCharTok{\{\}}\StringTok{;}\SpecialCharTok{\{\}}\StringTok{;}\SpecialCharTok{\{\}}\StringTok{;}\SpecialCharTok{\{\}}\StringTok{;}\SpecialCharTok{\{\}}\StringTok{;}\SpecialCharTok{\{\}}\StringTok{;}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{.forma(}
-\NormalTok{        blfmv.split(}\StringTok{'.'}\NormalTok{)[}\DecValTok{0}\NormalTok{], costo_bool, alice_var_bool,bob_var_bool, }
-\NormalTok{          circ_mv[}\StringTok{'dominio'}\NormalTok{],costo_mv, alice_var_mv, bob_var_mv))}
+\NormalTok{          alice\_var\_bool }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ\_boo[}\StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{]) }\OperatorTok{/} \DecValTok{2}\NormalTok{)}
+\NormalTok{          bob\_var\_bool }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{len}\NormalTok{(circ\_bool[}\StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{) }\OperatorTok{/} \DecValTok{2}\NormalTok{)}
+      \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{;}\SpecialCharTok{\{\}}\StringTok{;}\SpecialCharTok{\{\}}\StringTok{;}\SpecialCharTok{\{\}}\StringTok{;}\SpecialCharTok{\{\}}\StringTok{;}\SpecialCharTok{\{\}}\StringTok{;}\SpecialCharTok{\{\}}\StringTok{;}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.forma(}
+\NormalTok{        blfmv.split(}\StringTok{\textquotesingle{}.\textquotesingle{}}\NormalTok{)[}\DecValTok{0}\NormalTok{], costo\_bool, alice\_var\_bool,bob\_var\_bool, }
+\NormalTok{          circ\_mv[}\StringTok{\textquotesingle{}dominio\textquotesingle{}}\NormalTok{],costo\_mv, alice\_var\_mv, bob\_var\_mv))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1467,22 +1472,22 @@ Tutte le fasi mostrate sopra, più altre secondarie, sono state automatizzate in
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{working_dir }\OperatorTok{=} \StringTok{'./prova'}
- \ControlFlowTok{if}\NormalTok{ path.exists(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/blif'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir)) }
-    \KeywordTok{and}\NormalTok{ path.exists(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/blfmv'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir)):}
-\NormalTok{        rmtree(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/blif'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir))}
-\NormalTok{        rmtree(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/blfmv'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir))}
+\NormalTok{working\_dir }\OperatorTok{=} \StringTok{\textquotesingle{}./prova\textquotesingle{}}
+ \ControlFlowTok{if}\NormalTok{ path.exists(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/blif\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir)) }
+    \KeywordTok{and}\NormalTok{ path.exists(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/blfmv\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir)):}
+\NormalTok{        rmtree(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/blif\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir))}
+\NormalTok{        rmtree(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/blfmv\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir))}
       
-\NormalTok{makedirs(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/blif/synth'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir))}
-\NormalTok{makedirs(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/blfmv/synth'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir))}
-\NormalTok{makedirs(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/blfmv/synth/abc'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir))}
-\NormalTok{makedirs(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/blfmv/synth/mvsis'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir))}
+\NormalTok{makedirs(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/blif/synth\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir))}
+\NormalTok{makedirs(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/blfmv/synth\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir))}
+\NormalTok{makedirs(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/blfmv/synth/abc\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir))}
+\NormalTok{makedirs(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/blfmv/synth/mvsis\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir))}
 
-\ControlFlowTok{if}\NormalTok{ path.exists(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/synth_out.mvsis'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir)):}
-\NormalTok{    remove(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/synth_out.mvsis'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir))}
+\ControlFlowTok{if}\NormalTok{ path.exists(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/synth\_out.mvsis\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir)):}
+\NormalTok{    remove(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/synth\_out.mvsis\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir))}
 
-\ControlFlowTok{if} \KeywordTok{not}\NormalTok{ path.exists(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/pla'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir)):}
-    \BuiltInTok{print}\NormalTok{(}\StringTok{'CARTELLA PLA NON PRESENTE'}\NormalTok{)}
+\ControlFlowTok{if} \KeywordTok{not}\NormalTok{ path.exists(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/pla\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir)):}
+    \BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}CARTELLA PLA NON PRESENTE\textquotesingle{}}\NormalTok{)}
 \NormalTok{    exit}
 \end{Highlighting}
 \end{Shaded}
@@ -1491,10 +1496,10 @@ In questa fase viene creata la struttura delle directory che conterranno i file 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{bin_to_mv_mcd(working_dir)}
-\ControlFlowTok{if}\NormalTok{ exists(}\StringTok{'./pla_to_blif.mvsis'}\NormalTok{):}
-\NormalTok{  remove(}\StringTok{'./pla_to_blif.mvsis'}\NormalTok{)}
-\NormalTok{pla_to_blif(working_dir)}
+\NormalTok{bin\_to\_mv\_mcd(working\_dir)}
+\ControlFlowTok{if}\NormalTok{ exists(}\StringTok{\textquotesingle{}./pla\_to\_blif.mvsis\textquotesingle{}}\NormalTok{):}
+\NormalTok{  remove(}\StringTok{\textquotesingle{}./pla\_to\_blif.mvsis\textquotesingle{}}\NormalTok{)}
+\NormalTok{pla\_to\_blif(working\_dir)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1517,13 +1522,13 @@ In questa sezione vengono chiamate due utility create con lo scopo di generare d
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{def}\NormalTok{ pla_to_blif(working_dir):}
-  \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{'./pla_to_blif.mvsis'}\NormalTok{, }\StringTok{'w'}\NormalTok{) }\ImportTok{as} \BuiltInTok{file}\NormalTok{:}
-    \BuiltInTok{file}\NormalTok{.write(}\StringTok{"source abc_alias.abc}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
-    \ControlFlowTok{for}\NormalTok{ ele }\KeywordTok{in}\NormalTok{ os.listdir(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/pla'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir)):}
-      \BuiltInTok{file}\NormalTok{.write(}\StringTok{'read_pla }\SpecialCharTok{\{\}}\StringTok{/pla/}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir,ele))}
-      \BuiltInTok{file}\NormalTok{.write(}\StringTok{'write_blif }\SpecialCharTok{\{\}}\StringTok{/blif/}\SpecialCharTok{\{\}}\StringTok{.blif}\CharTok{\textbackslash{}n\textbackslash{}n}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
-\NormalTok{        working_dir, ele.split(}\StringTok{'.'}\NormalTok{)[}\DecValTok{0}\NormalTok{]))}
+\KeywordTok{def}\NormalTok{ pla\_to\_blif(working\_dir):}
+  \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{\textquotesingle{}./pla\_to\_blif.mvsis\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}w\textquotesingle{}}\NormalTok{) }\ImportTok{as} \BuiltInTok{file}\NormalTok{:}
+    \BuiltInTok{file}\NormalTok{.write(}\StringTok{"source abc\_alias.abc}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+    \ControlFlowTok{for}\NormalTok{ ele }\KeywordTok{in}\NormalTok{ os.listdir(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/pla\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir)):}
+      \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}read\_pla }\SpecialCharTok{\{\}}\StringTok{/pla/}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir,ele))}
+      \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}write\_blif }\SpecialCharTok{\{\}}\StringTok{/blif/}\SpecialCharTok{\{\}}\StringTok{.blif}\CharTok{\textbackslash{}n\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
+\NormalTok{        working\_dir, ele.split(}\StringTok{\textquotesingle{}.\textquotesingle{}}\NormalTok{)[}\DecValTok{0}\NormalTok{]))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1545,7 +1550,7 @@ In questo modo ogni circuito viene convertito semplicemente chiamando
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{call([}\StringTok{'abc'}\NormalTok{, }\StringTok{'-F'}\NormalTok{, }\StringTok{'./pla_to_blif.mvsis'}\NormalTok{])}
+\NormalTok{call([}\StringTok{\textquotesingle{}abc\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}{-}F\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}./pla\_to\_blif.mvsis\textquotesingle{}}\NormalTok{])}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1556,24 +1561,24 @@ In questo modo ogni circuito viene convertito semplicemente chiamando
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{def}\NormalTok{ bin_to_mv_mcd(working_dir):}
-  \ControlFlowTok{for}\NormalTok{ pla }\KeywordTok{in}\NormalTok{ listdir(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/pla'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir)):}
-    \ControlFlowTok{if}\NormalTok{ pla.endswith(}\StringTok{'.pla'}\NormalTok{):}
-\NormalTok{      inp, out, inp_array, out_array, truth_table }\OperatorTok{=}\NormalTok{ read_pla(}
-        \StringTok{'}\SpecialCharTok{\{\}}\StringTok{/pla/}\SpecialCharTok{\{\}}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir, pla))}
+\KeywordTok{def}\NormalTok{ bin\_to\_mv\_mcd(working\_dir):}
+  \ControlFlowTok{for}\NormalTok{ pla }\KeywordTok{in}\NormalTok{ listdir(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/pla\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir)):}
+    \ControlFlowTok{if}\NormalTok{ pla.endswith(}\StringTok{\textquotesingle{}.pla\textquotesingle{}}\NormalTok{):}
+\NormalTok{      inp, out, inp\_array, out\_array, truth\_table }\OperatorTok{=}\NormalTok{ read\_pla(}
+        \StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/pla/}\SpecialCharTok{\{\}}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir, pla))}
 \NormalTok{      dv }\OperatorTok{=}\NormalTok{ euclide(}\BuiltInTok{int}\NormalTok{(inp), }\BuiltInTok{int}\NormalTok{(out))}
       \ControlFlowTok{if} \BuiltInTok{int}\NormalTok{(inp.strip()) }\OperatorTok{==} \BuiltInTok{int}\NormalTok{(out.strip()) }\KeywordTok{or}\NormalTok{ dv }\OperatorTok{==} \BuiltInTok{int}\NormalTok{(inp):}
 \NormalTok{        dv }\OperatorTok{=}\NormalTok{ dv}\OperatorTok{/}\DecValTok{2}
-      \ControlFlowTok{if}\NormalTok{ dv }\OperatorTok{>=} \DecValTok{8}\NormalTok{:}
+      \ControlFlowTok{if}\NormalTok{ dv }\OperatorTok{\textgreater{}=} \DecValTok{8}\NormalTok{:}
 \NormalTok{        dv }\OperatorTok{=} \DecValTok{2} 
 \NormalTok{        mv }\OperatorTok{=} \BuiltInTok{pow}\NormalTok{(}\DecValTok{2}\NormalTok{, dv)}
-        \BuiltInTok{print}\NormalTok{(}\StringTok{'}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{inp: }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{out:}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{multi-valore:}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}
-\StringTok{          divide ogni:}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(pla,inp.strip(), }
+        \BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{inp: }\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{out:}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{multi{-}valore:}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}
+\StringTok{          divide ogni:}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(pla,inp.strip(), }
 \NormalTok{          out.strip(), }\BuiltInTok{int}\NormalTok{(mv), }\BuiltInTok{int}\NormalTok{(dv)))}
-\NormalTok{        truth_table }\OperatorTok{=}\NormalTok{ expand_dont_care(truth_table, }\BuiltInTok{int}\NormalTok{(dv))}
-\NormalTok{        mv_table }\OperatorTok{=}\NormalTok{ create_mv_truth_table(truth_table, }\BuiltInTok{int}\NormalTok{(dv))}
-\NormalTok{        crete_blif_mv(working_dir, mv_table, }\BuiltInTok{int}\NormalTok{(mv),}
-\NormalTok{          basename(pla).split(}\StringTok{'.'}\NormalTok{)[}\DecValTok{0}\NormalTok{])}
+\NormalTok{        truth\_table }\OperatorTok{=}\NormalTok{ expand\_dont\_care(truth\_table, }\BuiltInTok{int}\NormalTok{(dv))}
+\NormalTok{        mv\_table }\OperatorTok{=}\NormalTok{ create\_mv\_truth\_table(truth\_table, }\BuiltInTok{int}\NormalTok{(dv))}
+\NormalTok{        crete\_blif\_mv(working\_dir, mv\_table, }\BuiltInTok{int}\NormalTok{(mv),}
+\NormalTok{          basename(pla).split(}\StringTok{\textquotesingle{}.\textquotesingle{}}\NormalTok{)[}\DecValTok{0}\NormalTok{])}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1587,12 +1592,12 @@ In questa funzione vengono racchiuse le funzioni descritte precedentemente per l
   \ControlFlowTok{if} \BuiltInTok{int}\NormalTok{(inp.strip()) }\OperatorTok{==} \BuiltInTok{int}\NormalTok{(out.strip())}
     \KeywordTok{or}\NormalTok{ dv }\OperatorTok{==} \BuiltInTok{int}\NormalTok{(inp):}
 \NormalTok{    dv }\OperatorTok{=}\NormalTok{ dv}\OperatorTok{/}\DecValTok{2}
-  \ControlFlowTok{if}\NormalTok{ dv }\OperatorTok{>=} \DecValTok{8}\NormalTok{:}
+  \ControlFlowTok{if}\NormalTok{ dv }\OperatorTok{\textgreater{}=} \DecValTok{8}\NormalTok{:}
 \NormalTok{    dv }\OperatorTok{=} \DecValTok{2} 
 
 \KeywordTok{def}\NormalTok{ euclide(a, b):}
   \ControlFlowTok{while}\NormalTok{(b }\OperatorTok{!=} \DecValTok{0}\NormalTok{):}
-\NormalTok{    R }\OperatorTok{=}\NormalTok{ a }\OperatorTok{%}\NormalTok{ b}
+\NormalTok{    R }\OperatorTok{=}\NormalTok{ a }\OperatorTok{\%}\NormalTok{ b}
 \NormalTok{    a }\OperatorTok{=}\NormalTok{ b}
 \NormalTok{    b }\OperatorTok{=}\NormalTok{ R}
   \ControlFlowTok{return}\NormalTok{ a}
@@ -1603,11 +1608,11 @@ In questa porzione avvengono le fasi di individuazione del M.C.D. tramite la fun
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{synth(working_dir)}
+\NormalTok{synth(working\_dir)}
 
-\NormalTok{call([}\StringTok{'abc'}\NormalTok{, }\StringTok{'-F'}\NormalTok{, }\StringTok{'./synth_bool.abc'}\NormalTok{])}
-\NormalTok{call([}\StringTok{'abc'}\NormalTok{, }\StringTok{'-F'}\NormalTok{, }\StringTok{'./synth_mv.abc'}\NormalTok{])}
-\NormalTok{call([}\StringTok{'mvsis'}\NormalTok{, }\StringTok{'-F'}\NormalTok{, }\StringTok{'./synth_mv.mvsis'}\NormalTok{])}
+\NormalTok{call([}\StringTok{\textquotesingle{}abc\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}{-}F\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}./synth\_bool.abc\textquotesingle{}}\NormalTok{])}
+\NormalTok{call([}\StringTok{\textquotesingle{}abc\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}{-}F\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}./synth\_mv.abc\textquotesingle{}}\NormalTok{])}
+\NormalTok{call([}\StringTok{\textquotesingle{}mvsis\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}{-}F\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}./synth\_mv.mvsis\textquotesingle{}}\NormalTok{])}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1618,48 +1623,48 @@ L'ultimo passo consiste nella sintesi dei circuiti ottenuti e nella loro controp
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{def}\NormalTok{ synth(working_dir):  }
-  \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{'./synth_bool.abc'}\NormalTok{, }\StringTok{'w'}\NormalTok{) }\ImportTok{as} \BuiltInTok{file}\NormalTok{:}
-    \BuiltInTok{file}\NormalTok{.write(}\StringTok{"source abc_alias.abc}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
-    \ControlFlowTok{for}\NormalTok{ ele }\KeywordTok{in}\NormalTok{ os.listdir(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/blif'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir)):}
-      \ControlFlowTok{if}\NormalTok{ ele.endswith(}\StringTok{'.blif'}\NormalTok{):}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'read_blif }\SpecialCharTok{\{\}}\StringTok{/blif/}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir,ele))}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'cl}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'resyn2}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'cl}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'write_blif }\SpecialCharTok{\{\}}\StringTok{/blif/synth/}\SpecialCharTok{\{\}}\StringTok{.blif}\CharTok{\textbackslash{}n\textbackslash{}n}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
-\NormalTok{          working_dir,ele.split(}\StringTok{'.'}\NormalTok{)[}\DecValTok{0}\NormalTok{]))}
-  \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{'./synth_mv.abc'}\NormalTok{, }\StringTok{'w'}\NormalTok{) }\ImportTok{as} \BuiltInTok{file}\NormalTok{:}
-    \BuiltInTok{file}\NormalTok{.write(}\StringTok{"source abc_alias.abc}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
-    \ControlFlowTok{for}\NormalTok{ ele }\KeywordTok{in}\NormalTok{ os.listdir(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/blfmv'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir)):}
-      \ControlFlowTok{if}\NormalTok{ ele.endswith(}\StringTok{'.mv'}\NormalTok{):}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'read_blif_mv }\SpecialCharTok{\{\}}\StringTok{/blfmv/}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{'}
-\NormalTok{          .}\BuiltInTok{format}\NormalTok{(working_dir, ele))}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'strash}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'compress2}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'cl}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'resyn2}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'cl}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'write_blif_mv }\SpecialCharTok{\{\}}\StringTok{/blfmv/synth/abc/}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n\textbackslash{}n}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dele))}
-  \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{'./synth_mv.mvsis'}\NormalTok{, }\StringTok{'w'}\NormalTok{) }\ImportTok{as} \BuiltInTok{file}\NormalTok{:}
-    \ControlFlowTok{for}\NormalTok{ ele }\KeywordTok{in}\NormalTok{ os.listdir(}\StringTok{'}\SpecialCharTok{\{\}}\StringTok{/blfmv'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working_dir)):}
-      \ControlFlowTok{if}\NormalTok{ ele.endswith(}\StringTok{'.mv'}\NormalTok{):}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'read_blif_mv }\SpecialCharTok{\{\}}\StringTok{/blfmv/}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
-\NormalTok{          working_dir, ele)}
+\KeywordTok{def}\NormalTok{ synth(working\_dir):  }
+  \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{\textquotesingle{}./synth\_bool.abc\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}w\textquotesingle{}}\NormalTok{) }\ImportTok{as} \BuiltInTok{file}\NormalTok{:}
+    \BuiltInTok{file}\NormalTok{.write(}\StringTok{"source abc\_alias.abc}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+    \ControlFlowTok{for}\NormalTok{ ele }\KeywordTok{in}\NormalTok{ os.listdir(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/blif\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir)):}
+      \ControlFlowTok{if}\NormalTok{ ele.endswith(}\StringTok{\textquotesingle{}.blif\textquotesingle{}}\NormalTok{):}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}read\_blif }\SpecialCharTok{\{\}}\StringTok{/blif/}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir,ele))}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}cl}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}resyn2}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}cl}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}write\_blif }\SpecialCharTok{\{\}}\StringTok{/blif/synth/}\SpecialCharTok{\{\}}\StringTok{.blif}\CharTok{\textbackslash{}n\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
+\NormalTok{          working\_dir,ele.split(}\StringTok{\textquotesingle{}.\textquotesingle{}}\NormalTok{)[}\DecValTok{0}\NormalTok{]))}
+  \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{\textquotesingle{}./synth\_mv.abc\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}w\textquotesingle{}}\NormalTok{) }\ImportTok{as} \BuiltInTok{file}\NormalTok{:}
+    \BuiltInTok{file}\NormalTok{.write(}\StringTok{"source abc\_alias.abc}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+    \ControlFlowTok{for}\NormalTok{ ele }\KeywordTok{in}\NormalTok{ os.listdir(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/blfmv\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir)):}
+      \ControlFlowTok{if}\NormalTok{ ele.endswith(}\StringTok{\textquotesingle{}.mv\textquotesingle{}}\NormalTok{):}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}read\_blif\_mv }\SpecialCharTok{\{\}}\StringTok{/blfmv/}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}
+\NormalTok{          .}\BuiltInTok{format}\NormalTok{(working\_dir, ele))}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}strash}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}compress2}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}cl}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}resyn2}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}cl}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}write\_blif\_mv }\SpecialCharTok{\{\}}\StringTok{/blfmv/synth/abc/}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dele))}
+  \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{\textquotesingle{}./synth\_mv.mvsis\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}w\textquotesingle{}}\NormalTok{) }\ImportTok{as} \BuiltInTok{file}\NormalTok{:}
+    \ControlFlowTok{for}\NormalTok{ ele }\KeywordTok{in}\NormalTok{ os.listdir(}\StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{/blfmv\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(working\_dir)):}
+      \ControlFlowTok{if}\NormalTok{ ele.endswith(}\StringTok{\textquotesingle{}.mv\textquotesingle{}}\NormalTok{):}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}read\_blif\_mv }\SpecialCharTok{\{\}}\StringTok{/blfmv/}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(}
+\NormalTok{          working\_dir, ele)}
 \NormalTok{        )}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'sweep}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'eliminate -l 1}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'simplify -m nocomp}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'eliminate -l 1}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'sweep}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'eliminate -l 5}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'simplify}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'sweep}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'eliminate -l 1}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'sweep}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'fullsimp -m nocomp}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
-        \BuiltInTok{file}\NormalTok{.write(}\StringTok{'write_blif_mv }\SpecialCharTok{\{\}}\StringTok{/blfmv/synth/mvsis/}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n\textbackslash{}n}\StringTok{'}
-\NormalTok{          .}\BuiltInTok{format}\NormalTok{(working_dir, ele))}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}sweep}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}eliminate {-}l 1}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}simplify {-}m nocomp}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}eliminate {-}l 1}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}sweep}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}eliminate {-}l 5}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}simplify}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}sweep}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}eliminate {-}l 1}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}sweep}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}fullsimp {-}m nocomp}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+        \BuiltInTok{file}\NormalTok{.write(}\StringTok{\textquotesingle{}write\_blif\_mv }\SpecialCharTok{\{\}}\StringTok{/blfmv/synth/mvsis/}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}n\textbackslash{}n}\StringTok{\textquotesingle{}}
+\NormalTok{          .}\BuiltInTok{format}\NormalTok{(working\_dir, ele))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1679,10 +1684,10 @@ Viene poi controllato se è già presente un file contenente dei costi e, se c'�
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ControlFlowTok{if}\NormalTok{ exists(}\StringTok{'./calcolo_costi.csv'}\NormalTok{):}
-\NormalTok{    remove(}\StringTok{'./calcolo_costi.csv'}\NormalTok{)}
-\ControlFlowTok{if}\NormalTok{ exists(}\StringTok{'./calcolo_costi_no_synth.csv'}\NormalTok{):}
-\NormalTok{    remove(}\StringTok{'./calcolo_costi_no_synth.csv'}\NormalTok{)}
+\ControlFlowTok{if}\NormalTok{ exists(}\StringTok{\textquotesingle{}./calcolo\_costi.csv\textquotesingle{}}\NormalTok{):}
+\NormalTok{    remove(}\StringTok{\textquotesingle{}./calcolo\_costi.csv\textquotesingle{}}\NormalTok{)}
+\ControlFlowTok{if}\NormalTok{ exists(}\StringTok{\textquotesingle{}./calcolo\_costi\_no\_synth.csv\textquotesingle{}}\NormalTok{):}
+\NormalTok{    remove(}\StringTok{\textquotesingle{}./calcolo\_costi\_no\_synth.csv\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1690,14 +1695,14 @@ Infine i costi dei circuiti possono essere calcolati
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{calcolo_costi_synth(working_dir)}
-\NormalTok{calcolo_costi_no_synth(working_dir)}
+\NormalTok{calcolo\_costi\_synth(working\_dir)}
+\NormalTok{calcolo\_costi\_no\_synth(working\_dir)}
 
-\KeywordTok{def}\NormalTok{ calcolo_costo_circuito(circuito):}
+\KeywordTok{def}\NormalTok{ calcolo\_costo\_circuito(circuito):}
 \NormalTok{  costo }\OperatorTok{=} \DecValTok{0}
-  \ControlFlowTok{for}\NormalTok{ t }\KeywordTok{in}\NormalTok{ circuito[}\StringTok{'tabelle'}\NormalTok{]:}
-\NormalTok{    intersection }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(}\BuiltInTok{set}\NormalTok{(circuito[}\StringTok{'input'}\NormalTok{]).intersection(t[}\StringTok{'input'}\NormalTok{]))}
-\NormalTok{    costo }\OperatorTok{=}\NormalTok{ costo }\OperatorTok{+} \BuiltInTok{pow}\NormalTok{(circuito[}\StringTok{'dominio'}\NormalTok{], intersection)}
+  \ControlFlowTok{for}\NormalTok{ t }\KeywordTok{in}\NormalTok{ circuito[}\StringTok{\textquotesingle{}tabelle\textquotesingle{}}\NormalTok{]:}
+\NormalTok{    intersection }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(}\BuiltInTok{set}\NormalTok{(circuito[}\StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{]).intersection(t[}\StringTok{\textquotesingle{}input\textquotesingle{}}\NormalTok{]))}
+\NormalTok{    costo }\OperatorTok{=}\NormalTok{ costo }\OperatorTok{+} \BuiltInTok{pow}\NormalTok{(circuito[}\StringTok{\textquotesingle{}dominio\textquotesingle{}}\NormalTok{], intersection)}
   \ControlFlowTok{return}\NormalTok{ costo}
 \end{Highlighting}
 \end{Shaded}
@@ -2074,6 +2079,6 @@ Lo studio dell'utilizzo della logica multi valore ha portato a dei risultati int
 
 \newpage
 
-\bibliography{book.bib}
+  \bibliography{book.bib}
 
 \end{document}

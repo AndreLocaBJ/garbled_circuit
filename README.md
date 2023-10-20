@@ -1,4 +1,4 @@
-# Tesi Laurea Magistrale Sicurezza dei sistemi e delle reti
+# Tesi Laurea Magistrale Sicurezza Informatica
 
 L’argomento principale di questa tesi è  una particolare sotto categoria della crittografia, ovvero la Secure Multi-Party computation (SCM).  Il protocollo di Secure Multi-party Computation si identifica come l’approccio maggiormente impiegato nella letteratura studiata per consentire a due o più parti di eseguire calcoli generici in modo collaborativo, mantenendo segreto il proprio input e condividendo solo il risultato finale. 
 
